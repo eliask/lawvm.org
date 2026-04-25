@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About &mdash; LawVM</title>
+    <meta name="description" content="LawVM compiles legal state from amendment acts. What it is, who built it, and how to get involved.">
+    <link rel="canonical" href="https://lawvm.org/about">
+    <meta property="og:title" content="About — LawVM">
+    <meta property="og:description" content="LawVM compiles legal state from amendment acts. What it is, who built it, and how to get involved.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/about">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="About — LawVM">
+    <meta name="twitter:description" content="LawVM compiles legal state from amendment acts. What it is, who built it, and how to get involved.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      "name": "About LawVM",
+      "description": "LawVM compiles legal state from amendment acts. What it is, who built it, and how to get involved.",
+      "url": "https://lawvm.org/about",
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
+      "mainEntity": {
+        "@type": "SoftwareApplication",
+        "name": "LawVM",
+        "url": "https://lawvm.org/",
+        "codeRepository": "https://github.com/eliask/lawvm",
+        "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" }
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>About LawVM</h1>
+    </header>
+
+    <div class="essay-body">
+
+    <p>LawVM compiles legal state from amendment acts. It demonstrates that ordinary human-written amendment law can be treated as an executable instruction stream at the text-state layer. It tells you what each provision says at any date, which act changed it, and where its answer is uncertain.</p>
+
+    <p>It does <strong>not</strong> prove: that the source corpus is complete, that the source faithfully reflects legislator intent, that any oracle is authoritative, or that broader doctrinal interpretation is correct. It proves something narrower and still important: text-state derivation from the sources it has, with explicit evidence for what was observed, inferred, recovered, and left unresolved.</p>
+
+    <h2>What LawVM optimizes for</h2>
+
+    <ul>
+        <li><strong>Auditability</strong> over magic</li>
+        <li><strong>Typed structure</strong> over ad hoc string patches</li>
+        <li><strong>Evidence</strong> over hand-wavy correctness claims</li>
+        <li><strong>Bounded investigation</strong> over endless architecture expansion</li>
+    </ul>
+
+    <h2>Non-goals</h2>
+
+    <ul>
+        <li>Flattening jurisdiction maturity into one support claim</li>
+        <li>Hiding source defects behind silent cleanup</li>
+        <li>Glossy claims without evidence</li>
+        <li>Presenting editorial consolidations as the only truth</li>
+    </ul>
+
+    <h2>Author</h2>
+
+    <p><strong>Elias Kunnas</strong> &mdash; <a href="https://kunnas.com">kunnas.com</a></p>
+
+    <h2>Open source</h2>
+
+    <p><a href="https://github.com/eliask/lawvm">github.com/eliask/lawvm</a></p>
+
+    <h2>Get involved</h2>
+
+    <p>LawVM v0.1 is meant to be a handoff artifact as much as a software release: proof that the zero-to-one construction is possible, with enough architecture and evidence for others to continue the work.</p>
+
+    <p><strong>Researchers:</strong> See <a href="/finland">Finland</a> for empirical evidence and the verification workflow. Papers in preparation &mdash; email for collaboration or preprints.</p>
+
+    <p><strong>Government agencies:</strong> See <a href="/finland">Finland</a> for proof of concept. The architecture supports multiple jurisdictions with different authority models. Email to discuss a jurisdiction pilot.</p>
+
+    <p><strong>Contributors:</strong> Clone the repo, run <code>uv sync</code>, try <code>uv run lawvm --help</code>. The architecture documentation is in <code>notes/</code>. Start with bounded tasks: one phase, one test, one adjudication classifier.</p>
+
+    <p><strong>Contact:</strong> elias at kunnas.com</p>
+
+    <h2>Legal note</h2>
+
+    <p>LawVM publishes software, benchmarks, and research artifacts. For operative legal use, follow the authority model and official source regime of the jurisdiction in question.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

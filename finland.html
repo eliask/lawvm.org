@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finland &mdash; LawVM</title>
+    <meta name="description" content="Finland is LawVM's reference frontend. The v0.1 alpha evidence has hundreds of replay-vs-Finlex divergences under classification and 22 high-confidence candidate findings reported to Finlex.">
+    <link rel="canonical" href="https://lawvm.org/finland">
+    <meta property="og:title" content="Finland — LawVM">
+    <meta property="og:description" content="Finland is LawVM's reference frontend, with hundreds of replay-vs-Finlex divergences under classification and 22 high-confidence candidate findings reported to Finlex.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/finland">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Finland — LawVM">
+    <meta name="twitter:description" content="Hundreds of replay-vs-Finlex divergences under classification; 22 high-confidence candidate findings reported to Finlex.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Finland — LawVM's empirical proving ground",
+      "description": "Finland is LawVM's reference frontend, with hundreds of replay-vs-Finlex divergences under classification and 22 high-confidence candidate findings reported to Finlex.",
+      "author": {
+        "@type": "Person",
+        "name": "Elias Kunnas",
+        "url": "https://kunnas.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Elias Kunnas",
+        "url": "https://kunnas.com"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "LawVM",
+        "url": "https://lawvm.org/"
+      },
+      "url": "https://lawvm.org/finland",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://lawvm.org/finland"
+      }
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Finland</h1>
+        <p class="subtitle">The empirical proving ground.</p>
+    </header>
+
+    <div class="essay-body">
+
+    <h2>Why Finland?</h2>
+
+    <p>Finland combines difficult replay dynamics with unusually open source material and a legally non-authoritative consolidation surface. Finlex consolidated texts are <strong>informational, not legally binding</strong>. The "real" law is the original statute plus all amendment acts published in Säädöskokoelma.</p>
+
+    <p>This makes replay-vs-oracle comparison scientifically meaningful: when LawVM and Finlex disagree, the disagreement can be independently adjudicated against primary sources. A divergence might be a LawVM bug, a source gap, an editorial convention, or a candidate issue in the official consolidation surface.</p>
+
+    <h2>Corpus</h2>
+
+    <p>The current Finnish alpha corpus contains hundreds of fully replayable amended statutes, spanning from the 1920s to the 2020s. They are replayed from raw amendment acts in Säädöskokoelma XML and curated from a larger set of amended statutes where source availability varies.</p>
+
+    <p>The table below describes the frozen 2026-04-16 benchmark snapshot, not a permanent corpus definition.</p>
+
+    <div class="table-scroll"><table>
+        <thead><tr><th>Decade</th><th>Statutes</th><th>Avg amendments</th><th>Max</th></tr></thead>
+        <tbody>
+            <tr><td>1920s&ndash;1960s</td><td>10</td><td>15</td><td>67</td></tr>
+            <tr><td>1970s</td><td>20</td><td>13.7</td><td>61</td></tr>
+            <tr><td>1980s</td><td>25</td><td>14.4</td><td>64</td></tr>
+            <tr><td>1990s</td><td>107</td><td>20.6</td><td>238</td></tr>
+            <tr><td>2000s</td><td>173</td><td>13.3</td><td>166</td></tr>
+            <tr><td>2010s</td><td>237</td><td>5.3</td><td>52</td></tr>
+            <tr><td>2020s</td><td>118</td><td>2.5</td><td>18</td></tr>
+        </tbody>
+    </table></div>
+
+    <p class="as-of">v0.1 alpha evidence snapshot. Benchmark figures are provisional and depend on the frozen source/oracle archive.</p>
+
+    <h2>Benchmark</h2>
+
+    <div class="evidence-grid" style="margin: 1.5rem 0;">
+        <div class="evidence-card">
+            <h3>Text distance</h3>
+            <div class="number">0.65%</div>
+            <div class="detail">Provisional mean Levenshtein distance from the archived Finlex consolidation comparison surface.</div>
+        </div>
+        <div class="evidence-card">
+            <h3>Structural error</h3>
+            <div class="number">4.25%</div>
+            <div class="detail">Mean section-level structural divergence. 367 perfect structural match. 490 at &ge;95%.</div>
+        </div>
+        <div class="evidence-card">
+            <h3>&lt;90% match</h3>
+            <div class="number">104</div>
+            <div class="detail">Provisional investigation frontier in the alpha corpus.</div>
+        </div>
+    </div>
+
+    <p class="as-of">Benchmark snapshot: 2026-04-16, mode: finlex_oracle. Two metrics: Levenshtein measures character-level text distance; structural error measures section-level divergence. See <a href="/artifacts">Artifacts</a> for corpus definition and reproducibility.</p>
+
+    <div class="callout">
+        <strong>How to read this:</strong> The benchmark measures structural agreement with Finlex. It does not measure legal correctness. High similarity &ne; correct. Low similarity &ne; wrong. Some divergences become high-confidence candidate findings when primary sources support LawVM over the Finlex consolidation. The real verification loop is manual residual review against primary sources.
+    </div>
+
+    <h2>The golden dataset</h2>
+
+    <p>We systematically investigate divergences between LawVM and Finlex. So far, <strong>22 high-confidence meaningful candidate findings</strong> have been reported to Finlex for external review. Until Finlex or another competent authority confirms them, they should be described as candidate findings rather than verified official errors.</p>
+
+    <p>Each finding is documented in a structured internal entry with Finnish prose, root cause classification, affected sections, and source evidence. The public page below includes a compact bilingual digest; the full Finnish evidence viewer is not linked as part of the public website surface yet.</p>
+
+    <h3>Root cause taxonomy</h3>
+
+    <div class="table-scroll"><table>
+        <thead><tr><th>Root cause</th><th>Count</th><th>Meaning</th></tr></thead>
+        <tbody>
+            <tr><td>finlex_missing_content</td><td>10</td><td>Finlex omits content published in Säädöskokoelma</td></tr>
+            <tr><td>source_pathology</td><td>9</td><td>Source XML itself is defective</td></tr>
+            <tr><td>finlex_missing_otsikko</td><td>&ge;9</td><td>Finlex omits section headings</td></tr>
+            <tr><td>oracle_stale_cutoff</td><td>&ge;6</td><td>Finlex has not applied recent amendments</td></tr>
+            <tr><td>finlex_editorial_addition</td><td>4</td><td>Finlex added content without amendment basis</td></tr>
+            <tr><td>high_uncovered_body</td><td>3</td><td>Structural amendment coverage gap</td></tr>
+            <tr><td>finlex_dual_element_residual</td><td>3</td><td>Finlex has dual current/pending versions</td></tr>
+            <tr><td>corrigendum_misapplied</td><td>1</td><td>Published correction not applied</td></tr>
+            <tr><td><em>+ 7 more categories</em></td><td></td><td></td></tr>
+        </tbody>
+    </table></div>
+
+    <p class="as-of">22 high-confidence meaningful candidate findings reported to Finlex as of 2026-04-25. Target: full classification of all divergences.</p>
+
+    <h2>Reported candidate findings</h2>
+
+    <p>The following 22 high-confidence meaningful candidate findings were sent to Finlex support under ticket RITM0644009 on 2026-04-23. They were reported as the author's best interpretation after checking Finlex XML, Finlex HTML, source acts, and relevant source artifacts. They remain candidate findings until confirmed by Finlex or another competent authority.</p>
+
+    <div class="language-toggle" aria-label="Finding language">
+        <button type="button" id="show-findings-en" aria-pressed="true">English translation</button>
+        <button type="button" id="show-findings-fi" aria-pressed="false">Finnish original</button>
+    </div>
+
+    <div id="findings-en" class="finding-language">
+    <p class="as-of">English statute titles are unofficial translations for orientation. The Finnish toggle preserves the original Finnish titles and wording.</p>
+    <ol>
+        <li><strong>Tonnage Tax Act (Tonnistoverolaki, 476/2002).</strong> Amendment 1249/2009 appears not to be reflected in the current Finlex text. Candidate differences include 12 &sect; 1 momentti changing from fully non-deductible acquisition cost to partial deductibility for income-taxable use, 18 &sect; changing the threshold from less than half of equity to less than 1/9, and 22 &sect; plus 24 &sect; remaining visible even though the amendment repealed them.</li>
+        <li><strong>Fuel Fee Act (Polttoainemaksulaki, 1280/2003).</strong> Amendment 135/2019 replaced 1 &sect; with three subsections. Finlex appears to show only two; the third subsection concerning T1-class light vehicles is missing.</li>
+        <li><strong>Decree on Mire Conservation Areas (Asetus soidensuojelualueista, 852/1988).</strong> The current Finlex text appears to contain five consolidation/text defects: a full sentence missing from 2 &sect; 2 momentti, "metsästys" rendered as "metsäsätys", "vähentäminen" as "vähentämien", a missing comma in "toimenpiteet, jotka", and "noudatettaviksi" as "neudatettaviksi". No amendment was found changing these passages.</li>
+        <li><strong>Decree on Development Cooperation Assignments (Asetus kehitysyhteistyötehtävistä, 383/1989).</strong> In 4 &sect; 1 momentti, "Kehitysyhteistyötehtävää" appears as "Kehitysyhteistyötehtäväää" in the Finlex consolidation.</li>
+        <li><strong>Act on the Autonomy of Åland (Ahvenanmaan itsehallintolaki, 1144/1991).</strong> Candidate text defects include missing "vähintään" in 69 &sect; 2 momentti, missing "sellaisten ylioikeuksien ja muiden" in 38 &sect; 1 momentti, and "kauppa-aluksilla" split as "kauppa aluksilla" in 18 &sect; 3 kohta.</li>
+        <li><strong>Forest Improvement Decree (Metsänparannusasetus, 437/1987).</strong> Amendment 1563/1992 changed 2 &sect; items 1 and 2. The original section had four items, but Finlex appears to show only items 1 and 2; unchanged items 3 and 4 are missing.</li>
+        <li><strong>Mental Health Decree (Mielenterveysasetus, 1247/1990).</strong> Amendment 1446/1992 changed the reference in 2 &sect; to "mielenterveyslain 8 &sect;:n 3 momentissa". Finlex appears to retain the old "8 &sect;:n 2 momentissa" reference.</li>
+        <li><strong>Act on the Coordination of Social Security Systems (Laki sosiaaliturvajärjestelmien yhteensovittamisesta, 352/2010).</strong> In 11 &sect; 2 momentti, Finlex appears to show only items 1-3; items 4-6 are missing.</li>
+        <li><strong>Act on Enforcement Fees (Laki ulosottomaksuista, 34/1995).</strong> In 5 &sect; 3 momentti, the source text has three sentences. Finlex appears to show only the first sentence, omitting sentences concerning the bailiff's discretion and appeal bar.</li>
+        <li><strong>Act on Restrictions on the Use of Arava Rental Dwellings (Aravarajoituslaki, 1190/1993).</strong> Candidate typographic defects: "10 &sect;: n" in 12 &sect; 1 momentti, "vuokra asunnon" in 12 &sect; 2 momentti, and "asunto osakeyhtiötaloksi" in the 13 &sect; heading.</li>
+        <li><strong>Rules of Procedure of Parliament (Eduskunnan työjärjestys, 40/2000).</strong> Candidate spacing/word-fusion defects: "keskustelua,jollei" in 16 &sect; 1 momentti, "lisätalousarvioesityksenja" in 20 &sect; 2 momentti, and "asioidenkäsittelystä" in 69 &sect; 1 momentti.</li>
+        <li><strong>Decree on Protection Areas (Asetus suoja-alueista, 1125/2000).</strong> In the 1 &sect; table, "Kirkonmaan suoja-alue" appears as "Kirkkomaan suoja-alue". No amendment was found changing the place name.</li>
+        <li><strong>Act on Promoting the Use of Renewable Fuels in Transport (Laki uusiutuvien polttoaineiden käytön edistämisestä liikenteessä, 446/2007).</strong> In 1 &sect; 2 momentti, "ReFuelEU Aviation ‑aloite" appears to be corrupted as "ReFuelEU Aviation âaloite".</li>
+        <li><strong>Antarctic Environmental Protection Act (Etelämantereen ympäristönsuojelulaki, 28/1998).</strong> Amendment 1020/2010 repealed 42 &sect; as of 2011-01-01. Finlex appears to show both the repeal note and the old 42 &sect; text as an active structure.</li>
+        <li><strong>Railway Tracks Act (Ratalaki, 110/2007).</strong> Amendment 741/2018 repealed 89 &sect; 6 momentti from 2020-06-01. Finlex appears to continue showing the repealed subsection as active text, while its own change history records the repeal.</li>
+        <li><strong>Decree on the Right to Transfer State-Owned Real Property (Asetus oikeudesta luovuttaa valtion maaomaisuutta, 693/1978).</strong> In 3 &sect;, Finlex appears to show both the old ministry references and the later environment-ministry wording in parallel, even though amendment 787/1988 replaced the section.</li>
+        <li><strong>Act on Farmers' Early Retirement Compensation (Laki maatalousyrittäjien luopumiskorvauksesta, 1330/1992).</strong> Amendment 42/1997 added 38 a &sect; from 1997-09-01. The Finnish Finlex current text appears to skip from 38 &sect; to 39 &sect;, while the Swedish page shows 38 a &sect;.</li>
+        <li><strong>Decree on Information to Be Given to Consumers on Credit Agreements (Asetus luottosopimuksesta kuluttajalle annettavista tiedoista, 789/2010).</strong> In 7 &sect; 4 momentti 4 kohta, the reference "kuluttajansuojalain 7 lukua" appears on the Finlex page as "kuluttajansuojalain 7 luku a.", apparently due to hyperlink text splitting.</li>
+        <li><strong>Ministry of Education and Culture Decree on the Boards of Certain State Educational Institutions (OKM asetus eräiden valtion oppilaitosten johtokunnista, 410/2011).</strong> Temporary amendment 434/2011 added one sentence to 2 &sect; 2 momentti and one sentence to 3 &sect; 1 momentti. Both appear to be missing from the Finlex current page for the temporary validity interval 2011-05-13 to 2011-10-01.</li>
+        <li><strong>Government Decree on Grants to Non-Profit Communities and Foundations (Valtioneuvoston asetus valtionavustuksista yleishyödyllisille yhteisöille ja säätiöille, 716/2014).</strong> Amendment 697/2020 added temporary 8 b &sect; on aid for small enterprises in difficulty. Finlex appears to skip from 8 a &sect; to 9 &sect;, although Finlex's own validity note mentions 8 b &sect;.</li>
+        <li><strong>Decree on the Structures of Degrees under the Universities Act (Asetus yliopistolain mukaisten tutkintojen rakenteista, 869/2017).</strong> Amendment 613/2020 added temporary 3 a &sect; for 2020-09-01 to 2021-07-31. Finlex appears to skip from 3 &sect; to 4 &sect;.</li>
+        <li><strong>Decree on Chargeable Services of the Finnish Transport Infrastructure Agency (Asetus Väyläviraston maksullisista suoritteista, 1465/2019).</strong> Amendment 382/2020 added temporary 3 a &sect; for 2020-06-01 to 2020-08-31. Finlex appears to skip from 3 &sect; to 4 &sect;.</li>
+    </ol>
+    </div>
+
+    <div id="findings-fi" class="finding-language" lang="fi" hidden>
+    <ol>
+        <li><strong>Tonnistoverolaki (476/2002) — useita aineellisesti merkittäviä virheitä.</strong> Muutoslaki 1249/2009 (voimaan 1.1.2010) teki merkittäviä muutoksia, joista yksikään ei näy Finlexin ajantasatekstissä: 12 &sect;:n 1 momentti: Finlex sanoo "Tällaisen omaisuuden hankintameno ei ole tuloverotuksessa vähennyskelpoinen." Muutoslain mukaan pitäisi olla "on tuloverotuksessa vähennyskelpoinen siltä osin kuin sitä käytetään tuloverotettavassa toiminnassa." Ero on olennainen: kokonaan vähennyskelvoton vs. osittain vähennyskelpoinen. 18 &sect;: Finlex sanoo "pienempi kuin puolet yhtiön taseen oman pääoman määrästä". Muutoslain mukaan pitäisi olla "pienempi kuin 1/9". Kynnysarvo on huomattavasti matalampi. 22 &sect; ja 24 &sect;: Muutoslaki kumosi molemmat pykälät, mutta Finlex esittää ne edelleen voimassa olevina ilman kumoamismerkintää.</li>
+        <li><strong>Polttoainemaksulaki (1280/2003) — kokonainen momentti puuttuu.</strong> Muutoslaki 135/2019 korvasi 1 &sect;:n kokonaan kolmimomenttiseksi. Finlexin ajantasasivulla 1 &sect;:ssä on vain kaksi momenttia. Kolmas momentti ("Polttoainemaksun suorittamiseen T1-luokkaan kuuluvasta kevytautosta sovelletaan, mitä tässä laissa säädetään henkilöautosta.") puuttuu kokonaan.</li>
+        <li><strong>Asetus soidensuojelualueista (852/1988) — viisi konsolidointivirhettä.</strong> Finlexin ajantasatekstissä on useita virheitä verrattuna Säädöskokoelman alkuperäistekstiin: 2 &sect;:n 2 momentista puuttuu kokonainen virke; 3 &sect;:ssä "metsästys" on muuttunut muotoon "metsäsätys" (kirjain puuttuu); 3 &sect;:ssä "vähentäminen" on muuttunut muotoon "vähentämien"; 3 &sect;:ssä "toimenpiteet, jotka" on muuttunut muotoon "toimenpiteet jotka" (pilkku puuttuu); 5 &sect;:n 2 momentissa "noudatettaviksi" on muuttunut muotoon "neudatettaviksi". Yksikään muutosasetus ei ole koskaan muuttanut näitä kohtia.</li>
+        <li><strong>Asetus kehitysyhteistyötehtävistä (383/1989) — kirjoitusvirhe.</strong> 4 &sect;:n 1 momentissa sana "Kehitysyhteistyötehtävää" on muuttunut muotoon "Kehitysyhteistyötehtäväää" (kolme ä-kirjainta). Virhe on Finlexin konsolidaatiossa, ei alkuperäisessä Säädöskokoelman tekstissä.</li>
+        <li><strong>Ahvenanmaan itsehallintolaki (1144/1991) — kolme tekstivirhettä.</strong> 69 &sect;:n 2 momentista puuttuu sana "vähintään", joka muuttaa enemmistövaatimuksen merkitystä; 38 &sect;:n 1 momentista puuttuu "sellaisten ylioikeuksien ja muiden", joka kaventaa toimivaltasäännöstä; 18 &sect;:n 3 kohdassa "kauppa-aluksilla" on muuttunut muotoon "kauppa aluksilla" (yhdysmerkki puuttuu).</li>
+        <li><strong>Metsänparannusasetus (437/1987) — muuttamattomat kohdat kadonneet.</strong> Muutosasetus 1563/1992 muutti 2 &sect;:n kohdat 1 ja 2. Alkuperäisessä asetuksessa on neljä kohtaa. Finlexin ajantasasivulla näkyvät vain kohdat 1 ja 2. Kohdat 3 (taimikon tuhoutuminen) ja 4 (luonnontuho) puuttuvat kokonaan.</li>
+        <li><strong>Mielenterveysasetus (1247/1990) — virheellinen pykäläviittaus.</strong> Muutosasetus 1446/1992 korvasi 2 &sect;:n viittauksen muotoon "mielenterveyslain 8 &sect;:n 3 momentissa". Finlexin ajantasasivulla viittaus on edelleen "8 &sect;:n 2 momentissa". Lukija ohjataan väärään säännökseen.</li>
+        <li><strong>Laki sosiaaliturvajärjestelmien yhteensovittamisesta (352/2010) — muuttamattomat kohdat kadonneet.</strong> 11 &sect;:n 2 momentissa Finlexin ajantasasivulla näkyvät vain kohdat 1–3. Kohdat 4–6 puuttuvat kokonaan.</li>
+        <li><strong>Laki ulosottomaksuista (34/1995) — 3 momentin teksti katkaistu.</strong> 5 &sect;:n 3 momentissa on Säädöskokoelman mukaan kolme virkettä. Finlexin ajantasasivulla momentista näkyy vain ensimmäinen virke. Puuttuvat virkkeet koskevat ulosottomiehen harkintavaltaa ja muutoksenhakukieltoa. (Huom: Myöhempi muutoslaki 2006/470 lisäsi pykälään 5 momentin, jossa on osittain vastaavaa sisältöä — mutta 3 momentin alkuperäiset virkkeet ovat eri säännös.)</li>
+        <li><strong>Aravarajoituslaki (1190/1993) — kolme typografista virhettä.</strong> 12 &sect;:n 1 momentin viittaus "10 &sect;: n" (ylimääräinen välilyönti kaksoispisteen jälkeen); 12 &sect;:n 2 momentissa "vuokra asunnon" (välilyönti yhdyssanan sisällä); 13 &sect;:n otsikko "asunto osakeyhtiötaloksi" (välilyönti yhdyssanan sisällä).</li>
+        <li><strong>Eduskunnan työjärjestys (40/2000) — kolme puuttuvaa välilyöntiä/yhdyssanafuusiota.</strong> 16 &sect;:n 1 momentissa "keskustelua,jollei" (välilyönti puuttuu pilkun jälkeen); 20 &sect;:n 2 momentissa "lisätalousarvioesityksenja" (kaksi sanaa fuusioitunut); 69 &sect;:n 1 momentissa "asioidenkäsittelystä" (kaksi sanaa fuusioitunut).</li>
+        <li><strong>Asetus suoja-alueista (1125/2000) — paikannimi muuttunut.</strong> 1 &sect;:n taulukossa "Kirkonmaan suoja-alue" on muuttunut muotoon "Kirkkomaan suoja-alue". Yksikään muutosasetus ei ole muuttanut tätä nimeä.</li>
+        <li><strong>Laki uusiutuvien polttoaineiden käytön edistämisestä liikenteessä (446/2007) — merkistökoodausvirhe.</strong> 1 &sect;:n 2 momentissa "ReFuelEU Aviation ‑aloite" (yhdysmerkki U+2011) on korruptoitunut muotoon "ReFuelEU Aviation âaloite".</li>
+        <li><strong>Etelämantereen ympäristönsuojelulaki (28/1998) — kumottu pykälä näkyy edelleen aktiivisena.</strong> Muutoslaki 1020/2010 kumosi 42 &sect;:n 1.1.2011. Finlexin ajantasasivulla 42 &sect; näkyy kahdesti: ensin kumoamismerkintä ("42 &sect; on kumottu L:lla 26.11.2010/1020") ja sen jälkeen pykälän vanha teksti ("42 &sect; – Valvontaviranomainen") aktiivisena rakenteena. Vertailukohtana 39 &sect; samasta muutoslaista on konsolidoitu oikein.</li>
+        <li><strong>Ratalaki (110/2007) — kumottu momentti näkyy edelleen voimassa olevana.</strong> Muutoslaki 741/2018 kumosi 89 &sect;:n 6 momentin 1.6.2020 alkaen. Finlexin ajantasasivulla momentti ("Edellä 2–4 momentissa tarkoitettujen liikenteen ohjauslaitteiden asettamiseen...") näkyy edelleen aktiivisena tekstinä. Finlexin oma muutoshistoria toteaa: "6 momentti on kumottu L:lla 10.8.2018/741, joka tulee voimaan 1.6.2020."</li>
+        <li><strong>Asetus oikeudesta luovuttaa valtion maaomaisuutta (693/1978) — vanhan ja uuden pykälätekstin päällekkäisyys 3 &sect;:ssä.</strong> Finlexin ajantasasivulla näkyy sekä vanha ministeriöviittaus (opetusministeriön/maa- ja metsätalousministeriön) että uudempi ympäristöministeriöviittaus rinnakkaisina tekstilohkoina saman pykälän alla. Muutosasetus 787/1988 korvasi 3 &sect;:n, joten vanha teksti ei kuulu ajantasaiseen versioon.</li>
+        <li><strong>Laki maatalousyrittäjien luopumiskorvauksesta (1330/1992) — puuttuva pykälä.</strong> Muutoslaki 42/1997 lisäsi lakiin 38 a &sect;:n 1.9.1997 alkaen. Finlexin ajantasasivulla pykälä puuttuu kokonaan — 38 &sect;:stä siirrytään suoraan 39 &sect;:ään. Finlexin ruotsinkielisellä sivulla 38 a &sect; kuitenkin näkyy.</li>
+        <li><strong>Asetus luottosopimuksesta kuluttajalle annettavista tiedoista (789/2010) — hyperlinkin tuottama tekstivirhe.</strong> 7 &sect;:n 4 momentin 4 kohdassa lakiviittaus "kuluttajansuojalain 7 lukua" on Finlexin sivulla muotoa "kuluttajansuojalain 7 luku a." — hyperlinkkielementti katkaisee sanan ja tuottaa ylimääräisen pisteen.</li>
+        <li><strong>OKM asetus eräiden valtion oppilaitosten johtokunnista (410/2011) — väliaikaisen muutoksen virkkeet puuttuvat.</strong> Muutosasetus 434/2011 lisäsi 2 &sect;:n 2 momenttiin virkkeen "Johtokunnassa voi olla myös valtionhallinnon edustus." ja 3 &sect;:n 1 momenttiin virkkeen "Helsingin ranskalais-suomalaisen koulun johtokunnan asettaa kuitenkin opetus- ja kulttuuriministeriö." Molemmat puuttuvat Finlexin ajantasasivulta. (Huom: väliaikainen muutos, voimassa 13.5.2011–1.10.2011.)</li>
+        <li><strong>Valtioneuvoston asetus valtionavustuksista yleishyödyllisille yhteisöille ja säätiöille (716/2014) — puuttuva pykälä.</strong> Muutosasetus 697/2020 lisäsi asetukseen 8 b &sect;:n (Avustuksen myöntäminen vaikeuksissa olevalle pienelle yritykselle). Finlexin ajantasasivulla pykälä puuttuu — 8 a &sect;:stä siirrytään suoraan 9 &sect;:ään. Finlexin oma voimassaolotiedote kuitenkin mainitsee "8 b" &sect;:n. (Huom: väliaikainen, voimassa 31.12.2021 asti.)</li>
+        <li><strong>Asetus yliopistolain mukaisten tutkintojen rakenteista (869/2017) — puuttuva pykälä.</strong> Muutosasetus 613/2020 lisäsi asetukseen väliaikaisen 3 a &sect;:n (voimassa 1.9.2020–31.7.2021). Finlexin ajantasasivulla pykälä puuttuu — 3 &sect;:stä siirrytään suoraan 4 &sect;:ään.</li>
+        <li><strong>Asetus Väyläviraston maksullisista suoritteista (1465/2019) — puuttuva pykälä.</strong> Muutosasetus 382/2020 lisäsi asetukseen väliaikaisen 3 a &sect;:n (voimassa 1.6.2020–31.8.2020). Finlexin ajantasasivulla pykälä puuttuu — 3 &sect;:stä siirrytään suoraan 4 &sect;:ään.</li>
+    </ol>
+    </div>
+
+    <script>
+    (function() {
+      var en = document.getElementById('findings-en');
+      var fi = document.getElementById('findings-fi');
+      var enButton = document.getElementById('show-findings-en');
+      var fiButton = document.getElementById('show-findings-fi');
+      function show(language) {
+        var showFi = language === 'fi';
+        en.hidden = showFi;
+        fi.hidden = !showFi;
+        enButton.setAttribute('aria-pressed', String(!showFi));
+        fiButton.setAttribute('aria-pressed', String(showFi));
+      }
+      enButton.addEventListener('click', function() { show('en'); });
+      fiButton.addEventListener('click', function() { show('fi'); });
+    })();
+    </script>
+
+    <h2>The forward goal</h2>
+
+    <p>Current evidence already shows repeated classes of cases where replay outperforms the official consolidation. The v0.1 goal is the zero-to-one construction: demonstrate that ordinary amendment law can be compiled at high coverage against a real national corpus, almost solving Finland at the text-state layer, and leave enough architecture, evidence, and tooling for others to carry the remaining work forward.</p>
+
+    <div class="essay-nav">
+        <a href="/">&larr; LawVM</a>
+        <a href="/artifacts">Artifacts</a>
+        <a href="/papers">Papers</a>
+    </div>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

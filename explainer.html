@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replay Explainer &mdash; LawVM</title>
+    <meta name="description" content="A static interactive explainer showing how LawVM compiles an amendment source witness into typed operations, replay, timelines, and evidence.">
+    <link rel="canonical" href="https://lawvm.org/explainer">
+    <meta property="og:title" content="Replay Explainer — LawVM">
+    <meta property="og:description" content="Walk through a curated amendment fixture from source witness to typed operation, replay mutation, timeline, and evidence.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/explainer">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Replay Explainer — LawVM">
+    <meta name="twitter:description" content="A compiler/debugger view of legal text-state replay.">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script src="/assets/js/explainer.js" defer></script>
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="explainer-shell" data-explainer-root>
+    <section class="explainer-hero">
+        <div>
+            <p class="eyebrow">Interactive replay explainer</p>
+            <h1>From amendment language to auditable text-state.</h1>
+            <p class="lead">Step through a curated amendment fixture as LawVM parses the source, extracts the payload, resolves the target, lowers a typed operation, replays it, and exposes the evidence trail.</p>
+        </div>
+        <aside class="explainer-notice" data-notices>
+            <strong>Curated compiler fixture</strong>
+            <p>A minimal English amendment selected to make each replay phase inspectable.</p>
+        </aside>
+    </section>
+
+    <section class="explainer-controls" aria-label="Compiler phase controls">
+        <div class="phase-scrubber" data-phase-scrubber></div>
+        <div class="phase-status">
+            <span data-phase-counter>Loading phases...</span>
+            <span data-example-status>Synthetic example</span>
+        </div>
+    </section>
+
+    <section class="explainer-error" data-explainer-error hidden></section>
+
+    <section class="explainer-stage" data-explainer-content hidden>
+        <article class="explainer-panel source-panel">
+            <div class="panel-heading">
+                <span>01</span>
+                <h2>Source witness</h2>
+            </div>
+            <div data-phase-copy class="phase-copy"></div>
+            <div class="source-meta" data-source-meta></div>
+            <pre class="source-witness" data-source-witness></pre>
+            <div class="payload-box" data-payload-box></div>
+        </article>
+
+        <article class="explainer-panel tree-panel">
+            <div class="panel-heading">
+                <span>02</span>
+                <h2>Document tree</h2>
+            </div>
+            <div class="tree-legend">
+                <span><i class="legend-dot target"></i>target</span>
+                <span><i class="legend-dot changed"></i>changed path</span>
+                <span><i class="legend-dot stable"></i>unchanged sibling</span>
+            </div>
+            <div class="tree-compare">
+                <section>
+                    <h3 data-tree-before-heading>Before replay</h3>
+                    <div class="doc-tree" data-tree-before></div>
+                </section>
+                <section>
+                    <h3 data-tree-after-heading>After replay</h3>
+                    <div class="doc-tree" data-tree-after></div>
+                </section>
+            </div>
+        </article>
+
+        <aside class="explainer-panel evidence-panel">
+            <div class="panel-heading">
+                <span>03</span>
+                <h2>Operation and evidence</h2>
+            </div>
+            <div class="operation-card" data-operation-card></div>
+            <div class="strictness-card" data-strictness-card></div>
+            <div class="evidence-stack" data-evidence-stack></div>
+        </aside>
+    </section>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

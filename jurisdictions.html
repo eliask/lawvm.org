@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurisdictions &mdash; LawVM</title>
+    <meta name="description" content="LawVM jurisdiction frontend status, benchmark telemetry, source coverage limits, and caveats for Finland, Estonia, the UK, Norway, and Sweden.">
+    <link rel="canonical" href="https://lawvm.org/jurisdictions">
+    <meta property="og:title" content="Jurisdictions — LawVM">
+    <meta property="og:description" content="Jurisdiction frontend status, benchmark telemetry, source coverage limits, and caveats.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/jurisdictions">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Jurisdictions — LawVM">
+    <meta name="twitter:description" content="Frontend status, measured replay telemetry, and source coverage limits.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "LawVM Jurisdictions",
+      "description": "Jurisdiction frontend status, measured replay telemetry, and source coverage limits.",
+      "url": "https://lawvm.org/jurisdictions",
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" }
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Jurisdictions</h1>
+        <p class="subtitle">Status, source boundaries, and measured telemetry.</p>
+    </header>
+
+    <div class="essay-body">
+
+    <p>Jurisdictions differ by source access, authority model, compiler maturity, and replay fidelity. This page keeps those axes separate instead of flattening them into one support claim.</p>
+
+    <div class="callout">
+        <strong>How to read these numbers:</strong> similarity telemetry is not a legal correctness claim. It says how closely a replay or compiler artifact matches a selected witness surface under a specific corpus and comparison mode. A high score can still hide source defects or oracle conventions; a low score can be caused by missing sources rather than bad replay.
+    </div>
+
+    <p>For a concrete walkthrough of the compiler model before reading the numbers, see the <a href="/explainer">interactive replay explainer</a>.</p>
+
+    <div class="table-scroll"><table class="status-table">
+        <thead><tr><th>Jurisdiction</th><th>Status</th><th>Measured public posture</th></tr></thead>
+        <tbody>
+            <tr>
+                <td><strong>Finland</strong></td>
+                <td><span class="badge badge-green">Active</span></td>
+                <td>Reference replay frontend. Frozen 2026-04-16 benchmark: 0.65% mean text distance, 4.25% mean section-level structural error, 367 perfect structural matches, 490 at &ge;95% structural match. <a href="/finland">See Finland.</a></td>
+            </tr>
+            <tr>
+                <td><strong>Estonia</strong></td>
+                <td><span class="badge badge-amber">Maintained</span></td>
+                <td>Authoritative-consolidation consistency frontend. Latest saved curated run: 343/343 OK, 98.47% average section match, 242 perfect rows; core/headline subset: 259 rows, 98.75% average, 195 perfect.</td>
+            </tr>
+            <tr>
+                <td><strong>United Kingdom</strong></td>
+                <td><span class="badge badge-amber">Maintained</span></td>
+                <td>Substantial effects/version-graph workbench. Core typed frontier: 3,418 replay-scored rows, 85.19% average EID-level replay score, 1,153 perfect EID rows; 3,417 text-scored core rows, 88.47% average replay text score.</td>
+            </tr>
+            <tr>
+                <td><strong>Norway</strong></td>
+                <td><span class="badge badge-dim">Experimental</span></td>
+                <td>Operational public-Lovdata prototype, strongest for post-2001 public-source chains. Inventory: 648 current laws, 462 amended current laws, 332 with local base source, 51 fully replayable current laws, 19 fully replayable executable amended laws. Current verification sample: 2 consistent, 5 divergent, 12 invariant errors.</td>
+            </tr>
+            <tr>
+                <td><strong>Sweden</strong></td>
+                <td><span class="badge badge-dim">Experimental</span></td>
+                <td>Source/provenance and official-act compiler frontier, not yet a replay benchmark frontend. Archive has 37,899 official SFS act parses from 1999-2026 and 20,340 compiled first-pass op artifacts; broad current-law replay fidelity is not measured yet.</td>
+            </tr>
+        </tbody>
+    </table></div>
+
+    <h2>Benchmark Snapshot</h2>
+
+    <div class="table-scroll"><table>
+        <thead>
+            <tr><th>Jurisdiction</th><th>Corpus / surface</th><th>Text metric</th><th>Structure metric</th><th>Near-perfect entries</th><th>Main caveat</th></tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Finland</strong></td>
+                <td>Finnish alpha replay corpus vs archived Finlex comparison surface, frozen 2026-04-16.</td>
+                <td>0.65% mean text distance.</td>
+                <td>4.25% mean section-level structural error.</td>
+                <td>~420 perfect text matches; 367 perfect structural matches; 490 at &ge;95% structural match.</td>
+                <td>Finlex is an editorial, non-authoritative witness surface; residuals require primary-source review.</td>
+            </tr>
+            <tr>
+                <td><strong>Estonia</strong></td>
+                <td>343 curated law-only Riigi Teataja base/oracle pairs, latest saved run 2026-04-25.</td>
+                <td>No public text-distance claim yet.</td>
+                <td>98.47% average section match across all OK rows; 98.75% on 259 core/headline rows.</td>
+                <td>242/343 perfect all rows; 195/259 perfect core rows; 313/343 at &ge;95%.</td>
+                <td>Corpus is curated and limited; Estonia is consistency checking against authoritative consolidated law, not replay-first replacement of the official surface.</td>
+            </tr>
+            <tr>
+                <td><strong>United Kingdom</strong></td>
+                <td>Typed frontier benchmark over legislation.gov.uk source/current/effects data, saved 2026-03-29.</td>
+                <td>88.47% average replay text score on 3,417 core text-scored rows.</td>
+                <td>85.19% average EID-level replay score on 3,418 core replay-scored rows.</td>
+                <td>1,153 perfect EID replay rows; 1,744 at &ge;95% EID replay; 1,260 at &ge;95% replay text.</td>
+                <td>Current regime is effects-assisted and still uses oracle-alignment/current-metadata accommodations; do not read it as pure source-first replay.</td>
+            </tr>
+            <tr>
+                <td><strong>Norway</strong></td>
+                <td>Public Lovdata/Lovtidend archive inventory, strongest from 2001 onward.</td>
+                <td>No credible broad text-distance metric yet.</td>
+                <td>No credible broad tree-distance metric yet; current verification sample has 2/19 consistent executable replay candidates.</td>
+                <td>2 consistent rows in the current 19-candidate executable sample.</td>
+                <td>Many current laws are blocked by contingent commencement, missing local base sources, or invariant failures; source continuity before 2001 is limited without deeper Lovdata/historical access.</td>
+            </tr>
+            <tr>
+                <td><strong>Sweden</strong></td>
+                <td>Official SFS PDF/doc acquisition and first-pass operation compilation, current archive 1999-2026.</td>
+                <td>Not measured.</td>
+                <td>Not measured as a replay benchmark.</td>
+                <td>Not applicable yet; 20,160 official-op artifacts are non-empty, but that is compiler coverage, not replay fidelity.</td>
+                <td>Broad current-law replay and source-complete historical reconstruction are not built yet; source acquisition currently starts at 1999.</td>
+            </tr>
+        </tbody>
+    </table></div>
+
+    <h2>Per-Jurisdiction Notes</h2>
+
+    <h3>Finland</h3>
+    <p>Finland is the zero-to-one construction proof: ordinary amendment streams are compiled into point-in-time legal text-state at national-corpus scale. The frontend has the deepest source acquisition, amendment parsing, payload normalization, target resolution, replay, residual taxonomy, and manual adjudication workflow.</p>
+    <p>The key caveat is epistemic, not cosmetic: replay-vs-Finlex comparison is a witness comparison. Finlex can be right, LawVM can be right, both can be wrong, or the source lanes can be non-commensurable. The public claim is therefore candidate findings and classified residuals, not official error adjudication.</p>
+
+    <h3>Estonia</h3>
+    <p>Estonia is the strongest non-Finland consistency-checking lane. Riigi Teataja consolidated law is authoritative, so the role is different from Finland: replay is used to check internal consistency against binding consolidated redactions rather than to compete with a non-authoritative editorial surface.</p>
+    <p>The saved benchmark is strong but bounded: 343 curated law-only pairs, section-level comparison, and an intentionally partial living spec. It should be presented as a serious maintained frontend, not as a claim that all Estonian legal history is solved.</p>
+    <p>One Estonia candidate consolidation omission has also been reported to Riigi Teataja for review: Auditors Activities Act (<em>Audiitortegevuse seadus</em>), act ID 107012025013, § 95<sup>2</sup>(1), concerning whether the phrase <em>või kestlikkusaruande audiitorkontrolli</em> from RT I, 07.01.2025, 1 was incorporated into the current consolidated text.</p>
+
+    <h3>United Kingdom</h3>
+    <p>The UK frontend is substantial because legislation.gov.uk exposes versioned texts and effect metadata. LawVM uses that structure to explore EID-level replay, text comparison, effects-feed candidate selection, commencement gating, and source/adjudication records.</p>
+    <p>The caveat is equally important: the current UK path is a workbench, not the ideal LawVM source-first architecture. Some benchmark modes are effects-assisted and include current-metadata or oracle-alignment accommodations. The numbers are useful engineering telemetry, not a legal-completeness claim.</p>
+
+    <h3>Norway</h3>
+    <p>Norway has real tooling: amendment indexing, replay, inventory, verification, commencement blocker reports, and source inspection. It is useful for modern public-source chains, but the public source regime is the limiting factor. The current archive is effectively post-2001 for public Lovtidend amendment material.</p>
+    <p>The present blocker is not just parser coverage. Many amendments depend on contingent commencement such as "the King determines", and many older current laws lack local base sources. Until commencement evidence and historical source access improve, Norway should be described as operationally useful but experimental.</p>
+
+    <h3>Sweden</h3>
+    <p>Sweden is strongest at the provenance boundary. The frontend archives official SFS document/PDF artifacts, extracts official act text, parses current text, and compiles first-pass operation artifacts for many acts. That is valuable, but it is not yet the same thing as replay fidelity.</p>
+    <p>The current archive is broad from 1999 onward. Older SFS reconstruction and broad current-law replay still need more source acquisition and explicit compiler waists before Sweden can honestly receive a text/tree benchmark like Finland or Estonia.</p>
+
+    <h2>What the labels mean</h2>
+
+    <p><strong>Active:</strong> Where new replay semantics, normalization rules, and adjudication machinery are being exercised against a real corpus. Where the architecture is stressed.</p>
+
+    <p><strong>Maintained:</strong> Compiles, tests pass, revivable when needed. Not currently where deep replay work is happening.</p>
+
+    <p><strong>Experimental:</strong> Useful as architecture probes. Not a promise of deep operational maturity.</p>
+
+    <h2>Adding a new jurisdiction</h2>
+
+    <p>The architecture is designed for this. Adding a jurisdiction means writing a frontend parser that maps local amendment language to the shared kernel &mdash; not rebuilding the engine.</p>
+
+    <p>The shared kernel provides: canonical legal-address and tree model, operation vocabulary, replay execution, timeline semantics, materialization, structural invariants.</p>
+
+    <p>The frontend provides: source acquisition, parsing conventions, drafting idioms, payload extraction, elaboration rules, local pathology classification.</p>
+
+    <p>See <code>jurisdiction_starter/</code> in the repository for the contract-first starter.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

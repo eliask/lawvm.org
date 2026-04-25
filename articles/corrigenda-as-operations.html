@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrigenda Are Operations over Operations &mdash; LawVM</title>
+    <meta name="description" content="Corrigenda can be modeled as higher-order operations that modify prior amendment instructions, with jurisdiction-specific temporal consequences for legal state.">
+    <link rel="canonical" href="https://lawvm.org/articles/corrigenda-as-operations">
+    <meta property="og:title" content="Corrigenda Are Operations over Operations">
+    <meta property="og:description" content="Corrigenda can be modeled as higher-order operations over prior amendments.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/articles/corrigenda-as-operations">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Corrigenda Are Operations over Operations">
+    <meta name="twitter:description" content="Corrigenda can modify prior amendment instructions, with jurisdiction-specific temporal consequences.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Corrigenda Are Operations over Operations",
+      "description": "Corrigenda can be modeled as higher-order operations that modify prior amendment instructions, with jurisdiction-specific temporal consequences for legal state.",
+      "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "publisher": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
+      "url": "https://lawvm.org/articles/corrigenda-as-operations",
+      "keywords": "corrigenda, errata, higher-order operations, bitemporal, legal state, amendment correction"
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Corrigenda Are Operations over Operations</h1>
+        <p class="subtitle">Not editorial notes. Higher-order legal-state operations.</p>
+        <p class="author">Elias Kunnas</p>
+    </header>
+
+    <div class="essay-body">
+
+    <p>A corrigendum (<em>oikaisuilmoitus</em> in Finnish) is a published correction to an enacted text. Most legal information systems treat corrigenda as editorial annotations — purple text, footnotes, or silent corrections applied by consolidation editors.</p>
+
+    <p>They are more than that. A corrigendum is a <strong>higher-order operation</strong>: an operation that modifies a prior amendment operation, not just the base statute text.</p>
+
+    <h2>Why this matters</h2>
+
+    <p>Consider an amendment A that changes section 12 of a statute. A corrigendum C is published correcting the text of amendment A. The question is: what is the correct state of section 12?</p>
+
+    <p>If you model corrigenda as flat editorial corrections to the consolidated text, you get the right answer for "what does the text say now?" but you lose:</p>
+
+    <ul>
+        <li>The provenance chain — which version of the amendment instruction produced the current text</li>
+        <li>The temporal semantics — the corrigendum was published at time T₂, but may correct an amendment published at T₁. Whether the correction is retroactive, prospective, or merely evidential depends on the jurisdiction and correction type.</li>
+        <li>The composition — if another amendment B was applied between T₁ and T₂, and B was based on reading the uncorrected text of A, the interaction is invisible in a flat model.</li>
+    </ul>
+
+    <p>In a compiler model, a corrigendum is: <strong>C : A → A'</strong>, where A is the original amendment and A' is the corrected amendment. The replay engine then applies A' instead of A, producing different state from the same source chain.</p>
+
+    <h2>Bitemporal consequences</h2>
+
+    <p>Corrigenda create bitemporal situations:</p>
+
+    <ul>
+        <li><strong>Transaction time</strong> — when the corrigendum was published</li>
+        <li><strong>Valid time</strong> — the point in legal history it retroactively corrects</li>
+    </ul>
+
+    <p>Before the corrigendum, the observable publication surface is the state produced by A. After the corrigendum, the system may need to expose both the original publication-time state and the corrected legal/evidential state. The exact legal consequence is not universal; it must be classified by source regime and correction type.</p>
+
+    <p>A flat consolidation system can only show the current corrected state. A replay compiler can show both: the state before correction (for historical queries) and the state after correction (for current queries).</p>
+
+    <h2>The Finnish corpus</h2>
+
+    <p>LawVM's Finnish source corpus contains 471 corrigendum entries affecting 180 statutes. These are <em>oikaisuilmoitukset</em> published in Säädöskokoelma — official correction notices.</p>
+
+    <p>Finlex's treatment of corrigenda is architecturally interesting: correction notices are published as unstructured PDFs, not as machine-readable XML. The corrected text appears in the consolidated view, but the correction operation itself bypasses the machine-readable publication pipeline entirely. This means:</p>
+
+    <ul>
+        <li>The enacted XML contains the <em>uncorrected</em> text</li>
+        <li>The consolidated view shows the <em>corrected</em> text</li>
+        <li>No machine-readable artifact records the mapping between them</li>
+    </ul>
+
+    <p>LawVM extracts corrigendum operations from Säädöskokoelma source and applies them as explicit patches to the amendment instruction chain. In the Finnish corpus, corrigendum handling creates a distinct class of replay-vs-Finlex divergences where the source correction layer must be adjudicated explicitly rather than hidden as editorial cleanup.</p>
+
+    <h2>The paradox</h2>
+
+    <p>LawVM without corrigendum patches may match Finlex better on the similarity metric, while LawVM with corrigendum patches may better reflect a correction source. That can score <em>worse</em> against Finlex, because the benchmark measures Finlex agreement, not legal correctness.</p>
+
+    <p>This is a concrete example of why a single similarity score is misleading. The system that agrees more with the oracle is not always the system that is more correct. The residual taxonomy exists to make this distinction visible.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

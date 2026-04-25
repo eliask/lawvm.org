@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truth Surfaces in Legal Information Systems &mdash; LawVM</title>
+    <meta name="description" content="Different legal information systems expose different truth surfaces. Enacted text, editorial consolidation, revised text, and replayed state are not the same thing.">
+    <link rel="canonical" href="https://lawvm.org/articles/truth-surfaces">
+    <meta property="og:title" content="Truth Surfaces in Legal Information Systems">
+    <meta property="og:description" content="Enacted text, editorial consolidation, revised text, and replayed state are not the same thing.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/articles/truth-surfaces">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Truth Surfaces in Legal Information Systems">
+    <meta name="twitter:description" content="Enacted text, editorial consolidation, revised text, and replayed state are not the same thing.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Truth Surfaces in Legal Information Systems",
+      "description": "Different legal information systems expose different truth surfaces. Enacted text, editorial consolidation, revised text, and replayed state are not the same thing.",
+      "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "publisher": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
+      "url": "https://lawvm.org/articles/truth-surfaces",
+      "keywords": "truth surfaces, legal consolidation, point-in-time law, oracle, editorial surface, legal informatics"
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Truth Surfaces in Legal Information Systems</h1>
+        <p class="subtitle">Enacted text, editorial consolidation, revised text, and replayed state are not the same thing.</p>
+        <p class="author">Elias Kunnas</p>
+    </header>
+
+    <div class="essay-body">
+
+    <p>When someone asks "what does the law say?", the answer depends on which surface they are reading.</p>
+
+    <h2>Four surfaces</h2>
+
+    <p><strong>Enacted-event truth.</strong> What parliament actually decided. The original statute and every amending act, as published in the official gazette. In Finland, this is Säädöskokoelma. This is the legally primary surface — everything else is derived from it.</p>
+
+    <p><strong>Published artifact truth.</strong> The machine-readable representation of enacted text. In Finland, this is the AKN XML published through Finlex open data. It should be identical to the enacted text, but sometimes it is not — XML production pipelines introduce structural errors, encoding artifacts, and editorial corrections that diverge from the gazette.</p>
+
+    <p><strong>Revised/editorial truth.</strong> The consolidated text as maintained by an editorial team. In Finland, this is the Finlex "ajantasainen lainsäädäntö" — an informational consolidation with no legal authority. In Estonia, it is the Riigi Teataja consolidation, which <em>is</em> legally authoritative. In the UK, it is the legislation.gov.uk revised text, which is official. The legal authority of the consolidated surface varies by jurisdiction.</p>
+
+    <p><strong>Replayed truth.</strong> The point-in-time text produced by replaying amendment operations from primary sources. This is what LawVM produces. It is derived independently from the enacted-event surface, without consulting the editorial consolidation.</p>
+
+    <h2>Why the distinction matters</h2>
+
+    <p>When LawVM's replayed text diverges from Finlex's editorial consolidation, the divergence is not automatically an error in either direction. It could be:</p>
+
+    <ul>
+        <li><strong>A replay defect</strong> — LawVM's parser or compiler produced incorrect state.</li>
+        <li><strong>An editorial divergence</strong> — Finlex editors made a consolidation choice that differs from strict replay (e.g. adding repeal stubs, reordering content, applying future-effective amendments early).</li>
+        <li><strong>An oracle error</strong> — Finlex simply never applied an amendment that was enacted and published. The official consolidation is stale.</li>
+        <li><strong>A source pathology</strong> — the published XML is itself defective. Neither system can produce correct output from broken input.</li>
+        <li><strong>A corrigendum gap</strong> — a published correction exists but was not applied by one or both systems.</li>
+    </ul>
+
+    <p>If you collapse all of these into "LawVM disagrees with Finlex, therefore LawVM is wrong," you miss the most interesting findings: the cases where primary sources support a candidate issue in the official consolidation surface.</p>
+
+    <h2>Jurisdiction matters</h2>
+
+    <p>The framing "official portals are editorial artifacts, not law" is too coarse. It is true for some jurisdictions and false for others:</p>
+
+    <ul>
+        <li><strong>EU:</strong> EUR-Lex consolidated texts have "no legal effect" and are documentation only. The authentic version is in the Official Journal.</li>
+        <li><strong>Finland:</strong> Finlex consolidated texts are informational. The legally relevant sources are the original acts in Säädöskokoelma.</li>
+        <li><strong>Estonia:</strong> Riigi Teataja consolidated texts are legally authoritative by statute. If there is a conflict between the amendment chain and the consolidation, the consolidation wins.</li>
+        <li><strong>United Kingdom:</strong> legislation.gov.uk publishes "official revised" legislation maintained by the National Archives.</li>
+    </ul>
+
+    <p>LawVM's role changes by jurisdiction. In Finland, it is an independent oracle that finds errors in the editorial consolidation. In Estonia, it is a consistency verifier for binding law — divergences are legally significant. In the UK, it is independent verification of the official version graph.</p>
+
+    <h2>The operational consequence</h2>
+
+    <p>A replay system that does not distinguish truth surfaces will either:</p>
+
+    <ul>
+        <li>treat the editorial consolidation as ground truth and silently hide its own errors and the oracle's errors alike, or</li>
+        <li>treat its own output as ground truth and ignore legitimate editorial choices.</li>
+    </ul>
+
+    <p>LawVM takes neither position. It compares surfaces and classifies the divergence. A mismatch is not one thing — it is a typed event with a root cause, and the root cause determines who is right.</p>
+
+    <p>This is why the <a href="/finland">Finland showcase</a> reports both similarity metrics <em>and</em> a residual taxonomy. The number says how close the surfaces are. The taxonomy says why they are not closer.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

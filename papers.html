@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Papers &mdash; LawVM</title>
+    <meta name="description" content="LawVM publication pipeline: research papers, software publication, data resources, and artifact releases.">
+    <link rel="canonical" href="https://lawvm.org/papers">
+    <meta property="og:title" content="Papers — LawVM">
+    <meta property="og:description" content="LawVM publication pipeline: research papers, software publication, data resources, and artifact releases.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/papers">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Papers — LawVM">
+    <meta name="twitter:description" content="Research papers, software publication, data resources, and artifact releases.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "LawVM Papers",
+      "description": "Publication pipeline: research papers, software publication, data resources, and artifact releases.",
+      "url": "https://lawvm.org/papers",
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
+      "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" }
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Papers</h1>
+        <p class="subtitle">Publication pipeline and artifact releases.</p>
+    </header>
+
+    <div class="essay-body">
+
+    <p>Preprints and artifact bundles will be posted here as they become citable.</p>
+
+    <h2>Research papers</h2>
+
+    <h3>P1: Finland replay compiler <span class="badge badge-amber">in preparation</span></h3>
+
+    <p><strong>Working title:</strong> Reconstructing Point-in-Time Statutory State from Amendment Streams: A Replay Compiler for Finnish Law</p>
+
+    <p><strong>Target venue:</strong> JURIX 2026 / ICAIL 2027</p>
+
+    <p>LawVM replays Finnish amendment streams into point-in-time legal state, compares the result with official consolidation surfaces, and classifies residual mismatches into operationally meaningful types rather than collapsing them into one error bucket. The v0.1 alpha evaluation is framed as a zero-to-one construction proof: ordinary human-written amendment law can be compiled to high coverage against a real national corpus. It identifies hundreds of replay-vs-Finlex divergences and a smaller set of 22 high-confidence meaningful candidate findings reported to Finlex. These remain candidate findings pending authority confirmation.</p>
+
+    <p><strong>Status:</strong> Corpus evidence collected. Candidate-finding packet reported to Finlex. Evaluation framework defined. Drafting in progress. The intended contribution is to make the remaining work concrete enough for others to extend, verify, and institutionalize.</p>
+
+    <h3>P2: Typed residuals as evidence <span class="badge badge-dim">planned</span></h3>
+
+    <p><strong>Working title:</strong> From Diff Noise to Typed Evidence: Evaluating Statutory Replay under Heterogeneous Truth Surfaces</p>
+
+    <p>Raw similarity between replayed text and official consolidation routinely misleads. Replay defects, source pathologies, editorial artifacts, and non-commensurable surfaces need distinct treatment. A single similarity score collapses operationally different failure modes and hides cases where the replay system is more correct than the oracle.</p>
+
+    <p><strong>Status:</strong> May split from P1 or publish standalone.</p>
+
+    <h3>P3: Corrigenda as higher-order operations <span class="badge badge-dim">planned</span></h3>
+
+    <p><strong>Working title:</strong> Corrigenda as Operations over Operations in Statutory Replay</p>
+
+    <p>Corrigenda are better modeled as higher-order operations (operations over prior amendment operations) than as flat editorial notes. Finnish corrigendum corpus: 471 entries, 180 statutes. In 44 statutes, corrigendum application makes LawVM more legally accurate than Finlex.</p>
+
+    <p><strong>Status:</strong> Corpus exists. Formalization needed.</p>
+
+    <h3>P4: Target resolution <span class="badge badge-dim">future</span></h3>
+
+    <p><strong>Working title:</strong> Proof-Bearing Target Resolution for Statutory Amendment Replay</p>
+
+    <p><strong>Status:</strong> Implementation exists. Paper formalization pending.</p>
+
+    <h2>Software publication</h2>
+
+    <h3>JOSS paper <span class="badge badge-dim">planned</span></h3>
+
+    <p>A <a href="https://joss.theoj.org">Journal of Open Source Software</a> paper for LawVM. Software credit and citation stability. Pending install/test workflow stability.</p>
+
+    <h2>Resource publication</h2>
+
+    <h3>Finland benchmark + verification ledger <span class="badge badge-dim">planned</span></h3>
+
+    <p>The frozen corpus snapshot, golden dataset, and benchmark methodology as a citable dataset publication. Target venue: <em>Scientific Data</em> or <em>Data in Brief</em>. Pending golden dataset scale (200+ entries) and distribution rights.</p>
+
+    <h2>Artifact releases</h2>
+
+    <p>DOI-backed <a href="https://zenodo.org">Zenodo</a> releases are planned for:</p>
+
+    <ul>
+        <li>Frozen corpus snapshot</li>
+        <li>Software release archive</li>
+        <li>Golden dataset (candidate divergence findings and adjudicated residuals)</li>
+        <li>Publication database (SQLite)</li>
+    </ul>
+
+    <p><strong>Status:</strong> Pending corpus freeze before first paper submission.</p>
+
+    <h2>Citation</h2>
+
+    <p>Until a paper is published, cite the software:</p>
+
+<pre><code>Kunnas, E. (2026). LawVM: An open-source replay compiler
+for amendment-driven law. https://github.com/eliask/lawvm</code></pre>
+
+    <p>A <code>CITATION.cff</code> file is included in the repository.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

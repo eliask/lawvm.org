@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LawVM &mdash; A replay compiler for amendment-driven law</title>
+    <meta name="description" content="LawVM shows that ordinary human-written amendment law can be compiled into executable legal text-state. The Finland frontend is a zero-to-one proof construction for statutory replay.">
+    <link rel="canonical" href="https://lawvm.org/">
+    <meta property="og:title" content="LawVM &mdash; A replay compiler for amendment-driven law">
+    <meta property="og:description" content="LawVM compiles amending acts into point-in-time legal state with full provenance and explicit failure classification.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/">
+    <meta property="og:site_name" content="LawVM">
+    <meta property="og:locale" content="en">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="LawVM — A replay compiler for amendment-driven law">
+    <meta name="twitter:description" content="LawVM compiles amending acts into point-in-time legal state with full provenance and explicit failure classification.">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "name": "LawVM",
+          "url": "https://lawvm.org/",
+          "description": "An open-source replay compiler showing that ordinary human-written amendment law can be compiled into executable legal text-state.",
+          "author": { "@id": "https://lawvm.org/#author" },
+          "publisher": { "@id": "https://lawvm.org/#author" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "@id": "https://lawvm.org/#software",
+          "name": "LawVM",
+          "applicationCategory": "DeveloperApplication",
+          "operatingSystem": "Linux, macOS",
+          "url": "https://lawvm.org/",
+          "codeRepository": "https://github.com/eliask/lawvm",
+          "programmingLanguage": "Python",
+          "description": "An open-source replay compiler showing that ordinary human-written amendment law can be compiled into executable legal text-state.",
+          "author": { "@id": "https://lawvm.org/#author" }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://lawvm.org/#author",
+          "name": "Elias Kunnas",
+          "url": "https://kunnas.com"
+        }
+      ]
+    }
+    </script>
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main>
+
+<section class="hero">
+    <div class="wrap">
+        <h1>Human-written amendment law is already executable.</h1>
+        <p class="lead">LawVM compiles ordinary amending acts into point-in-time legal text-state &mdash; with typed operations, provenance, timelines, and explicit failure classification. No rewrite of legislation into a programming language required. The purpose is to prove the construction is possible at national-corpus scale, then make it easier for others to finish and institutionalize.</p>
+    </div>
+</section>
+
+<section class="wrap-wide">
+
+    <div class="evidence-grid">
+        <div class="evidence-card">
+            <h3>Reported findings</h3>
+            <div class="number">22</div>
+            <div class="detail">High-confidence meaningful replay-vs-Finlex candidate findings reported to Finlex for external review. Broader divergence evidence remains under active classification.</div>
+        </div>
+        <div class="evidence-card">
+            <h3>Divergence classes</h3>
+            <div class="number">15</div>
+            <div class="detail">Root cause categories. Replay defects, source gaps, editorial artifacts, and oracle divergences are explicitly separated &mdash; not collapsed into one error bucket.</div>
+        </div>
+        <div class="evidence-card">
+            <h3>Construction proof</h3>
+            <div class="number">0.65%</div>
+            <div class="detail">Mean text distance against the archived Finlex comparison surface in the frozen 2026-04-16 Finland benchmark snapshot. The point is not the score alone, but that replay gets this close from ordinary amendment acts.</div>
+        </div>
+    </div>
+
+    <p class="as-of" style="text-align:center;">Benchmark snapshot: 2026-04-16. Reported finding count: 2026-04-25. Corpus: Finnish alpha replay corpus curated from a larger amended-statute universe.</p>
+    <p style="text-align:center; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 2rem;">Research software. Not an official legal consolidation or legal advice. Finland frontend active; other frontends experimental.</p>
+
+    <div style="display:flex; gap:1.25rem; justify-content:center; margin-bottom: 2.5rem; font-size: 0.9rem; flex-wrap:wrap;">
+        <a href="/finland">See Finland evidence</a>
+        <a href="/jurisdictions">Compare jurisdictions</a>
+        <a href="/explainer">Watch the compiler</a>
+        <a href="/architecture">Read the architecture</a>
+        <a href="/docs/getting-started">Get started</a>
+        <a href="https://github.com/eliask/lawvm">GitHub</a>
+    </div>
+
+    <div class="pipeline">
+        <span class="step">amendment act</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">parse</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">typed ops</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">resolve targets</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">replay</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">PIT state</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">compare</span>
+        <span class="arrow">&rarr;</span>
+        <span class="step">classify</span>
+    </div>
+
+    <p style="text-align:center; font-size: 0.85rem; color: var(--text-dim); margin-top: 0.75rem;">Deterministic by design: conventional grammars and symbolic replay, not text generation.</p>
+
+    <div style="max-width: var(--wrap); margin: 3rem auto 0;">
+
+    <h2 style="color: var(--bright); margin-bottom: 1rem;">Why this exists</h2>
+
+    <p>Legal text is not static. It is an incrementally maintained system: thousands of amendments applied over decades by distributed authors with partial authority. The law at any moment is the accumulated result.</p>
+
+    <p>The usual assumption is that executable law requires formalized drafting or post-hoc rules-as-code. LawVM shows a different path: <strong>compile the amendment stream already published by the legal system.</strong></p>
+
+    <p>The immediate purpose is zero-to-one: prove that this can be done to a very high extent on a real legal system, not merely on toy examples or hand-authored rules. Finland is the proving ground because its amendment stream is difficult enough to matter and open enough to audit.</p>
+
+    <p>Most legal databases present an editorial consolidation &mdash; a human-curated snapshot. LawVM takes a different approach: <strong>replay the amendment chain from primary sources, preserve what happened, and make the result auditable.</strong></p>
+
+    <p>That means typed operations instead of string patches. Point-in-time materialization from explicit timelines. Findings and source-pathology traces instead of silent cleanup. A way to separate replay defects from editorial artifacts.</p>
+
+    <p>LawVM v0.1 is therefore a construction proof and a handoff artifact. It exists to show that the substrate can be built, that ordinary law is already executable at the text-state layer, and that the remaining work is no longer speculative. Researchers, public institutions, legal publishers, and civic infrastructure teams should be able to pick up the mantle rather than restart from zero.</p>
+
+    <p>Read <a href="/why-law-is-law-shaped">Why Law Is Law-Shaped</a> for the full argument.</p>
+
+    <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Current state</h2>
+
+    <p><strong>Finland</strong> is the active reference frontend and the main proving ground. It is where the replay model, normalization rules, editorial adjudication, and residual-review workflow are exercised against a real corpus. <a href="/finland">See the Finland showcase.</a></p>
+
+    <p>Other frontends exist at different maturity levels: Estonia has strong consistency-checking telemetry, the UK is a substantial effects/version-graph workbench, and Norway/Sweden expose source-availability limits that shape what can honestly be replayed. <a href="/jurisdictions">See the jurisdiction status and benchmark caveats.</a></p>
+
+    <p>If the compiler model is still too abstract, start with the interactive explainer: it walks through a synthetic amendment from source text to typed operation to document-tree mutation. <a href="/explainer">Open the replay explainer.</a></p>
+
+    <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Layer 0</h2>
+
+    <p>LawVM is deliberately narrow. It computes <strong>what the legal text says</strong> at a point in time. It does not compute what the law means (interpretation), how it is applied in practice, or what it costs. Those are higher layers that build on a correct text-state substrate.</p>
+
+    <p>The design principle: <strong>keep the text-state kernel narrow, explicit, stable, and anchor-rich.</strong> That is what makes it useful as infrastructure for everything above.</p>
+
+    <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Get started</h2>
+
+<pre><code>uv sync
+uv run lawvm replay 2002/738 --as-of 2024-01-01
+uv run lawvm diff 2002/738
+uv run lawvm explain 2002/738</code></pre>
+
+    <p style="margin-top: 1rem;"><a href="https://github.com/eliask/lawvm">GitHub repository</a></p>
+
+    </div>
+
+</section>
+
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

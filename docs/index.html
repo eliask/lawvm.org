@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Docs &mdash; LawVM</title>
+    <meta name="description" content="LawVM documentation: getting started, concepts, CLI reference.">
+    <link rel="canonical" href="https://lawvm.org/docs/">
+    <meta property="og:title" content="Docs — LawVM">
+    <meta property="og:description" content="LawVM documentation: getting started, concepts, CLI reference.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/docs/">
+    <meta property="og:site_name" content="LawVM">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "name": "LawVM Documentation",
+      "description": "LawVM documentation: getting started, concepts, CLI reference.",
+      "url": "https://lawvm.org/docs/",
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" }
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Documentation</h1>
+    </header>
+
+    <div class="essay-body">
+
+    <ul>
+        <li><a href="/docs/getting-started"><strong>Getting started</strong></a> &mdash; install, first replay, first diff</li>
+        <li><a href="/artifacts"><strong>Artifacts</strong></a> &mdash; benchmark methodology, corpus definition, reproducibility</li>
+        <li><a href="/jurisdictions"><strong>Jurisdictions</strong></a> &mdash; frontend status and maturity</li>
+        <li><a href="/architecture"><strong>Architecture</strong></a> &mdash; compiler model, layer model, strict/quirks modes</li>
+    </ul>
+
+    <h2>Key concepts</h2>
+
+    <p><strong>Replay-first:</strong> LawVM treats legal state as the result of explicit changes applied over time. The path to the result remains inspectable.</p>
+
+    <p><strong>Timelines:</strong> Provision versions are organized into temporal timelines. Point-in-time materialization selects the governing version at a given date.</p>
+
+    <p><strong>Findings:</strong> The system records what happened during replay and comparison: source pathology, normalization events, editorial artifacts, replay defects, unresolved uncertainty.</p>
+
+    <p><strong>Truth surfaces:</strong> Different systems expose different representations of legal state &mdash; enacted-event truth, published artifact truth, revised/editorial truth, replayed truth. These are not the same thing.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

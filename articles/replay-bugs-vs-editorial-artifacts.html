@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Replay Bugs vs Editorial Artifacts &mdash; LawVM</title>
+    <meta name="description" content="When replayed text diverges from the official consolidation, the divergence could be a system bug, an editorial choice, or a candidate official-surface issue. Telling them apart is the hard part.">
+    <link rel="canonical" href="https://lawvm.org/articles/replay-bugs-vs-editorial-artifacts">
+    <meta property="og:title" content="Replay Bugs vs Editorial Artifacts">
+    <meta property="og:description" content="When replayed text diverges from the official consolidation, the divergence could be a system bug, an editorial choice, or a candidate official-surface issue.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/articles/replay-bugs-vs-editorial-artifacts">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Replay Bugs vs Editorial Artifacts">
+    <meta name="twitter:description" content="Telling apart system bugs, editorial choices, and candidate official-surface issues.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Replay Bugs vs Editorial Artifacts",
+      "description": "When replayed text diverges from the official consolidation, the divergence could be a system bug, an editorial choice, or a candidate official-surface issue. Telling them apart is the hard part.",
+      "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "publisher": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
+      "url": "https://lawvm.org/articles/replay-bugs-vs-editorial-artifacts",
+      "keywords": "replay bugs, editorial artifacts, divergence classification, legal consolidation, residual taxonomy"
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Replay Bugs vs Editorial Artifacts</h1>
+        <p class="subtitle">Telling them apart is the hard part.</p>
+        <p class="author">Elias Kunnas</p>
+    </header>
+
+    <div class="essay-body">
+
+    <p>When LawVM's replayed text diverges from Finlex's editorial consolidation, the natural assumption is that LawVM is wrong. Sometimes it is. But a significant fraction of divergences turn out to be <em>the other way around</em>.</p>
+
+    <h2>A replay bug</h2>
+
+    <p>A replay bug is a defect in LawVM's parser or compiler. The source material is sufficient, but the system produced incorrect state.</p>
+
+    <p><strong>Example: 1998/745 — chapter repeal lost in coordinate parsing.</strong> Amendment 2012/475 said "2 §, 3, 4, 6 ja 7 luku sekä 40 §" — section 2, chapters 3, 4, 6, 7, and section 40. The bare numbers "3, 4, 6, 7" inherit the trailing "luku" (chapter), but LawVM's parser degraded them into section repeals. Five entire chapters were being replayed as if only individual sections were repealed. Similarity: 29.8%.</p>
+
+    <p>This is unambiguously a LawVM bug. The amendment preamble is clear. The fix was in the frontend coordinate parser. After the fix, similarity jumped to 97.4%.</p>
+
+    <h2>An editorial artifact</h2>
+
+    <p>An editorial artifact is a divergence caused by editorial choices in the consolidation process — choices that are defensible but differ from strict replay.</p>
+
+    <p><strong>Example: 1992/728 — future-effective amendment already applied.</strong> Finlex's consolidated metadata says the consolidation date is 2009-12-29, but section 3 already reflects amendment 2009/1710, which enters into force on 2010-01-01. LawVM's legal point-in-time mode carries the earlier wording because the amendment is not yet in force at the stated date.</p>
+
+    <p>Finlex editors ran their editorial process ahead of the strict legal effectivity date. This is pragmatic — users visiting Finlex in late December probably want to see the upcoming version. But it is not strict point-in-time state. LawVM documents the divergence and classifies it as oracle version drift.</p>
+
+    <h2>A candidate oracle issue</h2>
+
+    <p>Sometimes the primary sources appear to support LawVM over the Finlex consolidation. Those cases are candidate findings until confirmed by Finlex or another competent authority.</p>
+
+    <p><strong>Example: 2004/699 — candidate stale section heading.</strong> Amendment 2008/886 changed §8's heading from "Valvontatehtävän siirtäminen <em>toiselle</em> valvontaviranomaiselle" to "... <em>ulkomaan</em> valvontaviranomaiselle" ("another" → "foreign" supervisory authority). Finlex still shows the 2004 heading. No subsequent amendment found by LawVM changed it back. This is a high-confidence candidate finding, but still a candidate until authority review.</p>
+
+    <p><strong>Example: 2014/716 — candidate missing COVID-19 emergency provisions.</strong> Temporary amendment 2020/697 modified four sections and added new §8b for enterprises in difficulty. LawVM's source-backed replay indicates the Finlex consolidated version omitted these changes during the amendment's period of force.</p>
+
+    <p>These are not editorial choices. They are omissions — content that was published in Säädöskokoelma but never made it into the consolidation.</p>
+
+    <h2>Source pathology</h2>
+
+    <p>Sometimes the source XML is itself broken. Neither system can produce correct output.</p>
+
+    <p><strong>Example: 2014/1244 — corrupted XML in Finlex production pipeline.</strong> The amendment source XML (2018/1202) contains a stray "790" from the old frequency range embedded in the replacement payload: "470—694 790 megahertsiä" instead of "470—694 megahertsiä". A second defect produces "on ovat" instead of "on". LawVM faithfully replays the corrupted source. Finlex's consolidation shows the correct text — because editors manually corrected it.</p>
+
+    <p>In source pathology cases, LawVM is "correct" in the sense that it accurately reproduces the published source, and "wrong" in the sense that the source itself is broken. The system documents the pathology rather than silently correcting it.</p>
+
+    <h2>Why typing matters</h2>
+
+    <p>A single similarity score collapses all of these into one number. A 95% match could mean:</p>
+
+    <ul>
+        <li>5% replay bugs (system is wrong)</li>
+        <li>5% editorial artifacts (system is right, oracle made different choices)</li>
+        <li>5% candidate oracle issues (primary sources appear to support the replay over the comparison surface)</li>
+        <li>or any mixture</li>
+    </ul>
+
+    <p>Without typing, you cannot improve the system, validate the oracle, or publish findings. With typing, every divergence is an investigation that either improves LawVM, documents a candidate official-surface issue, or reveals a source pathology.</p>
+
+    <p>This is why LawVM maintains a residual taxonomy and a candidate-finding dataset. As of 2026-04-25, 22 high-confidence meaningful candidate findings have been reported to Finlex, with hundreds of additional divergences still being classified. The taxonomy turns opaque failure into analyzable structure.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

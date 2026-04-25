@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started &mdash; LawVM</title>
+    <meta name="description" content="Install LawVM and run your first replay, diff, and explain commands.">
+    <link rel="canonical" href="https://lawvm.org/docs/getting-started">
+    <meta property="og:title" content="Getting Started — LawVM">
+    <meta property="og:description" content="Install LawVM and run your first replay, diff, and explain commands.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/docs/getting-started">
+    <meta property="og:site_name" content="LawVM">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "Getting Started with LawVM",
+      "description": "Install LawVM and run your first replay, diff, and explain commands.",
+      "url": "https://lawvm.org/docs/getting-started",
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
+      "step": [
+        { "@type": "HowToStep", "name": "Install", "text": "Clone the repository and run uv sync." },
+        { "@type": "HowToStep", "name": "First replay", "text": "Run uv run lawvm replay 2002/738 --as-of 2024-01-01" },
+        { "@type": "HowToStep", "name": "First diff", "text": "Run uv run lawvm diff 2002/738" },
+        { "@type": "HowToStep", "name": "First explain", "text": "Run uv run lawvm explain 2002/738" }
+      ]
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Getting Started</h1>
+    </header>
+
+    <div class="essay-body">
+
+    <h2>Prerequisites</h2>
+
+    <ul>
+        <li>Python 3.12+</li>
+        <li><a href="https://docs.astral.sh/uv/">uv</a> package manager</li>
+        <li>Git</li>
+    </ul>
+
+    <h2>Install</h2>
+
+<pre><code>git clone https://github.com/eliask/lawvm.git
+cd lawvm
+uv sync</code></pre>
+
+    <h2>First replay</h2>
+
+    <p>Replay statute 2002/738 (Työturvallisuuslaki / Occupational Safety Act) as of January 1, 2024:</p>
+
+<pre><code>uv run lawvm replay 2002/738 --as-of 2024-01-01</code></pre>
+
+    <p>This compiles all amendment acts affecting 2002/738, replays them over the base statute, and materializes the point-in-time text. The output is the complete statute as it stood on that date.</p>
+
+    <h2>First diff</h2>
+
+    <p>Compare LawVM's replay against the Finlex consolidation:</p>
+
+<pre><code>uv run lawvm diff 2002/738</code></pre>
+
+    <p>This shows section-by-section divergences. Green sections match. Red sections diverge. Each divergence is a starting point for investigation &mdash; it might be a replay defect, a source gap, an editorial convention, or a candidate issue in the official consolidation surface.</p>
+
+    <h2>First explain</h2>
+
+    <p>See the amendment chain and operation history:</p>
+
+<pre><code>uv run lawvm explain 2002/738</code></pre>
+
+    <p>This shows which amendments affected the statute, what operations they compiled to, and the temporal sequence of changes.</p>
+
+    <h2>What success looks like</h2>
+
+    <p>When replay succeeds on a statute with dozens of amendments spanning decades, you get:</p>
+
+    <ul>
+        <li>Point-in-time text that matches the official consolidation character-for-character</li>
+        <li>Full provenance: every provision traced to the amendment that changed it</li>
+        <li>Temporal versioning: query any past date, get the text that was in force</li>
+    </ul>
+
+    <p>When replay diverges, you get typed residuals: not just "different" but <em>why</em> &mdash; replay defect, source pathology, editorial artifact, or oracle staleness.</p>
+
+    <h2>Run the benchmark</h2>
+
+<pre><code>uv run lawvm bench --mode finlex_oracle</code></pre>
+
+    <p>Replays the configured Finnish alpha corpus and reports aggregate metrics. See <a href="/artifacts">Artifacts</a> for methodology and interpretation.</p>
+
+    <h2>Explore further</h2>
+
+<pre><code>uv run lawvm --help</code></pre>
+
+    <p>The CLI surface includes replay, diff, explain, benchmark, bisect, diagnose, and many more tools. The full command surface is documented in <code>--help</code> output.</p>
+
+    <p>Architecture documentation lives in <code>notes/</code> in the repository. Start with <code>notes/SPEC_INDEX.md</code>.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parsing Amendment Language with Conventional Grammars &mdash; LawVM</title>
+    <meta name="description" content="Amendment language is structured enough to parse with conventional grammars. LawVM shows this works on a real Finnish corpus — and that the parsing was always possible; the compiler is new.">
+    <link rel="canonical" href="https://lawvm.org/articles/parsing-amendment-language">
+    <meta property="og:title" content="Parsing Amendment Language with Conventional Grammars">
+    <meta property="og:description" content="Amendment language is structured enough to parse with conventional grammars. The parsing was always possible; the compiler is new.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/articles/parsing-amendment-language">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Parsing Amendment Language with Conventional Grammars">
+    <meta name="twitter:description" content="Amendment language is structured enough to parse with conventional grammars. The parsing was always possible; the compiler is new.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Parsing Amendment Language with Conventional Grammars",
+      "description": "Amendment language is structured enough to parse with conventional grammars. LawVM shows this works on a real Finnish corpus.",
+      "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "publisher": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
+      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
+      "url": "https://lawvm.org/articles/parsing-amendment-language",
+      "mainEntityOfPage": { "@type": "WebPage", "@id": "https://lawvm.org/articles/parsing-amendment-language" },
+      "keywords": "legal NLP, amendment parsing, PEG grammar, statutory consolidation, deterministic parsing, legal informatics"
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>Parsing Amendment Language with Conventional Grammars</h1>
+        <p class="subtitle">Conventional parsers still work when the drafting system is structured enough.</p>
+        <p class="author">Elias Kunnas</p>
+    </header>
+
+    <div class="essay-body">
+
+    <h2>The claim</h2>
+
+    <p>Legislative amendment language is not free-form natural language. It is a semi-formal instruction language embedded in ordinary human legal prose. In jurisdictions with mature drafting guidance, the amendment preamble and operative text follow conventions tight enough for conventional grammars to parse deterministically.</p>
+
+    <p>LawVM demonstrates this on the Finnish alpha corpus: hundreds of replay cases and thousands of amendment acts, parsed with PEG grammars into typed clause structures. No LLMs, no statistical models, no training data, and no rewrite of legislation into a programming language. The parser is deterministic: the same input always produces the same parse.</p>
+
+    <h2>What prior work already exists</h2>
+
+    <p>Parsing amendment language with conventional tools is not new. Real prior art exists:</p>
+
+    <ul>
+        <li><strong>Arnold-Moore (1990s)</strong> parsed Tasmanian amendment legislation using ATN (augmented transition network) parsers as part of the EnAct system. This is the earliest serious work on automatic amendment processing.</li>
+        <li><strong>Ogawa, Inagaki, Toyama (2008)</strong> formalized Japanese amendment sentences with regular expressions and achieved high accuracy in a bounded corpus.</li>
+        <li><strong>Bolioli et al.</strong> presented a legislative grammar for explicit text amendment in Italian law.</li>
+        <li><strong>Spinosa et al.</strong> described NLP-based metadata extraction for Italian legal text consolidation covering repeal, substitution, and integration.</li>
+        <li><strong>Polish ICAIL 2021 work</strong> framed amendment extraction as an automatic extraction task over statutory law.</li>
+    </ul>
+
+    <p>These systems show that amendment parsing and automated consolidation have a serious history. LawVM's claim is not that parsing amendment language is new. The stronger claim is that ordinary amendment streams can be compiled end-to-end into auditable legal text-state: deterministic parsing, typed target resolution, replay over provision timelines, source/oracle divergence typing, and open empirical evaluation on the Finnish corpus.</p>
+
+    <p><strong>Parsing amendment language is not new. LawVM's contribution is an open replay compiler that carries parsed amendment instructions through typed operations, temporal materialization, and explicit residual evidence.</strong></p>
+
+    <h2>Why Finnish amendment language is unusually parseable</h2>
+
+    <p>Finnish legislative drafting follows the <em>Lainkirjoittajan opas</em> (legislative drafting guide), which prescribes the structure of amendment preambles (<em>johtolause</em>) with considerable precision:</p>
+
+    <ul>
+        <li>Actions follow a prescribed order: <code>kumotaan</code> (repeal), <code>muutetaan</code> (amend), <code>lisätään</code> (insert)</li>
+        <li>The preamble ends with <code>seuraavasti:</code> ("as follows:")</li>
+        <li>Target addresses use hierarchical structural paths: <code>lain 12 §:n 2 momentti</code></li>
+        <li>Multi-part amendments list all affected provisions in the preamble before the operative text</li>
+        <li>The operative text follows the preamble in section order</li>
+    </ul>
+
+    <p>This is not accidental. Legislative drafting conventions evolved to make amendment meaning deterministic for human readers. The same properties that make amendments readable by lawyers make them parseable by grammars.</p>
+
+    <p>The <em>johtolause</em> is, in effect, a domain-specific instruction language. It has a grammar. LawVM exploits that grammar with a PEG parser that extracts clause structure, target addresses, action types, and payload boundaries.</p>
+
+    <h2>What LawVM adds beyond extraction</h2>
+
+    <p>Parsing is the first step. The compiler pipeline continues:</p>
+
+    <ol>
+        <li><strong>Clause surface</strong> — typed AST of amendment instructions</li>
+        <li><strong>Payload extraction</strong> — amendment body text isolated and normalized</li>
+        <li><strong>Elaboration</strong> — meaning recovery against the live statute state (what does "2 momentti" mean given the current structure of this section?)</li>
+        <li><strong>Canonical operations</strong> — typed operations (replace, repeal, insert, renumber, text-replace) with resolved targets</li>
+        <li><strong>Replay</strong> — operations applied to statute tree</li>
+        <li><strong>Timeline construction</strong> — provision versions organized temporally</li>
+        <li><strong>Materialization</strong> — point-in-time text produced</li>
+        <li><strong>Residual classification</strong> — divergences from oracle typed and explained</li>
+    </ol>
+
+    <p>The parse is necessary but not sufficient; the compiler pipeline and evidence surface are the contribution.</p>
+
+    <h2>Where grammars break</h2>
+
+    <p>Not all amendment text is cleanly parseable. LawVM encounters:</p>
+
+    <ul>
+        <li><strong>Implicit scope inheritance</strong> — "3, 4, 6 ja 7 luku" where bare numbers inherit the trailing "luku" (chapter). A flat parser sees numbers, not chapters.</li>
+        <li><strong>Omission semantics</strong> — <code>&lt;hcontainer name="omission"/&gt;</code> in XML means different things in different contexts (unchanged prefix, unchanged suffix, unchanged middle).</li>
+        <li><strong>Flattened list items</strong> — numbered items encoded as sibling subsections instead of paragraph children.</li>
+        <li><strong>Content-only continuations</strong> — split paragraph text across XML elements without labels.</li>
+        <li><strong>Body-root fallbacks</strong> — generic preambles that don't name specific targets, forcing whole-section inference.</li>
+    </ul>
+
+    <p>For these cases, LawVM uses quirks-mode recovery: heuristic normalization with explicit provenance. The architectural rule is that every recovery affecting legal text, structure, target resolution, or timeline selection must be named, witnessed, and rejectable in strict mode. Much of the engineering work in LawVM is turning historical ad hoc repairs into owned, typed recovery rules.</p>
+
+    <h2>Why this matters now</h2>
+
+    <p>The current moment in legal AI is dominated by LLM-based approaches. Large language models can do many things well, but multi-step amendment replay is not one of them. Prior et al. (NLLP 2025) showed that exact-match rates degrade badly on longer amendment chains, and that LLM consolidation outputs must remain drafts requiring expert review.</p>
+
+    <p>Deterministic parsing and symbolic replay are not competing with LLMs for the same task. They are solving a different problem: exact, reproducible, auditable text-state compilation where every step is inspectable and every failure is typed. That is infrastructure, not generation.</p>
+
+    <p>The fact that conventional parsers still work for this — that you do not need a neural model to extract the structure of a <em>johtolause</em> — is itself a finding worth stating plainly. Legislative amendment language was designed to be unambiguous. Conventional tools can exploit that design. The surprising thing is not that it works, but that so few systems have tried.</p>
+
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>

@@ -1,0 +1,374 @@
+{
+  "schema_version": "interactive-replay-explainer/v1",
+  "example": {
+    "id": "curated-harbor-replace-v1",
+    "title": "Replacing one subsection",
+    "status": "curated compiler fixture",
+    "jurisdiction": "example",
+    "language": "en",
+    "summary": "A minimal amendment replaces one subsection in a small document tree.",
+    "public_safety_notice_id": "not_legal_advice"
+  },
+  "source_witnesses": [
+    {
+      "id": "src-1",
+      "role": "curated_amendment_fixture",
+      "citation": "LawVM explainer fixture, v1",
+      "source_language": "en",
+      "source_text": "Section 4(2) is replaced by the following: \"(2) A vessel entering the harbor must carry a working radio.\"",
+      "translation_en": null,
+      "authority_note": "Minimal English fixture for the replay debugger.",
+      "spans": [
+        {
+          "id": "span-clause-1",
+          "kind": "operative_clause",
+          "start": 0,
+          "end": 43
+        },
+        {
+          "id": "span-payload-1",
+          "kind": "payload",
+          "start": 43,
+          "end": 105
+        }
+      ]
+    }
+  ],
+  "phase_steps": [
+    {
+      "id": "phase-source",
+      "phase": "source",
+      "title": "Source witness",
+      "short_explanation": "LawVM starts from an amendment instruction, not from an already-clean consolidated text.",
+      "primary_refs": ["src-1"],
+      "observations": []
+    },
+    {
+      "id": "phase-parse",
+      "phase": "parse",
+      "title": "Clause parse",
+      "short_explanation": "The operative clause is parsed as a replace instruction with a written target and a payload reference.",
+      "primary_refs": ["clause-1"],
+      "observations": []
+    },
+    {
+      "id": "phase-payload",
+      "phase": "payload",
+      "title": "Payload extraction",
+      "short_explanation": "The quoted replacement text is extracted as a subsection payload before replay sees it.",
+      "primary_refs": ["payload-1"],
+      "observations": []
+    },
+    {
+      "id": "phase-target",
+      "phase": "target",
+      "title": "Target resolution",
+      "short_explanation": "The written target Section 4(2) resolves to exactly one live tree path.",
+      "primary_refs": ["target-1"],
+      "observations": ["obs-target-1"]
+    },
+    {
+      "id": "phase-op",
+      "phase": "op",
+      "title": "Typed operation",
+      "short_explanation": "The parsed source becomes a canonical REPLACE operation with source, payload, target, and date links.",
+      "primary_refs": ["op-1"],
+      "observations": []
+    },
+    {
+      "id": "phase-replay",
+      "phase": "replay",
+      "title": "Replay mutation",
+      "short_explanation": "Replay mutates only the target subsection. Sibling provisions remain unchanged.",
+      "primary_refs": ["mutation-1"],
+      "observations": ["obs-1"]
+    },
+    {
+      "id": "phase-timeline",
+      "phase": "timeline",
+      "title": "Timeline and PIT",
+      "short_explanation": "The mutation becomes a time-indexed entry that can be materialized at a point in time.",
+      "primary_refs": ["timeline-1", "pit-1"],
+      "observations": []
+    },
+    {
+      "id": "phase-evidence",
+      "phase": "evidence",
+      "title": "Evidence and limits",
+      "short_explanation": "The result is shown with provenance, strict/quirks status, and the boundary of what this fixture demonstrates.",
+      "primary_refs": ["claim-1"],
+      "observations": ["obs-1", "obs-target-1"]
+    }
+  ],
+  "clause_surfaces": [
+    {
+      "id": "clause-1",
+      "source_witness_id": "src-1",
+      "span_ids": ["span-clause-1"],
+      "action_family": "replace",
+      "target_expression": "Section 4(2)",
+      "payload_ref": "payload-1",
+      "temporal_expression": "commences 2026-02-01",
+      "parse_status": "parsed",
+      "observations": []
+    }
+  ],
+  "payloads": [
+    {
+      "id": "payload-1",
+      "source_witness_id": "src-1",
+      "span_ids": ["span-payload-1"],
+      "payload_kind": "subsection",
+      "units": [
+        {
+          "id": "payload-unit-1",
+          "node_type": "subsection",
+          "label": "2",
+          "text_en": "A vessel entering the harbor must carry a working radio.",
+          "source_backing": {
+            "source_witness_id": "src-1",
+            "span_ids": ["span-payload-1"]
+          }
+        }
+      ],
+      "normalization_observations": []
+    }
+  ],
+  "document_snapshots": [
+    {
+      "id": "tree-before",
+      "kind": "before_replay",
+      "as_of": "2026-01-01",
+      "root": {
+        "path": "act:harbor",
+        "node_type": "act",
+        "label": "Harbor Safety Act",
+        "text": "Synthetic act root",
+        "children": [
+          {
+            "path": "section:3",
+            "node_type": "section",
+            "label": "3",
+            "text": "Harbor notices",
+            "children": [
+              {
+                "path": "section:3/subsection:1",
+                "node_type": "subsection",
+                "label": "1",
+                "text": "The harbor master may publish safety notices."
+              }
+            ]
+          },
+          {
+            "path": "section:4",
+            "node_type": "section",
+            "label": "4",
+            "text": "Entry requirements",
+            "children": [
+              {
+                "path": "section:4/subsection:1",
+                "node_type": "subsection",
+                "label": "1",
+                "text": "A vessel must request permission before entering the harbor."
+              },
+              {
+                "path": "section:4/subsection:2",
+                "node_type": "subsection",
+                "label": "2",
+                "text": "A vessel entering after sunset must carry a signal lamp."
+              },
+              {
+                "path": "section:4/subsection:3",
+                "node_type": "subsection",
+                "label": "3",
+                "text": "The harbor master may deny entry during severe weather."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "tree-after",
+      "kind": "after_replay",
+      "as_of": "2026-02-01",
+      "root": {
+        "path": "act:harbor",
+        "node_type": "act",
+        "label": "Harbor Safety Act",
+        "text": "Synthetic act root",
+        "children": [
+          {
+            "path": "section:3",
+            "node_type": "section",
+            "label": "3",
+            "text": "Harbor notices",
+            "children": [
+              {
+                "path": "section:3/subsection:1",
+                "node_type": "subsection",
+                "label": "1",
+                "text": "The harbor master may publish safety notices."
+              }
+            ]
+          },
+          {
+            "path": "section:4",
+            "node_type": "section",
+            "label": "4",
+            "text": "Entry requirements",
+            "children": [
+              {
+                "path": "section:4/subsection:1",
+                "node_type": "subsection",
+                "label": "1",
+                "text": "A vessel must request permission before entering the harbor."
+              },
+              {
+                "path": "section:4/subsection:2",
+                "node_type": "subsection",
+                "label": "2",
+                "text": "A vessel entering the harbor must carry a working radio."
+              },
+              {
+                "path": "section:4/subsection:3",
+                "node_type": "subsection",
+                "label": "3",
+                "text": "The harbor master may deny entry during severe weather."
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "target_resolution": [
+    {
+      "id": "target-1",
+      "clause_surface_id": "clause-1",
+      "target_expression": "Section 4(2)",
+      "candidate_paths": [
+        {
+          "path": "section:4/subsection:2",
+          "reason": "Exact section and subsection labels exist in the live tree."
+        }
+      ],
+      "selected_path": "section:4/subsection:2",
+      "scope_confidence": "explicit_source",
+      "status": "resolved",
+      "observations": ["obs-target-1"]
+    }
+  ],
+  "typed_operations": [
+    {
+      "id": "op-1",
+      "canonical_action": "REPLACE",
+      "clause_surface_id": "clause-1",
+      "payload_id": "payload-1",
+      "target_resolution_id": "target-1",
+      "target_path": "section:4/subsection:2",
+      "effective_date": "2026-02-01",
+      "provenance_refs": ["src-1", "clause-1", "payload-1", "target-1"],
+      "strictness": {
+        "strict_mode": "accepted",
+        "quirks_mode": "accepted",
+        "reason": "No recovery or fallback target resolution is required in this curated fixture."
+      }
+    }
+  ],
+  "mutation_events": [
+    {
+      "id": "mutation-1",
+      "operation_id": "op-1",
+      "outcome": "applied",
+      "helper": "replace_node",
+      "target_path": "section:4/subsection:2",
+      "changed_paths": ["section:4/subsection:2"],
+      "declared_migration_paths": [],
+      "declared_recovery_paths": [],
+      "declared_editorial_projection_paths": [],
+      "failure_reason": null
+    }
+  ],
+  "timeline": {
+    "entries": [
+      {
+        "id": "timeline-1",
+        "operation_id": "op-1",
+        "path": "section:4/subsection:2",
+        "valid_from": "2026-02-01",
+        "valid_to": null,
+        "state": "active"
+      }
+    ],
+    "pit_queries": [
+      {
+        "id": "pit-1",
+        "as_of": "2026-02-01",
+        "snapshot_id": "tree-after",
+        "projection": "legal_pit",
+        "materialized_text": "A vessel entering the harbor must carry a working radio."
+      }
+    ]
+  },
+  "evidence": {
+    "observations": [
+      {
+        "id": "obs-target-1",
+        "family": "target_resolution",
+        "phase": "target",
+        "scope": "section:4/subsection:2",
+        "kind": "explicit_source_exact_match",
+        "detail": "The written target names Section 4(2), and the live tree contains that exact section/subsection path."
+      },
+      {
+        "id": "obs-1",
+        "family": "apply_mutation",
+        "phase": "replay",
+        "scope": "section:4/subsection:2",
+        "kind": "deterministic_replace_applied",
+        "detail": "Replay replaced the targeted subsection only. No sibling paths changed."
+      }
+    ],
+    "findings": [],
+    "oracle_comparisons": [
+      {
+        "id": "oracle-1",
+        "surface": "curated_after_fixture",
+        "scope": "section:4/subsection:2",
+        "status": "matches",
+        "detail": "For this curated fixture, replay and the expected after-tree agree at the target path."
+      }
+    ],
+    "outward_claims": [
+      {
+        "id": "claim-1",
+        "kind": "explainer_demo_success",
+        "scope": "section:4/subsection:2",
+        "text": "The displayed after-state follows from the typed replace operation in this curated fixture."
+      }
+    ]
+  },
+  "copy": {
+    "notices": [
+      {
+        "id": "fixture_scope",
+        "text": "Minimal English amendment fixture for showing source, parse, payload, target, operation, replay, timeline, and evidence."
+      },
+      {
+        "id": "replay_limits",
+        "text": "The point is compiler mechanics: text-state derivation, mutation boundaries, and evidence links."
+      }
+    ],
+    "phase_copy": {
+      "source": "The source panel highlights the operative clause and the payload separately.",
+      "parse": "The parse keeps the action family as replace; it is not downgraded into insert.",
+      "payload": "Payload extraction owns the quoted replacement text without importing unrelated siblings.",
+      "target": "Target resolution is explicit-source confidence, not fallback guessing.",
+      "op": "The operation card is the execution contract replay consumes.",
+      "replay": "The changed path is inside the operation target region.",
+      "timeline": "Point-in-time text is derived from operation history.",
+      "evidence": "The evidence panel shows what this curated example proves and does not prove."
+    }
+  }
+}
