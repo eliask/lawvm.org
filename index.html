@@ -68,7 +68,7 @@
 <section class="hero">
     <div class="wrap">
         <h1>Human-written amendment law is already executable.</h1>
-        <p class="lead">LawVM compiles ordinary amending acts into point-in-time legal text-state &mdash; with typed operations, provenance, timelines, and explicit failure classification. No rewrite of legislation into a programming language required. The purpose is to prove the construction is possible at national-corpus scale, then make it easier for others to finish and institutionalize.</p>
+        <p class="lead">LawVM compiles ordinary amending acts into point-in-time legal text-state with typed operations, provenance, timelines, and explicit failure classification. The purpose is to prove national-corpus-scale replay, then make the remaining work easier to finish and institutionalize.</p>
     </div>
 </section>
 
@@ -83,12 +83,12 @@
         <div class="evidence-card">
             <h3>Divergence classes</h3>
             <div class="number">15</div>
-            <div class="detail">Root cause categories. Replay defects, source gaps, editorial artifacts, and oracle divergences are explicitly separated &mdash; not collapsed into one error bucket.</div>
+            <div class="detail">Root cause categories. Replay defects, source gaps, editorial artifacts, and oracle divergences are explicitly separated.</div>
         </div>
         <div class="evidence-card">
             <h3>Construction proof</h3>
             <div class="number">0.65%</div>
-            <div class="detail">Mean text distance against the archived Finlex comparison surface in the frozen 2026-04-16 Finland benchmark snapshot. The point is not the score alone, but that replay gets this close from ordinary amendment acts.</div>
+            <div class="detail">Mean text distance against the archived Finlex comparison surface in the frozen 2026-04-16 Finland benchmark snapshot, produced from ordinary amendment acts.</div>
         </div>
     </div>
 
@@ -123,23 +123,23 @@
         <span class="step">classify</span>
     </div>
 
-    <p style="text-align:center; font-size: 0.85rem; color: var(--text-dim); margin-top: 0.75rem;">Deterministic by design: conventional grammars and symbolic replay, not text generation.</p>
+    <p style="text-align:center; font-size: 0.85rem; color: var(--text-dim); margin-top: 0.75rem;">Deterministic by design: conventional grammars and symbolic replay.</p>
 
     <div style="max-width: var(--wrap); margin: 3rem auto 0;">
 
     <h2 style="color: var(--bright); margin-bottom: 1rem;">Why this exists</h2>
 
-    <p>Legal text is not static. It is an incrementally maintained system: thousands of amendments applied over decades by distributed authors with partial authority. The law at any moment is the accumulated result.</p>
+    <p>Legal text is an incrementally maintained system: thousands of amendments applied over decades by distributed authors with partial authority. The law at any moment is the accumulated result.</p>
 
     <p>The usual assumption is that executable law requires formalized drafting or post-hoc rules-as-code. LawVM shows a different path: <strong>compile the amendment stream already published by the legal system.</strong></p>
 
-    <p>The immediate purpose is zero-to-one: prove that this can be done to a very high extent on a real legal system, not merely on toy examples or hand-authored rules. Finland is the proving ground because its amendment stream is difficult enough to matter and open enough to audit.</p>
+    <p>The immediate purpose is zero-to-one: prove high-coverage replay on a real legal system. Finland is the proving ground because its amendment stream is difficult enough to matter and open enough to audit.</p>
 
-    <p>Most legal databases present an editorial consolidation &mdash; a human-curated snapshot. LawVM takes a different approach: <strong>replay the amendment chain from primary sources, preserve what happened, and make the result auditable.</strong></p>
+    <p>Most legal databases present an editorial consolidation: a human-curated snapshot. LawVM replays the amendment chain from primary sources, preserves what happened, and makes the result auditable.</p>
 
     <p>That means typed operations instead of string patches. Point-in-time materialization from explicit timelines. Findings and source-pathology traces instead of silent cleanup. A way to separate replay defects from editorial artifacts.</p>
 
-    <p>LawVM v0.1 is therefore a construction proof and a handoff artifact. It exists to show that the substrate can be built, that ordinary law is already executable at the text-state layer, and that the remaining work is no longer speculative. Researchers, public institutions, legal publishers, and civic infrastructure teams should be able to pick up the mantle rather than restart from zero.</p>
+    <p>LawVM v0.1 is a construction proof and a handoff artifact. It shows that the substrate can be built, that ordinary law is already executable at the text-state layer, and that the remaining work is concrete. Researchers, public institutions, legal publishers, and civic infrastructure teams can start from a working compiler substrate.</p>
 
     <p>Read <a href="/why-law-is-law-shaped">Why Law Is Law-Shaped</a> for the full argument.</p>
 
@@ -147,12 +147,12 @@
 
     <div class="callout">
         <strong>LawVM v0.1 is a handoff point.</strong>
-        The next stage should be pulled by people and organizations that want reliable legal text-state in real infrastructure.
+        The next stage belongs in real legal information infrastructure.
     </div>
 
-    <p>Finland shows that the construction is technically possible. The next question is who will maintain the pieces that turn a proof substrate into durable infrastructure: reproducible benchmark releases, jurisdiction frontends, public-sector pilots, legal publisher audit workflows, and research replication.</p>
+    <p>Finland shows that the construction is technically possible. Durable infrastructure needs maintained jurisdiction frontends, public-sector pilots, legal publisher audit workflows, and research replication.</p>
 
-    <p>If this matters to your jurisdiction or institution, the useful signal is serious adoption interest: a legal publisher audit workflow, a public-sector pilot, official source expertise, or a concrete plan to make LawVM part of legal information infrastructure. Code contribution by itself is not the bottleneck. <a href="/handoff">See the handoff map.</a></p>
+    <p>Useful adoption signals include legal publisher audit workflows, public-sector pilots, official source expertise, and concrete plans to make LawVM part of legal information infrastructure. <a href="/handoff">See the handoff map.</a></p>
 
     <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Current state</h2>
 
@@ -164,7 +164,7 @@
 
     <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Layer 0</h2>
 
-    <p>LawVM is deliberately narrow. It computes <strong>what the legal text says</strong> at a point in time. It does not compute what the law means (interpretation), how it is applied in practice, or what it costs. Those are higher layers that build on a correct text-state substrate.</p>
+    <p>LawVM is deliberately narrow. It computes <strong>what the legal text says</strong> at a point in time. Interpretation, application, and cost analysis are higher layers that build on a correct text-state substrate.</p>
 
     <p>The design principle: <strong>keep the text-state kernel narrow, explicit, stable, and anchor-rich.</strong> That is what makes it useful as infrastructure for everything above.</p>
 

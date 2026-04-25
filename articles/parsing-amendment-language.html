@@ -56,7 +56,7 @@
 
     <h2>The claim</h2>
 
-    <p>Legislative amendment language is not free-form natural language. It is a semi-formal instruction language embedded in ordinary human legal prose. In jurisdictions with mature drafting guidance, the amendment preamble and operative text follow conventions tight enough for conventional grammars to parse deterministically.</p>
+    <p>Legislative amendment language is a semi-formal instruction language embedded in ordinary human legal prose. In jurisdictions with mature drafting guidance, the amendment preamble and operative text follow conventions tight enough for conventional grammars to parse deterministically.</p>
 
     <p>LawVM demonstrates this on the Finnish alpha corpus: hundreds of replay cases and thousands of amendment acts, parsed with PEG grammars into typed clause structures. No LLMs, no statistical models, no training data, and no rewrite of legislation into a programming language. The parser is deterministic: the same input always produces the same parse.</p>
 
@@ -97,14 +97,14 @@
     <p>Parsing is the first step. The compiler pipeline continues:</p>
 
     <ol>
-        <li><strong>Clause surface</strong> — typed AST of amendment instructions</li>
-        <li><strong>Payload extraction</strong> — amendment body text isolated and normalized</li>
-        <li><strong>Elaboration</strong> — meaning recovery against the live statute state (what does "2 momentti" mean given the current structure of this section?)</li>
-        <li><strong>Canonical operations</strong> — typed operations (replace, repeal, insert, renumber, text-replace) with resolved targets</li>
-        <li><strong>Replay</strong> — operations applied to statute tree</li>
-        <li><strong>Timeline construction</strong> — provision versions organized temporally</li>
-        <li><strong>Materialization</strong> — point-in-time text produced</li>
-        <li><strong>Residual classification</strong> — divergences from oracle typed and explained</li>
+        <li><strong>Clause surface</strong>: typed AST of amendment instructions</li>
+        <li><strong>Payload extraction</strong>: amendment body text isolated and normalized</li>
+        <li><strong>Elaboration</strong>: meaning recovery against the live statute state (what does "2 momentti" mean given the current structure of this section?)</li>
+        <li><strong>Canonical operations</strong>: typed operations (replace, repeal, insert, renumber, text-replace) with resolved targets</li>
+        <li><strong>Replay</strong>: operations applied to statute tree</li>
+        <li><strong>Timeline construction</strong>: provision versions organized temporally</li>
+        <li><strong>Materialization</strong>: point-in-time text produced</li>
+        <li><strong>Residual classification</strong>: divergences from oracle typed and explained</li>
     </ol>
 
     <p>The parse is necessary but not sufficient; the compiler pipeline and evidence surface are the contribution.</p>
@@ -123,13 +123,13 @@
 
     <p>For these cases, LawVM uses quirks-mode recovery: heuristic normalization with explicit provenance. The architectural rule is that every recovery affecting legal text, structure, target resolution, or timeline selection must be named, witnessed, and rejectable in strict mode. Much of the engineering work in LawVM is turning historical ad hoc repairs into owned, typed recovery rules.</p>
 
-    <h2>Why this matters now</h2>
+    <h2>Why Deterministic Replay Matters Now</h2>
 
     <p>The current moment in legal AI is dominated by LLM-based approaches. Large language models can do many things well, but multi-step amendment replay is not one of them. Prior et al. (NLLP 2025) showed that exact-match rates degrade badly on longer amendment chains, and that LLM consolidation outputs must remain drafts requiring expert review.</p>
 
     <p>Deterministic parsing and symbolic replay are not competing with LLMs for the same task. They are solving a different problem: exact, reproducible, auditable text-state compilation where every step is inspectable and every failure is typed. That is infrastructure, not generation.</p>
 
-    <p>The fact that conventional parsers still work for this — that you do not need a neural model to extract the structure of a <em>johtolause</em> — is itself a finding worth stating plainly. Legislative amendment language was designed to be unambiguous. Conventional tools can exploit that design. The surprising thing is not that it works, but that so few systems have tried.</p>
+    <p>Conventional parsers can extract the structure of a <em>johtolause</em>. Legislative amendment language was designed to be unambiguous for human legal readers, and conventional tools can exploit that design. The surprising fact is how rarely legal information systems have attempted full amendment replay.</p>
 
     </div>
 

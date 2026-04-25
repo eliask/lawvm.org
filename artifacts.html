@@ -55,13 +55,13 @@
     <p>LawVM benchmarks replay output against real-world publication surfaces. For Finland, that means comparing replayed point-in-time text against the Finlex editorial consolidation.</p>
 
     <div class="callout">
-        <strong>The core rule:</strong> Benchmark scores are a proxy. Manual residual review against primary sources is the real verification loop. High similarity does not mean replay is correct. Low similarity does not mean replay is wrong. Divergence <em>type</em> matters.
+        <strong>The core rule:</strong> Benchmark scores are a proxy. Manual residual review against primary sources is the real verification loop. Similarity scores become meaningful only after the divergence <em>type</em> is classified.
     </div>
 
     <p><strong>Two metrics:</strong></p>
     <ul>
-        <li><strong>Levenshtein text distance</strong> &mdash; character-level normalized edit distance. Mean: 0.65%.</li>
-        <li><strong>Structural section error</strong> &mdash; section-level structural divergence. Mean: 4.25%.</li>
+        <li><strong>Levenshtein text distance</strong>: character-level normalized edit distance. Mean: 0.65%.</li>
+        <li><strong>Structural section error</strong>: section-level structural divergence. Mean: 4.25%.</li>
     </ul>
 
     <p>Some divergences become high-confidence candidate findings when primary sources support LawVM over the Finlex consolidation. The residual taxonomy classifies each mismatch so that evaluation is not a single number but a typed evidence surface.</p>
@@ -78,7 +78,7 @@
         <li>At least one amendment</li>
     </ol>
 
-    <p>Decade span: 1920s&ndash;2020s. Amendment counts per statute: 1 to 238. Not hand-picked for success &mdash; curated for replayability. The curation script is <code>scripts/curate_corpus.py</code>.</p>
+    <p>Decade span: 1920s&ndash;2020s. Amendment counts per statute: 1 to 238. Curation targets replayability rather than success. The curation script is <code>scripts/curate_corpus.py</code>.</p>
 
     <h2>Current benchmark snapshot</h2>
 
@@ -111,7 +111,7 @@
 uv run lawvm bench --mode finlex_oracle --label reproduce
 </code></pre>
 
-    <p>Replays the Finnish alpha corpus and reports metrics. Requires <code>data/finlex.farchive</code> (Finnish source and oracle archive). Results depend on archive contents at time of run &mdash; oracle consolidation surfaces change as Finlex editors update them. Frozen archive benchmarks are stable.</p>
+    <p>Replays the Finnish alpha corpus and reports metrics. Requires <code>data/finlex.farchive</code> (Finnish source and oracle archive). Results depend on archive contents at time of run: oracle consolidation surfaces change as Finlex editors update them. Frozen archive benchmarks are stable.</p>
 
     <p>The source archive (<code>finlex.farchive</code>) is built from <a href="https://data.finlex.fi/">Finlex open data</a> batch downloads. The acquisition scripts and benchmark tooling are in the repository.</p>
 

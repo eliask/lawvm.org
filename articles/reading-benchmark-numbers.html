@@ -58,8 +58,8 @@
     <p>LawVM's Finland benchmark compares replayed point-in-time text against the Finlex editorial consolidation. Two metrics:</p>
 
     <ul>
-        <li><strong>Levenshtein text distance</strong> — character-level normalized edit distance. Current mean: 0.65%.</li>
-        <li><strong>Structural section error</strong> — section-level divergence (missing sections, extra sections, content mismatches). Current mean: 4.25%.</li>
+        <li><strong>Levenshtein text distance</strong>: character-level normalized edit distance. Current mean: 0.65%.</li>
+        <li><strong>Structural section error</strong>: section-level divergence (missing sections, extra sections, content mismatches). Current mean: 4.25%.</li>
     </ul>
 
     <p>The comparison surface is Finlex's consolidated XML, accessed through the archived source corpus.</p>
@@ -72,13 +72,13 @@
 
     <p><strong>All amendment types.</strong> The benchmark covers statutes with section structure. Statutes that are primarily hcontainer-only (tables, schedules, unstructured content) are excluded from the curated corpus.</p>
 
-    <h2>High similarity does not mean correct</h2>
+    <h2>What High Similarity Means</h2>
 
-    <p>A statute at 100% similarity means LawVM and Finlex produce identical text. That text could still be wrong — if both systems fail the same way (e.g., both miss a corrigendum, or both reproduce a source defect).</p>
+    <p>A statute at 100% similarity means LawVM and Finlex produce identical text. Shared defects can still exist if both systems fail the same way, for example by missing a corrigendum or reproducing a source defect.</p>
 
     <p>LawVM's corrigendum pipeline illustrates this: applying published corrections to 44 statutes makes LawVM more legally accurate, but <em>lowers</em> the similarity score because Finlex also didn't apply those corrections.</p>
 
-    <h2>Low similarity does not mean wrong</h2>
+    <h2>What Low Similarity Means</h2>
 
     <p>A statute at 60% similarity could mean:</p>
 

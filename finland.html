@@ -69,7 +69,7 @@
 
     <h2>Why Finland?</h2>
 
-    <p>Finland combines difficult replay dynamics with unusually open source material and a legally non-authoritative consolidation surface. Finlex consolidated texts are <strong>informational, not legally binding</strong>. The "real" law is the original statute plus all amendment acts published in Säädöskokoelma.</p>
+    <p>Finland combines difficult replay dynamics with unusually open source material and a legally non-authoritative consolidation surface. Finlex consolidated texts are informational. The operative source set is the original statute plus all amendment acts published in Säädöskokoelma.</p>
 
     <p>This makes replay-vs-oracle comparison scientifically meaningful: when LawVM and Finlex disagree, the disagreement can be independently adjudicated against primary sources. A divergence might be a LawVM bug, a source gap, an editorial convention, or a candidate issue in the official consolidation surface.</p>
 
@@ -117,7 +117,7 @@
     <p class="as-of">Benchmark snapshot: 2026-04-16, mode: finlex_oracle. Two metrics: Levenshtein measures character-level text distance; structural error measures section-level divergence. See <a href="/artifacts">Artifacts</a> for corpus definition and reproducibility.</p>
 
     <div class="callout">
-        <strong>How to read this:</strong> The benchmark measures structural agreement with Finlex. It does not measure legal correctness. High similarity &ne; correct. Low similarity &ne; wrong. Some divergences become high-confidence candidate findings when primary sources support LawVM over the Finlex consolidation. The real verification loop is manual residual review against primary sources.
+        <strong>How to read this:</strong> The benchmark measures structural agreement with Finlex. Legal correctness requires source review. Some divergences become high-confidence candidate findings when primary sources support LawVM over the Finlex consolidation. The verification loop is manual residual review against primary sources.
     </div>
 
     <h2>The golden dataset</h2>
@@ -229,7 +229,7 @@
 
     <h2>The forward goal</h2>
 
-    <p>Current evidence already shows repeated classes of cases where replay outperforms the official consolidation. The v0.1 goal is the zero-to-one construction: demonstrate that ordinary amendment law can be compiled at high coverage against a real national corpus, almost solving Finland at the text-state layer, and leave enough architecture, evidence, and tooling for others to carry the remaining work forward.</p>
+    <p>Current evidence shows repeated classes of cases where replay outperforms the official consolidation. The v0.1 goal is the zero-to-one construction: compile ordinary amendment law at high coverage against a real national corpus, bring Finland close to complete text-state replay, and leave enough architecture, evidence, and tooling for others to carry the remaining work forward.</p>
 
     <p>The next Finland work is concrete: freeze a citable benchmark, reproduce the source archive, classify the residual frontier, verify or reject more candidate findings, and turn remaining LawVM defects into named interaction families with tests. If your institution wants to maintain part of that work, see the <a href="/handoff">handoff map</a>.</p>
 

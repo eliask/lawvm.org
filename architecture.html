@@ -52,7 +52,7 @@
 
     <div class="essay-body">
 
-    <p>LawVM's architecture is not chosen by taste. It is forced by the structural properties of law itself. The <a href="/why-law-is-law-shaped">essay</a> derives the necessity; this page describes the result.</p>
+    <p>LawVM's architecture follows from the structural properties of law itself. The <a href="/why-law-is-law-shaped">essay</a> derives the necessity; this page describes the result.</p>
 
     <h2>The compiler model</h2>
 
@@ -86,18 +86,18 @@
     <p>The architecture has three stable interfaces that must not be bypassed:</p>
 
     <ol>
-        <li><strong>Clause surface</strong> &mdash; the first stable representation of amendment meaning. A typed AST for amendment instruction language.</li>
-        <li><strong>Payload surface</strong> &mdash; the amendment body after source-local normalization, before live-state-dependent meaning recovery. This is where the source text stops being raw and starts being structured, but meaning recovery against the current statute state has not yet happened.</li>
-        <li><strong>Canonical execution</strong> &mdash; replay is designed to consume typed canonical execution artifacts, not raw amendment XML. If meaning cannot be resolved before this boundary, it should become a finding, failed operation, or explicit strict-mode barrier rather than an implicit replay mutation.</li>
+        <li><strong>Clause surface</strong>: the first stable representation of amendment meaning. A typed AST for amendment instruction language.</li>
+        <li><strong>Payload surface</strong>: the amendment body after source-local normalization, before live-state-dependent meaning recovery. This is where the source text stops being raw and starts being structured, but meaning recovery against the current statute state has not yet happened.</li>
+        <li><strong>Canonical execution</strong>: replay is designed to consume typed canonical execution artifacts, not raw amendment XML. If meaning cannot be resolved before this boundary, it should become a finding, failed operation, or explicit strict-mode barrier rather than an implicit replay mutation.</li>
     </ol>
 
     <h2>Why deterministic parsing works</h2>
 
-    <p>Legislative amendment language is not free-form prose. It is a semi-formal instruction language embedded in ordinary human legal text. In Finland, the <em>Lainkirjoittajan opas</em> (legislative drafting guide) specifies that the <em>johtolause</em> (amendment preamble) follows a fixed pattern: <code>kumotaan</code> (repeal), <code>muutetaan</code> (amend), <code>lisätään</code> (insert), in prescribed order, ending with <code>seuraavasti:</code>. Target addresses follow hierarchical conventions: <code>lain 12 §:n 2 momentti</code> (section 12, subsection 2 of the act).</p>
+    <p>Legislative amendment language is a semi-formal instruction language embedded in ordinary human legal text. In Finland, the <em>Lainkirjoittajan opas</em> (legislative drafting guide) specifies that the <em>johtolause</em> (amendment preamble) follows a fixed pattern: <code>kumotaan</code> (repeal), <code>muutetaan</code> (amend), <code>lisätään</code> (insert), in prescribed order, ending with <code>seuraavasti:</code>. Target addresses follow hierarchical conventions: <code>lain 12 §:n 2 momentti</code> (section 12, subsection 2 of the act).</p>
 
     <p>This structure is parseable with conventional grammars. LawVM uses PEG (parsing expression grammars) to extract clause structure, target addresses, action types, and payload boundaries from raw amendment text. No LLMs, no statistical models, no training data, and no requirement that legislators rewrite law as code. The parser is deterministic: the same input always produces the same parse.</p>
 
-    <p>This is not the first time anyone has parsed amendment language with conventional tools. Arnold-Moore parsed Tasmanian amendments with ATN parsers in the 1990s. Ogawa et al. formalized Japanese amendment sentences. Italian and Polish researchers have extracted amendment metadata with rule-based methods. LawVM pushes the claim further: ordinary amendment streams can be compiled into auditable point-in-time legal state with typed operations, timelines, provenance, and classified residuals.</p>
+    <p>Prior work already parsed amendment language with conventional tools. Arnold-Moore parsed Tasmanian amendments with ATN parsers in the 1990s. Ogawa et al. formalized Japanese amendment sentences. Italian and Polish researchers have extracted amendment metadata with rule-based methods. LawVM pushes the claim further: ordinary amendment streams can be compiled into auditable point-in-time legal state with typed operations, timelines, provenance, and classified residuals.</p>
 
     <p>Where grammars break, LawVM falls back to quirks-mode recovery with explicit provenance. Where they succeed, the result is deterministic, inspectable, and reproducible.</p>
 
@@ -117,7 +117,7 @@
 
     <p><strong>Strict mode</strong> is for a future where law is authored to compile cleanly. Every amendment is structurally unambiguous, every target is explicitly addressable, every action is typed, every temporal effect is explicit. Strict mode forbids: target guessing, hidden insertion anchoring, fallback whole-section replacement, ambiguous omission expansion, silent date estimation.</p>
 
-    <p>The endgame is not "replace legal prose with code." It is: <strong>law remains human-readable, but official publication also emits canonical machine-readable state/change artifacts alongside the human text.</strong> Strict mode is the compilation target for that future. Quirks mode is the recovery compiler for the past.</p>
+    <p>The target publication model keeps law human-readable while also emitting canonical machine-readable state/change artifacts alongside the human text. Strict mode is the compilation target for that future. Quirks mode is the recovery compiler for the past.</p>
 
     <h2>Frontend / kernel boundary</h2>
 
