@@ -170,12 +170,21 @@
 
     <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Get started</h2>
 
-<pre><code>uv sync
+<pre><code>git clone https://github.com/eliask/lawvm.git
+cd lawvm
+uv sync
+
+# Import the public Finlex source archives (~5 GB after ingestion)
+uv run lawvm import-zip \
+  --statute-zip https://www.finlex.fi/api/assets/open-data/archives/statute.zip \
+  --consolidated-zip https://www.finlex.fi/api/assets/open-data/archives/statute-consolidated.zip
+
+# Replay, diff, and explain
 uv run lawvm replay 2002/738 --as-of 2024-01-01
 uv run lawvm diff 2002/738
 uv run lawvm explain 2002/738</code></pre>
 
-    <p style="margin-top: 1rem;"><a href="https://github.com/eliask/lawvm">GitHub repository</a></p>
+    <p style="margin-top: 1rem;"><a href="/docs/getting-started">Full getting-started guide</a> &middot; <a href="https://github.com/eliask/lawvm">GitHub repository</a></p>
 
     </div>
 

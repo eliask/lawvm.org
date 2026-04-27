@@ -65,6 +65,16 @@
 cd lawvm
 uv sync</code></pre>
 
+    <h2>Import source archives</h2>
+
+    <p>Finland replay requires local archived sources. Import the public Finlex archives (~13 GB ZIP input, ~5 GB on disk after ingestion):</p>
+
+<pre><code>uv run lawvm import-zip \
+  --statute-zip https://www.finlex.fi/api/assets/open-data/archives/statute.zip \
+  --consolidated-zip https://www.finlex.fi/api/assets/open-data/archives/statute-consolidated.zip</code></pre>
+
+    <p>This downloads the official Finlex open data archives and ingests them into local <code>.farchive</code> files. The import is a one-time operation; subsequent commands read from the local archive.</p>
+
     <h2>First replay</h2>
 
     <p>Replay statute 2002/738 (Työturvallisuuslaki / Occupational Safety Act) as of January 1, 2024:</p>
