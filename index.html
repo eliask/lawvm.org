@@ -86,13 +86,18 @@
             <div class="detail">Root cause categories. Replay defects, source gaps, editorial artifacts, and oracle divergences are explicitly separated.</div>
         </div>
         <div class="evidence-card">
+            <h3>Authority correction</h3>
+            <div class="number">1</div>
+            <div class="detail">Riigi Teataja confirmed and corrected a LawVM-reported Estonian consolidation omission in the Auditors Activities Act, including the translation.</div>
+        </div>
+        <div class="evidence-card">
             <h3>Construction proof</h3>
             <div class="number">0.65%</div>
             <div class="detail">Mean text distance against the archived Finlex comparison surface (frozen 2026-04-16). Most of this distance reflects editorial conventions (punctuation, synonyms, formatting), not substantive differences. Within the substantive divergences, 22 Finlex-side candidate errors have been reported to the publisher.</div>
         </div>
     </div>
 
-    <p class="as-of" style="text-align:center;">Benchmark snapshot: 2026-04-16. Reported finding count: 2026-04-25. Corpus: Finnish alpha replay corpus curated from a larger amended-statute universe.</p>
+    <p class="as-of" style="text-align:center;">Benchmark snapshot: 2026-04-16. Reported finding count: 2026-04-25. Estonia correction status: 2026-04-27. Corpus: Finnish alpha replay corpus curated from a larger amended-statute universe.</p>
     <p style="text-align:center; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 2rem;">Research software. Not an official legal consolidation or legal advice. Finland frontend active; other frontends experimental.</p>
 
     <div style="display:flex; gap:1.25rem; justify-content:center; margin-bottom: 2.5rem; font-size: 0.9rem; flex-wrap:wrap;">
@@ -158,7 +163,7 @@
 
     <p><strong>Finland</strong> is the active reference frontend and the main proving ground. It is where the replay model, normalization rules, editorial adjudication, and residual-review workflow are exercised against a real corpus. <a href="/finland">See the Finland showcase.</a></p>
 
-    <p>Other frontends exist at different maturity levels: Estonia has strong consistency-checking telemetry, the UK is a substantial effects/version-graph workbench, and Norway/Sweden expose source-availability limits that shape what can honestly be replayed. <a href="/jurisdictions">See the jurisdiction status and benchmark caveats.</a></p>
+    <p>Other frontends exist at different maturity levels: Estonia has strong consistency-checking telemetry and one Riigi Teataja-confirmed correction from a LawVM report, the UK is a substantial effects/version-graph workbench, and Norway/Sweden expose source-availability limits that shape what can honestly be replayed. <a href="/jurisdictions">See the jurisdiction status and benchmark caveats.</a></p>
 
     <p>If the compiler model is still too abstract, start with the interactive explainer: it walks through a synthetic amendment from source text to typed operation to document-tree mutation. <a href="/explainer">Open the replay explainer.</a></p>
 
