@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Law in Force Should Be Knowable &mdash; LawVM</title>
+    <meta name="description" content="Why statutory text needs to be reproducible, point-in-time, and auditable. The civic principle behind LawVM.">
+    <link rel="canonical" href="https://lawvm.org/the-law-in-force-should-be-knowable">
+    <meta property="og:title" content="The Law in Force Should Be Knowable">
+    <meta property="og:description" content="Why statutory text needs to be reproducible, point-in-time, and auditable.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://lawvm.org/the-law-in-force-should-be-knowable">
+    <meta property="og:site_name" content="LawVM">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="The Law in Force Should Be Knowable">
+    <meta name="twitter:description" content="Why statutory text needs to be reproducible, point-in-time, and auditable.">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "The Law in Force Should Be Knowable",
+      "description": "Why statutory text needs to be reproducible, point-in-time, and auditable. The civic principle behind LawVM.",
+      "author": {
+        "@type": "Person",
+        "name": "Elias Kunnas",
+        "url": "https://kunnas.com"
+      },
+      "publisher": {
+        "@type": "Person",
+        "name": "Elias Kunnas",
+        "url": "https://kunnas.com"
+      },
+      "isPartOf": {
+        "@type": "WebSite",
+        "name": "LawVM",
+        "url": "https://lawvm.org/"
+      },
+      "url": "https://lawvm.org/the-law-in-force-should-be-knowable",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://lawvm.org/the-law-in-force-should-be-knowable"
+      },
+      "keywords": "legal text state, statutory consolidation, amendment replay, point-in-time law, reproducible law, auditable legislation, legal AI infrastructure"
+    }
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav>
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+
+<main class="wrap">
+<article>
+
+    <header class="essay-header">
+        <h1>The Law in Force Should Be Knowable</h1>
+        <p class="subtitle">Why statutory text needs to be reproducible, point-in-time, and auditable.</p>
+        <p class="author">Elias Kunnas</p>
+    </header>
+
+    <div class="essay-body">
+
+    <p>The law in force should be knowable.</p>
+
+    <p>Not merely searchable. Not merely available as a PDF. Not merely summarized by a language model. Knowable in the stronger sense: the text of a statute at a given date should be reproducible, auditable, and traceable back to the public acts that changed it.</p>
+
+    <p>Modern statute law is not a collection of static documents. It is a changing state. A base act is amended by later acts. Sections are replaced, paragraphs are inserted, provisions are repealed, temporary rules come into force and expire, corrigenda repair published mistakes, and transitional provisions determine when changes take effect. The legal text seen by a user on any given day is the result of that history.</p>
+
+    <p>Most legal information systems expose this result as a consolidated or revised text. That is useful and often indispensable. But a consolidated text is also a surface. It does not always show, in an executable way, how the text was derived from the amendment stream. When the surface is wrong, stale, incomplete, or affected by a source-data defect, the error can be difficult to see.</p>
+
+    <h2>The compiler claim</h2>
+
+    <p>LawVM approaches this problem as a compiler problem.</p>
+
+    <p>An amending act is treated not only as prose about legal change, but as a set of state-transition instructions over a statute. Replace this subsection. Insert this paragraph. Repeal this provision. Apply this change from this date. A legal-state compiler should be able to replay those instructions over the statute structure and materialize the resulting point-in-time text.</p>
+
+    <p>LawVM does not interpret the law. It reconstructs the textual state of legislation &mdash; the narrower, more infrastructural layer. A correct textual state is a strict prerequisite for reliable interpretation, not a substitute for it.</p>
+
+    <p>If a statute says one thing before an amendment and another thing after it, that transition should be reproducible. If a provision was repealed, the old provision should not silently remain active. If a temporary rule existed between two dates, its presence or absence should be checkable. If an official consolidation diverges from the enacted amendment chain, that divergence should be classified and explained rather than hidden inside a single opaque text surface.</p>
+
+    <h2>Why this matters now</h2>
+
+    <p>AI systems are beginning to ingest and summarize legal text at scale. A language model cannot repair an uncertain legal substrate by summarizing it. If the underlying text state is stale, ambiguous, or inconsistent, the AI layer amplifies that uncertainty. Legal AI needs deterministic infrastructure beneath it: auditable source chains, point-in-time reconstruction, and explicit failure modes.</p>
+
+    <h2>The civic principle</h2>
+
+    <p>A democratic legal system should not require blind trust in an opaque consolidation process. The public should be able to verify the path from enacted amendment to current text. Knowing what the law says requires more than access to documents &mdash; it requires a reproducible derivation.</p>
+
+    <p>LawVM is an attempt to make that path executable.</p>
+
+    </div>
+
+    <hr style="margin-top: 3rem;">
+    <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 1rem;">See <a href="/why-law-is-law-shaped">Why Law Is Law-Shaped</a> for the structural analysis. See the <a href="/finland">Finland showcase</a> for empirical evidence. See the <a href="https://github.com/eliask/lawvm">repository</a> to get started.</p>
+
+    <div class="essay-nav">
+        <a href="/">&larr; LawVM</a>
+        <a href="/why-law-is-law-shaped">Why Law Is Law-Shaped &rarr;</a>
+    </div>
+
+</article>
+</main>
+
+<!-- #include footer -->
+
+</body>
+</html>
