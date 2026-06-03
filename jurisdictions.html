@@ -73,7 +73,7 @@
             <tr>
                 <td><strong>United Kingdom</strong></td>
                 <td><span class="badge badge-amber">Maintained</span></td>
-                <td>Substantial effects/version-graph workbench. Core typed frontier: 3,418 replay-scored rows, 85.19% average EID-level replay score, 1,153 perfect EID rows; 3,417 text-scored core rows, 88.47% average replay text score.</td>
+                <td>Substantial UK workbench over legislation.gov.uk source/current/effects data. Latest wide enacted-baseline run, 2026-06-03: 12,393 rows, 12,089 status-OK rows, 10 source-unavailable rows, 0 errors; core benchmark rows: 3,423. Commenced EID lane: 2,480 rows, 80.3% average, 99.3% median, 1,152 perfect rows; core commenced average: 86.6%. Common-EID text similarity: 87.5% across 3,740 EIDs.</td>
             </tr>
             <tr>
                 <td><strong>Norway</strong></td>
@@ -113,11 +113,11 @@
             </tr>
             <tr>
                 <td><strong>United Kingdom</strong></td>
-                <td>Typed frontier benchmark over legislation.gov.uk source/current/effects data, saved 2026-03-29.</td>
-                <td>88.47% average replay text score on 3,417 core text-scored rows.</td>
-                <td>85.19% average EID-level replay score on 3,418 core replay-scored rows.</td>
-                <td>1,153 perfect EID replay rows; 1,744 at &ge;95% EID replay; 1,260 at &ge;95% replay text.</td>
-                <td>Current regime is effects-assisted and still uses oracle-alignment/current-metadata accommodations; do not read it as pure source-first replay.</td>
+                <td>Wide enacted-baseline run over legislation.gov.uk source/current/effects data, 2026-06-03. Total rows: 12,393; status OK: 12,089; source-unavailable: 10; errors: 0.</td>
+                <td>87.5% average common-EID text similarity across 3,740 EIDs.</td>
+                <td>Commenced EID lane: 80.3% average over 2,480 rows; 99.3% median; core commenced average: 86.6%.</td>
+                <td>1,152 perfect commenced EID rows; 1,596 at &ge;90%; 1,788 at &ge;80%.</td>
+                <td>Score mode was enacted baseline only, not amendment replay. Most rows are non-core/evidence classes: no oracle EIDs, collapsed oracle structure, no enacted EIDs, or similar source/oracle surface conditions.</td>
             </tr>
             <tr>
                 <td><strong>Norway</strong></td>
@@ -150,8 +150,9 @@
     <p>One Estonia finding has moved past candidate status. Riigi Teataja confirmed and corrected a LawVM-reported omission in the Auditors Activities Act (<em>Audiitortegevuse seadus</em>), act ID 107012025013, § 95<sup>2</sup>(1): the phrase <em>või kestlikkusaruande audiitorkontrolli</em> from RT I, 07.01.2025, 1 had been missing from the consolidated text. The correction was also made in the translation. <a href="/cases/estonia-audiitors-95-2">Read the correction case study.</a></p>
 
     <h3>United Kingdom</h3>
-    <p>The UK frontend is substantial because legislation.gov.uk exposes versioned texts and effect metadata. LawVM uses that structure to explore EID-level replay, text comparison, effects-feed candidate selection, commencement gating, and source/adjudication records.</p>
-    <p>The caveat is equally important: the current UK path is a workbench, not the ideal LawVM source-first architecture. Some benchmark modes are effects-assisted and include current-metadata or oracle-alignment accommodations. The numbers are useful engineering telemetry, not a legal-completeness claim.</p>
+    <p>The UK frontend is substantial because legislation.gov.uk exposes versioned texts and effect metadata. LawVM uses that structure to explore EID-level replay, text comparison, effects-feed candidate selection, commencement gating, source/adjudication records, and source-surface pathologies.</p>
+    <p>The 2026-06-03 wide run is useful because it separates core benchmark rows from evidence/source-surface rows: 3,423 core benchmark rows and 8,970 non-core/evidence rows. The non-core classes are mostly no-oracle-EID rows, no-enacted-EID rows, collapsed oracle structure, and spent/current projection surfaces. Ten rows had no usable enacted source; examples include ambiguous legislation.gov.uk short-form URLs that resolve to Multiple Choices pages rather than statute XML.</p>
+    <p>The caveat is equally important: this is a workbench, not a source-complete legal consolidation claim. The latest numbers are enacted-baseline telemetry; amendment replay, source-chain proof, manual frontiers, and oracle/source pathology classification remain separate lanes.</p>
 
     <h3>Norway</h3>
     <p>Norway has real tooling: amendment indexing, replay, inventory, verification, commencement blocker reports, and source inspection. It is useful for modern public-source chains, but the public source regime is the limiting factor. The current archive is effectively post-2001 for public Lovtidend amendment material.</p>
