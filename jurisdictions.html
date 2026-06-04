@@ -73,7 +73,7 @@
             <tr>
                 <td><strong>United Kingdom</strong></td>
                 <td><span class="badge badge-amber">Maintained</span></td>
-                <td>Substantial UK workbench over legislation.gov.uk source/current/effects data. Latest wide enacted-baseline run, 2026-06-03: 12,393 rows, 12,089 status-OK rows, 10 source-unavailable rows, 0 errors; core benchmark rows: 3,423. Commenced EID lane: 2,480 rows, 80.3% average, 99.3% median, 1,152 perfect rows. Current corpus index, 2026-06-04: 12,798 source rows, including 374 source-complete regnal leaf rows recovered from Multiple Choices pages.</td>
+                <td>Substantial UK workbench over legislation.gov.uk source/current/effects data. Latest wide enacted-baseline run, 2026-06-03: 12,393 rows, 12,089 status-OK rows, 10 source-unavailable rows, 0 errors; core benchmark rows: 3,423. Commenced EID lane: 2,480 rows, 80.3% average, 99.3% median, 1,152 perfect rows. Current corpus index, 2026-06-04: 12,556 corpus rows, including 374 source-complete regnal leaf rows recovered from Multiple Choices pages and 0 Multiple Choices alias rows.</td>
             </tr>
             <tr>
                 <td><strong>Norway</strong></td>
@@ -151,7 +151,7 @@
 
     <h3>United Kingdom</h3>
     <p>The UK frontend is substantial because legislation.gov.uk exposes versioned texts and effect metadata. LawVM uses that structure to explore EID-level replay, text comparison, effects-feed candidate selection, commencement gating, source/adjudication records, and source-surface pathologies.</p>
-    <p>The 2026-06-03 wide run is useful because it separates core benchmark rows from evidence/source-surface rows: 3,423 core benchmark rows and 8,970 non-core/evidence rows. The non-core classes are mostly no-oracle-EID rows, no-enacted-EID rows, collapsed oracle structure, and spent/current projection surfaces. The follow-up 2026-06-04 acquisition pass keeps ambiguous short-form Multiple Choices URLs as source frontiers, but indexes their official regnal leaf candidates separately when current and enacted XML are available.</p>
+    <p>The 2026-06-03 wide run is useful because it separates core benchmark rows from evidence/source-surface rows: 3,423 core benchmark rows and 8,970 non-core/evidence rows. The non-core classes are mostly no-oracle-EID rows, no-enacted-EID rows, collapsed oracle structure, and spent/current projection surfaces. The follow-up 2026-06-04 acquisition pass keeps ambiguous short-form Multiple Choices URLs as source frontiers, indexes their official regnal leaf candidates separately when current and enacted XML are available, and excludes repaired ambiguous aliases from the bench corpus.</p>
     <p>The caveat is equally important: this is a workbench, not a source-complete legal consolidation claim. The latest numbers are enacted-baseline telemetry; amendment replay, source-chain proof, manual frontiers, and oracle/source pathology classification remain separate lanes.</p>
 
     <h3>Norway</h3>
