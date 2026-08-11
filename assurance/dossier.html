@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Synthetic Assurance Dossier Lab &mdash; LawVM</title>
+    <meta name="description" content="A browser-only teaching lab showing established-within-scope, blocked, invalid, and uncheckable LawVM assurance outcomes without claiming a real certificate.">
+    <link rel="canonical" href="https://lawvm.org/assurance/dossier">
+    <meta property="og:title" content="Synthetic assurance dossier lab — LawVM">
+    <meta property="og:description" content="See how source identity, accounting, operation closure, mutation observation, and missing artifacts lead to distinct outcomes.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/assurance/dossier">
+    <meta property="og:site_name" content="LawVM">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">LawVM</a><nav aria-label="Primary navigation">
+    <!-- #include nav-content -->
+    <!-- #include theme-toggle -->
+</nav></div></header>
+<main id="main-content">
+    <section class="wrap-wide page-heading">
+        <p class="section-kicker">Browser-only teaching fixture</p>
+        <h1>Change the evidence. Watch the outcome change.</h1>
+        <p class="lead">The four fixtures below teach why established-within-scope, blocked, invalid, and uncheckable are different states. They do not invoke the repository checker or create a LawVM certificate.</p>
+        <div class="claim-boundary"><strong>Synthetic:</strong> every artifact, address, operation, count, and verdict on this page is invented for explanation. Use the <a href="/evidence">evidence ledger</a> for real public cases.</div>
+    </section>
+    <section class="section-block"><div class="wrap-wide">
+        <div class="scenario-tabs" id="scenario-tabs" aria-label="Synthetic assurance scenarios"></div>
+        <section class="dossier-panel" id="dossier-panel" hidden>
+            <div class="dossier-heading"><div><p class="section-kicker" id="dossier-fixture-label"></p><h2 id="dossier-title"></h2></div><span class="outcome-chip" id="dossier-outcome" role="status" aria-live="polite" aria-atomic="true"></span></div>
+            <p class="section-intro" id="dossier-summary"></p>
+            <div class="result-columns">
+                <div class="result-panel"><h3>Source witness</h3><dl class="status-list" id="source-details"></dl></div>
+                <div class="result-panel"><h3>Typed operation</h3><dl class="status-list" id="operation-details"></dl></div>
+                <div class="result-panel"><h3>Mutation account</h3><dl class="status-list" id="mutation-details"></dl></div>
+            </div>
+            <div class="result-columns">
+                <div class="result-panel"><h3>Resolver binding</h3><dl class="status-list" id="resolution-details"></dl></div>
+                <div class="result-panel"><h3>Temporal selection</h3><dl class="status-list" id="temporal-details"></dl></div>
+                <div class="result-panel"><h3>Checker boundary</h3><dl class="status-list" id="checker-details"></dl></div>
+            </div>
+            <div class="result-columns">
+                <div class="result-panel"><h3>Writer receipt</h3><dl class="status-list" id="receipt-details"></dl></div>
+                <div class="result-panel"><h3>Independent observation</h3><dl class="status-list" id="observation-details"></dl></div>
+                <div class="result-panel"><h3>Synthetic roots</h3><dl class="status-list" id="root-details"></dl></div>
+            </div>
+            <div class="conservation-panel">
+                <h3>Conservation ledger</h3>
+                <div class="account-meter" id="account-meter" aria-label="Synthetic accounting distribution"></div>
+                <p class="account-equation" id="account-equation"></p>
+            </div>
+            <div class="proof-card">
+                <h3>Assurance profile</h3>
+                <div class="claim-profile" id="claim-profile"></div>
+            </div>
+            <div class="claim-boundary"><strong>Permitted wording for this fixture:</strong> <span id="dossier-wording"></span></div>
+        </section>
+        <p class="form-note" id="dossier-error" role="alert"></p>
+    </div></section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">What the lab teaches</p><h2>A missing proof is not the same as a contradiction.</h2>
+        <div class="axis-grid">
+            <div class="axis-card"><h3>Established within scope</h3><p>All declared teaching obligations are satisfied. This wording never escapes the declared fixture.</p></div>
+            <div class="axis-card"><h3>Blocked</h3><p>The record is coherent, but required evidence or admission is missing. No mutation should occur.</p></div>
+            <div class="axis-card"><h3>Invalid</h3><p>An observed contradiction exists&mdash;for example, the writer changed a path outside the declared footprint.</p></div>
+            <div class="axis-card"><h3>Uncheckable</h3><p>A required artifact is unavailable, so integrity cannot honestly be called either valid or invalid.</p></div>
+        </div>
+        <div class="page-actions"><a class="button" href="/assets/data/assurance-demo.json">Download the synthetic fixture JSON</a><a class="button" href="/assurance/limits">Read the real trust boundary</a></div>
+    </div></section>
+</main>
+<!-- #include footer -->
+<script src="/assets/js/assurance-dossier.js" defer></script>
+</body>
+</html>

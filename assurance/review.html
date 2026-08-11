@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge a LawVM Claim &mdash; Reviewer Guide</title>
+    <meta name="description" content="A structured guide for challenging, reproducing, and adjudicating LawVM claims without confusing evidence, authority, or missing artifacts.">
+    <link rel="canonical" href="https://lawvm.org/assurance/review">
+    <meta property="og:title" content="Challenge a LawVM claim — reviewer guide">
+    <meta property="og:description" content="Review the source scope, accounting, semantic boundary, mutation, time, checker, and public wording behind a LawVM claim.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/assurance/review">
+    <meta property="og:site_name" content="LawVM">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@type":"HowTo","name":"How to review a LawVM claim","url":"https://lawvm.org/assurance/review","isPartOf":{"@type":"WebSite","name":"LawVM","url":"https://lawvm.org/"},"step":[{"@type":"HowToStep","name":"Bound the claim","text":"Identify the exact statement, subject, source profile, temporal range, and maximum conclusion."},{"@type":"HowToStep","name":"Trace the evidence","text":"Follow consequential statements to source, specification, implementation, test, and case locators."},{"@type":"HowToStep","name":"Attack the boundary","text":"Test alternative explanations and whether each mechanism supports the wording used."},{"@type":"HowToStep","name":"Record a disposition","text":"Record a reviewer disposition and, after adjudication, a separate bounded public claim outcome; update the claim and registry together."}]}
+    </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+<header><div class="wrap"><a class="logo" href="/">LawVM</a><nav aria-label="Primary navigation">
+    <!-- #include nav-content -->
+    <!-- #include theme-toggle -->
+</nav></div></header>
+<main id="main-content">
+    <section class="wrap-wide page-heading">
+        <p class="section-kicker">Auditor and reviewer guide</p>
+        <h1>Try to break the claim.</h1>
+        <p class="lead">A useful review does more than rerun a command. It identifies the maximum public claim, follows its evidence, tests the strongest alternative explanation, and records a disposition such as clean, wording fix, evidence gap, blocked, unresolved, invalid, uncheckable, or not claimed.</p>
+        <div class="page-actions"><a class="button button-primary" href="/assets/data/review-protocol.json">Download the review protocol</a><a class="button" href="/assurance/status">Choose a claim record</a><a class="button" href="/assurance/limits">Inspect the trust boundary</a></div>
+    </section>
+
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Review sequence</p><h2>Start with scope, then attack the derivation.</h2>
+        <ol class="steps review-steps">
+            <li><strong>Name the maximum claim.</strong> Copy the exact sentence or claim ID. Record the legal work, address, date range, source profile, and strongest conclusion a reader could take from it.</li>
+            <li><strong>Bind the inspected state.</strong> Record the dated website, software, source or corpus snapshots, configuration, release status, and unavailable artifacts.</li>
+            <li><strong>Trace consequential statements.</strong> Follow each number, capability statement, and disposition to a public source, registry record, specification, implementation path, test, or external notice.</li>
+            <li><strong>Construct the strongest alternative.</strong> Ask whether source incompleteness, manifestation drift, parser error, temporal mismatch, editorial convention, stale comparison data, or a different authority model could explain the result.</li>
+            <li><strong>Check mechanism-to-wording fit.</strong> A hash supports identity; conservation supports an account over a declared universe; a mutation audit supports a footprint relation. None alone establishes legal meaning.</li>
+            <li><strong>Record the disposition.</strong> Use the protocol&rsquo;s reviewer values: clean, wording fix, evidence gap, blocked, unresolved, invalid, uncheckable, or not claimed. If the public claim changes, map it separately to the claim registry&rsquo;s bounded outcome vocabulary. Silence and lack of refutation are not confirmation.</li>
+            <li><strong>Change text and registry together.</strong> After adjudication, update the public claim, evidence record, limitations, and snapshot date or release binding.</li>
+        </ol>
+    </div></section>
+
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Eight attack surfaces</p><h2>Challenge the layer that actually carries the claim.</h2>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Eight assurance attack surfaces"><table class="status-table">
+            <caption class="visually-hidden">Eight assurance attack surfaces</caption>
+            <thead><tr><th scope="col">Surface</th><th scope="col">Question</th><th scope="col">Common false inference</th></tr></thead>
+            <tbody>
+                <tr><td>Source</td><td>Are the exact artifacts identified, and is the declared horizon adequate?</td><td>A valid hash proves a complete or legally correct source universe.</td></tr>
+                <tr><td>Account</td><td>Does the declared effect population balance without drops or double claims?</td><td>A complete partition proves the population itself was complete.</td></tr>
+                <tr><td>Semantic boundary</td><td>Did ambiguity stay blocked or residual rather than becoming an operation?</td><td>Typed closure independently proves the source prose entailed the operation.</td></tr>
+                <tr><td>Admission</td><td>What phase-local evidence allowed execution or publication of the claim?</td><td>Confidence or upstream evidence is portable authority.</td></tr>
+                <tr><td>Mutation</td><td>Do the bound target, writer receipt, and independent observed diff agree?</td><td>Writer bookkeeping is an independent mutation check.</td></tr>
+                <tr><td>Time and identity</td><td>Are effective time, expiry, overlays, branch, and identity explicit?</td><td>One date or identifier silently covers every legal coordinate.</td></tr>
+                <tr><td>Checker</td><td>What does a separate implementation reconstruct, and what remains trusted?</td><td>A structural fixture checker is a legal certificate.</td></tr>
+                <tr><td>Presentation</td><td>Would a cold reader infer a broader claim from the headline, badge, or diagram?</td><td>A distant caveat repairs an overbroad visual conclusion.</td></tr>
+            </tbody>
+        </table></div>
+    </div></section>
+
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Missing artifacts</p><h2>Stop where reconstruction would invent evidence.</h2>
+        <div class="proof-feature">
+            <div><p class="proof-status">Required rule</p><h3>Unavailable means uncheckable.</h3><p>If a claim depends on source bytes, a corpus archive, a trace, or a frozen implementation that is unavailable, record the missing artifact and the narrow checks still possible. Do not rebuild a substitute and present it as the committed witness.</p></div>
+            <div class="status-list">
+                <dl class="status-row"><dt>Can still review</dt><dd>Public wording, linked source pages, schema shape, logical consistency, and disclosed non-claims.</dd></dl>
+                <dl class="status-row"><dt>Cannot conclude</dt><dd>Integrity, exact reproduction, or validity of the missing artifact-dependent derivation.</dd></dl>
+            </div>
+        </div>
+    </div></section>
+
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Submit a challenge</p><h2>Make disagreement adjudicable.</h2>
+        <p class="section-intro">Include the claim URL or ID, dated software/source snapshot, evidence locators, challenge dimension, strongest alternative explanation, requested disposition, and any source you can share publicly. Describe confidential material first; do not attach restricted source files to an unsolicited email.</p>
+        <div class="page-actions"><a class="button button-primary" href="mailto:hello@lawvm.org?subject=LawVM%20claim%20review&amp;body=Claim%20URL%20or%20ID%3A%0ADated%20software%20or%20release%20snapshot%3A%0ASource%20or%20corpus%20snapshot%3A%0AChallenge%20dimension%3A%0AEvidence%20locators%3A%0AStrongest%20alternative%20explanation%3A%0AReviewer%20disposition%3A%0AProposed%20public%20claim%20outcome%3A%0ARequired%20change%3A%0A">Open a structured review email</a><a class="button" href="/evidence">Inspect public evidence</a></div>
+    </div></section>
+</main>
+<!-- #include footer -->
+</body>
+</html>

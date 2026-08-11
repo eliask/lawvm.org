@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Getting Started &mdash; LawVM</title>
-    <meta name="description" content="Install LawVM and run your first replay, diff, and explain commands.">
+    <meta name="description" content="Install LawVM, run an archive-free evidence-pack demo, or import Finnish sources for bounded replay, diff, explain, and benchmark commands.">
     <link rel="canonical" href="https://lawvm.org/docs/getting-started">
     <meta property="og:title" content="Getting Started — LawVM">
-    <meta property="og:description" content="Install LawVM and run your first replay, diff, and explain commands.">
+    <meta property="og:description" content="Install LawVM, run an archive-free evidence-pack demo, or import sources for bounded replay and benchmark commands.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lawvm.org/docs/getting-started">
     <meta property="og:site_name" content="LawVM">
@@ -16,7 +16,7 @@
       "@context": "https://schema.org",
       "@type": "HowTo",
       "name": "Getting Started with LawVM",
-      "description": "Install LawVM and run your first replay, diff, and explain commands.",
+      "description": "Install LawVM, run an archive-free evidence-pack demo, or import sources for bounded replay, diff, explain, and benchmark commands.",
       "url": "https://lawvm.org/docs/getting-started",
       "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
       "step": [
@@ -54,7 +54,7 @@
     <h2>Prerequisites</h2>
 
     <ul>
-        <li>Python 3.12+</li>
+        <li>Python 3.14+</li>
         <li><a href="https://docs.astral.sh/uv/">uv</a> package manager</li>
         <li>Git</li>
     </ul>
@@ -65,15 +65,39 @@
 cd lawvm
 uv sync</code></pre>
 
-    <h2>Import source archives</h2>
+    <p>This installs the current public development checkout. It is useful for evaluating the command surface, but it is not a frozen release or an exact reproduction of the dated results on this site.</p>
 
-    <p>Finland replay requires local archived sources. Import the public Finlex archives (~13 GB ZIP input, ~5 GB on disk after ingestion):</p>
+    <h2>Archive-free structural evidence-pack demo</h2>
+
+    <p>If a 17&nbsp;GB Finnish archive is not a useful first step, the core repository documents a smaller Maryland/Open Law route using two public Git repositories. It audits declared structured publication operations and produces an evidence pack; it does not establish Maryland legal correctness or replace a publisher&rsquo;s authority.</p>
+
+<pre><code>git clone https://github.com/maryland-dsd/law-xml.git .tmp/open_law/repos/law-xml
+git clone https://github.com/maryland-dsd/law-xml-codified.git .tmp/open_law/repos/law-xml-codified
+
+uv run lawvm open-law evidence-pack \
+  --source-repo .tmp/open_law/repos/law-xml \
+  --codified-repo .tmp/open_law/repos/law-xml-codified \
+  --out .tmp/open_law/evidence-pack \
+  --json
+
+uv run lawvm open-law explain \
+  --report-dir .tmp/open_law/evidence-pack \
+  --limit 5
+
+uv run lawvm open-law verify-pack \
+  --report-dir .tmp/open_law/evidence-pack</code></pre>
+
+    <p>The generated manifest records the local source states and remotes. See the repository&rsquo;s <a href="https://github.com/eliask/lawvm/blob/master/docs/open-law-demo.md">Open Law demo notes</a> for the claim boundary and follow-up queries.</p>
+
+    <h2>Import source archives for Finnish replay</h2>
+
+    <p>Finnish replay requires local archived sources. As of 11 August 2026 the two upstream ZIPs are roughly 17.2 GB combined; their sizes change, and ingestion needs additional local storage:</p>
 
 <pre><code>uv run lawvm import-zip \
   --statute-zip https://www.finlex.fi/api/assets/open-data/archives/statute.zip \
   --consolidated-zip https://www.finlex.fi/api/assets/open-data/archives/statute-consolidated.zip</code></pre>
 
-    <p>This downloads the official Finlex open data archives and ingests them into local <code>.farchive</code> files. The import is a one-time operation; subsequent commands read from the local archive.</p>
+    <p>This streams the official Finlex open-data archives into the content-addressed <code>data/finlex.farchive</code> database by default. Use <code>--skip-existing</code> to resume an interrupted import; subsequent Finnish commands read from the local archive.</p>
 
     <h2>First replay</h2>
 
@@ -81,15 +105,15 @@ uv sync</code></pre>
 
 <pre><code>uv run lawvm replay 2002/738 --as-of 2024-01-01</code></pre>
 
-    <p>This compiles all amendment acts affecting 2002/738, replays them over the base statute, and materializes the point-in-time text. The output is the complete statute as it stood on that date.</p>
+    <p>This compiles the amendment acts available for 2002/738, replays admitted operations over the base statute, and materializes the point-in-time text for the selected profile. The result is a derived text-state with explicit residuals; it is not automatically a complete or authoritative statute.</p>
 
     <h2>First diff</h2>
 
-    <p>Compare LawVM's replay against the Finlex consolidation:</p>
+    <p>Compare LawVM&rsquo;s replay against the Finlex updated/derived comparison surface:</p>
 
 <pre><code>uv run lawvm diff 2002/738</code></pre>
 
-    <p>This shows section-by-section divergences. Green sections match. Red sections diverge. Each divergence starts an investigation: replay defect, source gap, editorial convention, or candidate issue in the official consolidation surface.</p>
+    <p>This shows section-by-section divergences. Green sections match. Red sections diverge. Each divergence starts an investigation: replay defect, source gap, editorial convention, or candidate issue in the Finlex comparison surface.</p>
 
     <h2>First explain</h2>
 
@@ -104,24 +128,24 @@ uv sync</code></pre>
     <p>When replay succeeds on a statute with dozens of amendments spanning decades, you get:</p>
 
     <ul>
-        <li>Point-in-time text that matches the official consolidation character-for-character</li>
-        <li>Full provenance: every provision traced to the amendment that changed it</li>
-        <li>Temporal versioning: query any past date, get the text that was in force</li>
+        <li>Point-in-time text that may match the comparison surface for the declared corpus and profile</li>
+        <li>Provenance for the provisions and operations covered by the source account</li>
+        <li>Temporal versioning for dates and temporal rules represented by the declared source/profile</li>
     </ul>
 
-    <p>When replay diverges, typed residuals explain the likely class: replay defect, source pathology, editorial artifact, or oracle staleness.</p>
+    <p>When replay diverges, typed residuals preserve the evidence needed to classify it as a replay defect, source pathology, editorial artifact, candidate comparison-surface issue, or unresolved case.</p>
 
     <h2>Run the benchmark</h2>
 
-<pre><code>uv run lawvm bench --mode finlex_oracle</code></pre>
+<pre><code>uv run lawvm bench --mode official_consolidation --corpus data/finland/bench_core.csv --no-save</code></pre>
 
-    <p>Replays the configured Finnish alpha corpus and reports aggregate metrics. See <a href="/artifacts">Artifacts</a> for methodology and interpretation.</p>
+    <p>Runs the included Finnish benchmark manifest without saving benchmark history or run artifacts. An August 2026 development run reported 0.23% mean normalized text edit distance, but this command is not an exact reproduction: the historical denominator, frozen source and comparison bytes, corpus manifest, per-row output, aggregate, and environment from that run are not published as one package. A newly acquired archive may produce a different result because publisher-controlled comparison surfaces change. See <a href="/artifacts">Artifacts</a> for methodology and interpretation.</p>
 
     <h2>Explore further</h2>
 
 <pre><code>uv run lawvm --help</code></pre>
 
-    <p>The CLI surface includes replay, diff, explain, benchmark, bisect, diagnose, and many more tools. The full command surface is documented in <code>--help</code> output.</p>
+    <p>The CLI includes <code>replay</code>, <code>diff</code>, <code>explain</code>, <code>bench</code>, <code>bisect</code>, and <code>diagnose</code>. Use <code>--help</code> for the exact command surface in your checkout.</p>
 
     <p>Architecture documentation lives in <code>notes/</code> in the repository. Start with <code>notes/SPEC_INDEX.md</code>.</p>
 

@@ -40,7 +40,7 @@
         <aside class="explainer-notice" data-notices>
             <strong>Curated compiler fixture</strong>
             <p>A minimal English amendment selected to make each replay phase inspectable.</p>
-            <p>For real compiled law, open the <a href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-uk.json">LawVM Explorer</a> &mdash; a live statute timeline with full version-control affordances.</p>
+            <p>For a compiled-law research preview, open the <a href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-uk.json">LawVM Explorer</a> to inspect point-in-time versions and provenance.</p>
         </aside>
     </section>
 
@@ -53,6 +53,12 @@
     </section>
 
     <section class="explainer-error" data-explainer-error hidden></section>
+
+    <noscript>
+        <section class="claim-boundary">
+            <strong>JavaScript is disabled:</strong> the phase controls need JavaScript, but the evidence remains public. <a href="/assets/data/interactive-replay-explainer.json">Open the curated fixture as JSON</a> or <a href="/architecture">read the static architecture explanation</a>.
+        </section>
+    </noscript>
 
     <section class="explainer-stage" data-explainer-content hidden>
         <article class="explainer-panel source-panel">
@@ -72,9 +78,9 @@
                 <h2>Document tree</h2>
             </div>
             <div class="tree-legend">
-                <span><i class="legend-dot target"></i>target</span>
-                <span><i class="legend-dot changed"></i>changed path</span>
-                <span><i class="legend-dot stable"></i>unchanged sibling</span>
+                <span><span class="legend-dot target" aria-hidden="true">&nbsp;</span>target</span>
+                <span><span class="legend-dot changed" aria-hidden="true">&nbsp;</span>changed path</span>
+                <span><span class="legend-dot stable" aria-hidden="true">&nbsp;</span>unchanged sibling</span>
             </div>
             <div class="tree-compare">
                 <section>

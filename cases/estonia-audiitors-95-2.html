@@ -11,6 +11,11 @@
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lawvm.org/cases/estonia-audiitors-95-2">
     <meta property="og:site_name" content="LawVM">
+    <meta property="og:image" content="https://lawvm.org/assets/og/estonia-audiitors-95-2.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="LawVM Estonia case: one reported omission was corrected">
+    <meta name="twitter:image" content="https://lawvm.org/assets/og/estonia-audiitors-95-2.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Riigi Teataja Correction: Audiitortegevuse seadus § 95²(1)">
     <meta name="twitter:description" content="A confirmed publisher correction found through deterministic amendment replay.">
@@ -42,7 +47,7 @@
     </div>
 </header>
 
-<main class="wrap">
+<main class="wrap" id="main-content">
 <article>
 
     <header class="essay-header">
@@ -57,6 +62,13 @@
         <strong>Status:</strong> confirmed and corrected by Riigi Teataja. The public consolidated page shows a correction notice dated 27 April 2026 at 09:35.
     </div>
 
+    <div class="meta-strip">
+        <span>Case: EE-2025-AUDIIT-95-2-1</span>
+        <span>Effective: 2025-01-17</span>
+        <span>Corrected: 2026-04-27</span>
+        <span>Disposition: externally confirmed</span>
+    </div>
+
     <p><strong>Jurisdiction:</strong> Estonia<br>
     <strong>Publisher:</strong> Riigi Teataja<br>
     <strong>Act:</strong> Auditors Activities Act (<em>Audiitortegevuse seadus</em>), act ID <code>107012025013</code><br>
@@ -68,7 +80,48 @@
 
     <p>The missing phrase was <em>või kestlikkusaruande audiitorkontrolli</em>.</p>
 
-    <p>Riigi Teataja reviewed the report and corrected the consolidated text. The correction was also made in the English translation, according to Riigi Teataja's reply.</p>
+    <p>Riigi Teataja reviewed the report and corrected the Estonian consolidated text. The project case record also reports that the correction covered the English translation; that translation detail is not presented here as a separately adjudicated public finding. The publisher&rsquo;s <a href="https://www.riigiteataja.ee/en/eli/ee/508062021003/consolide/current">current English consolidated text</a> is available for comparison.</p>
+
+    <h2>The public case evidence chain</h2>
+
+    <div class="evidence-flow" aria-label="Evidence chain">
+        <span>source act</span><b aria-hidden="true">&rarr;</b>
+        <span>insert instruction</span><b aria-hidden="true">&rarr;</b>
+        <span>replayed state</span><b aria-hidden="true">&rarr;</b>
+        <span>published omission</span><b aria-hidden="true">&rarr;</b>
+        <span>publisher review</span><b aria-hidden="true">&rarr;</b>
+        <span>corrected text</span>
+    </div>
+
+    <div class="card-grid">
+        <div class="content-card">
+            <span class="tag tag-accent">SOURCE INSTRUCTION</span>
+            <h3>Insert after an anchored word</h3>
+            <p>RT I, 07.01.2025, 1, § 2 point 65 directs that the existing provision become subsection (1) and that a phrase be inserted after <em>ülevaatust</em>.</p>
+        </div>
+        <div class="content-card">
+            <span class="tag tag-green">DISPOSITION</span>
+            <h3>Publisher correction</h3>
+            <p>Riigi Teataja&rsquo;s public <em>Veaparandus</em> notice records that the phrase was added under Riigi Teataja Act § 10(4).</p>
+        </div>
+    </div>
+
+    <div class="proof-feature">
+        <div>
+            <p class="proof-status">Before correction</p>
+            <h3>Published consolidation</h3>
+            <div class="source-witness">… ülevaatust …
+                    ↑
+          inserted phrase absent</div>
+        </div>
+        <div>
+            <p class="proof-status">After correction</p>
+            <h3>Source-backed text</h3>
+            <div class="source-witness">… ülevaatust
+  või kestlikkusaruande audiitorkontrolli …
+  └────────── inserted payload ──────────┘</div>
+        </div>
+    </div>
 
     <h2>Source amendment</h2>
 
@@ -86,19 +139,35 @@
 
     <p>This is a narrow consolidation omission. It shows that deterministic amendment replay can act as an independent QA layer for consolidated legislation: replay the amendment stream, compare it to the consolidated surface, and investigate cases where the source-backed replay and the official surface diverge.</p>
 
-    <p>The useful claim is not that LawVM is always right. The useful claim is that replay can produce concrete, source-backed candidates that official publishers can verify and correct.</p>
+    <p>This case supports a narrower claim: replay can produce concrete, source-backed candidates that official publishers can verify and correct. It does not establish a general accuracy rate.</p>
+
+    <h2>Historical command path; frozen source bundle unavailable</h2>
+
+    <p>The evidence inventory records this case as base ID <code>114032025030</code>, comparison ID <code>107012025013</code>, and address <code>chapter:7/division:1/section:95_2/subsection:1</code>.</p>
+
+    <p class="claim-boundary"><strong>Reproduction boundary:</strong> the frozen implementation and publisher source bytes for the historical run are not published as a reproducible bundle. The command records the current workflow shape, but a public reader cannot reproduce the exact historical run from the artifacts linked here.</p>
+
+<pre><code>uv sync
+uv run lawvm verify-consistency \
+  --jurisdiction ee \
+  --base 114032025030 \
+  --consolidated 107012025013</code></pre>
+
+    <p>The authoritative public source pages are linked above. Their bytes are publisher-controlled and may change; this public website does not currently publish a frozen source-byte bundle for the case. That missing artifact leaves exact historical reproduction uncheckable rather than being replaced by an invented hash.</p>
 
     <h2>What this does not prove</h2>
 
     <p>This does not prove that Riigi Teataja is unreliable. It does not prove that LawVM is complete for Estonia. It does not prove that all replay-vs-consolidation differences are publisher errors.</p>
 
-    <p>It proves one concrete case: a LawVM-reported omission was reviewed by the publisher, confirmed as described, and corrected in the public consolidated text.</p>
+    <p>The public record establishes one concrete publisher-confirmed outcome: a LawVM-reported omission was reviewed, confirmed as described, and corrected in the public consolidated text.</p>
 
     <h2>Why it matters</h2>
 
-    <p>In Estonia, consolidated law is an authoritative surface. That makes replay a consistency-checking layer rather than a replacement for the official text. A case like this is useful because it is externally reviewed, publicly visible, and small enough to audit from source amendment to corrected consolidation.</p>
+    <p>Here, the Riigi Teataja consolidated page is the publisher&rsquo;s public comparison surface. Replay is a consistency-checking layer, not a replacement for the official text. This case is useful because it is externally reviewed, publicly visible, and small enough to audit from source amendment to corrected consolidation.</p>
 
     <p>For broader context, see <a href="/jurisdictions">the jurisdiction status page</a> and <a href="/articles/truth-surfaces">Truth Surfaces in Legal Information Systems</a>.</p>
+
+    <p><a class="button button-primary" href="/evidence">Return to the evidence ledger</a> <a class="button" href="/assets/data/evidence.json">Download the public case record</a></p>
 
     </div>
 

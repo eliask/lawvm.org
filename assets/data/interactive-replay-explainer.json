@@ -331,9 +331,9 @@
       }
     ],
     "findings": [],
-    "oracle_comparisons": [
+    "comparison_surface_checks": [
       {
-        "id": "oracle-1",
+        "id": "comparison-1",
         "surface": "curated_after_fixture",
         "scope": "section:4/subsection:2",
         "status": "matches",

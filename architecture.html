@@ -47,12 +47,16 @@
 
     <header class="essay-header">
         <h1>Architecture</h1>
-        <p class="subtitle">A compiler for hostile, underspecified legal deltas.</p>
+        <p class="subtitle">A phased compiler for inconsistent, underspecified amendment sources.</p>
     </header>
 
     <div class="essay-body">
 
-    <p>LawVM's architecture follows from the structural properties of law itself. The <a href="/why-law-is-law-shaped">essay</a> derives the necessity; this page describes the result.</p>
+    <div class="callout"><strong>Assurance boundary:</strong> see <a href="/assurance/">how source identity, accounting, typed operations, observed mutation, and bounded checking support exact claims</a>&mdash;and <a href="/assurance/limits">what they do not prove</a>.</div>
+
+    <div class="callout"><strong>Standards and systems:</strong> see <a href="/technology/ecosystem">how LawVM complements Akoma Ntoso, ELI, drafting tools, publication platforms, and official portals</a>.</div>
+
+    <p>LawVM's architecture follows from the source and state problems it is designed to handle. The <a href="/why-law-is-law-shaped">essay</a> develops the structural argument; this page describes the implementation boundary.</p>
 
     <h2>The compiler model</h2>
 
@@ -62,11 +66,11 @@
         <li><strong>Acquire</strong> and archive source artifacts</li>
         <li><strong>Parse</strong> amendment text into a clause surface</li>
         <li><strong>Extract</strong> payloads and normalize source-locally</li>
-        <li><strong>Elaborate</strong> against live legal state (snapshot-pure)</li>
+        <li><strong>Elaborate</strong> against the declared legal snapshot</li>
         <li><strong>Lower</strong> to canonical typed operations</li>
         <li><strong>Replay</strong> over a base state</li>
         <li><strong>Materialize</strong> point-in-time text</li>
-        <li><strong>Adjudicate</strong> against oracle or witness surfaces</li>
+        <li><strong>Compare</strong> against declared witness or comparison surfaces</li>
     </ol>
 
     <p>The pipeline separates lowering, target resolution, replay, and divergence accounting so that mismatches are inspectable rather than collapsed into a single opaque failure state.</p>
@@ -86,20 +90,20 @@
     <p>The architecture has three stable interfaces that must not be bypassed:</p>
 
     <ol>
-        <li><strong>Clause surface</strong>: the first stable representation of amendment meaning. A typed AST for amendment instruction language.</li>
+        <li><strong>Clause surface</strong>: an early stable representation of amendment instructions. A typed AST for amendment instruction language.</li>
         <li><strong>Payload surface</strong>: the amendment body after source-local normalization, before live-state-dependent meaning recovery. This is where the source text stops being raw and starts being structured, but meaning recovery against the current statute state has not yet happened.</li>
         <li><strong>Canonical execution</strong>: replay is designed to consume typed canonical execution artifacts, not raw amendment XML. If meaning cannot be resolved before this boundary, it should become a finding, failed operation, or explicit strict-mode barrier rather than an implicit replay mutation.</li>
     </ol>
 
     <h2>Why deterministic parsing works</h2>
 
-    <p>Legislative amendment language is a semi-formal instruction language embedded in ordinary human legal text. In Finland, the <em>Lainkirjoittajan opas</em> (legislative drafting guide) specifies that the <em>johtolause</em> (amendment preamble) follows a fixed pattern: <code>kumotaan</code> (repeal), <code>muutetaan</code> (amend), <code>lisätään</code> (insert), in prescribed order, ending with <code>seuraavasti:</code>. Target addresses follow hierarchical conventions: <code>lain 12 §:n 2 momentti</code> (section 12, subsection 2 of the act).</p>
+    <p>Legislative amendment language is a semi-formal instruction language embedded in ordinary legal prose. In Finland, the <a href="https://lainkirjoittaja.finlex.fi/17-johtolause/17-3/"><em>Lainkirjoittajan opas</em></a> (legislative drafting guide) documents recurring forms for the <em>johtolause</em> (amendment preamble), including <code>kumotaan</code> (repeal), <code>muutetaan</code> (amend), and <code>lisätään</code> (insert), followed by the operative text. Target addresses also use hierarchical conventions such as <code>lain 12 §:n 2 momentti</code> (section 12, subsection 2 of the act).</p>
 
-    <p>This structure is parseable with conventional grammars. LawVM uses PEG (parsing expression grammars) to extract clause structure, target addresses, action types, and payload boundaries from raw amendment text. No LLMs, no statistical models, no training data, and no requirement that legislators rewrite law as code. The parser is deterministic: the same input always produces the same parse.</p>
+    <p>Many of these recurring forms are parseable with conventional grammars. LawVM uses PEG (parsing expression grammars) to extract clause structure, target addresses, action types, and payload boundaries from raw amendment text. The core parser does not require an LLM, statistical model, training data, or a rewrite of legislation as code. Its output is deterministic: the same input produces the same parse.</p>
 
-    <p>Prior work already parsed amendment language with conventional tools. Arnold-Moore parsed Tasmanian amendments with ATN parsers in the 1990s. Ogawa et al. formalized Japanese amendment sentences. Italian and Polish researchers have extracted amendment metadata with rule-based methods. LawVM pushes the claim further: ordinary amendment streams can be compiled into auditable point-in-time legal state with typed operations, timelines, provenance, and classified residuals.</p>
+    <p>Prior research has parsed amendment language and automated parts of consolidation. LawVM's distinct scope is an open replay pipeline that carries admitted parses through typed operations, timelines, provenance, and classified residuals. The <a href="/articles/parsing-amendment-language">parsing article</a> links to selected prior work and states the boundary of the Finnish demonstration.</p>
 
-    <p>Where grammars break, LawVM falls back to quirks-mode recovery with explicit provenance. Where they succeed, the result is deterministic, inspectable, and reproducible.</p>
+    <p>Selected historical patterns use quirks-mode recovery with explicit provenance; unsupported cases can remain blocked or unresolved. Where a declared grammar path succeeds, its result is deterministic and inspectable for the pinned implementation and inputs.</p>
 
     <h2>No silent repairs</h2>
 
@@ -113,23 +117,31 @@
 
     <p>LawVM serves two worlds:</p>
 
-    <p><strong>Quirks mode</strong> is for the historical corpus. Real legislative text is full of omitted context, editorial shortcuts, inconsistent numbering, source encoding oddities, and amendments that only make sense against a specific live consolidated witness. Quirks mode uses recovery heuristics &mdash; but marks every recovery path with provenance. It never pretends inferred structure was explicit in source.</p>
+    <p><strong>Quirks mode</strong> is for the historical corpus. Real legislative text contains omitted context, editorial shortcuts, inconsistent numbering, source encoding oddities, and amendments that only make sense against a specific live consolidated witness. Quirks mode permits owned recovery heuristics with provenance; unowned or unsupported inference should remain visible rather than becoming silent source fact.</p>
 
-    <p><strong>Strict mode</strong> is for a future where law is authored to compile cleanly. Every amendment is structurally unambiguous, every target is explicitly addressable, every action is typed, every temporal effect is explicit. Strict mode forbids: target guessing, hidden insertion anchoring, fallback whole-section replacement, ambiguous omission expansion, silent date estimation.</p>
+    <p><strong>Strict mode</strong> is an available policy for selected profiles and phases. Where its gate is wired, named unproven recovery or a boundary violation blocks the scoped result instead of becoming an executable operation. It is not a universal publication gate today.</p>
 
-    <p>The target publication model keeps law human-readable while also emitting canonical machine-readable state/change artifacts alongside the human text. Strict mode is the compilation target for that future. Quirks mode is the recovery compiler for the past.</p>
+    <p>Strict mode is also the target discipline for future legislation authored to compile cleanly: amendments remain human-readable while an approved machine artifact makes targets, actions, temporal effects, and unsupported-input rejection explicit. Quirks mode remains the recovery compiler for historical material.</p>
+
+    <h2>Future strict-authoring theorem</h2>
+
+    <p>Strict authoring is a direction for law co-produced with a formally specified, machine-checkable language. A clean result would require a frozen and complete source universe; authoritative source roles; correspondence between the human-approved text and machine artifact; formal grammar, semantics, and rejection rules; sound and complete lowering to typed operations; exact target, identity, and temporal rules; replay/materialization refinement; end-to-end implementation evidence; an independently implemented checker; intact content-addressed artifacts; live guards; and no blocking residuals.</p>
+
+    <p class="claim-boundary"><strong>Conditional theorem:</strong> under those conditions, a clean dossier could establish that generated text-state matches the declared formal semantics for every accepted input in its jurisdiction, profile, and time query. Unsupported or ambiguous input would be rejected or blocked. The theorem would concern that closed language and domain; the institution would retain authority over source status, legal judgment, and publication.</p>
+
+    <p><strong>Current boundary:</strong> LawVM has bounded invariants, strictness gates, property tests, formal models, and experimental dossier checking, but it does not yet provide end-to-end source-language entailment or implementation-refinement proof. Historical frontends therefore remain qualified, residual-preserving, or observe-only where their profile says so.</p>
 
     <h2>Frontend / kernel boundary</h2>
 
     <p>The shared kernel is jurisdiction-agnostic: canonical legal-address and tree model, operation vocabulary, replay execution, timeline semantics, materialization, structural invariants.</p>
 
-    <p>Frontends are jurisdiction-local: source acquisition, parsing conventions, drafting idioms, payload extraction, elaboration rules, source pathology, oracle comparison.</p>
+    <p>Frontends are jurisdiction-local: source acquisition, parsing conventions, drafting idioms, payload extraction, elaboration rules, source pathology, and comparison-surface handling.</p>
 
-    <p>The important design question is never "can we extract something useful?" It is: <strong>what is the smallest honest executable claim for this jurisdiction, and what source family makes that claim defensible?</strong></p>
+    <p>The design question is: <strong>what is the smallest honest executable claim for this jurisdiction, and what source family makes that claim defensible?</strong></p>
 
     <h2>Beyond Layer 0</h2>
 
-    <p>LawVM is deliberately narrow. It computes what the legal text says at a point in time. It does not compute what the law means, how it is applied in practice, or what it costs. Those are higher layers:</p>
+    <p>LawVM is deliberately narrow. Within a declared source and profile, it derives a point-in-time textual state. It does not claim to determine what the law means, how it is applied in practice, or what it costs. Those are higher layers:</p>
 
     <div class="table-scroll"><table>
         <thead><tr><th>Layer</th><th>Question</th><th>Scope</th></tr></thead>
@@ -143,9 +155,7 @@
         </tbody>
     </table></div>
 
-    <p>Upper layers attach claims to L0 anchors without mutating the text-state kernel. LawVM is designed as a substrate: stable identities, span-level anchoring, explicit provenance, overlay hooks.</p>
-
-    <p><strong>Downstream examples:</strong> <a href="https://mekanismirealismi.fi/mev/lakikartta">Lakikartta</a> joins the legal graph to budget data (92k statutes, 500B&euro; budget weights, PageRank/Katz/DebtRank centrality). <a href="https://mekanismirealismi.fi/mev/">MeV mechanism tests</a> analyze whether government bills' mechanisms produce their stated goals. These are separate projects that demonstrate what becomes possible once L0 text-state compilation is reliable.</p>
+    <p>Upper layers attach claims to L0 anchors without mutating the text-state kernel. LawVM is designed as a substrate with typed identities, span-level anchoring, explicit provenance, and overlay hooks; its public APIs are not yet a stable compatibility promise.</p>
 
     <div class="essay-nav">
         <a href="/">&larr; LawVM</a>

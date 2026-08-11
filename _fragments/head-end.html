@@ -3,5 +3,9 @@
     (function(){
       var t = localStorage.getItem('theme');
       if (t === 'dark') document.documentElement.setAttribute('data-theme','dark');
+      document.addEventListener('DOMContentLoaded', function () {
+        var b = document.querySelector('.theme-toggle');
+        if (b) b.setAttribute('aria-pressed', document.documentElement.getAttribute('data-theme') === 'dark' ? 'true' : 'false');
+      });
     })();
     </script>

@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Why Law Is Law-Shaped &mdash; LawVM</title>
-    <meta name="description" content="Law is an incrementally maintained system authored by distributed agents with partial authority over time, requiring stable fine-grained addresses for external reference. And why that shape demands a compiler.">
+    <meta name="description" content="Why amendment-driven law behaves like an incrementally maintained system and why stable identity, time, provenance, and typed operations matter.">
     <link rel="canonical" href="https://lawvm.org/why-law-is-law-shaped">
     <meta property="og:title" content="Why Law Is Law-Shaped">
-    <meta property="og:description" content="And why that shape demands a compiler.">
+    <meta property="og:description" content="How amendment-driven text leads to an auditable replay design.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lawvm.org/why-law-is-law-shaped">
     <meta property="og:site_name" content="LawVM">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Why Law Is Law-Shaped">
-    <meta name="twitter:description" content="And why that shape demands a compiler.">
+    <meta name="twitter:description" content="How amendment-driven text leads to an auditable replay design.">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Why Law Is Law-Shaped",
-      "description": "Law is an incrementally maintained system authored by distributed agents with partial authority over time, requiring stable fine-grained addresses for external reference. And why that shape demands a compiler.",
+      "description": "Why amendment-driven statutory text needs stable identity, time, provenance, and typed operations for an auditable replay design.",
       "author": {
         "@type": "Person",
         "name": "Elias Kunnas",
@@ -63,7 +63,7 @@
 
     <header class="essay-header">
         <h1>Why Law Is Law-Shaped</h1>
-        <p class="subtitle">And why that shape demands a compiler.</p>
+        <p class="subtitle">How amendment-driven text leads to an auditable replay design.</p>
         <p class="author">Elias Kunnas</p>
     </header>
 
@@ -71,50 +71,43 @@
 
     <h2>I. The Structural Constraint</h2>
 
-    <p>Law is an <strong>incrementally maintained system authored by distributed agents with
-    partial authority over time, requiring stable fine-grained addresses for
-    external reference</strong>.</p>
+    <p>For amendment-driven statute collections, law is an <strong>incrementally maintained
+    system authored by different institutions over time, with fine-grained addresses
+    used for external reference</strong>.</p>
 
-    <p>This structure holds across civil law, common law, and hybrid systems.
-    The surface differs &mdash; statutes vs. acts, articles vs. sections, codified
-    vs. uncodified &mdash; but the structural constraint is the same.
-    Every element of the definition is load-bearing:</p>
+    <p>This pattern appears across many civil-law, common-law, and hybrid systems,
+    although their source formats and authority rules differ. The useful parts of
+    the definition are:</p>
 
     <ul>
-        <li><strong>Incrementally maintained</strong>: Parliament cannot restate the entire legal
-        corpus each session. Amendments modify specific provisions of existing
-        statutes. The legal state at any moment is the accumulated result of
-        thousands of incremental patches applied over decades or centuries.</li>
+        <li><strong>Incrementally maintained</strong>: Amendments usually modify specific
+        provisions of existing statutes. The legal state at a given time combines
+        acts enacted at different times and under different source conditions.</li>
 
-        <li><strong>Distributed agents with partial authority</strong>: Different parliaments, at
-        different times, with different mandates, enacted different provisions.
-        A subsection added in 2021 coexists with a section from 1995 and a
-        chapter structure from 1972. Each retains its own authority provenance.
-        The current text of a statute is a palimpsest of multiple authors across
-        time.</li>
+        <li><strong>Distributed authorship</strong>: Different legislatures and publication
+        bodies contribute provisions at different times. A current text therefore
+        needs provenance for the source event and transformation that produced
+        each portion.</li>
 
-        <li><strong>Stable fine-grained addresses</strong>: Other laws say &ldquo;pursuant to Section
-        12(2) of Act X.&rdquo; Court decisions cite specific provisions. Contracts
-        reference them. These are external pointers into the legal corpus. If
-        addresses change, external references break silently. The addressing
-        scheme must survive amendments &mdash; which is why law uses hierarchical
-        structural paths rather than page numbers or byte offsets.</li>
+        <li><strong>Fine-grained addresses</strong>: Other laws, decisions, and contracts cite
+        provisions such as &ldquo;Section 12(2) of Act X.&rdquo; These references point into
+        the legal corpus. Renumbering can change a path, so a replay system must
+        record address changes and preserve the relevant lineage.</li>
     </ul>
 
-    <p>Software codebases evolved the same structural constraint for the same
-    reason: incremental modification, multiple authors, stable external
-    references (API contracts, imports, URLs). The resemblance between
-    <code>git blame</code> and statutory provenance tracing is convergent evolution from
-    identical structural pressure.</p>
+    <p>Software version control offers a useful comparison: both code and statute
+    collections need to explain incremental changes and preserve references. The
+    comparison is an analogy, not a claim that legal authority works like a
+    repository.</p>
 
     <h2>II. The Tree Is a Serialization Format</h2>
 
     <p>Statutes are organized as trees: parts contain chapters, chapters contain
-    sections, sections contain subsections. This hierarchy exists because
-    <strong>paper is linear</strong> &mdash; a statute must be printed as a sequence of pages,
-    and the hierarchy provides navigable structure.</p>
+    sections, and sections contain subsections. The hierarchy gives a document
+    stable units for drafting, publication, navigation, and citation.</p>
 
-    <p>But law does not <em>operate</em> as a tree:</p>
+    <p>A tree alone does not encode all of the relationships that affect how
+    provisions are read:</p>
 
     <ul>
         <li>Section 12 says &ldquo;as defined in Section 4&rdquo; &mdash; a <strong>cross-reference</strong>, a
@@ -124,36 +117,33 @@
         <li>A tax statute says &ldquo;as specified in Regulation (EU) 2016/679 Article 4&rdquo;
         &mdash; a <strong>cross-jurisdiction dependency</strong>, linking nodes in different
         legal corpora entirely.</li>
-        <li>An EU directive requires member state implementation &mdash; the Finnish
-        implementing statute is a <strong>derived node</strong> whose existence was caused
-        by an EU-level obligation.</li>
+        <li>An EU directive can require national implementation &mdash; a
+        <strong>cross-jurisdiction relationship</strong> between the directive and one or
+        more national measures.</li>
     </ul>
 
     <p>These are graph relationships. They connect nodes across branches of the
-    tree, across statutes, across jurisdictions. The tree structure cannot
-    represent them &mdash; it only holds the content of each provision and its
-    position within one statute&rsquo;s hierarchy.</p>
+    tree, across statutes, and sometimes across jurisdictions. The document tree
+    holds each provision&rsquo;s content and position; a separate reference or
+    dependency model is needed to represent those connections.</p>
 
-    <p>This separation of structure from semantics is not new. Akoma Ntoso
-    (ISO 24679) separated the <em>document structure</em> (the tree) from <em>legal
-    analysis</em> (references, metadata, lifecycle) in the early 2000s. ELI and
-    FRBR provide identification frameworks. LegalRuleML encodes normative
-    content. The contribution here is not the observation that law has graph
-    structure &mdash; that&rsquo;s established &mdash; but the argument that computing the
-    <em>text layer</em> correctly as a reproducible, inspectable replay process
-    is a prerequisite for computing the <em>semantic layer</em> correctly.</p>
+    <p>This separation of document structure from references and analysis is
+    reflected in standards such as <a href="https://www.oasis-open.org/standard/akn-v1-0/">Akoma Ntoso</a>,
+    ELI, and FRBR; LegalRuleML addresses a different, rule-oriented layer. LawVM&rsquo;s
+    narrower argument is that the <em>text layer</em> should be computed as a
+    reproducible, inspectable replay process before semantic tools rely on it.</p>
 
-    <p>Law is <strong>written</strong> as a tree because paper demands it. Law <strong>operates</strong>
-    as a graph because provisions interact through references, overrides, and
-    dependencies that ignore hierarchical boundaries. A legal state compiler
-    operates on the tree (the text) to produce the substrate that semantic
-    tools operate on.</p>
+    <p>Many statutes use a tree-like hierarchy for drafting, publication, and
+    citation. Their provisions also interact as a graph through references,
+    overrides, and dependencies that cross hierarchical boundaries. A text-state
+    compiler operates on the document structure and records the links needed by
+    later semantic tools.</p>
 
-    <h2>III. The Amendment Is an Operation, Not an Edit</h2>
+    <h2>III. The Amendment as an Operation</h2>
 
-    <p>An amendment act does not say &ldquo;here is the new text of Section 12.&rdquo; It says
-    &ldquo;Section 12, subsection 2 is amended to read as follows.&rdquo; This is a
-    <strong>typed operation</strong> with:</p>
+    <p>An amendment act can specify that &ldquo;Section 12, subsection 2 is amended to
+    read as follows.&rdquo; At the text-state layer, that instruction has a
+    <strong>typed operation</strong> shape:</p>
 
     <ul>
         <li>A <strong>target address</strong>: Section 12, subsection 2</li>
@@ -162,7 +152,7 @@
         <li>A <strong>source</strong>: which act, enacted when, effective when, by whose authority</li>
     </ul>
 
-    <p>The vocabulary of text-level operations is small:</p>
+    <p>LawVM&rsquo;s supported vocabulary of text-level operations is deliberately small:</p>
 
     <div class="table-scroll"><table>
         <thead>
@@ -199,15 +189,17 @@
         </tbody>
     </table></div>
 
-    <p>This vocabulary is verified across Finnish, UK, Estonian, and EU amendment
-    systems. The surface language differs (&ldquo;muutetaan,&rdquo; &ldquo;muudetakse,&rdquo; &ldquo;is
-    amended to read&rdquo;) but the structural operations on the text are the same.</p>
+    <p>These operation families appear in LawVM&rsquo;s typed model and in selected
+    Finnish, UK, and Estonian source paths, although syntax, coverage, and authority differ.
+    The shared vocabulary is an interface for the text-state layer, not a claim
+    that the jurisdictions have identical amendment law.</p>
 
-    <h3>III.1: What the vocabulary does NOT cover</h3>
+    <h3>III.1: Cases outside the text-operation vocabulary</h3>
 
-    <p>The text-level operation vocabulary captures how the <strong>serialized text</strong>
-    changes. It does not capture how the <strong>legal meaning</strong> changes. Several
-    classes of legal action operate on meaning rather than text:</p>
+    <p>The text-level operation vocabulary captures how <strong>serialized text</strong>
+    changes. It does not, by itself, capture every change in <strong>legal meaning</strong>.
+    Several classes of legal action operate on meaning or authority rather than
+    directly on text:</p>
 
     <p><strong>Interpretive overlays.</strong> &ldquo;Section 5 shall be read as if &lsquo;the Board&rsquo;
     meant &lsquo;the Council&rsquo;.&rdquo; The text of &sect;5 is unchanged. Its meaning changes.
@@ -228,54 +220,43 @@
     content) doesn&rsquo;t inherently resolve this &mdash; it requires a policy decision
     at the VM level.</p>
 
-    <p><strong>Immutable-base traditions.</strong> In systems where the foundational text is
-    sacred or constitutionally entrenched (Sharia, constitutional provisions
-    with supermajority requirements), the operation isn&rsquo;t &ldquo;replace&rdquo; &mdash; it&rsquo;s
-    &ldquo;layer an interpretation over an immutable base.&rdquo; The base text cannot be
-    patched; it can only be wrapped.</p>
-
     <p>These are real phenomena. A compiler that claims to capture &ldquo;what the law
     says&rdquo; must either model them or explicitly scope itself to the text layer.
     LawVM takes the second approach: it compiles the <strong>text state</strong> &mdash; what
     each provision literally says at a point in time &mdash; and leaves the
     <strong>normative state</strong> (what the law means, how it applies, what obligations
     it creates) to downstream semantic tools. This is a deliberate separation
-    of concerns: get the text right first, then build interpretation on a
-    correct textual substrate. The alternative &mdash; building semantic models on
-    unverified text &mdash; is what produced decades of legal ontology work with no
-    reliable text layer underneath it.</p>
+    of concerns: establish a declared textual substrate first, then attach
+    interpretation and application claims to it.</p>
 
     <h2>IV. Multiple Time Axes</h2>
 
-    <p>An amendment published in December 2024 may take effect on January 1, 2026.
-    During the intervening 13 months, the amendment exists &mdash; enacted,
-    published, legally valid &mdash; but the provisions it modifies have not yet
-    changed for legal purposes.</p>
+    <p>An amendment can be published before its provisions take effect. During
+    that interval, the amendment exists in the publication record while the
+    provisions it modifies remain under the prior legal-effect regime.</p>
 
     <p>Law has at least <strong>two temporal dimensions</strong>:</p>
 
     <ol>
-        <li><strong>Publication/enactment time</strong>: when the amendment was officially decided</li>
+        <li><strong>Event/publication time</strong>: when the amendment was enacted and published under the relevant source regime</li>
         <li><strong>Legal effect time</strong>: when the changed provisions enter into force</li>
     </ol>
 
     <p>These axes are independent. &ldquo;What has parliament decided?&rdquo; and &ldquo;what is
     the law?&rdquo; give different answers during the gap.</p>
 
-    <p>It gets harder:</p>
+    <p>Replay may also need to represent:</p>
 
     <ul>
         <li>A single amendment act can specify <strong>different effective dates</strong> for
         different provisions (&sect;&sect;1&ndash;5 immediately, &sect;6 next year, &sect;7 &ldquo;when a
         decree so provides&rdquo;).</li>
-        <li><strong>Retroactive amendments</strong> change the legal effect of provisions for a
-        past period &mdash; an amendment published today can declare that it applies
-        from last year. This retroactively alters the legal state at historical
-        points in time.</li>
-        <li><strong>Ultra-active provisions</strong> continue to apply to past events even after
-        repeal. A provision repealed today still governs contracts entered into
-        while it was in force. The provision is legally dead for new events but
-        alive for old ones.</li>
+        <li><strong>Retroactive amendments</strong> in jurisdictions that permit them can assign
+        a legal effect to an earlier period. A publication date alone therefore
+        cannot determine every historical state.</li>
+        <li><strong>Continuing application</strong> can preserve the relevance of a provision
+        for past events after repeal. The text-state timeline and the
+        applicability rule then answer different questions.</li>
     </ul>
 
     <p>A third operational axis exists: <strong>corpus observation time</strong> &mdash; when the
@@ -283,12 +264,12 @@
     before and after differs. Reproducibility requires recording which source
     version was used.</p>
 
-    <p>Version control systems like git have one temporal dimension (commit
-    history). Law requires at minimum two substantive dimensions plus
-    conditional dimensions (territory, sector, contingency). &ldquo;What is the
-    law at date T?&rdquo; is a multi-dimensional query, not a linear checkout.</p>
+    <p>A normal version-control checkout exposes commit history, but it does not
+    by itself model legal effect, territory, sector, or contingency. A query such
+    as &ldquo;what text applies at date T?&rdquo; therefore needs an explicit time and scope
+    model rather than a plain linear checkout.</p>
 
-    <h2>V. The Atom Is Not What You Think</h2>
+    <h2>V. Granularity Follows the Amendment System</h2>
 
     <p>The tree structure suggests that provisions (sections, articles) are the
     atoms &mdash; the smallest units. In practice, the atom is <strong>whatever
@@ -312,38 +293,32 @@
         why).</li>
     </ol>
 
-    <p>Note that even a &ldquo;simple&rdquo; word substitution like replacing &ldquo;Secretary of
-    State&rdquo; with &ldquo;Minister&rdquo; shifts statutory powers &mdash; it&rsquo;s not just a string
-    edit but a reallocation of legal authority. The compiler operates on the
-    text; downstream normative analysis operates on the meaning. Both layers
-    matter. The compiler provides the correct text so that normative analysis
-    can be accurate.</p>
+    <p>A word substitution such as replacing &ldquo;Secretary of State&rdquo; with
+    &ldquo;Minister&rdquo; can change statutory powers. The compiler records the text
+    mutation; downstream analysis determines its normative consequence. Keeping
+    those claims separate prevents a string-level result from being presented as
+    an interpretation.</p>
 
-    <h2>VI. Convergent Evolution of Addressing</h2>
+    <h2>VI. Addressing and Identity</h2>
 
-    <p>Any system requiring stable addressing into a hierarchically maintained
-    structure under distributed authority converges on the same pattern:
-    <strong>path-based identifiers</strong>.</p>
+    <p>Systems that maintain hierarchical structures and expose fine-grained
+    references often use <strong>path-based identifiers</strong>. Legal systems are
+    one example.</p>
 
     <ul>
         <li><strong>Law</strong>: &sect;12(2)(c) &mdash; path through the statute tree</li>
-        <li><strong>OIDs</strong> (ITU-T/ISO): 1.3.6.1.4.1.311 &mdash; path through the global
-        object tree</li>
-        <li><strong>Xanadu tumblers</strong> (Nelson, 1960s): hierarchical address down to
-        character granularity</li>
         <li><strong>ELI</strong> (European Legislation Identifier): /eli/fi/sd/2002/738/...</li>
         <li><strong>FRBR</strong> (Functional Requirements for Bibliographic Records): Work &rarr;
         Expression &rarr; Manifestation &rarr; Item hierarchy</li>
-        <li><strong>Filesystem paths</strong>: /usr/local/bin/lawvm</li>
     </ul>
 
-    <p>These are all the same abstraction: a tuple of (kind, label) pairs
-    specifying a traversal through a hierarchy.</p>
+    <p>Each example identifies an object by its place in a structured hierarchy,
+    though the identity and update rules differ. LawVM uses legal addresses for
+    operation targets and records lineage when a target is renumbered.</p>
 
-    <p>The convergence is forced by the structural constraint: when multiple
-    agents independently modify parts of a hierarchical structure, and
-    external systems reference specific parts by address, the address must
-    encode the path through the hierarchy.</p>
+    <p>When multiple authors modify a hierarchy while external systems cite its
+    parts, the path and the identity behind that path both need explicit rules.
+    A path alone does not preserve identity through every amendment.</p>
 
     <p>Path-based addresses have a known weakness: they are <strong>positional</strong>.
     Insertion of &sect;11a between &sect;11 and &sect;12 doesn&rsquo;t break &sect;12&rsquo;s path, but
@@ -354,118 +329,87 @@
     LawVM&rsquo;s ProvisionTimeline preserves identity through renumber events &mdash;
     the same timeline, new address.</p>
 
-    <p>Ted Nelson&rsquo;s Xanadu anticipated this in the 1960s. His tumblers addressed
-    any content at any granularity, and transclusion meant references were
-    live links. Legal cross-references (&ldquo;as defined in &sect;4&rdquo;) are exactly
-    Nelson&rsquo;s transclusions &mdash; without the live-update mechanism. When &sect;4 is
-    amended, every provision referencing it changes meaning silently. The
-    legal system has unversioned, untyped, silently-breaking transclusions.</p>
-
     <h2>VII. Authority Models Vary</h2>
 
-    <p>Different jurisdictions assign different legal authority to consolidated
-    texts, which changes the compiler&rsquo;s role:</p>
+    <p>Jurisdictions assign different roles to consolidated texts. LawVM must
+    declare that role before interpreting a divergence.</p>
 
-    <p><strong>Finland</strong>: Finlex consolidated texts are &ldquo;informational&rdquo; &mdash; not legally
-    binding. The &ldquo;real&rdquo; law is the original statute plus all amendment acts.
-    If Finlex&rsquo;s consolidation has a bug, that&rsquo;s editorial. Nobody is legally
-    responsible for the computed state of law. The compiler serves as an
-    <strong>independent oracle</strong> &mdash; replaying amendments to find bugs in the
-    editorial consolidation.</p>
+    <p><strong>Finland</strong>: Finlex&rsquo;s updated text is a derived comparison
+    surface for this workflow; the enacted publication is the original Statute
+    Book material and amending acts. LawVM therefore acts as an independent
+    replay witness, and a mismatch remains a finding to investigate.</p>
 
-    <p><strong>Estonia</strong>: Riigi Teataja consolidated text IS authoritative law. If
-    there is a discrepancy between amendment acts and consolidation, the
-    consolidation wins. The compiler serves as a <strong>consistency verifier for
-    binding law</strong> &mdash; divergences are legally significant findings, not
-    editorial footnotes.</p>
+    <p><strong>Estonia</strong>: Riigi Teataja&rsquo;s publication regime gives its
+    official consolidated texts a different legal role. LawVM therefore serves
+    as an independent consistency check; an apparent divergence is legally
+    sensitive and not automatically a defect.</p>
 
-    <p><strong>United Kingdom</strong>: legislation.gov.uk publishes versioned texts with
-    effect metadata. The compiler serves as <strong>independent verification</strong> of
-    the official version graph.</p>
+    <p><strong>United Kingdom</strong>: legislation.gov.uk maintains a revised
+    electronic version with effect metadata. LawVM can check a declared
+    version/effect surface independently.</p>
 
-    <p>The structural operations are the same. The social function of finding a
-    divergence differs: editorial error (Finland), legal inconsistency
-    (Estonia), version graph bug (UK).</p>
+    <p>The same text-operation vocabulary can support different review workflows
+    because the authority and comparison roles differ.</p>
 
-    <h2>VIII. Why Nobody Built It</h2>
+    <h2>VIII. Why General Replay Remains Hard</h2>
 
-    <p>The problem is well-defined: parse amendment acts, extract operations,
-    compile against prior state, produce consolidated text with full
-    provenance and temporal versioning. It is a compiler problem.</p>
+    <p>Prior legislative-consolidation systems and legal-informatics standards
+    address important parts of this problem: document structure, identifiers,
+    linked data, rule representation, editorial consolidation, or versioned
+    publication. The <a href="/articles/parsing-amendment-language">selected prior
+    work linked in the parsing article</a> makes the overlap concrete. These
+    systems are relevant inputs and comparison surfaces; a general replay
+    workflow still has to connect source acquisition, amendment parsing, target
+    resolution, temporal policy, and evidence classification across jurisdictions.</p>
 
-    <p>The closest prior work:</p>
+    <p>LawVM occupies that narrower intersection: amendment text in, admitted
+    typed operations and timelines out, with residuals retained instead of
+    hidden. The claim is about an explicit boundary and an open artifact, not
+    priority over prior work. The difficulty is the combination of language,
+    source regimes, authority models, and time rules rather than any one missing
+    data structure.</p>
 
-    <ul>
-        <li><strong>Akoma Ntoso / ELI / FRBR</strong>: document standards and identification
-        frameworks &mdash; the schema layer. They define how legal documents should
-        be structured and identified, but don&rsquo;t compile amendments.</li>
-        <li><strong>Semantic Finlex / LawSampo</strong> (Aalto/SECO): linked data, semantic
-        search, faceted browsing over Finnish legislation. World-class
-        ontology work. No amendment replay, no temporal compilation, no
-        independent verification. Code not published.</li>
-        <li><strong>Graphie project</strong> (King&rsquo;s College London): network analysis of UK
-        legislation. Structural metrics. No budget weighting, no compilation.</li>
-        <li><strong>LegalRuleML</strong>: encoding normative content as rules. Operates on the
-        semantic layer, not the text layer.</li>
-    </ul>
+    <h2>IX. The Resulting Design</h2>
 
-    <p>Each addresses a piece. What remains underdeveloped in open research
-    tooling is the end-to-end replay compiler: amendment text in, typed
-    operations and timelines out, with residuals classified instead of hidden.
-    Commercial systems (Xcential, Propylon)
-    handle parts of this in production contexts; official systems (legislation.gov.uk)
-    maintain versioned editorial workflows. But the open, cross-jurisdiction,
-    proof-bearing replay approach remains underexplored. This gap exists because the
-    problem spans computer science (compilers, VCS, graph theory), legal informatics
-    (amendment semantics, temporal logic), public administration (authority,
-    publication), and linguistics (parsing amendment language). Each discipline sees
-    its part. The tool requires all four.</p>
-
-    <h2>IX. Therefore LawVM</h2>
-
-    <p>LawVM is shaped the way it is because law is shaped the way it is:</p>
+    <p>These constraints explain the design choices for the declared source
+    lanes:</p>
 
     <ul>
-        <li><strong>A tree parser</strong> (IRNode) because law is stored as hierarchical trees</li>
+        <li><strong>A hierarchical node representation</strong> (IRNode) because many source statutes use nested document structure</li>
         <li><strong>Typed operations</strong> (LegalOperation) because amendments are structured
         operations, not prose edits</li>
-        <li><strong>Path-based addressing</strong> (LegalAddress) because stable fine-grained
-        addressing is forced by the structural constraint</li>
+        <li><strong>Typed path-based addressing</strong> (LegalAddress) because amendments
+        target fine-grained document structure</li>
         <li><strong>A graph model</strong> (ProvisionTimeline + operation edges) because law
         operates as a graph despite being serialized as trees</li>
         <li><strong>Multiple temporal axes</strong> because law has irreducibly multi-dimensional
         time</li>
         <li><strong>Scope predicates</strong> because applicability varies along dimensions
         orthogonal to time and structure</li>
-        <li><strong>Jurisdiction-agnostic core</strong> because the structural operations are
-        universal even though surface languages and authority models differ</li>
+        <li><strong>Jurisdiction-agnostic core</strong> because the operation interface can be
+        shared even though surface languages, coverage, and authority models differ</li>
         <li><strong>Explicit text/semantics boundary</strong> because compiling the text
         correctly is prerequisite to interpreting it correctly &mdash; and because
         the text layer is computationally tractable while the normative layer
         requires interpretation</li>
     </ul>
 
-    <p>The end state is a <strong>semantic version control system for law</strong>: a graph
-    where nodes are provision versions, edges are legislative operations, and
-    point-in-time materialization, cross-date diff, provision lineage, and
-    cross-jurisdiction dependency tracking are queries over the graph.</p>
+    <p>A useful design target is a versioned legal-text substrate: provision
+    versions as nodes, operations as edges, and queries for point-in-time
+    materialization, cross-date diffs, lineage, and declared dependencies.</p>
 
-    <p>Not a replacement for legal ontologies or normative reasoning systems.
-    The substrate they need. A correct, verified, temporally versioned text
-    layer that semantic tools can build on without first having to solve the
-    compilation problem themselves.</p>
-
-    <p>Built because the structural constraints of law demand it, and the
-    open tooling to do it reliably did not yet exist.</p>
+    <p>LawVM supplies that text-state and evidence boundary. Interpretation,
+    doctrine, praxis, and products can attach claims to its anchors without
+    being smuggled into replay output.</p>
 
     </div>
 
     <hr style="margin-top: 3rem;">
-    <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 1rem;">This essay explains the structural constraints behind <a href="/">LawVM</a>, an open-source replay compiler for amendment-driven law. See the <a href="/finland">Finland showcase</a> for empirical evidence, or <a href="https://github.com/eliask/lawvm">the repository</a>.</p>
+    <p style="font-size: 0.9rem; color: var(--text-dim); margin-top: 1rem;">This essay explains the structural constraints behind <a href="/">LawVM</a>, an open-source replay compiler for amendment-driven law. See the <a href="/finland">Finland benchmark snapshot</a> for empirical evidence, or <a href="https://github.com/eliask/lawvm">the repository</a>.</p>
 
     <div class="essay-nav">
         <a href="/">&larr; LawVM</a>
-        <a href="/finland">Finland showcase &rarr;</a>
+        <a href="/finland">Finland benchmark snapshot &rarr;</a>
     </div>
 
 </article>

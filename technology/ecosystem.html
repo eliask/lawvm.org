@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Standards and Ecosystem &mdash; LawVM</title>
+    <meta name="description" content="How LawVM complements Akoma Ntoso, ELI, drafting systems, publication platforms, official portals, and downstream legal-data tools.">
+    <link rel="canonical" href="https://lawvm.org/technology/ecosystem">
+    <meta property="og:title" content="Standards and ecosystem — LawVM"><meta property="og:description" content="LawVM adds transition execution, point-in-time reconstruction, and evidence accounting beside existing legal-information systems."><meta property="og:type" content="website"><meta property="og:url" content="https://lawvm.org/technology/ecosystem"><meta property="og:site_name" content="LawVM">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav aria-label="Primary navigation">
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+<main id="main-content">
+    <section class="wrap-wide page-heading">
+        <p class="section-kicker">Standards and ecosystem</p>
+        <h1>An assurance layer beside the systems that create and publish law.</h1>
+        <p class="lead">LawVM sits beside drafting editors, XML standards, identifier vocabularies, publishing systems, and official portals. Through source-specific adapters, it can consume versioned artifacts, reconstruct supported transitions, and return inspectable evidence.</p>
+    </section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">System fit</p><h2>Preserve each layer&rsquo;s job.</h2>
+        <div class="system-flow"><span>gazette / source archive</span><b>&rarr;</b><span>structure + identity</span><b>&rarr;</b><span>drafting / publication</span><b>&rarr;</b><span>LawVM shadow assurance</span><b>&rarr;</b><span>evidence / PIT state / review queue</span></div>
+        <div class="table-scroll"><table class="status-table">
+            <thead><tr><th>Layer</th><th>Examples</th><th>LawVM relationship</th></tr></thead>
+            <tbody>
+                <tr><td>Source capture</td><td>Gazettes, scans, PDFs, official archives</td><td>Preserves exact manifestations, provenance, extraction witnesses, and missing-source accounting.</td></tr>
+                <tr><td>Document structure</td><td><a href="https://www.oasis-open.org/standard/akn-v1-0/">Akoma Ntoso</a>, local XML</td><td>Consumes structured legal units where available; does not claim the format itself proves semantic correctness.</td></tr>
+                <tr><td>Identity and metadata</td><td><a href="https://op.europa.eu/en/web/eu-vocabularies/eli">ELI</a>, ELI impact metadata, local identifiers</td><td>Uses work/expression/manifestation identity, versions, relationships, and effects as typed evidence.</td></tr>
+                <tr><td>Drafting</td><td><a href="https://interoperable-europe.ec.europa.eu/collection/justice-law-and-security/solution/leos-open-source-software-editing-legislation">LEOS</a>, parliamentary editors</td><td>Can add pre-publication target, transition, cross-reference, temporal, and mutation-boundary checks when a concrete adapter exists.</td></tr>
+                <tr><td>Consolidation and publication</td><td><a href="https://laws.africa/open-law-technology/">Indigo / Laws.Africa</a>, official CMSs</td><td>Runs independently in no-write shadow mode and returns a classified evidence queue.</td></tr>
+                <tr><td>Public legal access</td><td><a href="https://www.legislation.gov.uk/">legislation.gov.uk</a>, official portals and APIs</td><td>Can receive source-linked historical state, explicit residuals, and transition artifacts from a supported frontend.</td></tr>
+            </tbody>
+        </table></div>
+    </div></section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Three entry paths, one model</p><h2>Meet the source where it is.</h2>
+        <div class="card-grid">
+            <div class="content-card"><h3>Source bootstrap</h3><p>Paper, scans, PDFs, and incomplete archives first yield preserved manifestations, extraction witnesses, structure evidence, and an explicit blocked-source map.</p></div>
+            <div class="content-card"><h3>Pre-publication QA</h3><p>A versioned drafting or publication export can receive declared target, reference, legal-time, language, and mutation checks through a concrete adapter.</p></div>
+            <div class="content-card"><h3>Published-text audit</h3><p>A bounded set of amendment sources and published states can support independent replay, classified differences, and a review queue.</p></div>
+            <div class="content-card"><h3>Shared decision chain</h3><p>Each route moves from declared sources and a model to QA checks, then a strict or observe-only disposition and a named human decision. LawVM does not automatically publish or correct text.</p></div>
+        </div>
+        <div class="claim-boundary"><strong>Future strict-authoring direction:</strong> legislation co-produced with a formally specified machine artifact could make consolidation automatic and machine-checkable within its accepted formal domain. This requires source closure, human-text/artifact correspondence, compiler and replay proofs, independent checking, and rejection or blocking of unsupported input. <a href="/architecture">See the full conditional boundary.</a></div>
+    </div></section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Integration patterns</p><h2>Start where structure and authority already exist.</h2>
+        <div class="card-grid">
+            <div class="content-card"><h3>Akoma Ntoso input</h3><p>Map stable structural units and metadata into LawVM&rsquo;s source-document boundary; keep jurisdiction-specific amendment idioms in the frontend.</p></div>
+            <div class="content-card"><h3>ELI and effect feeds</h3><p>Use identifiers and effect relationships as source witnesses and candidates. Promotion into executable transitions still requires target, payload, temporal, and mutation-boundary evidence.</p></div>
+            <div class="content-card"><h3>Drafting-system checks</h3><p>Validate targets, references, effective dates, expression parity, and unintended mutation before publication. This is an integration direction, not a current universal product claim.</p></div>
+            <div class="content-card"><h3>Publisher shadow audit</h3><p>Freeze a source-complete corpus, replay it independently, classify divergence, and return evidence without writing to production.</p></div>
+        </div>
+        <div class="claim-boundary"><strong>No implied endorsement:</strong> references to standards and projects describe ecosystem roles and possible interfaces. They do not imply formal integration, partnership, certification, or endorsement unless explicitly stated.</div>
+    </div></section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Next action</p><h2>Choose an artifact boundary, not a platform rewrite.</h2>
+        <p class="section-intro">A useful integration begins with one versioned input and one inspectable output: an AKN corpus, ELI effect set, drafting export, publisher transition bundle, or read-only API snapshot.</p>
+        <div class="page-actions"><a class="button button-primary" href="/pilots">Define a bounded integration pilot</a><a class="button" href="/architecture">Inspect the compiler boundaries</a></div>
+    </div></section>
+</main>
+<!-- #include footer -->
+</body></html>

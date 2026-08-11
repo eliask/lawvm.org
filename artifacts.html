@@ -45,92 +45,64 @@
 
     <header class="essay-header">
         <h1>Artifacts</h1>
-        <p class="subtitle">Methodology, corpus, reproducibility.</p>
+        <p class="subtitle">Methodology, metric, and reproduction boundary.</p>
     </header>
 
     <div class="essay-body">
 
     <h2>Benchmark methodology</h2>
 
-    <p>LawVM benchmarks replay output against real-world publication surfaces. For Finland, that means comparing replayed point-in-time text against the Finlex editorial consolidation.</p>
+    <p>LawVM benchmarks replay output against real-world publication surfaces. For Finland, that means comparing replayed point-in-time text against the Finlex updated/derived comparison surface.</p>
 
     <div class="callout">
-        <strong>The core rule:</strong> Benchmark scores are a proxy. Manual residual review against primary sources is the real verification loop. Similarity scores become meaningful only after the divergence <em>type</em> is classified.
+        <strong>The core rule:</strong> Benchmark scores are a proxy. Manual residual review against primary sources is the real verification loop. Similarity scores become interpretable only after the divergence <em>type</em> is classified.
     </div>
 
-    <p><strong>Two metrics:</strong></p>
-    <ul>
-        <li><strong>Levenshtein text distance</strong>: character-level normalized edit distance. Mean: 0.65%.</li>
-        <li><strong>Structural section error</strong>: section-level structural divergence. Mean: 4.25%.</li>
-    </ul>
+    <p>Some divergences enter candidate review when primary-source checks support further investigation beyond the comparison surface. The residual taxonomy classifies each mismatch so that evaluation is not a single number but a typed evidence surface.</p>
 
-    <p>Some divergences become high-confidence candidate findings when primary sources support LawVM over the Finlex consolidation. The residual taxonomy classifies each mismatch so that evaluation is not a single number but a typed evidence surface.</p>
-
-    <h2>Corpus definition</h2>
-
-    <p>The current Finnish alpha corpus is curated from a larger set of amended Finnish statutes. Curation criteria are structural, not success-based:</p>
-
-    <ol>
-        <li>Base statute XML exists in the archived source corpus</li>
-        <li>XML is parseable and contains section structure</li>
-        <li>Oracle consolidated XML exists with non-empty body</li>
-        <li>All amendment texts available in the archive</li>
-        <li>At least one amendment</li>
-    </ol>
-
-    <p>Decade span: 1920s&ndash;2020s. Amendment counts per statute: 1 to 238. Curation targets replayability rather than success. The curation script is <code>scripts/curate_corpus.py</code>.</p>
-
-    <h2>Current benchmark snapshot</h2>
+    <h2>August 2026 report</h2>
 
     <div class="table-scroll"><table>
         <thead><tr><th>Metric</th><th>Value</th></tr></thead>
         <tbody>
-            <tr><td>Corpus</td><td>Finnish alpha corpus</td></tr>
-            <tr><td>Mean Levenshtein distance</td><td>0.65%</td></tr>
-            <tr><td>Mean structural error</td><td>4.25%</td></tr>
-            <tr><td>Perfect text match</td><td>~420</td></tr>
-            <tr><td>Perfect structural match</td><td>367</td></tr>
-            <tr><td>&ge;95% structural</td><td>490</td></tr>
-            <tr><td>&lt;90% structural</td><td>104</td></tr>
+            <tr><td>Scope</td><td>Project&rsquo;s Finnish law replay benchmark</td></tr>
+            <tr><td>Corpus denominator</td><td>Not published with the August report</td></tr>
+            <tr><td>Comparison</td><td>Declared Finlex updated/derived surface</td></tr>
+            <tr><td>Mean normalized text edit distance</td><td>0.23%</td></tr>
+            <tr><td>Provenance</td><td>Project-reported development result; frozen public run package unavailable</td></tr>
         </tbody>
     </table></div>
 
-    <p class="as-of">Benchmark snapshot: 2026-04-16, mode: finlex_oracle. Figures are provisional and tied to the frozen source/oracle archive.</p>
+    <p class="as-of">Reported in August 2026. The site has not independently rebuilt the exact run. The 0.23% is a comparison-distance measurement, not an error rate, correctness percentage, proof-coverage result, or legal judgment.</p>
 
-    <h2>Golden dataset</h2>
+    <h2>Evidence package status</h2>
 
-    <p>The v0.1 alpha evidence exposes hundreds of replay-vs-Finlex divergences for triage. A subset of <strong>22 high-confidence meaningful candidate findings</strong> has been reported to Finlex. These remain candidate findings pending confirmation by Finlex or another competent authority.</p>
+    <p>The Finnish evidence work exposes replay-vs-Finlex comparison-surface divergences for triage. The project reported <strong>22 candidates that passed its internal review threshold</strong> for external review. These remain candidates pending confirmation by a competent authority.</p>
 
-    <p>Internal entries document statute ID, title, verdict, root cause, Finnish prose summary, affected sections, and source evidence. The Finnish evidence viewer exists in the repository, but it is not linked from the public website surface yet. Public DOI-backed exports are planned but not yet published.</p>
-
-    <p>Verdicts: <code>lawvm_ok</code> (Finlex is wrong), <code>mixed</code> (both have issues), <code>source_defect</code> (source material broken), <code>lawvm_bug</code> (LawVM is wrong).</p>
+    <p>The internal review dataset records statutes, affected provisions, source evidence, comparison role, and disposition. Individual review packets are not part of this website; the public surface reports aggregate status and review boundaries only.</p>
 
     <h2>Reproducibility</h2>
 
 <pre><code>uv sync
-uv run lawvm bench --mode finlex_oracle --label reproduce
+uv run lawvm bench --mode official_consolidation --corpus data/finland/bench_core.csv --no-save
 </code></pre>
 
-    <p>Replays the Finnish alpha corpus and reports metrics. Requires <code>data/finlex.farchive</code> (Finnish source and oracle archive). Results depend on archive contents at time of run: oracle consolidation surfaces change as Finlex editors update them. Frozen archive benchmarks are stable.</p>
+    <p>This runs the included Finnish benchmark manifest without writing benchmark history or run artifacts. It does not reproduce the August report: the historical corpus denominator and frozen run bundle are unavailable, and a newly acquired archive can differ as publisher-controlled comparison surfaces change. See the <a href="/assets/data/public-snapshot.json">public snapshot record</a> for the boundary.</p>
 
     <p>The source archive (<code>finlex.farchive</code>) is built from <a href="https://data.finlex.fi/">Finlex open data</a> batch downloads. The acquisition scripts and benchmark tooling are in the repository.</p>
 
-    <h2>Downloads</h2>
+    <h2>What is missing for exact reproduction</h2>
 
-    <p>Artifact releases (Zenodo DOI-backed) are planned for:</p>
+    <p>No citable frozen run bundle is currently published. An independently reproducible package would need:</p>
     <ul>
-        <li>Source and output snapshot for independent evaluation</li>
-        <li>Software release archive</li>
-        <li>Golden dataset export</li>
-        <li>Publication database (SQLite)</li>
+        <li>the exact source and comparison bytes;</li>
+        <li>the corpus manifest and inclusion/exclusion account;</li>
+        <li>the software environment and configuration;</li>
+        <li>per-row results plus the aggregate calculation; and</li>
+        <li>stable integrity identifiers and a citable release location.</li>
     </ul>
 
-    <p><strong>Status:</strong> Pending v0.1 artifact packaging. Links will appear here when available.</p>
-
-    <div class="callout">
-        <strong>This is supporting evidence, not the core adoption path.</strong>
-        Reproducible artifacts matter because they let institutions evaluate LawVM before using it in publication, audit, or source-authority workflows. See <a href="/handoff">the handoff map</a>.
-    </div>
+    <div class="page-actions"><a class="button button-primary" href="/docs/getting-started">Run the current command path</a><a class="button" href="/assurance/review">Review the claim boundary</a></div>
 
     </div>
 

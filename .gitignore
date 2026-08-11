@@ -1,4 +1,11 @@
 search-index.json
 llms-full.txt
 _site/
+__pycache__/
 *.db
+
+# Private planning and audit notes; never deploy or commit these files.
+.pro_plan.txt
+.pro_plan2.md
+.site_manual.md
+.site_audit.md

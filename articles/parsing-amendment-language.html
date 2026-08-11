@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Parsing Amendment Language with Conventional Grammars &mdash; LawVM</title>
-    <meta name="description" content="Amendment language is structured enough to parse with conventional grammars. LawVM shows this works on a real Finnish corpus — and that the parsing was always possible; the compiler is new.">
+    <meta name="description" content="How LawVM parses recurring Finnish amendment-language forms into typed operations while preserving unsupported and ambiguous cases.">
     <link rel="canonical" href="https://lawvm.org/articles/parsing-amendment-language">
     <meta property="og:title" content="Parsing Amendment Language with Conventional Grammars">
-    <meta property="og:description" content="Amendment language is structured enough to parse with conventional grammars. The parsing was always possible; the compiler is new.">
+    <meta property="og:description" content="How LawVM parses recurring Finnish amendment-language forms into typed operations while preserving unsupported and ambiguous cases.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lawvm.org/articles/parsing-amendment-language">
     <meta property="og:site_name" content="LawVM">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Parsing Amendment Language with Conventional Grammars">
-    <meta name="twitter:description" content="Amendment language is structured enough to parse with conventional grammars. The parsing was always possible; the compiler is new.">
+    <meta name="twitter:description" content="How LawVM parses recurring Finnish amendment-language forms into typed operations while preserving unsupported and ambiguous cases.">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "Parsing Amendment Language with Conventional Grammars",
-      "description": "Amendment language is structured enough to parse with conventional grammars. LawVM shows this works on a real Finnish corpus.",
+      "description": "Amendment language is structured enough for conventional grammars in covered forms. LawVM demonstrates the approach on a bounded Finnish alpha corpus.",
       "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
       "publisher": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
       "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
@@ -56,29 +56,26 @@
 
     <h2>The claim</h2>
 
-    <p>Legislative amendment language is a semi-formal instruction language embedded in ordinary human legal prose. In jurisdictions with mature drafting guidance, the amendment preamble and operative text follow conventions tight enough for conventional grammars to parse deterministically.</p>
+    <p>Legislative amendment language is a semi-formal instruction language embedded in ordinary legal prose. In jurisdictions with mature drafting guidance, many recurring preamble and operative-text forms are regular enough for conventional grammars to parse deterministically.</p>
 
-    <p>LawVM demonstrates this on the Finnish alpha corpus: hundreds of replay cases and thousands of amendment acts, parsed with PEG grammars into typed clause structures. No LLMs, no statistical models, no training data, and no rewrite of legislation into a programming language. The parser is deterministic: the same input always produces the same parse.</p>
+    <p>LawVM demonstrates this on a Finnish alpha corpus, parsing recurring forms with PEG grammars into typed clause structures. The core parser does not require an LLM, statistical model, training data, or a rewrite of legislation as code. Its output is deterministic: the same input produces the same parse, while unsupported or ambiguous cases remain visible for recovery or refusal.</p>
 
     <h2>What prior work already exists</h2>
 
-    <p>Parsing amendment language with conventional tools is not new. Real prior art exists:</p>
+    <p>Parsing amendment language with conventional tools predates LawVM. Selected examples include:</p>
 
     <ul>
-        <li><strong>Arnold-Moore (1990s)</strong> parsed Tasmanian amendment legislation using ATN (augmented transition network) parsers as part of the EnAct system. This is the earliest serious work on automatic amendment processing.</li>
-        <li><strong>Ogawa, Inagaki, Toyama (2008)</strong> formalized Japanese amendment sentences with regular expressions and achieved high accuracy in a bounded corpus.</li>
-        <li><strong>Bolioli et al.</strong> presented a legislative grammar for explicit text amendment in Italian law.</li>
-        <li><strong>Spinosa et al.</strong> described NLP-based metadata extraction for Italian legal text consolidation covering repeal, substitution, and integration.</li>
-        <li><strong>Polish ICAIL 2021 work</strong> framed amendment extraction as an automatic extraction task over statutory law.</li>
+        <li><strong>Arnold-Moore (1995)</strong> described an ATN-based parser and an architecture for processing Tasmanian amending legislation in the <a href="https://doi.org/10.1145/222092.222264">ICAIL paper</a>.</li>
+        <li><strong>Ogawa, Inagaki, and Toyama (2008)</strong> formalized Japanese amendment sentences for automatic consolidation; the <a href="https://www.kl.i.is.nagoya-u.ac.jp/person/toyama/paper.html">authors&rsquo; publication list</a> records the paper and venue.</li>
+        <li><strong>Bolioli, Mercatali, and Romano (2004)</strong> described formal models for explicit text amendment in Italian legislation in this <a href="https://opendl.ifip-tc6.org/db/conf/kmgov/kmgov2004/BolioliMR04.pdf">open paper</a>.</li>
+        <li><strong>Smywiński-Pohl et al. (2021)</strong> treated amendment detection in Polish statutory law as an information-extraction task in <a href="https://ruj.uj.edu.pl/entities/publication/00526c18-7bc0-4c2c-aa10-387ed6d3cfe7">ICAIL&rsquo;21</a>.</li>
     </ul>
 
-    <p>These systems show that amendment parsing and automated consolidation have a serious history. LawVM's claim is not that parsing amendment language is new. The stronger claim is that ordinary amendment streams can be compiled end-to-end into auditable legal text-state: deterministic parsing, typed target resolution, replay over provision timelines, source/oracle divergence typing, and open empirical evaluation on the Finnish corpus.</p>
+    <p>These systems establish prior art for parsing and partial consolidation. LawVM&rsquo;s narrower contribution is an open replay pipeline that carries admitted parses through typed target resolution, provision timelines, source/witness comparison, and residual evidence on a Finnish corpus.</p>
 
-    <p><strong>Parsing amendment language is not new. LawVM's contribution is an open replay compiler that carries parsed amendment instructions through typed operations, temporal materialization, and explicit residual evidence.</strong></p>
+    <h2>Why Finnish amendment language offers a useful test case</h2>
 
-    <h2>Why Finnish amendment language is unusually parseable</h2>
-
-    <p>Finnish legislative drafting follows the <em>Lainkirjoittajan opas</em> (legislative drafting guide), which prescribes the structure of amendment preambles (<em>johtolause</em>) with considerable precision:</p>
+    <p>Finnish legislative drafting follows the <a href="https://lainkirjoittaja.finlex.fi/17-johtolause/17-3/"><em>Lainkirjoittajan opas</em></a> (legislative drafting guide), which describes the structure of amendment preambles (<em>johtolause</em>):</p>
 
     <ul>
         <li>Actions follow a prescribed order: <code>kumotaan</code> (repeal), <code>muutetaan</code> (amend), <code>lisätään</code> (insert)</li>
@@ -88,7 +85,7 @@
         <li>The operative text follows the preamble in section order</li>
     </ul>
 
-    <p>This is not accidental. Legislative drafting conventions evolved to make amendment meaning deterministic for human readers. The same properties that make amendments readable by lawyers make them parseable by grammars.</p>
+    <p>These conventions support human reading and make recurring forms amenable to grammar-based parsing. They do not remove the need for source-local recovery or explicit refusal when a form falls outside the covered grammar.</p>
 
     <p>The <em>johtolause</em> is, in effect, a domain-specific instruction language. It has a grammar. LawVM exploits that grammar with a PEG parser that extracts clause structure, target addresses, action types, and payload boundaries.</p>
 
@@ -104,14 +101,14 @@
         <li><strong>Replay</strong>: operations applied to statute tree</li>
         <li><strong>Timeline construction</strong>: provision versions organized temporally</li>
         <li><strong>Materialization</strong>: point-in-time text produced</li>
-        <li><strong>Residual classification</strong>: divergences from oracle typed and explained</li>
+        <li><strong>Residual classification</strong>: divergences from the declared comparison surface are typed and explained</li>
     </ol>
 
     <p>The parse is necessary but not sufficient; the compiler pipeline and evidence surface are the contribution.</p>
 
     <h2>Where grammars break</h2>
 
-    <p>Not all amendment text is cleanly parseable. LawVM encounters:</p>
+    <p>Coverage is incomplete. LawVM encounters:</p>
 
     <ul>
         <li><strong>Implicit scope inheritance</strong> — "3, 4, 6 ja 7 luku" where bare numbers inherit the trailing "luku" (chapter). A flat parser sees numbers, not chapters.</li>
@@ -121,15 +118,15 @@
         <li><strong>Body-root fallbacks</strong> — generic preambles that don't name specific targets, forcing whole-section inference.</li>
     </ul>
 
-    <p>For these cases, LawVM uses quirks-mode recovery: heuristic normalization with explicit provenance. The architectural rule is that every recovery affecting legal text, structure, target resolution, or timeline selection must be named, witnessed, and rejectable in strict mode. Much of the engineering work in LawVM is turning historical ad hoc repairs into owned, typed recovery rules.</p>
+    <p>Selected covered cases use quirks-mode recovery: heuristic normalization with explicit provenance. Unsupported cases can instead remain blocked or unresolved. The architectural rule is that every recovery affecting legal text, structure, target resolution, or timeline selection must be named, witnessed, and rejectable in strict mode. Much of the engineering work in LawVM is turning historical ad hoc repairs into owned, typed recovery rules.</p>
 
     <h2>Why Deterministic Replay Matters Now</h2>
 
-    <p>The current moment in legal AI is dominated by LLM-based approaches. Large language models can do many things well, but multi-step amendment replay is not one of them. Prior et al. (NLLP 2025) showed that exact-match rates degrade badly on longer amendment chains, and that LLM consolidation outputs must remain drafts requiring expert review.</p>
+    <p>Recent work also shows why a deterministic evidence path remains useful. A <a href="https://aclanthology.org/2025.nllp-1.29/">2025 NLLP study</a> of LLM-based statute consolidation reported high text similarity but much lower exact-match rates on multi-step chains, and recommended rigorous human verification before deployment.</p>
 
-    <p>Deterministic parsing and symbolic replay are not competing with LLMs for the same task. They are solving a different problem: exact, reproducible, auditable text-state compilation where every step is inspectable and every failure is typed. That is infrastructure, not generation.</p>
+    <p>Deterministic parsing and symbolic replay address a different requirement: reproducible text-state compilation where each admitted step is inspectable and each failure is typed. They can therefore serve as infrastructure beneath systems that use statistical or generative methods for other tasks.</p>
 
-    <p>Conventional parsers can extract the structure of a <em>johtolause</em>. Legislative amendment language was designed to be unambiguous for human legal readers, and conventional tools can exploit that design. The surprising fact is how rarely legal information systems have attempted full amendment replay.</p>
+    <p>Conventional parsers can extract covered structures from a <em>johtolause</em>; the remaining work is resolving targets, replaying effects, and preserving the evidence for every refusal or recovery.</p>
 
     </div>
 

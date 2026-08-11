@@ -14,12 +14,15 @@ cp -r assets _site/
 # below after fragment substitution, so source fragments and generated output
 # are excluded here.
 find . -type f \
+    -not -path './.*' \
     -not -path './.git/*' \
     -not -path './_site/*' \
     -not -path './_fragments/*' \
+    -not -path './briefs-src/*' \
     -not -name '*.html' \
     -not -name 'TODO.md' \
     -not -name 'build.sh' \
+    -not -path './scripts/*' \
     -not -path './assets/*' | while read -r f; do
     dest="_site/${f#./}"
     mkdir -p "$(dirname "$dest")"
@@ -55,6 +58,12 @@ for frag in _fragments/*.html; do
     done
 done
 
+# Generate the assurance status page from the same registry published as JSON.
+python3 scripts/generate_assurance_status.py
+
+# Normalize release-wide landmarks, skip navigation, and fallback structured data.
+python3 scripts/finalize_html.py
+
 # Assert: no unsubstituted includes remain
 if grep -rn '<!-- #include ' _site/ 2>/dev/null; then
     echo "FAIL: unsubstituted <!-- #include --> markers remain in _site/" >&2
@@ -66,6 +75,42 @@ for required in \
     _site/finland/index.html \
     _site/architecture/index.html \
     _site/docs/getting-started/index.html \
+    _site/explore/index.html \
+    _site/evidence/index.html \
+    _site/jurisdictions/index.html \
+    _site/pilots/index.html \
+    _site/assessment/index.html \
+    _site/assurance/index.html \
+    _site/assurance/status/index.html \
+    _site/assurance/limits/index.html \
+    _site/assurance/dossier/index.html \
+    _site/assurance/verification/index.html \
+    _site/assurance/review/index.html \
+    _site/assurance/brief/index.html \
+    _site/solutions/index.html \
+    _site/solutions/consolidation-assurance/index.html \
+    _site/solutions/drafting-publication-ci/index.html \
+    _site/solutions/legal-data-conformance/index.html \
+    _site/solutions/multilingual-legislation/index.html \
+    _site/solutions/source-readiness/index.html \
+    _site/solutions/source-recovery/index.html \
+    _site/fi/lainsaadannon-kieliversioiden-eheys/index.html \
+    _site/fi/sv-lagstiftningskonformitet/index.html \
+    _site/technology/ecosystem/index.html \
+    _site/assets/data/frontends.json \
+    _site/assets/data/evidence.json \
+    _site/assets/data/public-snapshot.json \
+    _site/assets/data/assurance-claims.json \
+    _site/assets/data/assurance-demo.json \
+    _site/assets/data/verification-map.json \
+    _site/assets/data/review-protocol.json \
+    _site/assets/js/assurance-dossier.js \
+    _site/assets/js/evidence-ledger.js \
+    _site/assets/js/frontend-context.js \
+    _site/assets/briefs/lawvm-fi-sv-kieliversiopilotti.pdf \
+    _site/assets/briefs/lawvm-fi-sv-sprakversionspilot.pdf \
+    _site/assets/briefs/lawvm-institutional-assurance.pdf \
+    _site/assets/og/lawvm-evidence.png \
     _site/articles/truth-surfaces/index.html \
     _site/favicon.svg \
     _site/sitemap.xml; do
@@ -74,5 +119,13 @@ for required in \
         exit 1
     fi
 done
+
+if find _site -name '.*' -print -quit | grep -q .; then
+    echo "FAIL: private dotfile copied into _site/" >&2
+    find _site -name '.*' -print >&2
+    exit 1
+fi
+
+python3 scripts/check_site.py
 
 echo "Build complete: _site/"

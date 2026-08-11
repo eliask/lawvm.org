@@ -3,196 +3,200 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jurisdictions &mdash; LawVM</title>
-    <meta name="description" content="LawVM jurisdiction frontend status, benchmark telemetry, source coverage limits, and caveats for Finland, Estonia, the UK, Norway, and Sweden.">
+    <title>Frontend Registry &mdash; LawVM</title>
+    <meta name="description" content="LawVM frontend maturity by source acquisition, structure, effects, dry-run, replay, verification, language, integration, and public claim.">
     <link rel="canonical" href="https://lawvm.org/jurisdictions">
-    <meta property="og:title" content="Jurisdictions — LawVM">
-    <meta property="og:description" content="Jurisdiction frontend status, benchmark telemetry, source coverage limits, and caveats.">
+    <meta property="og:title" content="Frontend registry — LawVM">
+    <meta property="og:description" content="Inspect what each LawVM jurisdiction frontend can establish, what remains blocked, and whether it is integrated or staging.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lawvm.org/jurisdictions">
     <meta property="og:site_name" content="LawVM">
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Jurisdictions — LawVM">
-    <meta name="twitter:description" content="Frontend status, measured replay telemetry, and source coverage limits.">
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebPage",
-      "name": "LawVM Jurisdictions",
-      "description": "Jurisdiction frontend status, measured replay telemetry, and source coverage limits.",
-      "url": "https://lawvm.org/jurisdictions",
-      "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" }
-    }
-    </script>
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- #include head-end -->
 </head>
 <body>
-
 <header>
     <div class="wrap">
         <a class="logo" href="/">LawVM</a>
-        <nav>
+        <nav aria-label="Primary navigation">
             <!-- #include nav-content -->
             <!-- #include theme-toggle -->
         </nav>
     </div>
 </header>
+<main id="main-content">
+    <section class="wrap-wide page-heading">
+        <p class="section-kicker">Frontend registry</p>
+        <h1>Many source regimes. No single &ldquo;supported&rdquo; badge.</h1>
+        <p class="lead">A frontend can have strong source acquisition without executable effects, or broad dry-run evidence without authorized replay. This registry keeps integration, source, parsing, effects, replay, verification, language, and public artifacts separate.</p>
+        <div class="meta-strip"><span>Registry snapshot: 11 August 2026</span><span>Mainline + staging packages</span><span><a href="/assets/data/frontends.json">Machine-readable registry</a></span></div>
+        <div class="claim-boundary"><strong>How to read assurance profiles:</strong> each nine-axis profile is a conservative public projection of typed interfaces and checker evidence. <code>typed</code> is not correctness; <code>observe_only</code> does not uniformly block; <code>not_claimed</code> means this page makes no frontend-level claim. No lane automatically edits or publishes legal text.</div>
+        <p class="form-note">Contact links open your email client. Do not send confidential or restricted source files before agreeing a processing boundary.</p>
+    </section>
 
-<main class="wrap">
-<article>
+    <section class="section-block">
+        <div class="wrap-wide">
+            <p class="section-kicker">Mainline</p>
+            <h2>Integrated frontends</h2>
+            <p class="section-intro">These lanes are present in the main LawVM checkout. &ldquo;Integrated&rdquo; describes repository integration, not legal authority or uniform replay maturity.</p>
+            <div class="card-grid">
+                <article class="content-card" id="finland">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag tag-accent">reference replay frontend</span><span class="tag">fi / sv</span></div>
+                    <h3>Finland</h3>
+                    <p>The reference replay lane for a declared Finnish corpus: source archives, Finnish amendment-language compilation, point-in-time state, provenance, and comparison-surface classification.</p>
+                    <div class="status-list">
+                        <dl class="status-row"><dt>Authority / source</dt><dd>Enacted Statute Book material is the replay source; the Finlex updated/derived text is a fallible comparison surface. Source state: bounded source-complete subset.</dd></dl>
+                        <dl class="status-row"><dt>Claim ceiling</dt><dd>Bounded replay construction evidence over a declared Finnish corpus, compared with a declared derived/updated surface.</dd></dl>
+                        <dl class="status-row"><dt>Boundary</dt><dd>Not an official consolidation; source XML/HTML differences, corrigenda, manual frontiers, and unresolved deterministic or source/timeline checks remain explicit.</dd></dl>
+                        <dl class="status-row"><dt>Pilot-ready use</dt><dd>Bounded consolidation QA and FI/SV expression-inventory work; recurring institutional operation is not yet proven.</dd></dl>
+                        <dl class="status-row"><dt>Local need</dt><dd>Bilingual legal review, Finlex workflow knowledge, and an institutional pilot sponsor.</dd></dl>
+                        <dl class="status-row"><dt>Next gate</dt><dd>Close current deterministic and source/timeline identity frontiers.</dd></dl>
+                    </div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=typed · typed_closure=typed · admission=observe_only · mutation_observation=observe_only · temporal_state=pit · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=fi">Assess Finland</a><a class="button" href="/pilots?frontend=fi#consolidation">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Finland%20frontend">Contact</a></div>
+                    <p><a href="/finland">Inspect Finland evidence &rarr;</a></p>
+                </article>
+                <article class="content-card" id="estonia">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag tag-accent">consistency audit</span><span class="tag">et / en</span></div>
+                    <h3>Estonia</h3>
+                    <p>An authoritative-consolidation consistency frontend over Riigi Teataja sources, with a reviewable comparison path and one externally confirmed correction.</p>
+                    <div class="status-list">
+                        <dl class="status-row"><dt>Authority / source</dt><dd>Riigi Teataja operates an official consolidation regime; LawVM uses a bounded source-complete subset for consistency checking.</dd></dl>
+                        <dl class="status-row"><dt>Claim ceiling</dt><dd>Replay can produce reviewable consolidation candidates; one reported omission was confirmed and corrected.</dd></dl>
+                        <dl class="status-row"><dt>Boundary</dt><dd>The official consolidation remains a comparison surface, not an infallible reference or automatic replay authority.</dd></dl>
+                        <dl class="status-row"><dt>Pilot-ready use</dt><dd>A bounded publisher-consistency audit with source-linked candidate review.</dd></dl>
+                        <dl class="status-row"><dt>Local need</dt><dd>Riigi Teataja source and drafting expertise plus an agreed recurring-disposition workflow.</dd></dl>
+                        <dl class="status-row"><dt>Next gate</dt><dd>Stabilize source and replay semantics for recurring evidence production.</dd></dl>
+                    </div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=typed · typed_closure=typed · admission=observe_only · mutation_observation=observe_only · temporal_state=pit · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=externally_adjudicated</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=ee">Assess Estonia</a><a class="button" href="/pilots?frontend=ee#consolidation">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Estonia%20frontend">Contact</a></div>
+                    <p><a href="/cases/estonia-audiitors-95-2">Inspect the confirmed case &rarr;</a></p>
+                </article>
+                <article class="content-card" id="united-kingdom">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag tag-amber">bounded effects/version workbench</span><span class="tag">en</span></div>
+                    <h3>United Kingdom</h3>
+                    <p>A legislation.gov.uk workbench for effects, versions, extent, commencement, source chains, replay diagnostics, and comparison-surface/pathology classification.</p>
+                    <div class="status-list">
+                        <dl class="status-row"><dt>Authority / source</dt><dd>Official effects and version data are evidence inputs to a bounded source-complete subset, not silent replay authority.</dd></dl>
+                        <dl class="status-row"><dt>Claim ceiling</dt><dd>Phase-owned effect/version and bounded replay evidence with explicit source and manual-compilation accounting.</dd></dl>
+                        <dl class="status-row"><dt>Current maturity</dt><dd>Observe-only effects, version, source-chain, and commencement diagnostics for a bounded corpus; not an automatic consolidation service.</dd></dl>
+                        <dl class="status-row"><dt>Boundary</dt><dd>No broad claim that every UK law has a complete source chain or fully replayed current text.</dd></dl>
+                        <dl class="status-row"><dt>Pilot-ready use</dt><dd>Effects, version, source-chain, and outstanding-change diagnostics for a bounded corpus.</dd></dl>
+                        <dl class="status-row"><dt>Local need</dt><dd>Publication-workflow expertise and a source-complete benchmark tranche.</dd></dl>
+                        <dl class="status-row"><dt>Next gate</dt><dd>Close source-chain and manual-compilation frontiers without turning effect metadata into silent authority.</dd></dl>
+                    </div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=candidate · typed_closure=candidate · admission=observe_only · mutation_observation=observe_only · temporal_state=residual · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=uk">Assess the UK lane</a><a class="button" href="/pilots?frontend=uk#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20United%20Kingdom%20frontend">Contact</a></div>
+                    <p><a href="/explore">Open the UK explorer &rarr;</a></p>
+                </article>
+                <article class="content-card" id="new-zealand">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag tag-amber">dry-run frontend</span><span class="tag">en</span></div>
+                    <h3>New Zealand</h3>
+                    <p>An API-backed source corpus with typed effects and five operation-family dry-run checks against before/after witnesses.</p>
+                    <div class="status-list">
+                        <dl class="status-row"><dt>Authority / source</dt><dd>Official version data supplies before/after witnesses; source state remains acquisition-oriented rather than a complete replay universe.</dd></dl>
+                        <dl class="status-row"><dt>Claim ceiling</dt><dd>Emitted dry-run candidates can be compared with before/after witnesses for selected operation families; no aggregate accuracy rate is claimed.</dd></dl>
+                        <dl class="status-row"><dt>Boundary</dt><dd>End-to-end operation coverage remains limited and actual canonical replay is deliberately blocked.</dd></dl>
+                        <dl class="status-row"><dt>Pilot-ready use</dt><dd>API/source conformance and witnessed dry-run expansion for selected operation families.</dd></dl>
+                        <dl class="status-row"><dt>Local need</dt><dd>A pinned, denominator-complete transition corpus and local drafting review.</dd></dl>
+                        <dl class="status-row"><dt>Next gate</dt><dd>Increase pinned witness-denominator coverage before promotion.</dd></dl>
+                    </div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=candidate · typed_closure=candidate · admission=not_authorized · mutation_observation=dry_run · temporal_state=residual · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=nz">Assess New Zealand</a><a class="button" href="/pilots?frontend=nz#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20New%20Zealand%20frontend">Contact</a></div>
+                </article>
+                <article class="content-card" id="norway">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">structured-source experiments</span><span class="tag">nb / nn</span></div>
+                    <h3>Norway</h3>
+                    <p>Structured amendment indexing, replay experiments, verification, commencement blockers, and source inspection over modern public-source chains.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Official amendment sources drive an acquisition-stage modern-source lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Structured-source and replay experiments over available modern public sources.</dd></dl><dl class="status-row"><dt>Boundary</dt><dd>Historical source access is weak before roughly 2001, and contingent commencement often blocks deterministic state.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Modern-source and commencement-readiness assessment for a bounded domain.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Historical source access and authoritative interpretation of contingent commencement.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Acquire historical sources and explicit commencement evidence.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=typed · typed_closure=typed · admission=observe_only · mutation_observation=observe_only · temporal_state=pit · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=no">Assess Norway</a><a class="button" href="/pilots?frontend=no#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Norway%20frontend">Contact</a></div>
+                </article>
+                <article class="content-card" id="sweden">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">source/version experiments</span><span class="tag">sv</span></div>
+                    <h3>Sweden</h3>
+                    <p>Official SFS artifact preservation, act parsing, current-text ingestion, and first-pass operation artifacts. It also exercises shared Swedish-language and parallel-expression infrastructure.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Official SFS amendment artifacts drive an acquisition-stage source lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Official-source preservation, parsing, and first-pass operation artifacts; broad replay fidelity is unmeasured.</dd></dl><dl class="status-row"><dt>Boundary</dt><dd>Broad current-law replay fidelity is not yet established; public historical sources are strongest from roughly 1999 onward.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Official-artifact preservation, structure inventory, and transition-source feasibility.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>A source-complete transition sample and Swedish drafting-language adjudication.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Build source-complete transition subsets and dry-run witnesses.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=typed · typed_closure=typed · admission=observe_only · mutation_observation=observe_only · temporal_state=pit · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=se">Assess Sweden</a><a class="button" href="/pilots?frontend=se#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Sweden%20frontend">Contact</a></div>
+                </article>
+                <article class="content-card" id="european-union">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">exploratory acquisition</span><span class="tag">multilingual</span></div>
+                    <h3>European Union</h3>
+                    <p>CELEX/ELI acquisition, consolidation, treaty, impact, and act-modeling experiments across a multilingual legal system.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>CELEX/ELI sources support an acquisition-stage, source-only lane with authority declared per expression and artifact.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Exploratory CELEX/ELI acquisition and legal-resource modeling.</dd></dl><dl class="status-row"><dt>Boundary</dt><dd>Exploratory modeling and acquisition only; outside the Finland replay-construction claim.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>CELEX/ELI identity, manifestation, expression, and relationship conformance for a bounded corpus.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>A scoped legal domain, authoritative expression rules, and effect-evidence review.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Define bounded effect and expression evidence subsets.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=candidate · typed_closure=candidate · admission=not_authorized · mutation_observation=dry_run · temporal_state=residual · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=eu">Assess the EU lane</a><a class="button" href="/pilots?frontend=eu#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20European%20Union%20frontend">Contact</a></div>
+                </article>
+                <article class="content-card" id="united-states">
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">exploratory bootstrap</span><span class="tag">en</span></div>
+                    <h3>United States federal</h3>
+                    <p>United States Code import, source bootstrap, amendment-source discovery, classification, and scale experiments over a fragmented publication regime.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Official source-law and codification artifacts support an acquisition-stage, source-only lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Source/bootstrap/import tooling; no broad historical federal replay claim.</dd></dl><dl class="status-row"><dt>Boundary</dt><dd>Source/bootstrap tooling is not a broad historical federal replay claim.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Source, codification, and classification readiness for one bounded title or subject.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Authoritative source-law/codification mapping and a deliberately narrow evaluation corpus.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Resolve amendment-source and codification relationships for a bounded title.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=typed · effect_accounting=residual · typed_closure=residual · admission=not_authorized · mutation_observation=not_claimed · temporal_state=not_claimed · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=us">Assess US federal</a><a class="button" href="/pilots?frontend=us#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20US%20federal%20frontend">Contact</a></div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-    <header class="essay-header">
-        <h1>Jurisdictions</h1>
-        <p class="subtitle">Status, source boundaries, and measured telemetry.</p>
-    </header>
+    <section class="section-block">
+        <div class="wrap-wide">
+            <p class="section-kicker">Incoming portfolio</p>
+            <h2>Staging, not yet integrated</h2>
+            <p class="section-intro">These frontends exist as separate staging packages. Their current implementation was inspected on 11 August 2026, but they were not yet integrated into the mainline release. They are usable for bounded source, corpus, and conformance assessments—not as production replay integrations or support claims.</p>
+            <div class="claim-boundary"><strong>Usable now:</strong> these lanes can support bounded source, corpus, and conformance assessments. They are not mainline production-replay integrations; any pilot begins by re-inspecting and pinning the selected staging artifacts.</div>
+            <div class="card-grid">
+                <article class="content-card" id="japan">
+                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">source + PIT acquisition</span><span class="tag">ja</span></div>
+                    <h3>Japan</h3>
+                    <p>Archives e-Gov catalogs, revision histories and XML, bulk XML, attachments, and House enacted text. Includes a loss-preserving Japanese Law XML source AST and transition census.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>e-Gov and enacted-text sources support an acquisition-stage, source-only lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Source/PIT acquisition, preservation, source structure, and typed census only.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>e-Gov source, version, XML-structure, attachment, and manifestation conformance.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Japanese amendment-clause expertise and witnessed before/after transition samples.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Resolve amending sources and promote witnessed operation families.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=unknown · effect_accounting=residual · typed_closure=not_claimed · admission=not_authorized · mutation_observation=not_claimed · temporal_state=not_claimed · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026; staging package not in mainline.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=jp">Assess Japan</a><a class="button" href="/pilots?frontend=jp#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Japan%20frontend">Contact</a></div>
+                </article>
+                <article class="content-card" id="south-korea">
+                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">acquisition only</span><span class="tag">ko</span></div>
+                    <h3>South Korea</h3>
+                    <p>Defines typed, resumable acquisition lanes for the Law Information Center, Gazette, National Assembly, government drafts, and local-law sources, with explicit accounting for configuration and transport failures.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Declared official-source lanes remain at inventory stage pending credentials and a measured corpus.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Official-source lane definition and acquisition accounting only; corpus completeness is not claimed.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Credentialed acquisition and official-source account for one declared lane.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Authorized API credentials, a measured real corpus, and Korean source expertise.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Complete and measure a real acquisition corpus.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=residual · effect_accounting=residual · typed_closure=not_claimed · admission=not_authorized · mutation_observation=not_claimed · temporal_state=not_claimed · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026; staging package not in mainline.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=kr">Assess South Korea</a><a class="button" href="/pilots?frontend=kr#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20South%20Korea%20frontend">Contact</a></div>
+                </article>
+                <article class="content-card" id="poland">
+                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">ELI source account</span><span class="tag">pl</span></div>
+                    <h3>Poland</h3>
+                    <p>Archives official ELI/Sejm discovery, act metadata, references, structure JSON, HTML/PDF manifestations, official journal pages, and source-account evidence.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Official ELI/Sejm sources support an acquisition-stage, source-only lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Source acquisition, manifestation preservation, and source-account evidence only.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>ELI identity, manifestation, reference, version, and structure conformance.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Polish amendment-clause expertise and pinned before/after witnesses.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Implement Polish clause parsing and witnessed effect candidates.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=unknown · effect_accounting=residual · typed_closure=not_claimed · admission=not_authorized · mutation_observation=not_claimed · temporal_state=not_claimed · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026; staging package not in mainline.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=pl">Assess Poland</a><a class="button" href="/pilots?frontend=pl#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Poland%20frontend">Contact</a></div>
+                </article>
+                <article class="content-card" id="switzerland">
+                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">Fedlex evidence</span><span class="tag">de / fr / it</span></div>
+                    <h3>Switzerland</h3>
+                    <p>A bounded federal Fedlex evidence frontend for post-30 May 2022 material: Work&ndash;Expression&ndash;Manifestation records (legal work, language expression, and concrete manifestation), structured impact inventory, applicability-dated transition bundles, and multilingual source-completeness accounting.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Fedlex sources support a bounded source-complete post-2022 subset; the lane remains source-only.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Swiss federal source and impact evidence for a bounded tranche; no amendment lowering or replay authority.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Fedlex Work–Expression–Manifestation, impact, applicability-date, and language-completeness conformance.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Swiss federal drafting expertise and German/French/Italian legal review for a bounded tranche.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Establish bounded effect-family evidence with explicit source, date, before/after, and expression completeness.</dd></dl></div>
+                    <details class="claim-details"><summary>Assurance profile</summary><p><code>source_identity=unknown · effect_accounting=residual · typed_closure=candidate · admission=not_authorized · mutation_observation=not_claimed · temporal_state=residual · independent_trace_check=not_claimed · source_to_operation_entailment=not_claimed · external_adjudication=not_claimed</code></p><p class="as-of">Profile reviewed on 11 August 2026; staging package not in mainline.</p></details>
+                    <div class="page-actions"><a class="button" href="/assessment?frontend=ch">Assess Switzerland</a><a class="button" href="/pilots?frontend=ch#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Switzerland%20frontend">Contact</a></div>
+                </article>
+            </div>
+        </div>
+    </section>
 
-    <div class="essay-body">
-
-    <p>Jurisdictions differ by source access, authority model, compiler maturity, and replay fidelity. This page keeps those axes separate instead of flattening them into one support claim.</p>
-
-    <div class="callout">
-        <strong>How to read these numbers:</strong> similarity telemetry is not a legal correctness claim. It says how closely a replay or compiler artifact matches a selected witness surface under a specific corpus and comparison mode. A high score can still hide source defects or oracle conventions; a low score can be caused by missing sources rather than bad replay.
-    </div>
-
-    <p>For a concrete walkthrough of the compiler model before reading the numbers, see the <a href="/explainer">interactive replay explainer</a>.</p>
-
-    <div class="table-scroll"><table class="status-table">
-        <thead><tr><th>Jurisdiction</th><th>Status</th><th>Measured public posture</th></tr></thead>
-        <tbody>
-            <tr>
-                <td><strong>Finland</strong></td>
-                <td><span class="badge badge-green">Active</span></td>
-                <td>Reference replay frontend. Frozen 2026-04-16 benchmark: 0.65% mean text distance, 4.25% mean section-level structural error, 367 perfect structural matches, 490 at &ge;95% structural match. <a href="/finland">See Finland.</a></td>
-            </tr>
-            <tr>
-                <td><strong>Estonia</strong></td>
-                <td><span class="badge badge-amber">Maintained</span></td>
-                <td>Authoritative-consolidation consistency frontend. Latest saved curated run: 343/343 OK, 98.47% average section match, 242 perfect rows; core/headline subset: 259 rows, 98.75% average, 195 perfect. One LawVM-reported omission has been confirmed and corrected by Riigi Teataja. <a href="/cases/estonia-audiitors-95-2">Read the case study.</a></td>
-            </tr>
-            <tr>
-                <td><strong>United Kingdom</strong></td>
-                <td><span class="badge badge-amber">Maintained</span></td>
-                <td>Substantial UK workbench over legislation.gov.uk source/current/effects data. Latest wide enacted-baseline run, 2026-06-03: 12,393 rows, 12,089 status-OK rows, 10 source-unavailable rows, 0 errors; core benchmark rows: 3,423. Current corpus index, 2026-06-04: 12,556 corpus rows, including 374 source-complete regnal leaf rows recovered from Multiple Choices pages and 0 Multiple Choices alias rows. A 2026-06-05 phase-owned 1,000-statute hard-gate sample had 0 active unclassified residuals, 0 deterministic frontend candidates, 0 non-manual source-chain frontiers, and 0 unexplained mutation-boundary reports; its 427 core comparison rows averaged 99.67% aligned EID-set similarity.</td>
-            </tr>
-            <tr>
-                <td><strong>Norway</strong></td>
-                <td><span class="badge badge-dim">Experimental</span></td>
-                <td>Operational public-Lovdata prototype, strongest for post-2001 public-source chains. Inventory: 648 current laws, 462 amended current laws, 332 with local base source, 51 fully replayable current laws, 19 fully replayable executable amended laws. Current verification sample: 2 consistent, 5 divergent, 12 invariant errors.</td>
-            </tr>
-            <tr>
-                <td><strong>Sweden</strong></td>
-                <td><span class="badge badge-dim">Experimental</span></td>
-                <td>Source/provenance and official-act compiler frontier, not yet a replay benchmark frontend. Archive has 37,899 official SFS act parses from 1999-2026 and 20,340 compiled first-pass op artifacts; broad current-law replay fidelity is not measured yet.</td>
-            </tr>
-        </tbody>
-    </table></div>
-
-    <h2>Benchmark Snapshot</h2>
-
-    <div class="table-scroll"><table>
-        <thead>
-            <tr><th>Jurisdiction</th><th>Corpus / surface</th><th>Text metric</th><th>Structure metric</th><th>Near-perfect entries</th><th>Main caveat</th></tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><strong>Finland</strong></td>
-                <td>Finnish alpha replay corpus vs archived Finlex comparison surface, frozen 2026-04-16.</td>
-                <td>0.65% mean text distance.</td>
-                <td>4.25% mean section-level structural error.</td>
-                <td>~420 perfect text matches; 367 perfect structural matches; 490 at &ge;95% structural match.</td>
-                <td>Finlex is an editorial, non-authoritative witness surface; residuals require primary-source review.</td>
-            </tr>
-            <tr>
-                <td><strong>Estonia</strong></td>
-                <td>343 curated law-only Riigi Teataja base/oracle pairs, latest saved run 2026-04-25.</td>
-                <td>No public text-distance claim yet.</td>
-                <td>98.47% average section match across all OK rows; 98.75% on 259 core/headline rows.</td>
-                <td>242/343 perfect all rows; 195/259 perfect core rows; 313/343 at &ge;95%.</td>
-                <td>Corpus is curated and limited; Estonia is consistency checking against authoritative consolidated law, not replay-first replacement of the official surface. One reported omission has been confirmed and corrected by Riigi Teataja.</td>
-            </tr>
-            <tr>
-                <td><strong>United Kingdom</strong></td>
-                <td>legislation.gov.uk source/current/effects data. Wide enacted-baseline run, 2026-06-03: 12,393 rows, 0 errors. Phase-owned replay hard gate, 2026-06-05: 1,000 sampled statutes.</td>
-                <td>Wide enacted baseline: 87.5% average common-EID text similarity across 3,740 EIDs. Text similarity is diagnostic only because enacted text and current oracle text may lawfully diverge at the same EID.</td>
-                <td>Hard-gate sample: 427 core comparison rows at 99.67% mean aligned EID-set similarity; 160 non-core comparison rows and 413 source-frontier rows kept separate.</td>
-                <td>Hard-gate sample: 0 active unclassified residuals, 0 deterministic frontend candidates, 0 non-manual source-chain frontiers, 0 unexplained mutation-boundary reports.</td>
-                <td>The broad aggregate is intentionally not a single support score. Remaining rows are split into source-frontier, manual-compilation frontier, effect-feed frontier, retained-repeal/oracle pathology, zero-oracle-retention, and other typed buckets.</td>
-            </tr>
-            <tr>
-                <td><strong>Norway</strong></td>
-                <td>Public Lovdata/Lovtidend archive inventory, strongest from 2001 onward.</td>
-                <td>No credible broad text-distance metric yet.</td>
-                <td>No credible broad tree-distance metric yet; current verification sample has 2/19 consistent executable replay candidates.</td>
-                <td>2 consistent rows in the current 19-candidate executable sample.</td>
-                <td>Many current laws are blocked by contingent commencement, missing local base sources, or invariant failures; source continuity before 2001 is limited without deeper Lovdata/historical access.</td>
-            </tr>
-            <tr>
-                <td><strong>Sweden</strong></td>
-                <td>Official SFS PDF/doc acquisition and first-pass operation compilation, current archive 1999-2026.</td>
-                <td>Not measured.</td>
-                <td>Not measured as a replay benchmark.</td>
-                <td>Not applicable yet; 20,160 official-op artifacts are non-empty, but that is compiler coverage, not replay fidelity.</td>
-                <td>Broad current-law replay and source-complete historical reconstruction are not built yet; source acquisition currently starts at 1999.</td>
-            </tr>
-        </tbody>
-    </table></div>
-
-    <h2>Per-Jurisdiction Notes</h2>
-
-    <h3>Finland</h3>
-    <p>Finland is the zero-to-one construction proof: ordinary amendment streams are compiled into point-in-time legal text-state at national-corpus scale. The frontend has the deepest source acquisition, amendment parsing, payload normalization, target resolution, replay, residual taxonomy, and manual adjudication workflow. See it live: the <a href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-fi-all-no-amendments.json">LawVM Explorer</a> renders a Finnish statute as a full version-control timeline with engine-verified citations.</p>
-    <p>The key caveat is epistemic, not cosmetic: replay-vs-Finlex comparison is a witness comparison. Finlex can be right, LawVM can be right, both can be wrong, or the source lanes can be non-commensurable. The public claim is therefore candidate findings and classified residuals, not official error adjudication.</p>
-
-    <h3>Estonia</h3>
-    <p>Estonia is the strongest non-Finland consistency-checking lane. Riigi Teataja consolidated law is authoritative, so the role is different from Finland: replay is used to check internal consistency against binding consolidated redactions rather than to compete with a non-authoritative editorial surface.</p>
-    <p>The saved benchmark is strong but bounded: 343 curated law-only pairs, section-level comparison, and an intentionally partial living spec. It should be presented as a serious maintained frontend, not as a claim that all Estonian legal history is solved.</p>
-    <p>One Estonia finding has moved past candidate status. Riigi Teataja confirmed and corrected a LawVM-reported omission in the Auditors Activities Act (<em>Audiitortegevuse seadus</em>), act ID 107012025013, § 95<sup>2</sup>(1): the phrase <em>või kestlikkusaruande audiitorkontrolli</em> from RT I, 07.01.2025, 1 had been missing from the consolidated text. The correction was also made in the translation. <a href="/cases/estonia-audiitors-95-2">Read the correction case study.</a></p>
-
-    <h3>United Kingdom</h3>
-    <p>The UK frontend is substantial because legislation.gov.uk exposes versioned texts and effect metadata. LawVM uses that structure to explore EID-level replay, text comparison, effects-feed candidate selection, commencement gating, source/adjudication records, and source-surface pathologies. An English-language <a href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-uk.json">LawVM Explorer</a> timeline demonstrates the same version-control affordances on a UK statute.</p>
-    <p>The 2026-06-03 wide run is useful because it separates core benchmark rows from evidence/source-surface rows: 3,423 core benchmark rows and 8,970 non-core/evidence rows. The non-core classes are mostly no-oracle-EID rows, no-enacted-EID rows, collapsed oracle structure, and spent/current projection surfaces. The follow-up 2026-06-04 acquisition pass keeps ambiguous short-form Multiple Choices URLs as source frontiers, indexes their official regnal leaf candidates separately when current and enacted XML are available, and excludes repaired ambiguous aliases from the bench corpus.</p>
-    <p>The later 2026-06-05 phase-owned hard-gate sample is the more relevant replay-status signal: 1,000 sampled statutes, 587 scored rows, 413 source-frontier rows, 427 core comparison rows at 99.67% mean aligned EID-set similarity, and no active unclassified residuals, deterministic frontend candidates, non-manual source-chain frontiers, or unexplained mutation-boundary reports. The 160 non-core comparison rows are still visible as manual-compilation, source/effect-feed, zero-oracle-retention, retained-repeal, or oracle/source-pathology frontiers rather than being hidden inside a headline replay score.</p>
-    <p>The caveat is equally important: this is a workbench, not a source-complete legal consolidation claim. Amendment replay, source-chain proof, manual frontiers, and oracle/source pathology classification remain separate lanes; LawVM should not promote evidence into executable authority until source, target, payload, temporal/extent, and mutation-boundary proof are present.</p>
-
-    <h3>Norway</h3>
-    <p>Norway has real tooling: amendment indexing, replay, inventory, verification, commencement blocker reports, and source inspection. It is useful for modern public-source chains, but the public source regime is the limiting factor. The current archive is effectively post-2001 for public Lovtidend amendment material.</p>
-    <p>The present blocker is not just parser coverage. Many amendments depend on contingent commencement such as "the King determines", and many older current laws lack local base sources. Until commencement evidence and historical source access improve, Norway should be described as operationally useful but experimental.</p>
-
-    <h3>Sweden</h3>
-    <p>Sweden is strongest at the provenance boundary. The frontend archives official SFS document/PDF artifacts, extracts official act text, parses current text, and compiles first-pass operation artifacts for many acts. That is valuable, but it is not yet the same thing as replay fidelity.</p>
-    <p>The current archive is broad from 1999 onward. Older SFS reconstruction and broad current-law replay still need more source acquisition and explicit compiler waists before Sweden can honestly receive a text/tree benchmark like Finland or Estonia.</p>
-
-    <h2>What the labels mean</h2>
-
-    <p><strong>Active:</strong> Where new replay semantics, normalization rules, and adjudication machinery are being exercised against a real corpus. Where the architecture is stressed.</p>
-
-    <p><strong>Maintained:</strong> Compiles, tests pass, revivable when needed. Not currently where deep replay work is happening.</p>
-
-    <p><strong>Experimental:</strong> Useful as architecture probes. Not a promise of deep operational maturity.</p>
-
-    <h2>Adding a new jurisdiction</h2>
-
-    <p>Adding a jurisdiction means writing a frontend parser that maps local amendment language to the shared kernel.</p>
-
-    <p>The shared kernel provides: canonical legal-address and tree model, operation vocabulary, replay execution, timeline semantics, materialization, structural invariants.</p>
-
-    <p>The frontend provides: source acquisition, parsing conventions, drafting idioms, payload extraction, elaboration rules, local pathology classification.</p>
-
-    <p>See <code>jurisdiction_starter/</code> in the repository for the contract-first starter.</p>
-
-    <h2>Maintainership map</h2>
-
-    <p>Jurisdiction support works best when maintained by people who understand the local source regime. LawVM can provide the kernel and architecture; local maintainers need to understand source acquisition, source authority, drafting idioms, benchmark corpus, and caveats.</p>
-
-    <p>If your institution has serious interest in using LawVM for one of these source regimes, start from the <a href="/handoff">handoff page</a>. The useful next step is usually a publication pilot, source-authority review, jurisdiction adoption plan, or infrastructure support, not isolated code contribution.</p>
-
-    </div>
-
-</article>
+    <section class="section-block">
+        <div class="wrap-wide">
+            <p class="section-kicker">How to read the registry</p>
+            <h2>The axes that matter</h2>
+            <div class="axis-grid">
+                <div class="axis-card"><h3>Source</h3><p>Are official artifacts inventoried, archived reproducibly, and complete for a declared subset?</p></div>
+                <div class="axis-card"><h3>Structure and effects</h3><p>Is source structure loss-preserving? Are amendment effects merely candidates, typed, dry-run checked, or promoted?</p></div>
+                <div class="axis-card"><h3>Replay and point-in-time state</h3><p>Is mutation unauthorized, shadow-only, bounded and promoted, or broad? Can point-in-time state be materialized?</p></div>
+                <div class="axis-card"><h3>Verification</h3><p>Are there contract tests, independent before/after witnesses, corpus accounting, or an externally confirmed disposition?</p></div>
+            </div>
+            <div class="page-actions"><a class="button button-primary" href="/assessment">Run the readiness assessment</a><a class="button" href="/pilots">Assess a jurisdiction pilot</a><a class="button" href="https://github.com/eliask/lawvm/tree/master/jurisdiction_starter">Open the frontend starter</a></div>
+        </div>
+    </section>
 </main>
-
 <!-- #include footer -->
-
 </body>
 </html>

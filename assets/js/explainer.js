@@ -46,6 +46,7 @@
       <h2>Explainer data did not load</h2>
       <p>${escapeHtml(message)}</p>
       <p>The page is static; this usually means the JSON artifact was not copied or the browser blocked the request.</p>
+      <p><a href="${artifactUrl}">Open the public fixture directly</a> or <a href="/architecture">read the static architecture explanation</a>.</p>
     `;
   }
 
@@ -240,7 +241,7 @@
     const timeline = state.artifact.timeline || {};
     const phaseObservations = observationsByPhase();
     const allObservations = state.artifact.evidence?.observations || [];
-    const oracleComparisons = state.artifact.evidence?.oracle_comparisons || [];
+    const comparisonSurfaceChecks = state.artifact.evidence?.comparison_surface_checks || [];
     const claims = state.artifact.evidence?.outward_claims || [];
     const phaseSpecific = {
       parse: [
@@ -270,7 +271,7 @@
       ],
       evidence: [
         ["findings", `${(state.artifact.evidence?.findings || []).length} finding(s)`],
-        ["oracle comparison", oracleComparisons.map((item) => `${item.status}: ${item.detail}`).join("; ")],
+        ["comparison surface", comparisonSurfaceChecks.map((item) => `${item.status}: ${item.detail}`).join("; ")],
         ["outward claim", claims.map((claim) => claim.text).join(" ")]
       ]
     };

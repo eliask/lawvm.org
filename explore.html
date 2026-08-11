@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Law Through Time &mdash; LawVM</title>
+    <meta name="description" content="Explore point-in-time legal text, amendment history, provision provenance, and replay evidence with LawVM.">
+    <link rel="canonical" href="https://lawvm.org/explore">
+    <meta property="og:title" content="Explore law through time — LawVM">
+    <meta property="og:description" content="Open a point-in-time statute timeline and follow changes back to their sources.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/explore">
+    <meta property="og:site_name" content="LawVM">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav aria-label="Primary navigation">
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+<main id="main-content">
+    <section class="wrap-wide page-heading">
+        <p class="section-kicker">LawVM Explorer</p>
+        <h1>Read legislation as a timeline, not a snapshot.</h1>
+        <p class="lead">Choose a date, inspect the legal structure at that point, and follow a provision&rsquo;s changes back to their amendment sources and replay evidence.</p>
+    </section>
+    <section class="section-block">
+        <div class="wrap-wide">
+            <p class="section-kicker">Live previews</p>
+            <h2>Open a point-in-time viewer.</h2>
+            <div class="proof-feature">
+                <div>
+                    <p class="proof-status">Static research preview</p>
+                    <h3>Finnish statute timeline</h3>
+                    <p>Explore point-in-time structure, amendment provenance, language expressions, and hash-checked exported state. The viewer loads static transition-graph exports in the browser from a separate research-preview domain.</p>
+                    <div class="page-actions">
+                        <a class="button button-primary" href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-fi-all-no-amendments.json">Open the Finnish explorer</a>
+                        <a class="button" href="/finland">Read the Finland evidence</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="status-list">
+                        <dl class="status-row"><dt>Data form</dt><dd>Static transition-graph exports loaded and folded in the browser.</dd></dl>
+                        <dl class="status-row"><dt>Verification</dt><dd>Artifact and engine hashes are checked where exported.</dd></dl>
+                        <dl class="status-row"><dt>Authority</dt><dd>Research output; follow the linked official source for operative legal use.</dd></dl>
+                    </div>
+                </div>
+            </div>
+            <div class="proof-feature">
+                <div>
+                    <p class="proof-status">Static research preview</p>
+                    <h3>United Kingdom timeline</h3>
+                    <p>Inspect the UK effects, versions, source-chain, and point-in-time workbench through the same jurisdiction-neutral viewer. It is a static research preview, not a publication or source-submission interface.</p>
+                    <div class="page-actions">
+                        <a class="button button-primary" href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-uk.json">Open the UK explorer</a>
+                        <a class="button" href="/jurisdictions#united-kingdom">Inspect frontend status</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="claim-boundary"><strong>Claim boundary:</strong> the UK lane is a bounded workbench with explicit source, manual-compilation, and comparison-data limits. It is not a broad official-consolidation claim. This site provides no upload or credential flow for the preview; the companion domain remains a separate trust boundary.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="section-block">
+        <div class="wrap-wide">
+            <p class="section-kicker">What to inspect</p>
+            <h2>Four views of the same legal history.</h2>
+            <div class="card-grid">
+                <div class="content-card"><h3>State at a date</h3><p>Materialize the legal tree at an explicit point in time rather than assuming the newest page answers a historical question.</p></div>
+                <div class="content-card"><h3>Provision history</h3><p>Follow versions, insertions, replacements, repeals, lineage, and the source acts associated with them.</p></div>
+                <div class="content-card"><h3>Source evidence</h3><p>Inspect the source identity, effective date, operation, and available source locator behind a transition.</p></div>
+                <div class="content-card"><h3>Residuals</h3><p>See blocked, ambiguous, source-incomplete, or otherwise unproved transitions instead of receiving a silently repaired answer.</p></div>
+            </div>
+            <div class="claim-boundary"><strong>Not an official consolidation:</strong> the Explorer is a research and evidence interface. Its value is the inspectable derivation and explicit uncertainty; legal authority remains with the applicable official sources.</div>
+        </div>
+    </section>
+</main>
+<!-- #include footer -->
+</body>
+</html>

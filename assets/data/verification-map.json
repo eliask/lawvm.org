@@ -1,0 +1,27 @@
+{
+  "schema": "lawvm.public-verification-map.v1",
+  "snapshot_date": "2026-08-11",
+  "status": "conservative_public_projection_not_formal_verification_certificate",
+  "source_notes": [
+    "notes/VERIFICATION_PROPERTY_MAP.md",
+    "notes/TLA_SPEC_DRIFT_AUDIT_2026-06-30.md"
+  ],
+  "mechanisms": [
+    {"id": "static_ci", "label": "Static and type checks", "tools": ["ruff", "ty"], "runs": "CI", "blocking": true, "establishes": "Declared lint and type properties over inspected code", "does_not_establish": "Replay or legal-state correctness"},
+    {"id": "runtime_contracts", "label": "Runtime construction contracts", "tools": ["Python constructors", "icontract"], "runs": "construction or runtime", "blocking": true, "establishes": "Named carrier and tree-operation invariants", "does_not_establish": "Complete jurisdictional semantics"},
+    {"id": "property_testing", "label": "Property, stateful, metamorphic, and exhaustive tests", "tools": ["pytest", "Hypothesis", "bounded enumeration"], "runs": "CI or selected suites", "blocking": true, "establishes": "Named implementation properties over generated and bounded cases", "does_not_establish": "Proof over every input or source universe"},
+    {"id": "z3_models", "label": "SMT model proofs", "tools": ["Z3"], "runs": "manual", "blocking": false, "establishes": "Named temporal, occupancy, and precedence properties for encoded models", "does_not_establish": "A refinement proof from model to production Python"},
+    {"id": "tla_model", "label": "Temporal-overlay model", "tools": ["TLA+ source model"], "runs": "not TLC-run in the current harness", "blocking": false, "establishes": "An inspectable finite abstraction and invariant vocabulary", "does_not_establish": "Current implementation conformance; the model is structurally stale and one invariant drifted"},
+    {"id": "executable_mirror", "label": "Executable temporal invariant mirrors", "tools": ["pytest", "Hypothesis"], "runs": "CI", "blocking": true, "establishes": "Selected temporal invariants against the real selector implementation", "does_not_establish": "Complete legal-time doctrine or every model invariant"},
+    {"id": "independent_checker", "label": "Independent structural and trace checker", "tools": ["read-only experimental checker"], "runs": "repository fixtures", "blocking": false, "establishes": "Bounded roots, links, and declared transition folding for fixtures", "does_not_establish": "Source-language entailment, legal authority, or a stable public certificate product"},
+    {"id": "external_adjudication", "label": "External institutional adjudication", "tools": ["publisher or expert review"], "runs": "case-specific", "blocking": false, "establishes": "Disposition of the exact reviewed case", "does_not_establish": "Global system accuracy or completeness"}
+  ],
+  "explicit_nonclaims": [
+    "No end-to-end formal verification of the LawVM compiler.",
+    "No formal refinement map from the TLA+ model to Python.",
+    "No general formal semantics of legislative amendment language.",
+    "No independent external audit of the complete evidence system.",
+    "No universal frontend mutation-boundary or receipt enforcement.",
+    "No proof that the declared source universe is globally complete."
+  ]
+}

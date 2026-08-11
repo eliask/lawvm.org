@@ -1,0 +1,92 @@
+# LawVM
+
+> LawVM is an evidence layer for evolving law. Within supported source and operation scopes, it reconstructs point-in-time legal text, records the operations applied, and retains unresolved cases as explicit residuals for review.
+
+LawVM is open-source research software, not an official legal consolidation or legal advice. Frontend maturity differs by source regime. A clean comparison or conformance profile supports only the conclusions permitted by its declared checks and coverage.
+
+## Three entry points
+
+- Source bootstrap: paper, scans, PDFs, or incomplete archives first yield preserved manifestations, extraction witnesses, structure evidence, and a blocked-source map. OCR is an extraction witness, not legal truth; a legitimate stop is an explicit result when the next claim is unsupported.
+- Pre-publication QA: a concrete adapter can check a versioned drafting or publication export for target, reference, legal-time, language, and mutation-boundary failures in read-only mode.
+- Published-text audit: a bounded amendment corpus can be replayed against a declared published consolidation, with differences routed to human disposition.
+
+Shared decision chain: declared sources and model -> declared QA checks -> strict or observe-only disposition -> named human decision. LawVM does not automatically correct or publish legal text.
+
+Current work is bounded source assessment, frontend-specific replay, and adapter-specific QA. A future strict-authoring profile could make consolidation automatic and machine-checkable only within an accepted formal domain with closed sources, human-text/artifact correspondence, compiler and replay proofs, independent checking, and rejection or blocking of unsupported input. LawVM does not currently discharge that proof, and the institution retains legal and publication authority.
+
+## Start here
+
+- Homepage: https://lawvm.org/
+- Assurance overview: https://lawvm.org/assurance/
+- Assurance claim status: https://lawvm.org/assurance/status
+- Assurance limits: https://lawvm.org/assurance/limits
+- Synthetic dossier lab: https://lawvm.org/assurance/dossier
+- Verification property map: https://lawvm.org/assurance/verification
+- Auditor and reviewer guide: https://lawvm.org/assurance/review
+- Institutional assurance brief: https://lawvm.org/assurance/brief
+- Explore legal timelines: https://lawvm.org/explore
+- Evidence ledger: https://lawvm.org/evidence
+- Frontend registry: https://lawvm.org/jurisdictions
+  - Integrated and staging lanes expose source, effect, replay, verification, and claim-ceiling maturity separately. The UK lane is a bounded effects/version workbench with observe-only diagnostics, not a broad automatic-consolidation service. Staging lanes are usable for bounded source and conformance assessments, not production replay integrations.
+- Jurisdiction assessment: https://lawvm.org/assessment
+- Pilots: https://lawvm.org/pilots
+- Documentation: https://lawvm.org/docs/
+- Architecture: https://lawvm.org/architecture
+- Repository: https://github.com/eliask/lawvm
+
+## Research and explainers
+
+- Finland benchmark snapshot: https://lawvm.org/finland
+  - Dated bounded-corpus replay experiment; the public page reports aggregate comparison and source limits only. Individual Finnish candidate-review packets are not published on the site.
+- Confirmed Estonia case: https://lawvm.org/cases/estonia-audiitors-95-2
+  - Public source-to-replay-to-publisher-correction evidence chain for one Riigi Teataja case.
+- Artifacts and reproduction: https://lawvm.org/artifacts
+  - Benchmark methodology, frozen snapshot boundary, corpus criteria, and planned aggregate artifact releases.
+- Research and citation: https://lawvm.org/papers
+  - Research-paper plans, software publication status, and artifact-release scope.
+- Truth surfaces: https://lawvm.org/articles/truth-surfaces
+  - Distinguishes enacted publication, published artifacts, derived/updated comparison surfaces, and independently replayed text-state.
+- Reading benchmark numbers: https://lawvm.org/articles/reading-benchmark-numbers
+  - Explains what similarity metrics measure and what they cannot establish.
+- Parsing amendment language: https://lawvm.org/articles/parsing-amendment-language
+  - Bounded Finnish grammar/parsing demonstration with prior-work links and explicit recovery limits.
+- Replay divergence classes: https://lawvm.org/articles/replay-bugs-vs-editorial-artifacts
+  - Synthetic patterns for separating replay defects, source pathologies, editorial differences, and candidate comparison-surface issues.
+- Corrigenda as operations: https://lawvm.org/articles/corrigenda-as-operations
+  - Models published corrections as higher-order operations with provenance and time consequences.
+- Structural essay: https://lawvm.org/why-law-is-law-shaped
+  - Explains stable identity, typed operations, temporal axes, and the text/semantics boundary.
+- Civic principle: https://lawvm.org/the-law-in-force-should-be-knowable
+  - States the case for reproducible, point-in-time, auditable statutory text.
+- Project status: https://lawvm.org/about/project-status
+  - Dated alpha evidence, frontend portfolio, open work, and reliance boundary.
+
+## Technology and documentation
+
+- Standards and ecosystem: https://lawvm.org/technology/ecosystem
+  - Positions LawVM beside Akoma Ntoso, ELI, drafting systems, publication platforms, and official portals without implying formal integration.
+
+## Solutions
+
+- Solutions index: https://lawvm.org/solutions/
+- Consolidation assurance: https://lawvm.org/solutions/consolidation-assurance
+- Parallel official-language review: https://lawvm.org/solutions/multilingual-legislation
+- Source readiness: https://lawvm.org/solutions/source-readiness
+  - Scan-first sequence: exact images -> OCR witness -> structure benchmark -> source/authority closure -> bounded checks or legitimate stop.
+- Drafting and publication checks: https://lawvm.org/solutions/drafting-publication-ci
+  - Adapter-specific pre-publication checks over a frozen structured export; no universal drafting/CMS integration is claimed.
+- Legal-data conformance: https://lawvm.org/solutions/legal-data-conformance
+
+## Machine-readable public state
+
+- Frontend registry: https://lawvm.org/assets/data/frontends.json
+- Evidence ledger: https://lawvm.org/assets/data/evidence.json
+- Public snapshot: https://lawvm.org/assets/data/public-snapshot.json
+- Assurance claim registry: https://lawvm.org/assets/data/assurance-claims.json
+- Synthetic assurance teaching fixtures: https://lawvm.org/assets/data/assurance-demo.json
+- Verification map: https://lawvm.org/assets/data/verification-map.json
+- Claim review protocol: https://lawvm.org/assets/data/review-protocol.json
+
+## Contact
+
+- hello@lawvm.org

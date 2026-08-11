@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drafting and Publication Checks &mdash; LawVM</title>
+    <meta name="description" content="Add read-only target, reference, temporal, multilingual, and mutation-boundary checks around structured legislative drafting and publication exports.">
+    <link rel="canonical" href="https://lawvm.org/solutions/drafting-publication-ci">
+    <meta property="og:title" content="Drafting and publication checks — LawVM">
+    <meta property="og:description" content="Test legislative transitions before publication without replacing the drafting system or legal review.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/solutions/drafting-publication-ci">
+    <meta property="og:site_name" content="LawVM">
+    <meta property="og:image" content="https://lawvm.org/assets/og/drafting-publication-ci.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="LawVM drafting and publication checks">
+    <meta name="twitter:image" content="https://lawvm.org/assets/og/drafting-publication-ci.png">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <!-- #include head-end -->
+</head>
+<body>
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav aria-label="Primary navigation">
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+<main id="main-content">
+    <section class="wrap-wide page-heading">
+        <p class="section-kicker">For drafting offices, publishers, and software teams</p>
+        <h1>Test legislative transitions before they become publication defects.</h1>
+        <p class="lead">With a concrete adapter, LawVM can consume a frozen drafting or publication export, run declared transition checks, and return source-linked failures without writing to the production system.</p>
+        <div class="tag-list"><span class="tag tag-amber">adapter required</span><span class="tag">read-only</span><span class="tag">bounded pilot</span></div>
+    </section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Checks</p><h2>Use compiler invariants as editorial guardrails.</h2>
+        <div class="card-grid">
+            <div class="content-card"><h3>Target validity</h3><p>Does every replace, insert, repeal, move, or renumber instruction resolve to the stated legal unit without a fallback search?</p></div>
+            <div class="content-card"><h3>Mutation boundary</h3><p>Did the proposed transition change only the intended target region and explicitly declared migration or recovery paths?</p></div>
+            <div class="content-card"><h3>Temporal consistency</h3><p>Are commencement, expiry, temporary provisions, version selection, and contingent triggers represented without impossible intervals?</p></div>
+            <div class="content-card"><h3>References and expressions</h3><p>Do citations still resolve, and do required language expressions expose corresponding structures, dates, and selected invariant facts?</p></div>
+        </div>
+    </div></section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Invariant and disposition</p><h2>A guardrail is not a legal verdict.</h2>
+        <p>An invariant is a named property checked over a declared export, source profile, and transition scope: target validity, mutation containment, temporal consistency, or expression structure. It establishes only that property when its checker is wired and its inputs are complete.</p>
+        <div class="table-scroll"><table class="status-table">
+            <thead><tr><th>Mode</th><th>Failure or result</th><th>Meaning</th></tr></thead>
+            <tbody>
+                <tr><td>Strict-blocking</td><td>A failed check blocks the scoped result or promotion.</td><td>Use only when the profile names the guard, production path, and owner.</td></tr>
+                <tr><td>Observe-only</td><td>A finding is recorded in the report.</td><td>Useful evidence, but it does not block publication or prove the change is wrong.</td></tr>
+                <tr><td>Source-readiness</td><td>A source, identity, or coverage prerequisite is missing.</td><td>Return a blocked-source map; do not call the comparison clean.</td></tr>
+            </tbody>
+        </table></div>
+        <p class="claim-boundary"><strong>Current UK boundary:</strong> the UK lane is a bounded workbench with source, manual-compilation, and comparison-data limits. Its current invariant and effect diagnostics are observe-only or target-specific; LawVM makes no universal UK publication gate or broad official-consolidation claim.</p>
+    </div></section>
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Artifact boundary</p><h2>Integrate through exports, not a platform rewrite.</h2>
+        <div class="evidence-flow"><span>drafting export</span><b>&rarr;</b><span>source/identity adapter</span><b>&rarr;</b><span>typed transition</span><b>&rarr;</b><span>dry-run evidence</span><b>&rarr;</b><span>CI result + evidence</span></div>
+        <p class="section-intro">A check becomes an assurance result only after the export's source identity, scope, and coverage are declared and pinned. Missing source closure is a blocked readiness result, not a green publication check.</p>
+        <div class="pilot-grid">
+            <div class="pilot-card"><h3>Inputs</h3><p>A versioned AKN/XML/JSON or publisher export, before state, proposed changes, effective-date metadata, and expected after state.</p></div>
+            <div class="pilot-card"><h3>Outputs</h3><p>Target-resolution failures, mutation receipts, reference findings, temporal findings, language-expression gaps, and a reproducible report.</p></div>
+            <div class="pilot-card"><h3>Human role</h3><p>Drafting-office or publisher experts define local instruction semantics, authority, and which failures block publication.</p></div>
+            <div class="pilot-card"><h3>First scope</h3><p>One export format, three recurrent operation families, a pinned transition corpus, and no production writes.</p></div>
+        </div>
+        <div class="claim-boundary"><strong>Current boundary:</strong> LawVM has the underlying transition, dry-run, reference, temporal, and expression machinery, but no universal LEOS, Lawmaker, or publisher-CMS adapter is claimed. A concrete export contract must be built and tested for each integration.</div>
+        <div class="claim-boundary"><strong>Publication boundary:</strong> LawVM returns a read-only CI result and evidence queue. It never publishes, edits, or automatically corrects official text; the institution's named reviewers decide disposition and publication.</div>
+        <div class="page-actions"><a class="button button-primary" href="/pilots#publication">Discuss a publication-QA pilot</a><a class="button" href="/assessment">Assess the available drafting artifacts</a><a class="button" href="/technology/ecosystem">See the ecosystem fit</a></div>
+    </div></section>
+</main>
+<!-- #include footer -->
+</body>
+</html>

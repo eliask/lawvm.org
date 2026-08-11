@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jurisdiction Readiness Assessment &mdash; LawVM</title>
+    <meta name="description" content="Assess what LawVM can honestly do with a jurisdiction's available legal sources, versions, dates, identifiers, and official-language expressions.">
+    <link rel="canonical" href="https://lawvm.org/assessment">
+    <meta property="og:title" content="Jurisdiction readiness assessment — LawVM">
+    <meta property="og:description" content="Turn a source regime into immediate capabilities, missing evidence, blockers, and a bounded pilot brief.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lawvm.org/assessment">
+    <meta property="og:site_name" content="LawVM">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <noscript><style>.assessment-form .page-actions { display: none; }</style></noscript>
+    <!-- #include head-end -->
+</head>
+<body>
+<header>
+    <div class="wrap">
+        <a class="logo" href="/">LawVM</a>
+        <nav aria-label="Primary navigation">
+            <!-- #include nav-content -->
+            <!-- #include theme-toggle -->
+        </nav>
+    </div>
+</header>
+<main id="main-content">
+    <section class="wrap-wide page-heading">
+        <p class="section-kicker">Self-service source assessment</p>
+        <h1>What can LawVM establish from your sources?</h1>
+        <p class="lead">Describe the source regime and legal-information job. The browser will produce an honest first-pass capability map, blocked-source list, and bounded pilot brief. Nothing is uploaded or stored.</p>
+        <div class="claim-boundary"><strong>Choose by starting artifact:</strong> paper, scans, or incomplete archives begin with source bootstrap; a structured export begins with pre-publication QA; a published text plus amendment sources begins with consolidation assurance. The assessment routes evidence from declared sources and a model to declared checks, a strict or observe-only disposition, and a named human decision.</div>
+        <p class="claim-boundary" id="frontend-context" hidden></p>
+    </section>
+    <section class="section-block">
+        <div class="wrap-wide">
+            <form class="assessment-form" id="assessment-form">
+                <fieldset>
+                    <legend>1. Which jurisdiction or source regime?</legend>
+                    <label class="text-field">Jurisdiction, territory, or source system
+                        <input type="text" id="assessment-jurisdiction" name="jurisdiction" autocomplete="country-name" required placeholder="For example: Japan, Swiss federal law, or a ministry archive">
+                    </label>
+                    <label class="text-field">Institution and requesting role (optional for the first pass)
+                        <input type="text" id="assessment-institution-role" name="institution_role" autocomplete="organization" placeholder="For example: justice ministry, legislation publisher, research team">
+                    </label>
+                    <label class="text-field">Source or IT contact role
+                        <input type="text" id="assessment-source-contact" name="source_contact" placeholder="Who can explain access, formats, versions, and custody?">
+                    </label>
+                    <label class="text-field">Decision owner role
+                        <input type="text" id="assessment-decision-owner" name="decision_owner" placeholder="Who can approve scope and disposition findings?">
+                    </label>
+                    <label class="text-field">Data boundary
+                        <input type="text" id="assessment-data-boundary" name="data_boundary" placeholder="For example: public links only; isolated environment; restrictions unknown">
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>2. What is the primary objective?</legend>
+                    <div class="choice-grid">
+                        <label><input type="radio" name="objective" value="consolidation" required> Audit a published consolidation</label>
+                        <label><input type="radio" name="objective" value="history"> Reconstruct point-in-time text</label>
+                        <label><input type="radio" name="objective" value="multilingual"> Review official-language expressions</label>
+                        <label><input type="radio" name="objective" value="publication"> Add drafting or publication checks</label>
+                        <label><input type="radio" name="objective" value="recovery"> Recover structured state from legacy sources</label>
+                        <label><input type="radio" name="objective" value="frontend"> Build a jurisdiction frontend</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>3. What is the authority status of the text you would compare against?</legend>
+                    <div class="choice-grid">
+                        <label><input type="radio" name="authority" value="authoritative" required> Authoritative official text</label>
+                        <label><input type="radio" name="authority" value="editorial"> Official editorial or derived text</label>
+                        <label><input type="radio" name="authority" value="private"> Private/editorial publication</label>
+                        <label><input type="radio" name="authority" value="unknown"> Unknown or varies</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>4. What is the strongest source format?</legend>
+                    <div class="choice-grid">
+                        <label><input type="radio" name="format" value="api" required> Versioned API or structured feed</label>
+                        <label><input type="radio" name="format" value="xml"> XML / Akoma Ntoso / structured JSON</label>
+                        <label><input type="radio" name="format" value="html"> Structured or semi-structured HTML</label>
+                        <label><input type="radio" name="format" value="pdf"> Searchable PDFs</label>
+                        <label><input type="radio" name="format" value="scan"> Scanned gazettes or page images</label>
+                        <label><input type="radio" name="format" value="mixed"> Mixed or uncertain</label>
+                    </div>
+                    <p class="form-note">For scans, OCR is measured as an extraction witness. It does not establish legal structure or amendment meaning by itself.</p>
+                </fieldset>
+                <fieldset>
+                    <legend>5. Which source evidence is available?</legend>
+                    <div class="choice-grid">
+                        <label><input type="checkbox" name="evidence" value="originals"> Original enactments</label>
+                        <label><input type="checkbox" name="evidence" value="amendments"> Amendment publications</label>
+                        <label><input type="checkbox" name="evidence" value="versions"> Historical consolidated versions</label>
+                        <label><input type="checkbox" name="evidence" value="dates"> Machine-readable effective dates</label>
+                        <label><input type="checkbox" name="evidence" value="links"> Amendments linked to affected laws/provisions</label>
+                        <label><input type="checkbox" name="evidence" value="identifiers"> Stable work/version identifiers</label>
+                    </div>
+                </fieldset>
+                <fieldset>
+                    <legend>6. Language and review context</legend>
+                    <div class="choice-grid">
+                        <label><input type="radio" name="languages" value="one" required> One authoritative language</label>
+                        <label><input type="radio" name="languages" value="multiple"> Several authoritative languages</label>
+                        <label><input type="radio" name="languages" value="translations"> One authoritative language plus translations</label>
+                        <label><input type="radio" name="languages" value="unknown"> Language authority is unclear</label>
+                        <label><input type="checkbox" name="reviewer" value="yes"> Local source/legal reviewer is available</label>
+                        <label><input type="checkbox" name="confidential" value="yes"> Pilot may involve non-public material</label>
+                    </div>
+                </fieldset>
+                <div class="page-actions">
+                    <button class="button button-primary" type="submit">Generate first-pass assessment</button>
+                    <button class="button" type="reset">Reset</button>
+                </div>
+                <p class="form-note">This is a deterministic browser-side routing aid, not a legal or technical feasibility guarantee. The site does not upload or store your answers, and the assessment never edits or publishes legal text; choosing the email action opens your email client and sends the generated brief.</p>
+            </form>
+
+            <noscript>
+                <div class="claim-boundary">
+                    <strong>JavaScript is disabled:</strong> the assessment needs JavaScript to calculate its result in the browser. The site does not upload or store answers. To request a manual first pass, open your email client and send your jurisdiction, institution and requesting role, source or IT contact role, decision owner role, objective, source formats, available evidence, data boundary, language context, reviewer availability, and any confidentiality constraints to <a href="mailto:hello@lawvm.org?subject=LawVM%20manual%20assessment">hello@lawvm.org</a>. Do not attach confidential or restricted source files until a processing boundary is agreed.
+                </div>
+            </noscript>
+
+            <section class="assessment-result" id="assessment-result" hidden>
+                <p class="section-kicker">Assessment result</p>
+                <h2 id="result-title" tabindex="-1">Recommended starting point</h2>
+                <p class="section-intro" id="result-summary"></p>
+                <p class="claim-boundary" id="result-boundary"></p>
+                <p class="form-note" id="result-status" role="status" aria-live="polite" aria-atomic="true"></p>
+                <div class="result-columns">
+                    <div class="result-panel"><h3>Immediate capability</h3><ul id="immediate-list"></ul></div>
+                    <div class="result-panel"><h3>Potential with more evidence</h3><ul id="potential-list"></ul></div>
+                    <div class="result-panel"><h3>Currently blocked or qualified</h3><ul id="blocked-list"></ul></div>
+                </div>
+                <div class="proof-card">
+                    <span class="tag tag-accent">RECOMMENDED PILOT</span>
+                    <h3 id="pilot-title"></h3>
+                    <p id="pilot-body"></p>
+                </div>
+                <div class="page-actions">
+                    <a class="button button-primary" id="result-next-action" href="/pilots">Scope the recommended pilot</a>
+                    <button class="button" id="copy-assessment" type="button">Copy pilot brief</button>
+                    <button class="button" id="download-assessment" type="button">Download JSON</button>
+                    <a class="button" id="email-assessment" href="mailto:hello@lawvm.org">Open email to LawVM</a>
+                </div>
+                <p class="copy-status" id="copy-status" role="status"></p>
+            </section>
+        </div>
+    </section>
+</main>
+<!-- #include footer -->
+<script src="/assets/js/assessment.js" defer></script>
+</body>
+</html>

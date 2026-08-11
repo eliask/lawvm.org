@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Papers &mdash; LawVM</title>
-    <meta name="description" content="LawVM publication pipeline: research papers, software publication, data resources, and artifact releases.">
+    <meta name="description" content="Current LawVM research, public technical reading, evidence boundaries, and software citation guidance.">
     <link rel="canonical" href="https://lawvm.org/papers">
     <meta property="og:title" content="Papers — LawVM">
-    <meta property="og:description" content="LawVM publication pipeline: research papers, software publication, data resources, and artifact releases.">
+    <meta property="og:description" content="Current LawVM research, public technical reading, evidence boundaries, and software citation guidance.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lawvm.org/papers">
     <meta property="og:site_name" content="LawVM">
@@ -45,71 +45,36 @@
 
     <header class="essay-header">
         <h1>Papers</h1>
-        <p class="subtitle">Publication pipeline and artifact releases.</p>
+        <p class="subtitle">Current research, public reading, and citation.</p>
     </header>
 
     <div class="essay-body">
 
-    <p>Preprints and artifact bundles will be posted here as they become citable.</p>
+    <p>LawVM&rsquo;s public research material explains the compiler model, benchmark limits, and evidence vocabulary. No paper or frozen benchmark bundle is currently presented as a citable release.</p>
 
-    <h2>Research papers</h2>
+    <h2>Paper in preparation</h2>
 
-    <h3>P1: Finland replay compiler <span class="badge badge-amber">in preparation</span></h3>
+    <h3>Finland replay compiler <span class="badge badge-amber">in preparation</span></h3>
 
     <p><strong>Working title:</strong> Reconstructing Point-in-Time Statutory State from Amendment Streams: A Replay Compiler for Finnish Law</p>
 
-    <p><strong>Target venue:</strong> JURIX 2026 / ICAIL 2027</p>
+    <p>LawVM replays Finnish amendment streams into point-in-time text-state, compares the result with a declared consolidation witness, and classifies residual mismatches instead of collapsing them into one error bucket. An August 2026 development run reported 0.23% mean normalized text edit distance. That result is project-reported, not an error or correctness percentage, and the exact run package is not public.</p>
 
-    <p>LawVM replays Finnish amendment streams into point-in-time legal state, compares the result with official consolidation surfaces, and classifies residual mismatches into operationally meaningful types rather than collapsing them into one error bucket. The v0.1 alpha evaluation is framed as a zero-to-one construction proof: ordinary human-written amendment law can be compiled to high coverage against a real national corpus. It identifies hundreds of replay-vs-Finlex divergences and a smaller set of 22 high-confidence meaningful candidate findings reported to Finlex. These remain candidate findings pending authority confirmation.</p>
+    <p><strong>Status:</strong> drafting in progress. Internal corpus evidence exists, but the frozen source, corpus manifest, per-row output, environment, and citable public release needed for independent reproduction remain unavailable. The public evidence ledger reports the Finnish candidate work only in aggregate while external disposition is pending.</p>
 
-    <p><strong>Status:</strong> Corpus evidence collected. Candidate-finding packet reported to Finlex. Evaluation framework defined. Drafting in progress. The intended contribution is to make the remaining work concrete enough for others to extend, verify, and institutionalize.</p>
+    <p class="claim-boundary"><strong>Public wording:</strong> the current site registries and dated snapshot define the public claim ceiling. Draft paper language does not widen it.</p>
 
-    <h3>P2: Typed residuals as evidence <span class="badge badge-dim">planned</span></h3>
-
-    <p><strong>Working title:</strong> From Diff Noise to Typed Evidence: Evaluating Statutory Replay under Heterogeneous Truth Surfaces</p>
-
-    <p>Raw similarity between replayed text and official consolidation routinely misleads. Replay defects, source pathologies, editorial artifacts, and non-commensurable surfaces need distinct treatment. A single similarity score collapses operationally different failure modes and hides cases where the replay system is more correct than the oracle.</p>
-
-    <p><strong>Status:</strong> May split from P1 or publish standalone.</p>
-
-    <h3>P3: Corrigenda as higher-order operations <span class="badge badge-dim">planned</span></h3>
-
-    <p><strong>Working title:</strong> Corrigenda as Operations over Operations in Statutory Replay</p>
-
-    <p>Corrigenda are better modeled as higher-order operations (operations over prior amendment operations) than as flat editorial notes. Finnish corrigendum corpus: 471 entries, 180 statutes. In 44 statutes, corrigendum application makes LawVM more legally accurate than Finlex.</p>
-
-    <p><strong>Status:</strong> Corpus exists. Formalization needed.</p>
-
-    <h3>P4: Target resolution <span class="badge badge-dim">future</span></h3>
-
-    <p><strong>Working title:</strong> Proof-Bearing Target Resolution for Statutory Amendment Replay</p>
-
-    <p><strong>Status:</strong> Implementation exists. Paper formalization pending.</p>
-
-    <h2>Software publication</h2>
-
-    <h3>JOSS paper <span class="badge badge-dim">planned</span></h3>
-
-    <p>A <a href="https://joss.theoj.org">Journal of Open Source Software</a> paper for LawVM. Software credit and citation stability. Pending install/test workflow stability.</p>
-
-    <h2>Resource publication</h2>
-
-    <h3>Finland benchmark + verification ledger <span class="badge badge-dim">planned</span></h3>
-
-    <p>The frozen corpus snapshot, golden dataset, and benchmark methodology as a citable dataset publication. Target venue: <em>Scientific Data</em> or <em>Data in Brief</em>. Pending golden dataset scale (200+ entries) and distribution rights.</p>
-
-    <h2>Artifact releases</h2>
-
-    <p>DOI-backed <a href="https://zenodo.org">Zenodo</a> releases are planned for:</p>
+    <h2>Related public research</h2>
 
     <ul>
-        <li>Frozen corpus snapshot</li>
-        <li>Software release archive</li>
-        <li>Golden dataset (candidate divergence findings and adjudicated residuals)</li>
-        <li>Publication database (SQLite)</li>
+        <li><a href="/articles/parsing-amendment-language">Parsing amendment language</a> &mdash; prior work, deterministic grammar, and recovery limits.</li>
+        <li><a href="/articles/reading-benchmark-numbers">Reading benchmark numbers</a> &mdash; what comparison metrics do and do not establish.</li>
+        <li><a href="/articles/truth-surfaces">Truth surfaces in legal information systems</a> &mdash; enacted, published, revised, and replayed representations.</li>
+        <li><a href="/articles/replay-bugs-vs-editorial-artifacts">Replay bugs versus editorial artifacts</a> &mdash; typed divergence classes and alternative explanations.</li>
+        <li><a href="/articles/corrigenda-as-operations">Corrigenda as operations over operations</a> &mdash; correction provenance and temporal consequences.</li>
     </ul>
 
-    <p><strong>Status:</strong> Pending corpus freeze before first paper submission.</p>
+    <p>For the exact current metric and missing-artifact boundary, see <a href="/artifacts">Artifacts</a>. For bounded mechanism claims, see the <a href="/assurance/status">assurance registry</a>.</p>
 
     <h2>Citation</h2>
 

@@ -4,22 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Read LawVM Benchmark Numbers &mdash; LawVM</title>
-    <meta name="description" content="LawVM benchmarks measure agreement with an imperfect oracle, not legal correctness. Here is how to read the numbers honestly.">
+    <meta name="description" content="LawVM benchmarks measure agreement with a derived comparison surface, not legal correctness. Here is how to read the numbers honestly.">
     <link rel="canonical" href="https://lawvm.org/articles/reading-benchmark-numbers">
     <meta property="og:title" content="How to Read LawVM Benchmark Numbers">
-    <meta property="og:description" content="Benchmarks measure agreement with an imperfect oracle, not legal correctness. How to read the numbers honestly.">
+    <meta property="og:description" content="Benchmarks measure agreement with a derived comparison surface, not legal correctness. How to read the numbers honestly.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://lawvm.org/articles/reading-benchmark-numbers">
     <meta property="og:site_name" content="LawVM">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="How to Read LawVM Benchmark Numbers">
-    <meta name="twitter:description" content="Benchmarks measure oracle agreement, not legal correctness.">
+    <meta name="twitter:description" content="Benchmarks measure comparison-surface agreement, not legal correctness.">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "Article",
       "headline": "How to Read LawVM Benchmark Numbers",
-      "description": "LawVM benchmarks measure agreement with an imperfect oracle, not legal correctness. Here is how to read the numbers honestly.",
+      "description": "LawVM benchmarks measure agreement with a derived comparison surface, not legal correctness. Here is how to read the numbers honestly.",
       "author": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
       "publisher": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
       "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
@@ -55,28 +55,28 @@
 
     <h2>What the benchmark measures</h2>
 
-    <p>LawVM's Finland benchmark compares replayed point-in-time text against the Finlex editorial consolidation. Two metrics:</p>
+    <p>LawVM's Finland benchmark compares replayed point-in-time text against the Finlex updated/derived comparison surface. The public headline is one metric; structural divergence remains a separate diagnostic:</p>
 
     <ul>
-        <li><strong>Levenshtein text distance</strong>: character-level normalized edit distance. Current mean: 0.65%.</li>
-        <li><strong>Structural section error</strong>: section-level divergence (missing sections, extra sections, content mismatches). Current mean: 4.25%.</li>
+        <li><strong>Levenshtein text distance</strong>: character-level normalized edit distance. An August 2026 Finnish replay development run reported a 0.23% mean against its declared Finlex comparison surface.</li>
+        <li><strong>Structural section error</strong>: section-level divergence such as missing sections, extra sections, or content mismatches. Treat this as a separate diagnostic from text distance; this page does not publish it as a current aggregate.</li>
     </ul>
 
-    <p>The comparison surface is Finlex's consolidated XML, accessed through the archived source corpus.</p>
+    <p>The comparison surface is Finlex&rsquo;s updated/derived consolidated XML. The number is a dated, project-reported agreement metric, not a continuously refreshed result, error rate, proof-coverage result, or correctness percentage. The exact August run package, including its corpus manifest and denominator, is not public; see the <a href="/artifacts">artifact and reproduction boundary</a>.</p>
 
-    <h2>What the benchmark does NOT measure</h2>
+    <h2>What the benchmark cannot establish</h2>
 
-    <p><strong>Legal correctness.</strong> The benchmark measures <em>agreement with an editorial consolidation</em>, not agreement with the law. Finlex consolidated texts are informational, not legally binding. When LawVM and Finlex disagree, it is not obvious who is right without checking primary sources.</p>
+    <p><strong>Legal correctness.</strong> The benchmark measures <em>agreement with a derived/updated comparison surface</em>. It does not establish what the law requires; a disagreement needs checking against the enacted publication and other primary sources.</p>
 
-    <p><strong>Completeness.</strong> The Finnish alpha corpus is a replayable subset of a larger amended-statute universe. Exclusions are structural (missing base XML, missing oracle, missing amendment texts), not a judgment that excluded statutes are "too hard."</p>
+    <p><strong>Completeness.</strong> The August corpus manifest and denominator are not public, so the reported result cannot establish coverage of Finnish law. Benchmark manifests are bounded subsets of a larger amended-statute universe; missing base material, comparison material, or amendment text can all limit inclusion.</p>
 
     <p><strong>All amendment types.</strong> The benchmark covers statutes with section structure. Statutes that are primarily hcontainer-only (tables, schedules, unstructured content) are excluded from the curated corpus.</p>
 
     <h2>What High Similarity Means</h2>
 
-    <p>A statute at 100% similarity means LawVM and Finlex produce identical text. Shared defects can still exist if both systems fail the same way, for example by missing a corrigendum or reproducing a source defect.</p>
+    <p>A statute at 100% similarity means LawVM and the inspected Finlex surface produce identical text under the benchmark&rsquo;s normalization. Shared defects can still exist if both systems fail the same way, for example by missing a corrigendum or reproducing a source defect.</p>
 
-    <p>LawVM's corrigendum pipeline illustrates this: applying published corrections to 44 statutes makes LawVM more legally accurate, but <em>lowers</em> the similarity score because Finlex also didn't apply those corrections.</p>
+    <p>LawVM&rsquo;s corrigendum pipeline illustrates this: applying published corrections in a historical subset moved replay away from the comparison surface. The subset and its underlying count are not published here as a citable corpus. Whether that makes the replay legally preferable requires source review; the score alone cannot decide it.</p>
 
     <h2>What Low Similarity Means</h2>
 
@@ -84,8 +84,8 @@
 
     <ul>
         <li>LawVM has a serious replay bug (system is wrong)</li>
-        <li>Finlex never applied several amendments (oracle is stale)</li>
-        <li>The source XML is structurally corrupted (nobody is right)</li>
+        <li>The inspected comparison surface does not include several amendments</li>
+        <li>The source XML is structurally corrupted, so that input alone establishes neither surface</li>
         <li>Finlex editors restructured the content for readability (editorial divergence)</li>
         <li>A combination of all of the above</li>
     </ul>
@@ -103,9 +103,9 @@
         <li>Whether a known divergence class is shrinking or growing</li>
     </ul>
 
-    <p>The real verification loop is <strong>manual residual review</strong>: investigating each divergence against primary sources (Säädöskokoelma), classifying the root cause, and recording the finding in the golden dataset.</p>
+    <p>The real verification loop is <strong>manual residual review</strong>: investigating divergences against primary sources (Säädöskokoelma), classifying the root cause, and retaining the result in the project&rsquo;s internal review record.</p>
 
-    <p>That is why the project maintains both: aggregate metrics for triage, plus 22 reported high-confidence candidate findings and hundreds of divergences still being classified.</p>
+    <p>That is why the project uses aggregate comparison diagnostics for triage and a separate review record for dispositions. Historical project review reported 22 candidates that passed its internal threshold while many other divergences remained to be classified. The public site reports this candidate count only in aggregate. See <a href="/artifacts">Artifacts</a> for the snapshot boundary.</p>
 
     </div>
 

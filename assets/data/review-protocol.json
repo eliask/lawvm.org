@@ -1,0 +1,47 @@
+{
+  "schema": "lawvm.public-claim-review-protocol.v2",
+  "snapshot_date": "2026-08-11",
+  "status": "public_review_desiderata_not_an_audit_result",
+  "purpose": "A structured hostile-reader and evidence-boundary review for consequential LawVM public claims.",
+  "review_sequence": [
+    "Identify the exact public claim and its maximum permissible conclusion.",
+    "Bind the claim to its subject, source/corpus/profile, temporal range, and dated software state.",
+    "Follow every consequential factual statement to an evidence locator.",
+    "Test the strongest plausible alternative explanation and hidden assumption.",
+    "Check that the evidence mechanism supports the wording used and no stronger wording.",
+    "Classify the result and record the reviewer, dated snapshot, evidence, challenge, and disposition.",
+    "Update the public text and its registry together."
+  ],
+  "challenge_dimensions": [
+    {"id": "source", "question": "Are the exact artifacts identified, and is the declared source horizon adequate for this claim?", "common_failure": "Integrity is presented as source correctness or completeness."},
+    {"id": "account", "question": "Does the declared universe balance without silent drops or double claims?", "common_failure": "A complete partition is claimed over an incomplete universe."},
+    {"id": "semantic", "question": "Does the typed operation preserve missing or ambiguous meaning instead of guessing?", "common_failure": "Closure is presented as independent source-to-operation entailment."},
+    {"id": "admission", "question": "What exact phase-local evidence authorizes execution or publication of the claim?", "common_failure": "Evidence or confidence is treated as portable authority."},
+    {"id": "mutation", "question": "Do the writer receipt, independent observation, and target bound agree?", "common_failure": "Writer testimony is presented as an independent footprint check."},
+    {"id": "time_identity", "question": "Are effective time, expiry, overlay, branch, and identity assumptions explicit?", "common_failure": "One date or identifier silently stands for several legal coordinates."},
+    {"id": "checker", "question": "What can a separate implementation reconstruct, and what must it still trust?", "common_failure": "A structural fixture checker is presented as a legal certificate."},
+    {"id": "presentation", "question": "Would a skeptical cold reader infer a broader claim than the evidence permits?", "common_failure": "A precise caveat is separated from a visually broader headline or badge."}
+  ],
+  "review_dispositions": ["clean", "wording_fix", "evidence_gap", "blocked", "unresolved", "invalid", "uncheckable", "not_claimed"],
+  "public_claim_outcomes": ["established_within_scope", "qualified", "blocked", "unresolved", "invalid", "uncheckable", "not_claimed"],
+  "outcome_semantics": "review_dispositions describe the review finding; public_claim_outcomes describe the bounded status that may be published after adjudication. They are deliberately not a single scalar verdict.",
+  "review_record_fields": [
+    "review_id",
+    "reviewer",
+    "reviewed_at",
+    "website_snapshot_date",
+    "software_or_release_snapshot",
+    "source_or_corpus_snapshot",
+    "claim_id_or_url",
+    "maximum_claim",
+    "evidence_locators",
+    "challenge_dimension",
+    "challenge",
+    "alternative_explanation",
+    "review_disposition",
+    "public_claim_outcome",
+    "required_change",
+    "adjudicator"
+  ],
+  "boundary": "This protocol structures review. It does not make the reviewer authoritative, certify a claim, or replace jurisdiction-specific legal adjudication."
+}

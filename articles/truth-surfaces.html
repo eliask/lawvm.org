@@ -24,7 +24,7 @@
       "publisher": { "@type": "Person", "name": "Elias Kunnas", "url": "https://kunnas.com" },
       "isPartOf": { "@type": "WebSite", "name": "LawVM", "url": "https://lawvm.org/" },
       "url": "https://lawvm.org/articles/truth-surfaces",
-      "keywords": "truth surfaces, legal consolidation, point-in-time law, oracle, editorial surface, legal informatics"
+      "keywords": "truth surfaces, legal consolidation, point-in-time law, comparison surface, editorial surface, legal informatics"
     }
     </script>
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -57,53 +57,53 @@
 
     <h2>Four surfaces</h2>
 
-    <p><strong>Enacted-event truth.</strong> What parliament actually decided. The original statute and every amending act, as published in the official gazette. In Finland, this is Säädöskokoelma. This is the legally primary surface — everything else is derived from it.</p>
+    <p><strong>Enacted-event truth.</strong> What the legislative record says was enacted and published: the original statute and amending acts in the relevant official publication. In Finland, the source lane is Säädöskokoelma. This is the primary source surface for replay; its legal role still depends on the jurisdiction&rsquo;s authority model.</p>
 
-    <p><strong>Published artifact truth.</strong> The machine-readable representation of enacted text. In Finland, this is the AKN XML published through Finlex open data. It should be identical to the enacted text, but sometimes it is not — XML production pipelines introduce structural errors, encoding artifacts, and editorial corrections that diverge from the gazette.</p>
+    <p><strong>Published artifact truth.</strong> The machine-readable representation supplied by a publication pipeline. In Finland, this includes AKN XML available through Finlex open data. It is a source witness, not an assumption of byte-for-byte identity with the gazette: production can introduce structural or encoding defects, and corrections may be carried separately.</p>
 
-    <p><strong>Revised/editorial truth.</strong> The consolidated text as maintained by an editorial team. In Finland, this is the Finlex "ajantasainen lainsäädäntö" — an informational consolidation with no legal authority. In Estonia, it is the Riigi Teataja consolidation, which <em>is</em> legally authoritative. In the UK, it is the legislation.gov.uk revised text, which is official. The legal authority of the consolidated surface varies by jurisdiction.</p>
+    <p><strong>Revised/editorial truth.</strong> The consolidated text maintained by an editorial or publication system. Finlex&rsquo;s <em>ajantasainen lains&auml;&auml;d&auml;nt&ouml;</em> is a derived/updated comparison surface for this workflow; Estonia&rsquo;s Riigi Teataja publication regime assigns a different legal role to its official consolidated texts; and the UK&rsquo;s legislation.gov.uk revised text is an official electronic version of the statute book. The authority of a consolidated surface must be declared per jurisdiction rather than inferred from its appearance.</p>
 
-    <p><strong>Replayed truth.</strong> The point-in-time text produced by replaying amendment operations from primary sources. This is what LawVM produces. It is derived independently from the enacted-event surface, without consulting the editorial consolidation.</p>
+    <p><strong>Replayed truth.</strong> The point-in-time text produced by replaying admitted amendment operations from declared source artifacts. This is what LawVM produces: an independently derived witness with explicit residuals, not a substitute for the jurisdiction&rsquo;s authoritative surface.</p>
 
     <h2>Why the distinction matters</h2>
 
-    <p>When LawVM's replayed text diverges from Finlex's editorial consolidation, the divergence is not automatically an error in either direction. It could be:</p>
+    <p>When LawVM&rsquo;s replayed text diverges from Finlex&rsquo;s updated/derived comparison surface, the divergence is not automatically an error in either direction. It could be:</p>
 
     <ul>
         <li><strong>A replay defect</strong> — LawVM's parser or compiler produced incorrect state.</li>
         <li><strong>An editorial divergence</strong> — Finlex editors made a consolidation choice that differs from strict replay (e.g. adding repeal stubs, reordering content, applying future-effective amendments early).</li>
-        <li><strong>An oracle error</strong> — Finlex simply never applied an amendment that was enacted and published. The official consolidation is stale.</li>
-        <li><strong>A source pathology</strong> — the published XML is itself defective. Neither system can produce correct output from broken input.</li>
+        <li><strong>A candidate comparison-surface issue</strong> — the enacted publication appears to support a state that the inspected updated text does not contain. This remains a candidate until source and authority review.</li>
+        <li><strong>A source pathology</strong> — the published XML is itself defective. Broken input cannot by itself establish a correct result.</li>
         <li><strong>A corrigendum gap</strong> — a published correction exists but was not applied by one or both systems.</li>
     </ul>
 
-    <p>If you collapse all of these into "LawVM disagrees with Finlex, therefore LawVM is wrong," you miss the most interesting findings: the cases where primary sources support a candidate issue in the official consolidation surface.</p>
+    <p>Collapsing these into &ldquo;LawVM disagrees with Finlex, therefore LawVM is wrong&rdquo; loses the distinction between a compiler defect, a source defect, a publication choice, and a candidate issue in the comparison surface.</p>
 
     <h2>Jurisdiction matters</h2>
 
     <p>The legal authority of official portals varies by jurisdiction:</p>
 
     <ul>
-        <li><strong>EU:</strong> EUR-Lex consolidated texts have "no legal effect" and are documentation only. The authentic version is in the Official Journal.</li>
-        <li><strong>Finland:</strong> Finlex consolidated texts are informational. The legally relevant sources are the original acts in Säädöskokoelma.</li>
-        <li><strong>Estonia:</strong> Riigi Teataja consolidated texts are legally authoritative by statute. If there is a conflict between the amendment chain and the consolidation, the consolidation wins.</li>
-        <li><strong>United Kingdom:</strong> legislation.gov.uk publishes "official revised" legislation maintained by the National Archives.</li>
+        <li><strong>EU:</strong> <a href="https://eur-lex.europa.eu/EN/legal-content/glossary/consolidation.html">EUR-Lex describes consolidated texts as documentation with no legal effect</a>; the Official Journal is the official publication.</li>
+        <li><strong>Finland:</strong> Finlex&rsquo;s updated text is a derived/updated comparison surface; the enacted publication is the original Statute Book material and amending acts.</li>
+        <li><strong>Estonia:</strong> the <a href="https://www.riigiteataja.ee/en/compare_wordings?grupiId=100233&amp;vasakAktId=518032025006">Riigi Teataja Act</a> provides for official consolidated texts; the authority and language of a particular surface must still be checked.</li>
+        <li><strong>United Kingdom:</strong> the <a href="https://www.legislation.gov.uk/pdfs/GuideToRevisedLegislation_Jan_2012.pdf">National Archives guide</a> describes legislation.gov.uk as the official revised electronic version of the statute book.</li>
     </ul>
 
-    <p>LawVM's role changes by jurisdiction. In Finland, it is an independent oracle that finds errors in the editorial consolidation. In Estonia, it is a consistency verifier for binding law — divergences are legally significant. In April 2026, Riigi Teataja confirmed and corrected a LawVM-reported omission in an Estonian consolidated act and its translation. <a href="/cases/estonia-audiitors-95-2">The case is documented here.</a> In the UK, LawVM is independent verification of the official version graph.</p>
+    <p>LawVM&rsquo;s role changes by jurisdiction. In Finland, it is an independent replay witness for comparison with a derived/updated text surface and the enacted publication. In Estonia, it is a consistency check against an official publication regime; divergences require careful handling because the publication carries legal weight. The site records one 2026 case in which Riigi Teataja confirmed and corrected a reported omission in an Estonian consolidated act. The project case record also reports a corresponding English-translation correction, but that detail is not separately adjudicated by the public evidence here; <a href="/cases/estonia-audiitors-95-2">the case page states the boundary</a>. In the UK, the role is independent checking of a revised version graph.</p>
 
     <h2>The operational consequence</h2>
 
-    <p>A replay system that does not distinguish truth surfaces will either:</p>
+    <p>A replay system that does not distinguish truth surfaces risks either of two mistakes:</p>
 
     <ul>
-        <li>treat the editorial consolidation as ground truth and silently hide its own errors and the oracle's errors alike, or</li>
-        <li>treat its own output as ground truth and ignore legitimate editorial choices.</li>
+        <li>treat the editorial consolidation as an infallible reference and silently hide its own errors and comparison-surface divergences alike, or</li>
+        <li>treat its own output as an infallible reference and ignore legitimate editorial choices.</li>
     </ul>
 
-    <p>LawVM takes neither position. It compares surfaces and classifies the divergence. A mismatch is not one thing — it is a typed event with a root cause, and the root cause determines who is right.</p>
+    <p>LawVM takes neither position. It compares surfaces and classifies the divergence. A mismatch is not one thing: it is a typed event with an investigation path. The classification narrows the question; it does not by itself determine who is right.</p>
 
-    <p>This is why the <a href="/finland">Finland showcase</a> reports both similarity metrics <em>and</em> a residual taxonomy. The number says how close the surfaces are. The taxonomy says why they are not closer.</p>
+    <p>This is why the <a href="/finland">Finland evidence page</a> reports a dated text-distance metric <em>and</em> a residual taxonomy. The number says how close the declared surfaces were in that run; reviewed dispositions record why particular residuals remain.</p>
 
     </div>
 

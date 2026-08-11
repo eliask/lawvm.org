@@ -1,0 +1,47 @@
+{
+  "schema": "lawvm.public-site-snapshot.v1",
+  "snapshot_date": "2026-08-11",
+  "status": "website_evidence_snapshot_not_release_certificate",
+  "core_repository": "https://github.com/eliask/lawvm",
+  "public_code_status": "The public repository is a moving development surface. No frozen release artifact is bound to this website snapshot.",
+  "stable_public_evidence": {
+    "estonia_confirmed_corrections": 1,
+    "finland_reported_candidates": 22,
+    "finland_benchmark_snapshot": "2026-08"
+  },
+  "benchmark_snapshot": {
+    "id": "fi-replay-project-report-2026-08",
+    "date": "2026-08",
+    "date_precision": "month",
+    "current_cli_mode": "official_consolidation",
+    "metric": "mean_normalized_levenshtein_text_distance",
+    "headline_mean_text_distance": "0.23%",
+    "scope": "the project's Finnish law replay benchmark against its declared Finlex comparison surface",
+    "corpus_manifest": "not_published_with_august_report",
+    "denominator": "not_published_with_august_report",
+    "current_bench_core_relation": "The included bench_core.csv command path is not asserted to be the August run's historical denominator.",
+    "provenance": "project_reported",
+    "exact_reproduction_publicly_available": false,
+    "source_archive_required": "data/finlex.farchive",
+    "boundary": "Project-reported August 2026 development result. This website review did not independently rebuild the run and no frozen public run package is attached. The metric is agreement with a declared comparison surface, not an error rate, correctness percentage, proof-coverage result, or legal judgment."
+  },
+  "registries": {
+    "frontends": "/assets/data/frontends.json",
+    "evidence": "/assets/data/evidence.json",
+    "assurance_claims": "/assets/data/assurance-claims.json",
+    "verification_map": "/assets/data/verification-map.json",
+    "review_protocol": "/assets/data/review-protocol.json",
+    "synthetic_assurance_demo": "/assets/data/assurance-demo.json"
+  },
+  "separate_evidence_case_snapshots": {
+    "EE-2025-AUDIIT-95-2-1": "historical_command_path_recorded_frozen_source_bundle_unavailable"
+  },
+  "known_unavailable_public_artifacts": [
+    "Frozen source, comparison, corpus-manifest, per-row result, aggregate, and environment package for exact reproduction of the August 2026 Finnish benchmark report",
+    "Frozen public source-byte bundle for EE-2025-AUDIIT-95-2-1",
+    "Release-bound reproducible CI run for the assurance registry",
+    "Stable public certificate bundle and checker CLI",
+    "Citable frozen release package for the Finnish benchmark"
+  ],
+  "reliance_boundary": "This is a dated public description of reviewed development mechanisms and evidence boundaries, not a frozen software release. Repository-relative evidence paths may move, and the current public checkout does not reproduce the reported Finnish metric without the unavailable run package. This file does not certify a jurisdiction, frontend, replay history, or current-law output."
+}

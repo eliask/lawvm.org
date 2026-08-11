@@ -1,0 +1,59 @@
+{
+  "schema": "lawvm.public-evidence-ledger.v1",
+  "snapshot_date": "2026-08-11",
+  "status_vocabulary": [
+    "externally_confirmed_correction",
+    "candidate_awaiting_disposition",
+    "externally_refuted",
+    "lawvm_defect",
+    "source_pathology",
+    "manual_frontier",
+    "blocked",
+    "representative_clean_transition"
+  ],
+  "cases": [
+    {
+      "case_id": "EE-2025-AUDIIT-95-2-1",
+      "record_type": "individual_public_case",
+      "evidence_type": "publisher_adjudicated_divergence",
+      "jurisdiction": "ee",
+      "work": "Audiitortegevuse seadus",
+      "address": "section:95-2/subsection:1",
+      "status": "externally_confirmed_correction",
+      "base_id": "114032025030",
+      "comparison_id": "107012025013",
+      "effective_date": "2025-01-17",
+      "disposition_date": "2026-04-27",
+      "source_url": "https://www.riigiteataja.ee/akt/107012025001",
+      "comparison_url": "https://www.riigiteataja.ee/akt/107012025013",
+      "case_url": "/cases/estonia-audiitors-95-2",
+      "rule_id": "publisher_correction_notice",
+      "evidence_locator": "src/lawvm/estonia/residual_inventory.py",
+      "reproduction_command": "uv run lawvm verify-consistency --jurisdiction ee --base 114032025030 --consolidated 107012025013",
+      "source_byte_bundle": null,
+      "reviewability": "partially_reproducible_missing_frozen_source_bytes",
+      "claim": "A phrase inserted by RT I, 07.01.2025, 1 was absent from the consolidated text; Riigi Teataja reviewed the report and corrected the consolidation.",
+      "nonclaims": [
+        "This does not establish complete Estonia replay coverage.",
+        "This does not establish that every replay-versus-consolidation difference is a publisher error.",
+        "No frozen public source-byte bundle is currently published for this case."
+      ]
+    },
+    {
+      "case_id": "FI-REPORTED-CANDIDATES-2026-04",
+      "record_type": "aggregate_candidate_count",
+      "evidence_type": "responsibly_withheld_candidate_aggregate",
+      "jurisdiction": "fi",
+      "status": "candidate_awaiting_disposition",
+      "count": 22,
+      "reviewability": "aggregate_only_individual_packets_not_public",
+      "reported_by": "2026-04-25",
+      "case_url": "/finland",
+      "claim": "Twenty-two candidate records that passed the project's internal review threshold were reported for external review.",
+      "nonclaims": [
+        "The candidates are not confirmed publisher defects.",
+        "The count is not a general correctness metric."
+      ]
+    }
+  ]
+}

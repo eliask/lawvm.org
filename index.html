@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LawVM &mdash; A replay compiler for amendment-driven law</title>
-    <meta name="description" content="The law in force should be knowable. LawVM is a deterministic replay compiler that reconstructs point-in-time statutory text from amendment streams, making legal state reproducible, inspectable, and auditable.">
+    <title>LawVM &mdash; Verify changes to the law</title>
+    <meta name="description" content="Reconstruct point-in-time legal text from declared amendment sources and inspect the operations, residuals, and disagreements behind a published text.">
     <link rel="canonical" href="https://lawvm.org/">
-    <meta property="og:title" content="LawVM &mdash; A replay compiler for amendment-driven law">
-    <meta property="og:description" content="The law in force should be knowable. LawVM reconstructs point-in-time statutory text from amendment streams, making legal state reproducible, inspectable, and auditable.">
+    <meta property="og:title" content="LawVM — Verify changes to the law">
+    <meta property="og:description" content="Reconstruct point-in-time legal text from declared amendment sources and inspect the evidence behind each transition.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lawvm.org/">
     <meta property="og:site_name" content="LawVM">
     <meta property="og:locale" content="en">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="LawVM — A replay compiler for amendment-driven law">
-    <meta name="twitter:description" content="The law in force should be knowable. LawVM reconstructs point-in-time statutory text from amendment streams — reproducible, inspectable, auditable.">
-    <link rel="stylesheet" href="/assets/css/style.css">
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -24,9 +21,8 @@
           "@type": "WebSite",
           "name": "LawVM",
           "url": "https://lawvm.org/",
-          "description": "The law in force should be knowable. LawVM is a deterministic replay compiler that reconstructs point-in-time statutory text from amendment streams.",
-          "author": { "@id": "https://lawvm.org/#author" },
-          "publisher": { "@id": "https://lawvm.org/#author" }
+          "description": "Reconstruct point-in-time legal text from declared amendment sources and inspect the operations, residuals, and disagreements behind a published text.",
+          "author": { "@id": "https://lawvm.org/#author" }
         },
         {
           "@type": "SoftwareApplication",
@@ -37,7 +33,7 @@
           "url": "https://lawvm.org/",
           "codeRepository": "https://github.com/eliask/lawvm",
           "programmingLanguage": "Python",
-          "description": "The law in force should be knowable. LawVM is a deterministic replay compiler that reconstructs point-in-time statutory text from amendment streams.",
+          "description": "An evidence layer for evolving law: deterministic amendment replay, point-in-time legal text, and explicit residual accounting.",
           "author": { "@id": "https://lawvm.org/#author" }
         },
         {
@@ -49,6 +45,7 @@
       ]
     }
     </script>
+    <link rel="stylesheet" href="/assets/css/style.css">
     <!-- #include head-end -->
 </head>
 <body>
@@ -56,7 +53,7 @@
 <header>
     <div class="wrap">
         <a class="logo" href="/">LawVM</a>
-        <nav>
+        <nav aria-label="Primary navigation">
             <!-- #include nav-content -->
             <!-- #include theme-toggle -->
         </nav>
@@ -65,132 +62,218 @@
 
 <main>
 
-<section class="hero">
+<section class="hero hero--outcome">
     <div class="wrap">
-        <h1>The law in force should be knowable.</h1>
-        <p class="lead">LawVM is a deterministic replay compiler for legislation. It reconstructs point-in-time statutory text from amendment streams, making legal state reproducible, inspectable, and auditable &mdash; and exposing where official consolidated surfaces diverge from enacted law.</p>
+        <p class="hero-kicker">The law in force should be knowable</p>
+        <h1>Verify changes to the law.</h1>
+        <p class="lead">LawVM reconstructs point-in-time legal text from declared amendment sources. It records the operations applied, preserves what could not be proved, and makes disagreements with a published text inspectable.</p>
+        <p>For publishers and ministries, the practical use is a bounded, no-write review that can surface omitted or misapplied changes, source gaps, and parallel-language inconsistencies without giving software authority to edit the official record.</p>
+        <div class="hero-actions">
+            <a class="button button-primary" href="/assessment">Assess your source regime <span aria-hidden="true">&rarr;</span></a>
+            <a class="button" href="/explore">Explore a statute timeline</a>
+            <a class="button button-quiet" href="/cases/estonia-audiitors-95-2">Inspect a confirmed correction</a>
+        </div>
+        <div class="meta-strip" aria-label="Project characteristics">
+            <span>Open source</span>
+            <span>Deterministic replay</span>
+            <span>Point-in-time state</span>
+            <span>Explicit residuals</span>
+            <span>No-write shadow mode</span>
+        </div>
     </div>
 </section>
 
-<section class="wrap-wide">
-
-    <div class="evidence-grid">
-        <div class="evidence-card">
-            <h3>Reported findings</h3>
-            <div class="number">23</div>
-            <div class="detail">High-confidence meaningful candidate findings reported to Finlex and Riigi Teataja for external review. Broader divergence evidence remains under active classification.</div>
+<section class="section-block">
+    <div class="wrap-wide">
+        <p class="section-kicker">Start with the artifact you have</p>
+        <h2>Three routes into one evidence model.</h2>
+        <p class="section-intro">Paper and scans call for source bootstrap. A structured export calls for pre-publication QA. A published text with its amendment sources calls for a consolidation audit. Each route keeps its source, model, and uncertainty boundary visible.</p>
+        <div class="system-flow" aria-label="LawVM decision chain">
+            <span>declared sources and model</span><b>&rarr;</b>
+            <span>declared QA checks</span><b>&rarr;</b>
+            <span>strict or observe-only disposition</span><b>&rarr;</b>
+            <span>named human decision</span>
         </div>
-        <div class="evidence-card">
-            <h3>Publisher correction</h3>
-            <div class="number">1</div>
-            <div class="detail">Riigi Teataja confirmed and corrected a LawVM-reported Estonian consolidation omission in the Auditors Activities Act. <a href="/cases/estonia-audiitors-95-2">Read the case study.</a></div>
+        <div class="claim-boundary"><strong>Operating boundary:</strong> LawVM produces evidence, residuals, and review queues. Here, <em>strict</em> means a declared workflow gate, not legal authority; <em>observe-only</em> records evidence without blocking. LawVM does not automatically correct or publish legal text.</div>
+        <p class="form-note"><a href="/solutions/source-readiness">Source bootstrap</a> starts with paper, scans, PDFs, or incomplete archives; <a href="/solutions/drafting-publication-ci">pre-publication QA</a> starts with a structured export; <a href="/solutions/consolidation-assurance">consolidation assurance</a> starts with a published text and declared amendment sources.</p>
+        <p class="section-kicker">Then choose the question</p>
+        <h2>What are you trying to establish?</h2>
+        <p class="section-intro">LawVM is useful when the result alone is not enough: you also need the sources, changes, dates, uncertainties, and reproduction path behind it.</p>
+        <div class="job-grid">
+            <a class="job-card" href="/explore">
+                <span class="job-number">01 / HISTORY</span>
+                <h3>What did this provision say on a particular date?</h3>
+                <p>Move through a statute timeline, inspect provision history, and follow amendments back to their sources.</p>
+                <span class="card-link">Explore legal state &rarr;</span>
+            </a>
+            <a class="job-card" href="/solutions/consolidation-assurance">
+                <span class="job-number">02 / CONSOLIDATION</span>
+                <h3>Does the published current text follow from the amendments?</h3>
+                <p>Replay enacted changes independently and classify any difference against the published consolidation.</p>
+                <span class="card-link">Audit a consolidation &rarr;</span>
+            </a>
+            <a class="job-card" href="/solutions/multilingual-legislation">
+                <span class="job-number">03 / LANGUAGES</span>
+                <h3>Do official-language expressions remain structurally aligned?</h3>
+                <p>Review corresponding legal units, dates, citations, quantities, and explicit pairing gaps without pretending to automate legal translation.</p>
+                <span class="card-link">Review parallel expressions &rarr;</span>
+            </a>
+            <a class="job-card" href="/solutions/source-readiness">
+                <span class="job-number">04 / LEGACY SOURCES</span>
+                <h3>We have APIs, PDFs, scans, or incomplete archives. Where can we begin?</h3>
+                <p>Turn available sources into an honest capability map, blocked-source inventory, and staged reconstruction plan.</p>
+                <span class="card-link">Assess source readiness &rarr;</span>
+            </a>
+            <a class="job-card" href="/solutions/drafting-publication-ci">
+                <span class="job-number">05 / PUBLICATION QA</span>
+                <h3>Can we test a drafting or publication transition before release?</h3>
+                <p>Apply target, reference, temporal, language, and mutation-boundary checks to a frozen structured export.</p>
+                <span class="card-link">Explore publication checks &rarr;</span>
+            </a>
+            <a class="job-card" href="/jurisdictions">
+                <span class="job-number">06 / JURISDICTIONS</span>
+                <h3>What can LawVM establish in this source regime?</h3>
+                <p>Inspect frontend maturity by source, structure, effects, replay, verification, language, and public-artifact readiness.</p>
+                <span class="card-link">Compare jurisdictions &rarr;</span>
+            </a>
         </div>
-        <div class="evidence-card">
-            <h3>Construction proof</h3>
-            <div class="number">0.65%</div>
-            <div class="detail">Mean text distance against the archived Finlex comparison surface (frozen 2026-04-16). Residuals are classified separately: replay defects, source gaps, editorial artifacts, and candidate publisher issues.</div>
+    </div>
+</section>
+
+<section class="section-block">
+    <div class="wrap-wide">
+        <p class="section-kicker">Externally confirmed evidence</p>
+        <h2>A replay finding became a publisher correction.</h2>
+        <div class="proof-feature">
+            <div>
+                <p class="proof-status">Confirmed and corrected</p>
+                <h3>Riigi Teataja restored an omitted phrase in Estonia&rsquo;s Auditors Activities Act.</h3>
+                <p>LawVM identified that an amendment instruction had not reached the consolidated text. The official publisher reviewed the report and corrected the Estonian consolidation. The project case record reports a corresponding correction in the English translation; that translation detail is not separately adjudicated here.</p>
+                <div class="page-actions">
+                    <a class="button button-primary" href="/cases/estonia-audiitors-95-2">Inspect the evidence chain</a>
+                    <a class="button" href="/evidence">Open the evidence ledger</a>
+                </div>
+            </div>
+            <div>
+                <div class="evidence-flow" aria-label="Evidence sequence">
+                    <span>amendment source</span><b aria-hidden="true">&rarr;</b>
+                    <span>typed operation</span><b aria-hidden="true">&rarr;</b>
+                    <span>replay</span><b aria-hidden="true">&rarr;</b>
+                    <span>divergence</span><b aria-hidden="true">&rarr;</b>
+                    <span>publisher review</span><b aria-hidden="true">&rarr;</b>
+                    <span>correction</span>
+                </div>
+                <p class="as-of">Public correction notice: 27 April 2026. This is one confirmed case, not a general accuracy claim.</p>
+            </div>
         </div>
     </div>
+</section>
 
-    <p class="as-of" style="text-align:center;">Benchmark snapshot: 2026-04-16. Reported finding count: 2026-04-27. Estonia correction status: 2026-04-27. Corpus: Finnish alpha replay corpus curated from a larger amended-statute universe.</p>
-    <p style="text-align:center; font-size: 0.85rem; color: var(--text-dim); margin-bottom: 2rem;">Research software. Not an official legal consolidation or legal advice. Finland frontend active; other frontends experimental.</p>
-
-    <div style="display:flex; gap:1.25rem; justify-content:center; margin-bottom: 2.5rem; font-size: 0.9rem; flex-wrap:wrap;">
-        <a href="/finland">See Finland evidence</a>
-        <a href="/jurisdictions">Compare jurisdictions</a>
-        <a href="/handoff">Carry it forward</a>
-        <a href="/explainer">Watch the compiler</a>
-        <a href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-uk.json">Open the live explorer</a>
-        <a href="/architecture">Read the architecture</a>
-        <a href="/docs/getting-started">Get started</a>
-        <a href="https://github.com/eliask/lawvm">GitHub</a>
+<section class="section-block">
+    <div class="wrap-wide">
+        <p class="section-kicker">The mechanism</p>
+        <h2>Compile the transitions behind the latest document.</h2>
+        <p class="section-intro">LawVM preserves the derivation behind a current text: which source changed which legal unit, when it took effect, what mutation was authorized, and what remained unresolved.</p>
+        <div class="pipeline" aria-label="LawVM compilation pipeline">
+            <span class="step">source acts</span><span class="arrow">&rarr;</span>
+            <span class="step">typed instructions</span><span class="arrow">&rarr;</span>
+            <span class="step">target resolution</span><span class="arrow">&rarr;</span>
+            <span class="step">replay</span><span class="arrow">&rarr;</span>
+            <span class="step">point-in-time state</span><span class="arrow">&rarr;</span>
+            <span class="step">evidence + residuals</span>
+        </div>
+        <div class="card-grid">
+            <div class="content-card">
+                <h3>Independent expressions</h3>
+                <p>In multilingual checks, each declared language expression, source manifestation, and legal-time coordinate keeps its own provenance. Authority remains tied to the declared source for each expression.</p>
+            </div>
+            <div class="content-card">
+                <h3>Total accounting</h3>
+                <p>Accepted operations, rejected candidates, source pathologies, manual frontiers, and comparison disagreements remain visible.</p>
+            </div>
+            <div class="content-card">
+                <h3>Mutation boundaries</h3>
+                <p>The mutation account compares the declared target and named allowances with the paths that actually changed. Promotion from observation to blocking varies by frontend.</p>
+            </div>
+            <div class="content-card">
+                <h3>Reproducible artifacts</h3>
+                <p>Source identities, hashes, compiler version, state roots, findings, and projections can travel together as an inspectable dossier. <a href="/assurance/status">Inspect the claim records &rarr;</a></p>
+            </div>
+        </div>
+        <div class="page-actions">
+            <a class="button button-primary" href="/assurance/">Inspect how a claim is earned</a>
+            <a class="button" href="/explainer">Watch an amendment compile</a>
+            <a class="button" href="/architecture">Read the architecture</a>
+        </div>
     </div>
+</section>
 
-    <div class="pipeline">
-        <span class="step">amendment act</span>
-        <span class="arrow">&rarr;</span>
-        <span class="step">parse</span>
-        <span class="arrow">&rarr;</span>
-        <span class="step">typed ops</span>
-        <span class="arrow">&rarr;</span>
-        <span class="step">resolve targets</span>
-        <span class="arrow">&rarr;</span>
-        <span class="step">replay</span>
-        <span class="arrow">&rarr;</span>
-        <span class="step">PIT state</span>
-        <span class="arrow">&rarr;</span>
-        <span class="step">compare</span>
-        <span class="arrow">&rarr;</span>
-        <span class="step">classify</span>
+<section class="section-block">
+    <div class="wrap-wide">
+        <p class="section-kicker">Start from the sources you have</p>
+        <h2>Every source regime has a different honest starting point.</h2>
+        <p class="section-intro">Structured APIs can support replay and conformance work sooner. PDFs and scans begin with source census, preservation, extraction evidence, and a blocked-source map.</p>
+        <div class="maturity-flow" aria-label="Source maturity path">
+            <span>scans / gazettes</span><b>&rarr;</b>
+            <span>preserved source bytes</span><b>&rarr;</b>
+            <span>structured legal units</span><b>&rarr;</b>
+            <span>amendment graph</span><b>&rarr;</b>
+            <span>bounded transition checks</span><b>&rarr;</b>
+            <span>publication assurance</span>
+        </div>
+        <div class="claim-boundary">
+            <strong>Capability boundary:</strong> scans first produce a feasibility and evidence-quality assessment. A supportable historical consolidation also requires human-verified or authoritative structure, amendment coverage, temporal evidence, and review.
+        </div>
+        <div class="page-actions">
+            <a class="button" href="/solutions/source-readiness">Find your source starting point</a>
+            <a class="button" href="/pilots">See bounded pilot formats</a>
+        </div>
     </div>
+</section>
 
-    <p style="text-align:center; font-size: 0.85rem; color: var(--text-dim); margin-top: 0.75rem;">Deterministic by design: conventional grammars and symbolic replay.</p>
-
-    <div style="max-width: var(--wrap); margin: 3rem auto 0;">
-
-    <h2 style="color: var(--bright); margin-bottom: 1rem;">Why this exists</h2>
-
-    <p>Legal text is an incrementally maintained system: thousands of amendments applied over decades by distributed authors with partial authority. The law at any moment is the accumulated result.</p>
-
-    <p>The usual assumption is that executable law requires formalized drafting or post-hoc rules-as-code. LawVM shows a different path: <strong>human-written amendment law is already executable.</strong> Compile the amendment stream already published by the legal system.</p>
-
-    <p>The immediate purpose is zero-to-one: prove high-coverage replay on a real legal system. Finland is the proving ground because its amendment stream is difficult enough to matter and open enough to audit.</p>
-
-    <p>Most legal databases present an editorial consolidation: a human-curated snapshot. LawVM replays the amendment chain from primary sources, preserves what happened, and makes the result auditable.</p>
-
-    <p>That means typed operations instead of string patches. Point-in-time materialization from explicit timelines. Findings and source-pathology traces instead of silent cleanup. A way to separate replay defects from editorial artifacts.</p>
-
-    <p>LawVM v0.1 is a construction proof and a handoff artifact. It shows that the substrate can be built, that ordinary law is already executable at the text-state layer, and that the remaining work is concrete. Researchers, public institutions, legal publishers, and civic infrastructure teams can start from a working compiler substrate.</p>
-
-    <p>Read <a href="/the-law-in-force-should-be-knowable">The Law in Force Should Be Knowable</a> for the civic principle. Read <a href="/why-law-is-law-shaped">Why Law Is Law-Shaped</a> for the structural analysis.</p>
-
-    <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Carry this forward</h2>
-
-    <div class="callout">
-        <strong>LawVM v0.1 is a handoff point.</strong>
-        The next stage belongs in real legal information infrastructure.
+<section class="section-block">
+    <div class="wrap-wide">
+        <p class="section-kicker">How it fits</p>
+        <h2>An assurance layer, not a replacement publishing stack.</h2>
+        <p class="section-intro">LawVM can consume versioned artifacts from the systems already used to capture, draft, identify, consolidate, and publish law. Its output is a read-only evidence product for people or CI—not an automatic edit to the official record.</p>
+        <div class="system-flow" aria-label="LawVM ecosystem relationship">
+            <span>gazette / archive</span><b>&rarr;</b>
+            <span>AKN / ELI / local XML</span><b>&rarr;</b>
+            <span>drafting or publisher system</span><b>&rarr;</b>
+            <span>LawVM shadow assurance</span><b>&rarr;</b>
+            <span>evidence pack / QA queue / PIT state</span>
+        </div>
+        <div class="claim-boundary"><strong>Integration boundary:</strong> a concrete, versioned adapter is required for each external system. Mentioning a standard or platform does not imply endorsement, certification, or a completed integration.</div>
+        <div class="page-actions"><a class="button" href="/technology/ecosystem">See standards and integration patterns</a><a class="button" href="/solutions/legal-data-conformance">Explore legal-data conformance</a></div>
     </div>
+</section>
 
-    <p>Finland shows that the construction is technically possible. Durable infrastructure needs maintained jurisdiction frontends, public-sector pilots, legal publisher audit workflows, and research replication.</p>
-
-    <p>Useful adoption signals include legal publisher audit workflows, public-sector pilots, official source expertise, and concrete plans to make LawVM part of legal information infrastructure. <a href="/handoff">See the handoff map.</a></p>
-
-    <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Current state</h2>
-
-    <p><strong>Finland</strong> is the active reference frontend and the main proving ground. It is where the replay model, normalization rules, editorial adjudication, and residual-review workflow are exercised against a real corpus. <a href="/finland">See the Finland showcase.</a></p>
-
-    <p><strong>Estonia</strong> is the second mature lane: strong consistency-checking telemetry and one Riigi Teataja-confirmed correction from a LawVM report. <strong>The UK</strong> is the third most substantial frontend: a maintained legislation.gov.uk workbench with phase-owned effect, source, manual-frontier, replay, and oracle diagnostics. Its latest completed 1,000-statute hard-gate sample has 0 active unclassified residuals and a 99.67% mean EID-set score on 427 core comparison rows; the remaining broad-corpus work is mostly explicit source, manual-compilation, and oracle/pathology frontier handling rather than hidden replay success claims. Norway and Sweden remain experimental source-frontier probes. <a href="/jurisdictions">See the jurisdiction status and benchmark caveats.</a> <a href="/cases/estonia-audiitors-95-2">Read the Estonia correction case study.</a></p>
-
-    <p>If the compiler model is still too abstract, start with the interactive explainer: it walks through a synthetic amendment from source text to typed operation to document-tree mutation. <a href="/explainer">Open the replay explainer.</a></p>
-
-    <p>For a real statute compiled in the browser, the <strong>LawVM Explorer</strong> renders a statute as a full law-as-version-control timeline: point-in-time structure for any date, amendment provenance per provision, and engine-hash-verified citations. <a href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-fi-all-no-amendments.json">Open the Finnish statute explorer.</a> <a href="https://v.kunnas.com/lawvm/statute-timeline.html?manifest=statute-timeline-manifest-uk.json">Open the UK statute explorer.</a></p>
-
-    <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Layer 0</h2>
-
-    <p>LawVM is deliberately narrow. It computes <strong>what the legal text says</strong> at a point in time. Interpretation, application, and cost analysis are higher layers that build on a correct text-state substrate.</p>
-
-    <p>The design principle: <strong>keep the text-state kernel narrow, explicit, stable, and anchor-rich.</strong> That is what makes it useful as infrastructure for everything above.</p>
-
-    <h2 style="color: var(--bright); margin: 2.5rem 0 1rem;">Get started</h2>
-
-<pre><code>git clone https://github.com/eliask/lawvm.git
-cd lawvm
-uv sync
-
-# Import the public Finlex source archives (~5 GB after ingestion)
-uv run lawvm import-zip \
-  --statute-zip https://www.finlex.fi/api/assets/open-data/archives/statute.zip \
-  --consolidated-zip https://www.finlex.fi/api/assets/open-data/archives/statute-consolidated.zip
-
-# Replay, diff, and explain
-uv run lawvm replay 2002/738 --as-of 2024-01-01
-uv run lawvm diff 2002/738
-uv run lawvm explain 2002/738</code></pre>
-
-    <p style="margin-top: 1rem;"><a href="/docs/getting-started">Full getting-started guide</a> &middot; <a href="https://github.com/eliask/lawvm">GitHub repository</a></p>
-
+<section class="section-block">
+    <div class="wrap-wide">
+        <p class="section-kicker">Frontend portfolio</p>
+        <h2>One kernel, many source regimes.</h2>
+        <p class="section-intro">The frontend registry spans Finland, Estonia, the United Kingdom, New Zealand, the European Union, the United States, Norway, and Sweden, with Japan, Korea, Poland, and Switzerland listed as staging lanes. Each lane has a source-level claim ceiling and an explicit next gate.</p>
+        <div class="card-grid">
+            <div class="content-card"><h3>Replay proving grounds</h3><p>Finland and other replay lanes stress amendment-language compilation, temporal state, structural identity, and residual classification.</p></div>
+            <div class="content-card"><h3>Publisher consistency</h3><p>Estonia demonstrates an official-consolidation comparison loop with an externally confirmed correction.</p></div>
+            <div class="content-card"><h3>Effects and versions</h3><p>The UK and API-backed lanes stress source chains, version graphs, effects, manual compilation frontiers, and wide-corpus accounting.</p></div>
+            <div class="content-card"><h3>Multilingual and source frontiers</h3><p>FI/SV, Switzerland, EU, and historical-source lanes expose expression pairing, manifestation, extraction, and source-completeness questions.</p></div>
+        </div>
+        <div class="page-actions"><a class="button button-primary" href="/jurisdictions">Inspect frontend maturity</a></div>
     </div>
+</section>
 
+<section class="section-block">
+    <div class="wrap-wide">
+        <p class="section-kicker">Run beside the existing workflow</p>
+        <h2>Begin with one bounded, source-complete question.</h2>
+        <p class="section-intro">A LawVM pilot runs in no-write shadow mode. It returns a source inventory, reproducible artifacts, classified residuals, and a human-review queue&mdash;not an unsupported declaration that the official text is wrong.</p>
+        <div class="hero-actions">
+            <a class="button button-primary" href="/pilots">Choose a pilot format</a>
+            <a class="button" href="/docs/getting-started">Run LawVM locally</a>
+            <a class="button" href="https://github.com/eliask/lawvm">View the repository</a>
+        </div>
+    </div>
 </section>
 
 </main>
