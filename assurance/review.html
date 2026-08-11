@@ -12,7 +12,7 @@
     <meta property="og:url" content="https://lawvm.org/assurance/review">
     <meta property="og:site_name" content="LawVM">
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"HowTo","name":"How to review a LawVM claim","url":"https://lawvm.org/assurance/review","isPartOf":{"@type":"WebSite","name":"LawVM","url":"https://lawvm.org/"},"step":[{"@type":"HowToStep","name":"Bound the claim","text":"Identify the exact statement, subject, source profile, temporal range, and maximum conclusion."},{"@type":"HowToStep","name":"Trace the evidence","text":"Follow consequential statements to source, specification, implementation, test, and case locators."},{"@type":"HowToStep","name":"Attack the boundary","text":"Test alternative explanations and whether each mechanism supports the wording used."},{"@type":"HowToStep","name":"Record a disposition","text":"Record a reviewer disposition and, after adjudication, a separate bounded public claim outcome; update the claim and registry together."}]}
+    {"@context":"https://schema.org","@type":"HowTo","name":"How to review a LawVM claim","url":"https://lawvm.org/assurance/review","isPartOf":{"@type":"WebSite","name":"LawVM","url":"https://lawvm.org/"},"step":[{"@type":"HowToStep","name":"Bound the claim","text":"Identify the exact statement, subject, source profile, temporal range, and maximum conclusion."},{"@type":"HowToStep","name":"Trace the evidence","text":"Follow consequential statements to source, specification, implementation, test, and case locators."},{"@type":"HowToStep","name":"Attack the boundary","text":"Test alternative explanations and whether each mechanism supports the wording used."},{"@type":"HowToStep","name":"Record a disposition","text":"Record a reviewer disposition and update the public claim and evidence record after adjudication."}]}
     </script>
     <link rel="stylesheet" href="/assets/css/style.css">
     <!-- #include head-end -->
@@ -26,8 +26,8 @@
     <section class="wrap-wide page-heading">
         <p class="section-kicker">Auditor and reviewer guide</p>
         <h1>Try to break the claim.</h1>
-        <p class="lead">A useful review does more than rerun a command. It identifies the maximum public claim, follows its evidence, tests the strongest alternative explanation, and records a disposition such as clean, wording fix, evidence gap, blocked, unresolved, invalid, uncheckable, or not claimed.</p>
-        <div class="page-actions"><a class="button button-primary" href="/assets/data/review-protocol.json">Download the review protocol</a><a class="button" href="/assurance/status">Choose a claim record</a><a class="button" href="/assurance/limits">Inspect the trust boundary</a></div>
+        <p class="lead">A review identifies the maximum public claim, follows its evidence, tests the strongest alternative explanation, and records a disposition such as clean, wording fix, evidence gap, blocked, unresolved, invalid, uncheckable, or not claimed.</p>
+        <div class="page-actions"><a class="button button-primary" href="/evidence">Choose an evidence case</a><a class="button" href="/assurance/limits">Inspect the trust boundary</a></div>
     </section>
 
     <section class="section-block"><div class="wrap-wide">
@@ -35,11 +35,11 @@
         <ol class="steps review-steps">
             <li><strong>Name the maximum claim.</strong> Copy the exact sentence or claim ID. Record the legal work, address, date range, source profile, and strongest conclusion a reader could take from it.</li>
             <li><strong>Bind the inspected state.</strong> Record the dated website, software, source or corpus snapshots, configuration, release status, and unavailable artifacts.</li>
-            <li><strong>Trace consequential statements.</strong> Follow each number, capability statement, and disposition to a public source, registry record, specification, implementation path, test, or external notice.</li>
+            <li><strong>Trace consequential statements.</strong> Follow each number, capability statement, and disposition to a public source, specification, implementation path, test, or external notice.</li>
             <li><strong>Construct the strongest alternative.</strong> Ask whether source incompleteness, manifestation drift, parser error, temporal mismatch, editorial convention, stale comparison data, or a different authority model could explain the result.</li>
             <li><strong>Check mechanism-to-wording fit.</strong> A hash supports identity; conservation supports an account over a declared universe; a mutation audit supports a footprint relation. None alone establishes legal meaning.</li>
-            <li><strong>Record the disposition.</strong> Use the protocol&rsquo;s reviewer values: clean, wording fix, evidence gap, blocked, unresolved, invalid, uncheckable, or not claimed. If the public claim changes, map it separately to the claim registry&rsquo;s bounded outcome vocabulary. Silence and lack of refutation are not confirmation.</li>
-            <li><strong>Change text and registry together.</strong> After adjudication, update the public claim, evidence record, limitations, and snapshot date or release binding.</li>
+            <li><strong>Record the disposition.</strong> Use the reviewer values: clean, wording fix, evidence gap, blocked, unresolved, invalid, uncheckable, or outside scope. Silence and lack of refutation are not confirmation.</li>
+            <li><strong>Update the public record.</strong> After adjudication, update the public claim, evidence record, limitations, and review date or release binding.</li>
         </ol>
     </div></section>
 

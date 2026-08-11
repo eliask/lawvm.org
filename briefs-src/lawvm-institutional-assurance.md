@@ -25,7 +25,11 @@ LawVM reconstructs legal text through time from amendment sources and exposes th
 6. Construct point-in-time state with explicit temporal and identity rules.
 7. Return evidence that a reviewer can reproduce, challenge, qualify, or reject.
 
-Each step has a separate claim ceiling. LawVM does not turn source identity into source correctness, typed closure into legal interpretation, or one confirmed case into a jurisdiction-wide accuracy claim.
+Each step has a separate claim ceiling. Source correctness requires authority and content review; legal interpretation requires separate semantic evidence; one confirmed case supports only that case.
+
+## Project maturity
+
+LawVM is an open-source, beta-stage, pre-1.0 engineering system. Its MIT-licensed code and substantial working compiler, CLI, API, frontend, test, and evidence surfaces are available for bounded evaluation. Every result remains bound to its declared software, sources, profile, corpus, and reviewer boundary. Public interfaces and evidence formats can change, and frontend maturity varies by jurisdiction.
 
 ## Four bounded starting points
 
@@ -33,7 +37,7 @@ Each step has a separate claim ceiling. LawVM does not turn source identity into
 |---|---|---|
 | Does a consolidation follow from amendments? | One source-complete transition set and comparison surface | Source census, replay account, classified differences, evidence packets |
 | Do official-language expressions stay structurally aligned? | Declared expressions, versions, and a bilingual legal reviewer | Availability, pairing, invariant-fact, and residual account |
-| What can be built from our archives? | Representative APIs, XML, HTML, PDFs, scans, registers, and access constraints | Preservation, extraction, blocked-source, and transition-feasibility map |
+| What can be built from our archives? | Representative APIs, XML, HTML, PDFs, scans, registers, and access constraints | Source/page account, claim-specific reconstruction evidence, residual map, and transition feasibility |
 | Can we check a transition before publication? | One versioned structured export and declared rules | Read-only target, reference, temporal, language, and mutation checks |
 
 ## Pilot evidence products
@@ -46,12 +50,12 @@ Each step has a separate claim ceiling. LawVM does not turn source identity into
 
 ## Public evidence and current reach
 
-Riigi Teataja reviewed one LawVM-reported omission in Estonia's Auditors Activities Act and corrected the Estonian consolidation. The public project case record reports a corresponding correction in the English translation; this brief does not present that translation detail as a separately adjudicated public finding. Finland provides a dated replay-construction experiment over the frozen alpha corpus. Other integrated frontends exercise different source and effect models. Japan, South Korea, Poland, and Switzerland remain staging lanes with source-level claim ceilings and explicit next gates.
+Riigi Teataja reviewed one LawVM-reported omission in Estonia's Auditors Activities Act and corrected the Estonian consolidation. The corresponding English-translation detail remains a project report pending separate adjudication. Five additional source/current-text candidates reported from New Zealand and UK work are public with official links and await publisher disposition. Finland provides a dated replay-construction experiment over a declared corpus. Other integrated frontends exercise different source and effect models. Japan, South Korea, Poland, and Switzerland remain staging lanes with source-level claim ceilings and explicit next gates.
 
-These are differentiated engineering and evidence profiles, not “supported jurisdiction” badges.
+Each jurisdiction has its own engineering maturity, evidence base, claim ceiling, and next gate.
 
 ## Reliance boundary and next step
 
-LawVM is research software, not an official consolidation, legal advice, legal authority, a certified jurisdiction, or an automatic production-writing system. Do not email confidential or restricted source files; describe the material and access constraints first.
+LawVM is a beta-stage, pre-1.0 engineering system for bounded evaluation. Official text, legal advice, jurisdiction certification, and production authority remain with the responsible institutions and applicable sources. Public APIs and evidence formats can still change. For confidential or restricted source files, describe the material and access constraints before arranging transfer.
 
-Send the jurisdiction, institutional role, objective, representative sources, bounded corpus or transition family, and local reviewer role to [hello@lawvm.org](mailto:hello@lawvm.org). See [lawvm.org/assurance/brief](https://lawvm.org/assurance/brief), [lawvm.org/pilots](https://lawvm.org/pilots), and the [public claim registry](https://lawvm.org/assurance/status).
+Send the jurisdiction, institutional role, objective, representative sources, bounded corpus or transition family, and local reviewer role to [hello@lawvm.org](mailto:hello@lawvm.org). See [lawvm.org/assurance/brief](https://lawvm.org/assurance/brief), [lawvm.org/pilots](https://lawvm.org/pilots), and the [assurance overview](https://lawvm.org/assurance/).

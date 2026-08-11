@@ -43,7 +43,7 @@
     if (!error) return;
     error.hidden = false;
     error.innerHTML = `
-      <h2>Explainer data did not load</h2>
+      <h2>Explainer unavailable</h2>
       <p>${escapeHtml(message)}</p>
       <p>The page is static; this usually means the JSON artifact was not copied or the browser blocked the request.</p>
       <p><a href="${artifactUrl}">Open the public fixture directly</a> or <a href="/architecture">read the static architecture explanation</a>.</p>

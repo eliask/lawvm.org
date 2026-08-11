@@ -75,7 +75,7 @@
 
     <p>Modern statute law is not a collection of static documents. It is a changing state. A base act is amended by later acts. Sections are replaced, paragraphs are inserted, provisions are repealed, temporary rules come into force and expire, corrigenda repair published mistakes, and transitional provisions determine when changes take effect. The legal text seen by a user on any given day is the result of that history.</p>
 
-    <p>Most legal information systems expose this result as a consolidated or revised text. That is useful and often indispensable. But a consolidated text is also a surface. It does not always show, in an executable way, how the text was derived from the amendment stream. When the surface is wrong, stale, incomplete, or affected by a source-data defect, the error can be difficult to see.</p>
+    <p>Most legal information systems expose this result as a consolidated or revised text. That surface supports everyday use, while an executable derivation shows how the amendment stream produced it. The derivation makes stale, incomplete, or source-affected text easier to detect.</p>
 
     <h2>The compiler claim</h2>
 
@@ -83,11 +83,11 @@
 
     <p>An amending act is treated not only as prose about legal change, but as a set of state-transition instructions over a statute. Replace this subsection. Insert this paragraph. Repeal this provision. Apply this change from this date. A legal-state compiler should be able to replay those instructions over the statute structure and materialize the resulting point-in-time text.</p>
 
-    <p>LawVM does not claim to determine legal meaning or application. It reconstructs textual state within a declared source and profile &mdash; a narrower, infrastructural layer. A well-supported textual state is necessary evidence for reliable interpretation, not a substitute for it.</p>
+    <p>LawVM reconstructs textual state within a declared source and profile. Legal meaning and application remain a separate interpretive layer; reliable interpretation benefits from a well-supported textual state beneath it.</p>
 
     <p>If a statute says one thing before an amendment and another thing after it, that transition should be reproducible. If a provision was repealed, the old provision should not silently remain active. If a temporary rule existed between two dates, its presence or absence should be checkable. If an official consolidation diverges from the enacted amendment chain, that divergence should be classified and explained rather than hidden inside a single opaque text surface.</p>
 
-    <h2>Why this matters now</h2>
+    <h2>AI raises the value of verifiable legal text</h2>
 
     <p>AI systems are beginning to ingest and summarize legal text at scale. A language model cannot repair an uncertain legal substrate by summarizing it. If the underlying text state is stale, ambiguous, or inconsistent, the AI layer amplifies that uncertainty. Legal AI needs deterministic infrastructure beneath it: auditable source chains, point-in-time reconstruction, and explicit failure modes.</p>
 

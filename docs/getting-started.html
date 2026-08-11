@@ -65,11 +65,11 @@
 cd lawvm
 uv sync</code></pre>
 
-    <p>This installs the current public development checkout. It is useful for evaluating the command surface, but it is not a frozen release or an exact reproduction of the dated results on this site.</p>
+    <p>This installs the current public development checkout for evaluating the command surface.</p>
 
-    <h2>Archive-free structural evidence-pack demo</h2>
+    <h2>Optional: archive-free structural evidence-pack demo</h2>
 
-    <p>If a 17&nbsp;GB Finnish archive is not a useful first step, the core repository documents a smaller Maryland/Open Law route using two public Git repositories. It audits declared structured publication operations and produces an evidence pack; it does not establish Maryland legal correctness or replace a publisher&rsquo;s authority.</p>
+    <p>Choose this route for a small structural check; skip to Finnish replay if you already have the archive. The demo uses two public Maryland/Open Law repositories to audit declared structured publication operations and produce an evidence pack. Publisher authority and legal correctness remain outside that structural audit.</p>
 
 <pre><code>git clone https://github.com/maryland-dsd/law-xml.git .tmp/open_law/repos/law-xml
 git clone https://github.com/maryland-dsd/law-xml-codified.git .tmp/open_law/repos/law-xml-codified
@@ -139,7 +139,7 @@ uv run lawvm open-law verify-pack \
 
 <pre><code>uv run lawvm bench --mode official_consolidation --corpus data/finland/bench_core.csv --no-save</code></pre>
 
-    <p>Runs the included Finnish benchmark manifest without saving benchmark history or run artifacts. An August 2026 development run reported 0.23% mean normalized text edit distance, but this command is not an exact reproduction: the historical denominator, frozen source and comparison bytes, corpus manifest, per-row output, aggregate, and environment from that run are not published as one package. A newly acquired archive may produce a different result because publisher-controlled comparison surfaces change. See <a href="/artifacts">Artifacts</a> for methodology and interpretation.</p>
+    <p>Runs the included Finnish benchmark manifest without saving benchmark history or run artifacts. An August 2026 development run reported 0.23% mean normalized text edit distance. A newly acquired Finlex archive may produce a different result because publisher-controlled comparison surfaces change. See <a href="/artifacts">Artifacts</a> for methodology and interpretation.</p>
 
     <h2>Explore further</h2>
 

@@ -21,16 +21,16 @@
     <section class="wrap-wide page-heading">
         <p class="section-kicker">Bounded verification map</p>
         <h1>Different tools establish different properties.</h1>
-        <p class="lead">LawVM combines CI checks, runtime contracts, generated tests, bounded model proofs, experimental independent checking, and case-specific external review. The combination is useful only when each conclusion stays inside its mechanism and scope.</p>
-        <div class="meta-strip"><span>Projection reviewed: 11 August 2026</span><span>Development snapshot; not release-bound</span><span><a href="/assets/data/verification-map.json">Machine-readable map</a></span></div>
-        <div class="claim-boundary"><strong>Maximum claim:</strong> this is a conservative public projection of the core verification map. It is not a formal-verification certificate, complete test inventory, external audit, or proof that every frontend promotes every gate.</div>
+        <p class="lead">LawVM combines CI checks, runtime contracts, generated tests, bounded model proofs, experimental independent checking, and case-specific external review. Each conclusion stays inside its mechanism and scope.</p>
+        <div class="meta-strip"><span>Reviewed: 11 August 2026</span><span>Development snapshot</span></div>
+        <div class="claim-boundary"><strong>Maximum claim:</strong> this public projection maps named mechanisms to bounded properties. A formal certificate, complete test inventory, external audit, and frontend-by-frontend gate evidence require additional artifacts.</div>
     </section>
 
     <section class="section-block"><div class="wrap-wide">
         <p class="section-kicker">Property → tool → gate</p><h2>What runs, what blocks, and what remains bounded</h2>
         <div class="table-scroll" tabindex="0" role="region" aria-label="Verification mechanisms, enforcement, and limits"><table class="status-table verification-table">
             <caption class="visually-hidden">Verification mechanisms, enforcement, and limits</caption>
-            <thead><tr><th scope="col">Mechanism</th><th scope="col">When</th><th scope="col">Blocking?</th><th scope="col">Establishes</th><th scope="col">Does not establish</th></tr></thead>
+            <thead><tr><th scope="col">Mechanism</th><th scope="col">When</th><th scope="col">Blocking?</th><th scope="col">Establishes</th><th scope="col">Outside this mechanism</th></tr></thead>
             <tbody>
                 <tr><td>Ruff and Ty</td><td>CI</td><td><span class="tag tag-green">yes</span></td><td>Declared lint and type properties</td><td>Replay or legal-state correctness</td></tr>
                 <tr><td>Runtime construction contracts</td><td>Construction / runtime</td><td><span class="tag tag-green">yes</span></td><td>Named carrier and tree-operation invariants</td><td>Complete jurisdictional semantics</td></tr>
@@ -45,23 +45,23 @@
     </div></section>
 
     <section class="section-block"><div class="wrap-wide">
-        <p class="section-kicker">The important model boundary</p><h2>The executable mirror is stronger evidence about the current selector than the stale model alone.</h2>
+        <p class="section-kicker">Model-to-code drift</p><h2>Executable tests check the current selector.</h2>
         <div class="card-grid">
             <article class="content-card"><span class="tag tag-amber">bounded model</span><h3>Z3</h3><p>SMT proofs establish named propositions for deliberately encoded finite models. Their assumptions and mapping to production code remain separate review objects.</p></article>
-            <article class="content-card"><span class="tag tag-amber">structurally stale</span><h3>TLA+</h3><p>The temporal-overlay source model preserves useful invariant vocabulary, but it lacks later expiry and tombstone behavior. A regime-handoff rule also required a carve-out absent from the original invariant.</p></article>
+            <article class="content-card"><span class="tag tag-amber">structurally stale</span><h3>TLA+</h3><p>The temporal-overlay source model preserves invariant vocabulary. Later expiry, tombstone behavior, and a regime-handoff rule remain to be incorporated.</p></article>
             <article class="content-card"><span class="tag tag-green">real code in CI</span><h3>Hypothesis mirrors</h3><p>Generated tests call the actual selector for selected invariants, so implementation drift can fail CI. They still cover declared properties rather than all legal-time semantics.</p></article>
         </div>
     </div></section>
 
     <section class="section-block"><div class="wrap-wide">
-        <p class="section-kicker">Explicit non-claims</p><h2>LawVM is not formally verified end to end.</h2>
+        <p class="section-kicker">Proof boundary</p><h2>Open end-to-end proof obligations.</h2>
         <div class="axis-grid">
-            <div class="axis-card"><h3>No complete refinement</h3><p>There is no formal map proving the TLA+ or Z3 abstractions refine to the production Python implementation.</p></div>
-            <div class="axis-card"><h3>No complete amendment semantics</h3><p>There is no general formal semantics or independent entailment checker for arbitrary legislative prose.</p></div>
-            <div class="axis-card"><h3>No universal enforcement</h3><p>Mutation observation, receipts, admission, and blocking differ by frontend, family, profile, and lane.</p></div>
-            <div class="axis-card"><h3>No external system audit</h3><p>No independent party has audited the complete implementation, source universe, evidence plane, and release process.</p></div>
+            <div class="axis-card"><h3>Refinement gap</h3><p>A formal map from the TLA+ and Z3 abstractions to the production Python implementation remains open.</p></div>
+            <div class="axis-card"><h3>Amendment-semantics gap</h3><p>Arbitrary legislative prose still requires a general formal semantics and independent entailment checker.</p></div>
+            <div class="axis-card"><h3>Profile-specific enforcement</h3><p>Mutation observation, receipts, admission, and blocking differ by frontend, family, profile, and lane.</p></div>
+            <div class="axis-card"><h3>External audit gap</h3><p>A complete audit would need independent review of the implementation, source universe, evidence plane, and release process.</p></div>
         </div>
-        <div class="page-actions"><a class="button button-primary" href="/assurance/review">Challenge a claim</a><a class="button" href="/assurance/status">Inspect claim mechanisms</a><a class="button" href="/assurance/limits">Read all non-claims</a></div>
+        <div class="page-actions"><a class="button button-primary" href="/assurance/review">Challenge a claim</a><a class="button" href="/assurance/limits">Read all proof boundaries</a></div>
     </div></section>
 </main>
 <!-- #include footer -->

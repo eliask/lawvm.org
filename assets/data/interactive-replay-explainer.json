@@ -368,7 +368,7 @@
       "op": "The operation card is the execution contract replay consumes.",
       "replay": "The changed path is inside the operation target region.",
       "timeline": "Point-in-time text is derived from operation history.",
-      "evidence": "The evidence panel shows what this curated example proves and does not prove."
+      "evidence": "The evidence panel shows the supported conclusion and the additional evidence required."
     }
   }
 }

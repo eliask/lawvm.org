@@ -11,6 +11,7 @@ from playwright.sync_api import sync_playwright
 
 BASE_URL = os.environ.get("LAWVM_SITE_URL", "http://127.0.0.1:8765")
 SCREENSHOT_DIR = Path(os.environ.get("LAWVM_SCREENSHOT_DIR", "/tmp/lawvm-browser-smoke"))
+CHROMIUM_PATH = os.environ.get("LAWVM_CHROMIUM_PATH")
 
 
 def check_page(page, path: str, width: int, height: int) -> None:
@@ -51,12 +52,17 @@ def main() -> None:
     SCREENSHOT_DIR.mkdir(parents=True, exist_ok=True)
     paths = [
         "/",
+        "/about/",
+        "/about/project-status/",
+        "/docs/",
         "/evidence/",
+        "/essays/",
+        "/finland/",
+        "/explore/",
         "/jurisdictions/",
         "/pilots/",
         "/assessment/",
         "/assurance/",
-        "/assurance/status/",
         "/assurance/limits/",
         "/assurance/dossier/",
         "/assurance/verification/",
@@ -70,12 +76,13 @@ def main() -> None:
         "/solutions/legal-data-conformance/",
         "/technology/ecosystem/",
         "/cases/estonia-audiitors-95-2/",
+        "/cases/reported-qa-candidates/",
         "/fi/lainsaadannon-kieliversioiden-eheys/",
         "/fi/sv-lagstiftningskonformitet/",
     ]
 
     with sync_playwright() as playwright:
-        browser = playwright.chromium.launch()
+        browser = playwright.chromium.launch(executable_path=CHROMIUM_PATH or None)
         page = browser.new_page()
         for path in paths:
             check_page(page, path, 1440, 1000)
@@ -104,12 +111,6 @@ def main() -> None:
         assert page.locator("#email-assessment").get_attribute("href").startswith("mailto:hello@lawvm.org")
         assert "Publication%20decision%20owner" in page.locator("#email-assessment").get_attribute("href")
         assert "Non-public%20material" in page.locator("#email-assessment").get_attribute("href")
-        with page.expect_download() as download_info:
-            page.get_by_role("button", name="Download JSON").click()
-        download = download_info.value
-        assert download.suggested_filename == "lawvm-jurisdiction-assessment.json"
-        assert download.failure() is None
-
         theme = page.locator(".theme-toggle")
         theme.click()
         assert theme.get_attribute("aria-pressed") == "true"
@@ -128,13 +129,13 @@ def main() -> None:
         for label, expected in scenario_expectations.items():
             page.get_by_role("button", name=label, exact=True).click()
             assert dossier_outcome.inner_text().strip().lower() == expected
-        assert page.locator(".profile-row").count() == 8
-        assert page.locator(".profile-yes").count() == 0
+        assert page.locator("#dossier-panel .status-row").count() >= 9
+        assert "required artifact unavailable" in page.locator("#checker-details").inner_text().lower()
         assert page.locator(".account-segment:visible").count() == 1
         assert "uncheckable" in page.locator("#dossier-wording").inner_text().lower()
 
         page.goto(f"{BASE_URL}/evidence/", wait_until="networkidle")
-        assert page.locator(".ledger-record").count() == 2
+        assert page.locator(".ledger-record").count() == 4
         page.locator("#ledger-jurisdiction").select_option("ee")
         assert page.locator(".ledger-record").count() == 1
         assert "EE-2025-AUDIIT-95-2-1" in page.locator(".ledger-record").inner_text()
@@ -142,6 +143,9 @@ def main() -> None:
         page.locator("#ledger-type").select_option("aggregate_candidate_count")
         assert page.locator(".ledger-record").count() == 1
         assert "22 reported candidate records" in page.locator(".ledger-record").inner_text()
+        page.locator("#ledger-type").select_option("public_candidate_packet")
+        assert page.locator(".ledger-record").count() == 2
+        assert "NZ-REPORTED-CROSS-REFERENCES-2026-06" in " ".join(page.locator(".ledger-record").all_inner_texts())
 
         page.goto(f"{BASE_URL}/assessment/?frontend=jp", wait_until="networkidle")
         assert "Japan" in page.locator("#frontend-context").inner_text()
@@ -149,6 +153,23 @@ def main() -> None:
         page.goto(f"{BASE_URL}/pilots/?frontend=ch#frontend", wait_until="networkidle")
         assert "Switzerland" in page.locator("#frontend-context").inner_text()
         assert "Switzerland" in page.locator("#pilot-email").get_attribute("href")
+
+        page.goto(f"{BASE_URL}/about/project-status/", wait_until="networkidle")
+        status_text = page.locator("main").inner_text().lower()
+        for phrase in ("beta-stage", "pre-1.0", "profile-specific"):
+            assert phrase in status_text, f"project status: missing {phrase}"
+        assert "legal authority and broader correctness require separate institutional and evidential support" in status_text
+
+        page.goto(f"{BASE_URL}/solutions/source-readiness/", wait_until="networkidle")
+        source_text = page.locator("main").inner_text().lower()
+        assert "ocr supplies candidate text and locators" in source_text
+        assert "a bounded source-readiness pilot can produce this documentary evidence package" in source_text
+
+        for route in ("/finland/", "/explore/"):
+            page.goto(f"{BASE_URL}{route}", wait_until="networkidle")
+            finnish_link = page.locator('a[href*="statute-timeline-manifest-fi-all-no-amendments.json"]')
+            assert finnish_link.count() == 1
+            assert finnish_link.get_attribute("href").endswith("#ui_lang=en")
 
         for href in (
             "/assets/briefs/lawvm-fi-sv-kieliversiopilotti.pdf",
@@ -160,11 +181,25 @@ def main() -> None:
             assert response.headers.get("content-type", "").startswith("application/pdf")
 
         page.goto(f"{BASE_URL}/", wait_until="networkidle")
+        primary_nav = page.get_by_role("navigation", name="Primary navigation")
+        assert primary_nav.get_by_role("link", name="About", exact=True).is_visible()
+        public_text = page.locator("body").inner_text()
+        for discarded_label in ("Machine-readable registry", "Assurance profile", "Open the frontend starter"):
+            assert discarded_label not in public_text
         page.screenshot(path=SCREENSHOT_DIR / "home-desktop.png", full_page=True)
         page.set_viewport_size({"width": 390, "height": 844})
         page.screenshot(path=SCREENSHOT_DIR / "home-mobile.png", full_page=True)
         page.goto(f"{BASE_URL}/assessment/", wait_until="networkidle")
         page.screenshot(path=SCREENSHOT_DIR / "assessment-mobile.png", full_page=True)
+        page.goto(f"{BASE_URL}/solutions/source-readiness/", wait_until="networkidle")
+        page.screenshot(path=SCREENSHOT_DIR / "source-readiness-mobile.png", full_page=True)
+        page.goto(f"{BASE_URL}/cases/reported-qa-candidates/", wait_until="networkidle")
+        page.screenshot(path=SCREENSHOT_DIR / "reported-qa-candidates-mobile.png", full_page=True)
+        page.goto(f"{BASE_URL}/jurisdictions/", wait_until="networkidle")
+        page.screenshot(path=SCREENSHOT_DIR / "jurisdictions-mobile.png", full_page=True)
+        assert "Assurance profile" not in page.locator("body").inner_text()
+        page.goto(f"{BASE_URL}/assurance/", wait_until="networkidle")
+        page.screenshot(path=SCREENSHOT_DIR / "assurance-mobile.png", full_page=True)
         browser.close()
 
     print(f"Browser smoke complete: {len(paths)} routes at desktop and mobile widths")

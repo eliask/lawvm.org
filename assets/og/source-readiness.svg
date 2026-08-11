@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Start from the sources you have.</title>
-  <desc id="desc">Source census · blocked-source map · staged evidence plan</desc>
+  <desc id="desc">Page account · reconstruction evidence · explicit residuals</desc>
   <rect width="1200" height="630" fill="#0d1117"/>
   <circle cx="1040" cy="90" r="265" fill="#bf8700" opacity="0.20"/>
   <circle cx="80" cy="650" r="280" fill="#1a7f37" opacity="0.15"/>
   <text x="80" y="100" fill="#f0f6fc" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="25" font-weight="700" letter-spacing="3">LAWVM / SOURCE READINESS</text>
   <text x="80" y="220" fill="#f0f6fc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="64" font-weight="700">Start from the</text>
   <text x="80" y="296" fill="#f0f6fc" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="64" font-weight="700">sources you have.</text>
-  <text x="82" y="366" fill="#a5afba" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26">Source census · blocked-source map · staged evidence plan</text>
+  <text x="82" y="366" fill="#a5afba" font-family="-apple-system, BlinkMacSystemFont, Segoe UI, sans-serif" font-size="26">Page account · reconstruction evidence · explicit residuals</text>
   <g transform="translate(80 446)" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20">
     <rect width="240" height="70" rx="9" fill="#161b22" stroke="#30363d"/>
     <text x="30" y="43" fill="#c9d1d9">declared source</text>

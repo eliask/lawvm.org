@@ -54,6 +54,42 @@
         "The candidates are not confirmed publisher defects.",
         "The count is not a general correctness metric."
       ]
+    },
+    {
+      "case_id": "NZ-REPORTED-CROSS-REFERENCES-2026-06",
+      "record_type": "public_candidate_packet",
+      "evidence_type": "publisher_notified_candidate_packet",
+      "jurisdiction": "nz",
+      "work": "3 reported cross-reference candidates",
+      "status": "candidate_awaiting_disposition",
+      "count": 3,
+      "reported_by": "2026-06-16",
+      "reviewability": "public_source_links_and_notification_status",
+      "case_url": "/cases/reported-qa-candidates#new-zealand",
+      "claim": "Three source/current-text discrepancies were reported to New Zealand's Parliamentary Counsel Office. Receipt was acknowledged and the packet was marked for checking; no substantive disposition is recorded here.",
+      "nonclaims": [
+        "Acknowledgement of receipt is not confirmation that any candidate is an official-text error.",
+        "The packet does not establish complete New Zealand replay coverage.",
+        "A later change to an official text would not establish attribution to this report without publisher confirmation."
+      ]
+    },
+    {
+      "case_id": "UK-REPORTED-CURRENT-TEXT-2026",
+      "record_type": "public_candidate_packet",
+      "evidence_type": "institution_briefed_candidate_packet",
+      "jurisdiction": "uk",
+      "work": "2 reported current-text candidates",
+      "status": "candidate_awaiting_disposition",
+      "count": 2,
+      "reported_by": "2026",
+      "reviewability": "public_source_links_and_dated_follow_up_observation",
+      "case_url": "/cases/reported-qa-candidates#united-kingdom",
+      "claim": "Two source/current-text discrepancies were shared with The National Archives before a LawVM meeting. No publisher disposition is recorded here; one current-text surface had changed by 11 August 2026 and one still displayed the reported wording.",
+      "nonclaims": [
+        "A briefing is not confirmation that either candidate is an official-text error.",
+        "The changed Utilities Act surface is not attributed to this report.",
+        "The packet does not establish complete UK replay or effects coverage."
+      ]
     }
   ]
 }

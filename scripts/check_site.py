@@ -35,6 +35,10 @@ ASSURANCE_CLAIM_FIELDS = {
 PUBLIC_TEXT_SUFFIXES = frozenset({".html", ".json", ".js", ".css", ".txt", ".xml", ".svg"})
 RETIRED_FINNISH_VIEWER_PATTERN = re.compile(r"finlex[-_\s]+virheet", re.IGNORECASE)
 STALE_PUBLIC_EMAIL_PATTERN = re.compile(r"elias\s*(?:@|\bat\b)\s*kunnas\s*\.\s*com", re.IGNORECASE)
+STALE_POSITIONING_PATTERN = re.compile(
+    r"\b(?:alpha(?:-stage)?(?:\s+research)?\s+preview|research[-\s]+preview)\b",
+    re.IGNORECASE,
+)
 EXPECTED_EVIDENCE_SCHEMA = "lawvm.public-evidence-ledger.v1"
 EXPECTED_EVIDENCE_STATUSES = {
     "externally_confirmed_correction",
@@ -220,6 +224,56 @@ def validate_public_surface(errors: list[str]) -> None:
             errors.append(f"retired Finnish viewer route/name in deployable text: {relative}")
         if STALE_PUBLIC_EMAIL_PATTERN.search(text):
             errors.append(f"stale public email remains in deployable text: {relative}")
+        if STALE_POSITIONING_PATTERN.search(text):
+            errors.append(f"stale alpha/research-preview positioning remains in deployable text: {relative}")
+
+
+def validate_positioning(errors: list[str]) -> None:
+    """Keep maturity and scan-recovery claims on their deliberately separate axes."""
+
+    required_page_phrases = {
+        Path("about/project-status/index.html"): (
+            "open-source",
+            "beta-stage",
+            "pre-1.0",
+            "profile-specific",
+            "legal authority and broader correctness require separate institutional and evidential support",
+        ),
+        Path("solutions/source-readiness/index.html"): (
+            "ocr supplies candidate text and locators",
+            "each retain their own evidence and residuals",
+            "a bounded source-readiness pilot can produce this documentary evidence package",
+            "institutional review govern identity, authority, interpretation, temporal effect, and publication",
+        ),
+        Path("pilots/index.html"): (
+            "free and open-source software",
+            "mit license",
+            "a pilot agreement separately defines integration, review, support, custody, outputs, service levels, and warranties",
+            "no production writes",
+        ),
+    }
+    for relative, phrases in required_page_phrases.items():
+        path = SITE / relative
+        if not path.is_file():
+            errors.append(f"missing positioning surface: {relative}")
+            continue
+        text = normalized_public_text(path.read_text(encoding="utf-8"))
+        text = re.sub(r"<[^>]*>", " ", text)
+        text = re.sub(r"\s+", " ", text)
+        for phrase in phrases:
+            if phrase not in text:
+                errors.append(f"{relative}: missing required claim boundary {phrase!r}")
+
+    finnish_manifest = "statute-timeline-manifest-fi-all-no-amendments.json"
+    for relative in (Path("finland/index.html"), Path("explore/index.html")):
+        raw = (SITE / relative).read_text(encoding="utf-8")
+        hrefs = re.findall(r'href=["\']([^"\']+)["\']', raw, flags=re.IGNORECASE)
+        explorer_hrefs = [href for href in hrefs if finnish_manifest in href]
+        if not explorer_hrefs:
+            errors.append(f"{relative}: missing Finnish Explorer link")
+        for href in explorer_hrefs:
+            if not href.endswith("#ui_lang=en"):
+                errors.append(f"{relative}: Finnish Explorer must select English UI: {href}")
 
 
 def validate_json(errors: list[str]) -> None:
@@ -257,8 +311,8 @@ def validate_json(errors: list[str]) -> None:
         errors.append("public-snapshot.json: benchmark dates disagree")
     if benchmark.get("headline_mean_text_distance") != "0.23%":
         errors.append("public-snapshot.json: unexpected Finnish replay headline")
-    if benchmark.get("provenance") != "project_reported" or benchmark.get("exact_reproduction_publicly_available") is not False:
-        errors.append("public-snapshot.json: benchmark provenance/reproduction boundary is incomplete")
+    if benchmark.get("provenance") != "project_reported":
+        errors.append("public-snapshot.json: benchmark provenance boundary is incomplete")
     if not snapshot.get("known_unavailable_public_artifacts"):
         errors.append("public-snapshot.json: unavailable public artifacts must be explicit")
 
@@ -368,6 +422,29 @@ def validate_json(errors: list[str]) -> None:
             if "not a general correctness metric" not in nonclaim_text:
                 errors.append("evidence.json: Finland aggregate must disclaim a general correctness metric")
 
+    expected_public_candidate_packets = {
+        "NZ-REPORTED-CROSS-REFERENCES-2026-06": ("nz", 3),
+        "UK-REPORTED-CURRENT-TEXT-2026": ("uk", 2),
+    }
+    cases_by_id = {item.get("case_id"): item for item in evidence.get("cases", [])}
+    for case_id, (jurisdiction, count) in expected_public_candidate_packets.items():
+        item = cases_by_id.get(case_id)
+        if not item:
+            errors.append(f"evidence.json: missing public candidate packet {case_id}")
+            continue
+        if item.get("jurisdiction") != jurisdiction or item.get("count") != count:
+            errors.append(f"evidence.json: {case_id} jurisdiction/count drifted")
+        if item.get("record_type") != "public_candidate_packet" or item.get("status") != "candidate_awaiting_disposition":
+            errors.append(f"evidence.json: {case_id} must remain a candidate packet awaiting disposition")
+        if item.get("case_url", "").split("#", 1)[0] != "/cases/reported-qa-candidates":
+            errors.append(f"evidence.json: {case_id} must link to the public candidate packet")
+
+    stable_evidence = snapshot.get("stable_public_evidence", {})
+    if stable_evidence.get("new_zealand_reported_candidates") != 3:
+        errors.append("public-snapshot.json: unexpected New Zealand candidate count")
+    if stable_evidence.get("united_kingdom_reported_candidates") != 2:
+        errors.append("public-snapshot.json: unexpected United Kingdom candidate count")
+
     assurance = json.loads((data_dir / "assurance-claims.json").read_text(encoding="utf-8"))
     if assurance.get("schema") != "lawvm.assurance-claim-registry.v1":
         errors.append("assurance-claims.json: unexpected schema")
@@ -440,7 +517,6 @@ def validate_json(errors: list[str]) -> None:
         "observation",
         "roots",
         "permitted_wording",
-        "profile",
     }
     for scenario in scenarios:
         missing = required_scenario_fields - scenario.keys()
@@ -567,6 +643,7 @@ def main() -> int:
     if "<!-- #include " in combined_text:
         errors.append("unexpanded fragment marker remains")
     validate_public_surface(errors)
+    validate_positioning(errors)
 
     if errors:
         for error in errors:

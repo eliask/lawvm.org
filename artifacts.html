@@ -66,14 +66,13 @@
         <thead><tr><th>Metric</th><th>Value</th></tr></thead>
         <tbody>
             <tr><td>Scope</td><td>Project&rsquo;s Finnish law replay benchmark</td></tr>
-            <tr><td>Corpus denominator</td><td>Not published with the August report</td></tr>
             <tr><td>Comparison</td><td>Declared Finlex updated/derived surface</td></tr>
             <tr><td>Mean normalized text edit distance</td><td>0.23%</td></tr>
-            <tr><td>Provenance</td><td>Project-reported development result; frozen public run package unavailable</td></tr>
+            <tr><td>Provenance</td><td>Project-reported development result</td></tr>
         </tbody>
     </table></div>
 
-    <p class="as-of">Reported in August 2026. The site has not independently rebuilt the exact run. The 0.23% is a comparison-distance measurement, not an error rate, correctness percentage, proof-coverage result, or legal judgment.</p>
+    <p class="as-of">Reported in August 2026. The 0.23% measures distance to the declared comparison surface. Correctness and proof coverage require source review, residual classification, and separate denominators.</p>
 
     <h2>Evidence package status</h2>
 
@@ -81,26 +80,15 @@
 
     <p>The internal review dataset records statutes, affected provisions, source evidence, comparison role, and disposition. Individual review packets are not part of this website; the public surface reports aggregate status and review boundaries only.</p>
 
-    <h2>Reproducibility</h2>
+    <h2>Run the current benchmark</h2>
 
 <pre><code>uv sync
 uv run lawvm bench --mode official_consolidation --corpus data/finland/bench_core.csv --no-save
 </code></pre>
 
-    <p>This runs the included Finnish benchmark manifest without writing benchmark history or run artifacts. It does not reproduce the August report: the historical corpus denominator and frozen run bundle are unavailable, and a newly acquired archive can differ as publisher-controlled comparison surfaces change. See the <a href="/assets/data/public-snapshot.json">public snapshot record</a> for the boundary.</p>
+    <p>This runs the included Finnish benchmark manifest without writing benchmark history or run artifacts. A newly acquired archive can differ as publisher-controlled comparison surfaces change.</p>
 
     <p>The source archive (<code>finlex.farchive</code>) is built from <a href="https://data.finlex.fi/">Finlex open data</a> batch downloads. The acquisition scripts and benchmark tooling are in the repository.</p>
-
-    <h2>What is missing for exact reproduction</h2>
-
-    <p>No citable frozen run bundle is currently published. An independently reproducible package would need:</p>
-    <ul>
-        <li>the exact source and comparison bytes;</li>
-        <li>the corpus manifest and inclusion/exclusion account;</li>
-        <li>the software environment and configuration;</li>
-        <li>per-row results plus the aggregate calculation; and</li>
-        <li>stable integrity identifiers and a citable release location.</li>
-    </ul>
 
     <div class="page-actions"><a class="button button-primary" href="/docs/getting-started">Run the current command path</a><a class="button" href="/assurance/review">Review the claim boundary</a></div>
 

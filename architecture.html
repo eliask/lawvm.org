@@ -92,20 +92,20 @@
     <ol>
         <li><strong>Clause surface</strong>: an early stable representation of amendment instructions. A typed AST for amendment instruction language.</li>
         <li><strong>Payload surface</strong>: the amendment body after source-local normalization, before live-state-dependent meaning recovery. This is where the source text stops being raw and starts being structured, but meaning recovery against the current statute state has not yet happened.</li>
-        <li><strong>Canonical execution</strong>: replay is designed to consume typed canonical execution artifacts, not raw amendment XML. If meaning cannot be resolved before this boundary, it should become a finding, failed operation, or explicit strict-mode barrier rather than an implicit replay mutation.</li>
+        <li><strong>Canonical execution</strong>: replay consumes typed canonical execution artifacts. Meaning unresolved at this boundary becomes a finding, failed operation, or explicit strict-mode barrier.</li>
     </ol>
 
     <h2>Why deterministic parsing works</h2>
 
     <p>Legislative amendment language is a semi-formal instruction language embedded in ordinary legal prose. In Finland, the <a href="https://lainkirjoittaja.finlex.fi/17-johtolause/17-3/"><em>Lainkirjoittajan opas</em></a> (legislative drafting guide) documents recurring forms for the <em>johtolause</em> (amendment preamble), including <code>kumotaan</code> (repeal), <code>muutetaan</code> (amend), and <code>lisätään</code> (insert), followed by the operative text. Target addresses also use hierarchical conventions such as <code>lain 12 §:n 2 momentti</code> (section 12, subsection 2 of the act).</p>
 
-    <p>Many of these recurring forms are parseable with conventional grammars. LawVM uses PEG (parsing expression grammars) to extract clause structure, target addresses, action types, and payload boundaries from raw amendment text. The core parser does not require an LLM, statistical model, training data, or a rewrite of legislation as code. Its output is deterministic: the same input produces the same parse.</p>
+    <p>Many recurring forms are parseable with conventional grammars. LawVM uses PEG (parsing expression grammars) to extract clause structure, target addresses, action types, and payload boundaries directly from amendment text. The same input produces the same parse.</p>
 
     <p>Prior research has parsed amendment language and automated parts of consolidation. LawVM's distinct scope is an open replay pipeline that carries admitted parses through typed operations, timelines, provenance, and classified residuals. The <a href="/articles/parsing-amendment-language">parsing article</a> links to selected prior work and states the boundary of the Finnish demonstration.</p>
 
     <p>Selected historical patterns use quirks-mode recovery with explicit provenance; unsupported cases can remain blocked or unresolved. Where a declared grammar path succeeds, its result is deterministic and inspectable for the pinned implementation and inputs.</p>
 
-    <h2>No silent repairs</h2>
+    <h2>Owned recovery</h2>
 
     <p>Historical legislation contains malformed XML, editorial shortcuts, implicit targets, stale consolidated witnesses, and source defects. LawVM cannot avoid recovery logic. The governing rule is that recovery must be owned.</p>
 
@@ -137,11 +137,11 @@
 
     <p>Frontends are jurisdiction-local: source acquisition, parsing conventions, drafting idioms, payload extraction, elaboration rules, source pathology, and comparison-surface handling.</p>
 
-    <p>The design question is: <strong>what is the smallest honest executable claim for this jurisdiction, and what source family makes that claim defensible?</strong></p>
+    <p>The design question is: <strong>what is the smallest defensible executable claim for this jurisdiction, and what source family supports it?</strong></p>
 
     <h2>Beyond Layer 0</h2>
 
-    <p>LawVM is deliberately narrow. Within a declared source and profile, it derives a point-in-time textual state. It does not claim to determine what the law means, how it is applied in practice, or what it costs. Those are higher layers:</p>
+    <p>LawVM derives point-in-time textual state within a declared source and profile. Legal meaning, practical application, and economic effect belong to higher layers:</p>
 
     <div class="table-scroll"><table>
         <thead><tr><th>Layer</th><th>Question</th><th>Scope</th></tr></thead>

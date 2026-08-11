@@ -652,26 +652,6 @@ main { padding: 2rem 0; }
 }
 .assurance-chain b { color: var(--text-dim); }
 .assurance-questions { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-.assurance-claim-list { display: grid; gap: 1rem; margin-top: 1.5rem; }
-.assurance-claim {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: clamp(1.1rem, 3vw, 1.5rem);
-}
-.assurance-claim > h3 { color: var(--bright); font-size: 1.25rem; margin: 0.35rem 0 0.55rem; }
-.assurance-claim > p { color: var(--text-dim); }
-.claim-details { border-top: 1px solid var(--border); margin-top: 1rem; padding-top: 0.9rem; }
-.claim-details summary { color: var(--accent); cursor: pointer; font-size: 0.88rem; font-weight: 650; }
-.claim-detail-grid,
-.claim-path-grid { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 1rem; }
-.claim-path-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-.claim-detail-grid h4,
-.claim-path-grid h4 { color: var(--bright); font-size: 0.83rem; margin-bottom: 0.35rem; text-transform: uppercase; }
-.claim-detail-grid ul,
-.claim-path-grid ul { color: var(--text-dim); font-size: 0.82rem; margin-left: 1.1rem; }
-.claim-path-grid code { overflow-wrap: anywhere; word-break: break-word; }
-.claim-details code { overflow-wrap: anywhere; white-space: normal; word-break: break-word; }
 .scenario-tabs { display: flex; flex-wrap: wrap; gap: 0.55rem; margin-bottom: 1rem; }
 .scenario-tab {
   background: var(--surface);
@@ -727,12 +707,6 @@ main { padding: 2rem 0; }
 .account-equation { font: 0.78rem var(--font-mono); }
 .account-clean { color: var(--green); }
 .account-gap { color: var(--amber); }
-.claim-profile { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0.8rem; }
-.profile-row { align-items: center; border-top: 1px solid var(--border); display: flex; font-size: 0.84rem; gap: 1rem; justify-content: space-between; padding: 0.55rem 0; }
-.profile-row:nth-child(odd) { padding-right: 1rem; }
-.profile-row:nth-child(even) { border-left: 1px solid var(--border); padding-left: 1rem; }
-.profile-yes { color: var(--green); }
-.profile-no { color: var(--text-dim); }
 
 /* Evidence cards */
 .evidence-grid {
@@ -1321,9 +1295,8 @@ main { padding: 2rem 0; }
   .job-card { min-height: 190px; }
   .choice-grid, .result-columns { grid-template-columns: 1fr; }
   .ledger-filters { grid-template-columns: 1fr; }
-  .assurance-questions, .claim-detail-grid, .claim-path-grid, .claim-profile { grid-template-columns: 1fr; }
+  .assurance-questions { grid-template-columns: 1fr; }
   .dossier-heading { align-items: start; flex-direction: column; }
-  .profile-row:nth-child(odd), .profile-row:nth-child(even) { border-left: 0; padding-left: 0; padding-right: 0; }
   .account-meter { align-items: stretch; flex-direction: column; }
   .account-segment { flex-basis: auto; justify-content: flex-start; }
 }

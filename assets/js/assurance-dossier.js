@@ -6,17 +6,6 @@
   var error = document.getElementById('dossier-error');
   if (!tabs || !panel || !error) return;
 
-  var profileLabels = {
-    source_identified: 'Source artifact identified',
-    universe_accounted: 'Declared universe accounted',
-    operation_closed: 'Operation typed and closed',
-    execution_admitted: 'Execution admitted',
-    mutation_boundary_checked: 'Mutation boundary satisfied',
-    temporal_context_present: 'Temporal context present',
-    trace_independently_rebuilt: 'Trace independently rebuilt',
-    source_to_operation_entailment_checked: 'Source → operation entailment checked'
-  };
-
   function text(value) {
     if (value === null || value === undefined || value === '') return 'not available';
     if (Array.isArray(value)) return value.length ? value.join(', ') : 'none';
@@ -60,22 +49,6 @@
     equation.className = 'account-equation ' + (accounted + account.unaccounted === account.declared && account.unaccounted === 0 ? 'account-clean' : 'account-gap');
   }
 
-  function renderProfile(profile) {
-    var target = document.getElementById('claim-profile');
-    target.replaceChildren();
-    Object.keys(profileLabels).forEach(function (key) {
-      var row = document.createElement('div');
-      row.className = 'profile-row';
-      var label = document.createElement('span');
-      var value = document.createElement('strong');
-      label.textContent = profileLabels[key];
-      value.textContent = profile[key] ? 'yes' : 'no';
-      value.className = profile[key] ? 'profile-yes' : 'profile-no';
-      row.append(label, value);
-      target.appendChild(row);
-    });
-  }
-
   function render(scenario, selectedButton) {
     tabs.querySelectorAll('button').forEach(function (button) {
       button.setAttribute('aria-pressed', button === selectedButton ? 'true' : 'false');
@@ -97,7 +70,6 @@
     putDetails('root-details', scenario.roots);
     document.getElementById('dossier-wording').textContent = scenario.permitted_wording;
     renderAccount(scenario.account);
-    renderProfile(scenario.profile);
     panel.hidden = false;
   }
 

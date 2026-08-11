@@ -37,7 +37,7 @@
             <span class="tag">blocked</span>
             <span class="tag tag-accent">clean transition</span>
         </div>
-        <div class="meta-strip"><span>Ledger snapshot: 11 August 2026</span><span><a href="/assets/data/evidence.json">Machine-readable ledger</a></span><span><a href="/assets/data/public-snapshot.json">Public snapshot</a></span></div>
+        <div class="meta-strip"><span>Ledger reviewed: 11 August 2026</span></div>
     </section>
     <section class="section-block">
         <div class="wrap-wide">
@@ -49,23 +49,23 @@
                 <li><strong>Record a disposition.</strong> Confirmed, refuted, LawVM defect, source pathology, blocked, unresolved, or another declared status remains attached to the evidence.</li>
                 <li><strong>Disclose only what is permitted.</strong> Publish a case only after its evidence, disposition, notification boundary, and permissions support public review.</li>
             </ol>
-            <div class="claim-boundary"><strong>No automatic action:</strong> LawVM does not correct an official text, notify a publisher, or publish a candidate on its own.</div>
+            <div class="claim-boundary"><strong>Institutional action:</strong> named reviewers control correction, publisher notification, candidate disclosure, and publication.</div>
         </div>
     </section>
     <section class="section-block">
         <div class="wrap-wide">
             <p class="section-kicker">Browse the declared public records</p>
             <h2>Filter by disposition, jurisdiction, or record type</h2>
-            <p class="section-intro">The public ledger currently contains one individually inspectable confirmed case and one aggregate-only Finland candidate count. The filter does not imply that withheld candidate packets are public.</p>
+            <p class="section-intro">The public ledger contains one individually inspectable confirmed case, two public candidate packets from New Zealand and the United Kingdom, and one aggregate-only Finland count. Notification, acknowledgement, a changed public surface, and publisher confirmation remain separate facts.</p>
             <form class="ledger-filters" id="ledger-filters">
                 <label>Status<select id="ledger-status"><option value="">All statuses</option></select></label>
                 <label>Jurisdiction<select id="ledger-jurisdiction"><option value="">All jurisdictions</option></select></label>
                 <label>Record type<select id="ledger-type"><option value="">All record types</option></select></label>
             </form>
             <p class="form-note" id="ledger-filter-status" role="status" aria-live="polite">Loading the public ledger…</p>
-            <div class="card-grid" id="ledger-records" aria-busy="true"><p>Loading records from the machine-readable ledger…</p></div>
-            <noscript><p class="claim-boundary">JavaScript is unavailable. The complete two-record ledger remains available as <a href="/assets/data/evidence.json">machine-readable JSON</a>, and the confirmed <a href="/cases/estonia-audiitors-95-2">Estonia case has a public evidence page</a>.</p></noscript>
-            <div class="claim-boundary"><strong>Disclosure boundary:</strong> not every internal candidate is suitable for immediate public case publication. Public cases should preserve source evidence, responsible-notification practice, disposition, limitations, and any later correction or refutation.</div>
+            <div class="card-grid" id="ledger-records" aria-busy="true"><p>Loading evidence records…</p></div>
+            <noscript><p class="claim-boundary">JavaScript is unavailable. Inspect the <a href="/cases/estonia-audiitors-95-2">confirmed Estonia case</a> or the <a href="/cases/reported-qa-candidates">reported New Zealand and UK candidates</a>.</p></noscript>
+            <div class="claim-boundary"><strong>Disclosure boundary:</strong> public case publication begins when source evidence, responsible notification, disposition, limitations, and any later correction or refutation can be preserved together.</div>
             <p class="form-note">Need to learn the outcome vocabulary before reviewing real evidence? The <a href="/assurance/dossier">synthetic dossier lab</a> is a teaching fixture, not a ledger case or certificate.</p>
         </div>
     </section>

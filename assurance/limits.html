@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What LawVM Does Not Prove &mdash; LawVM</title>
-    <meta name="description" content="The external assumptions, trusted implementation boundary, independently checkable properties, and explicit non-claims behind LawVM assurance.">
+    <title>LawVM Assurance Boundaries &mdash; LawVM</title>
+    <meta name="description" content="The external assumptions, trusted implementation boundary, independently checkable properties, and open proof obligations behind LawVM assurance.">
     <link rel="canonical" href="https://lawvm.org/assurance/limits">
-    <meta property="og:title" content="What LawVM does not prove">
-    <meta property="og:description" content="Provable does not mean infallible: inspect LawVM’s current trust boundary and missing assurance layers.">
+    <meta property="og:title" content="LawVM assurance boundaries">
+    <meta property="og:description" content="Inspect LawVM’s current trust boundary and the evidence required for broader claims.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lawvm.org/assurance/limits">
     <meta property="og:site_name" content="LawVM">
@@ -22,9 +22,9 @@
 <main id="main-content">
     <section class="wrap-wide page-heading">
         <p class="section-kicker">First-class assurance boundary</p>
-        <h1>Provable does not mean infallible.</h1>
-        <p class="lead">A LawVM account may establish bounded properties of a declared derivation. It cannot turn undeclared sources, legal interpretation, unstable schemas, or missing proof into certainty.</p>
-        <div class="page-actions"><a class="button button-primary" href="/assurance/status">Inspect exact claim scopes</a><a class="button" href="/assurance/">Return to assurance overview</a></div>
+        <h1>Proof claims stop at declared boundaries.</h1>
+        <p class="lead">A LawVM account establishes bounded properties of a declared derivation. Broader reliance requires source closure, legal interpretation, stable schemas, and the applicable proof artifacts.</p>
+        <div class="page-actions"><a class="button button-primary" href="/assurance/verification">Inspect verification mechanisms</a><a class="button" href="/assurance/">Return to assurance overview</a></div>
     </section>
     <section class="section-block"><div class="wrap-wide">
         <p class="section-kicker">Trust boundary</p><h2>What a checker still has to trust</h2>
@@ -40,24 +40,24 @@
         </table></div>
     </div></section>
     <section class="section-block"><div class="wrap-wide">
-        <p class="section-kicker">Explicit non-claims</p><h2>LawVM does not currently prove</h2>
+        <p class="section-kicker">Current proof boundary</p><h2>Claims requiring additional evidence</h2>
         <div class="card-grid">
-            <div class="content-card"><h3>Global source completeness</h3><p>A complete account of declared inputs cannot prove that no legally relevant source exists outside the declared horizon.</p></div>
-            <div class="content-card"><h3>Source-keeper correctness</h3><p>A valid hash proves identity, not that XML, HTML, PDF, OCR, or metadata expresses the legally correct publication.</p></div>
-            <div class="content-card"><h3>General source-to-operation entailment</h3><p>No general independent checker yet proves arbitrary legislative prose entails the canonical operation emitted by a frontend.</p></div>
-            <div class="content-card"><h3>Legal interpretation or authority</h3><p>LawVM does not prove doctrine, constitutional validity, application to facts, legislative intent, or which institution has legal authority.</p></div>
-            <div class="content-card"><h3>End-to-end formal verification</h3><p>Z3 and TLA+ work covers named abstractions. There is no complete model-to-Python refinement proof or whole-system formal audit.</p></div>
+            <div class="content-card"><h3>Global source completeness</h3><p>Closure beyond the declared horizon requires an authoritative account of every legally relevant source.</p></div>
+            <div class="content-card"><h3>Source-keeper correctness</h3><p>A hash establishes identity. Publication correctness requires source authority, custody, and content review.</p></div>
+            <div class="content-card"><h3>General source-to-operation entailment</h3><p>Arbitrary legislative prose requires a general independent checker connecting its meaning to the canonical operation emitted by a frontend.</p></div>
+            <div class="content-card"><h3>Legal interpretation or authority</h3><p>Doctrine, constitutional validity, application to facts, legislative intent, and institutional authority remain with competent legal institutions and reviewers.</p></div>
+            <div class="content-card"><h3>End-to-end formal verification</h3><p>Z3 and TLA+ work covers named abstractions. Model-to-Python refinement and a whole-system formal audit remain open.</p></div>
             <div class="content-card"><h3>Uniform frontend enforcement</h3><p>Receipt, mutation-audit, admission, PIT, and certificate maturity differ by frontend, operation family, profile, and corpus.</p></div>
-            <div class="content-card"><h3>A stable certificate product</h3><p>The checker and bundle machinery is experimental; schemas, ownership, compatibility, CLI, and release packaging are not frozen.</p></div>
-            <div class="content-card"><h3>Comparison-surface infallibility</h3><p>Agreement with an official or editorial consolidation is corroboration. Disagreement is a review question, not an automatic verdict.</p></div>
+            <div class="content-card"><h3>A stable certificate product</h3><p>Production reliance requires frozen schemas, ownership, compatibility, CLI behavior, and release packaging around the experimental checker and bundle machinery.</p></div>
+            <div class="content-card"><h3>Comparison-surface authority</h3><p>Agreement with an official or editorial consolidation is corroboration. Disagreement starts a source review.</p></div>
         </div>
-        <div class="claim-boundary"><strong>Missing-artifact rule:</strong> when a required committed artifact is unavailable, the correct outcome is <code>UNCHECKABLE</code>&mdash;not an inferred pass, failure, or reconstructed substitute.</div>
+        <div class="claim-boundary"><strong>Missing-artifact rule:</strong> an unavailable required artifact produces <code>UNCHECKABLE</code>. Review resumes when the committed artifact is supplied.</div>
     </div></section>
     <section class="section-block"><div class="wrap-wide">
         <p class="section-kicker">The largest open assurance gap</p><h2>Independently recheck the source-to-operation step.</h2>
         <p class="section-intro">The highest-value core-repository work is a narrow independent entailment checker for one operation family at a time: confirm the exact source span, grammar version, operative verb, target expression, payload, ambiguity state, and emitted operation without invoking the original lowering implementation.</p>
         <div class="evidence-flow"><span>committed source bytes</span><b>&rarr;</b><span>exact source span</span><b>&rarr;</b><span>small frozen grammar</span><b>&rarr;</b><span>target + payload obligations</span><b>&rarr;</b><span>operation accepted or rejected</span></div>
-        <p>This is a roadmap statement, not a current public capability.</p>
+        <p>This roadmap item becomes a public capability after its checker, fixtures, and supported operation-family contract are released.</p>
     </div></section>
 </main>
 <!-- #include footer -->

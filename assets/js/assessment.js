@@ -66,11 +66,12 @@
     var sourcePoor = ['pdf', 'scan', 'mixed'].indexOf(data.format) !== -1;
 
     if (data.format === 'scan') {
-      immediate.push('Source bootstrap: exact-image preservation, hashes, page locators, and OCR witness measurement.');
-      blocked.push('Scanned pages do not yet establish correct legal structure or amendment semantics.');
+      immediate.push('Source bootstrap: exact source/package preservation, complete page-image inventory, coordinate-bound visual and OCR observations, alternatives, and unresolved-region accounting.');
+      potential.push('A declared review profile can test character, order, grouping, table, citation, and coverage claims separately and emit a source-grounded candidate derivative for supported units.');
+      blocked.push('OCR alone does not establish authorized characters, reading order, grouping, tables, documentary completeness, legal structure, or amendment semantics.');
       blocked.push('A legitimate stop is recorded when extraction, structure, identity, or authority evidence cannot support the next claim.');
     } else if (data.format === 'pdf') {
-      immediate.push('Manifestation preservation, layout-aware extraction, segmentation, and citation-anchor assessment.');
+      immediate.push('Manifestation preservation, page/region accounting, separate text and geometry observations, candidate segmentation/structure, alternatives, residuals, and citation-anchor assessment.');
       blocked.push('PDF extraction alone cannot authorize amendment replay.');
     } else if (structured) {
       immediate.push('Structure, identifier, version, language-expression, and schema-drift inventory.');
@@ -122,7 +123,7 @@
       history: ['Point-in-time reconstruction feasibility tranche', 'Choose one amended legal work or domain and a closed time interval; inventory source closure, effective dates, before/after witnesses, and the first transition families that can support bounded checks. Scope this through the consolidation pilot route.'],
       multilingual: ['Parallel-expression review tranche', 'Choose one domain and all required official expressions; inventory manifestations, align structural units, run a narrow invariant-fact profile, and route candidates to a bilingual legal reviewer.'],
       publication: ['Read-only publication QA adapter', 'Freeze one drafting or publication export and test target validity, references, legal-time metadata, expression completeness, and mutation boundaries without writing to production. Any move from observe-only evidence to a blocking workflow gate must be declared and owned by a human reviewer.'],
-      recovery: ['Source-bootstrap feasibility pilot', 'Measure a representative sample for preservation, extraction, structure, identity, amendment-chain feasibility, and blocked sources before promising replay. OCR is an extraction witness, and a legitimate stop is an acceptable result.'],
+      recovery: ['Source-bootstrap feasibility pilot', 'Account for the supplied package and every page; keep OCR, embedded text, visual/layout, structure, and external transcription evidence separate; preserve alternatives and unresolved regions; and test whether a reviewed source-grounded derivative can support structured legal units. A legitimate stop is an acceptable result, and LawVM separately owns legal meaning and effect.'],
       frontend: ['Bounded frontend tranche', 'Implement one evidence-producing phase—normally acquisition/source account first—with a pinned corpus, typed residuals, claim ceiling, and an explicit next promotion gate owned by a named human reviewer.']
     };
 
@@ -231,21 +232,9 @@
     var text = brief(latest);
     var status = document.getElementById('copy-status');
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(function () { status.textContent = 'Pilot brief copied.'; }, function () { status.textContent = 'Copy was blocked by the browser; use Download JSON instead.'; });
+      navigator.clipboard.writeText(text).then(function () { status.textContent = 'Pilot brief copied.'; }, function () { status.textContent = 'Copy was blocked by the browser; use the email action instead.'; });
     } else {
-      status.textContent = 'Clipboard access is unavailable; use Download JSON instead.';
+      status.textContent = 'Clipboard access is unavailable; use the email action instead.';
     }
-  });
-
-  document.getElementById('download-assessment').addEventListener('click', function () {
-    if (!latest) return;
-    var blob = new Blob([JSON.stringify(latest, null, 2) + '\n'], { type: 'application/json' });
-    var link = document.createElement('a');
-    link.href = URL.createObjectURL(blob);
-    link.download = 'lawvm-jurisdiction-assessment.json';
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    URL.revokeObjectURL(link.href);
   });
 }());

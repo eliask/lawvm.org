@@ -39,7 +39,7 @@ CARDS = {
     "source-readiness": {
         "label": "LAWVM / SOURCE READINESS",
         "lines": ("Start from the", "sources you have."),
-        "subtitle": "Source census · blocked-source map · staged evidence plan",
+        "subtitle": "Page account · reconstruction evidence · explicit residuals",
         "accent": "#bf8700",
     },
     "drafting-publication-ci": {

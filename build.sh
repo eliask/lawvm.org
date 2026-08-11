@@ -58,9 +58,6 @@ for frag in _fragments/*.html; do
     done
 done
 
-# Generate the assurance status page from the same registry published as JSON.
-python3 scripts/generate_assurance_status.py
-
 # Normalize release-wide landmarks, skip navigation, and fallback structured data.
 python3 scripts/finalize_html.py
 
@@ -76,12 +73,12 @@ for required in \
     _site/architecture/index.html \
     _site/docs/getting-started/index.html \
     _site/explore/index.html \
+    _site/essays/index.html \
     _site/evidence/index.html \
     _site/jurisdictions/index.html \
     _site/pilots/index.html \
     _site/assessment/index.html \
     _site/assurance/index.html \
-    _site/assurance/status/index.html \
     _site/assurance/limits/index.html \
     _site/assurance/dossier/index.html \
     _site/assurance/verification/index.html \
@@ -94,6 +91,7 @@ for required in \
     _site/solutions/multilingual-legislation/index.html \
     _site/solutions/source-readiness/index.html \
     _site/solutions/source-recovery/index.html \
+    _site/cases/reported-qa-candidates/index.html \
     _site/fi/lainsaadannon-kieliversioiden-eheys/index.html \
     _site/fi/sv-lagstiftningskonformitet/index.html \
     _site/technology/ecosystem/index.html \
@@ -127,5 +125,6 @@ if find _site -name '.*' -print -quit | grep -q .; then
 fi
 
 python3 scripts/check_site.py
+python3 scripts/check_prose.py
 
 echo "Build complete: _site/"

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Source Readiness &mdash; LawVM</title>
-    <meta name="description" content="Determine what can honestly be reconstructed from legal APIs, XML, HTML, PDFs, scanned gazettes, and historical version sources.">
+    <meta name="description" content="Build an evidence-preserving path from legal APIs, XML, HTML, PDFs, or scans, with OCR kept as one observation lane.">
     <link rel="canonical" href="https://lawvm.org/solutions/source-readiness">
     <meta property="og:title" content="Source readiness — LawVM"><meta property="og:description" content="Start with the legal sources you have and preserve every missing or uncertain step."><meta property="og:type" content="website"><meta property="og:url" content="https://lawvm.org/solutions/source-readiness"><meta property="og:site_name" content="LawVM">
     <meta property="og:image" content="https://lawvm.org/assets/og/source-readiness.png"><meta property="og:image:width" content="1200"><meta property="og:image:height" content="630"><meta property="og:image:alt" content="LawVM source readiness"><meta name="twitter:image" content="https://lawvm.org/assets/og/source-readiness.png">
@@ -23,44 +23,55 @@
 <main id="main-content">
     <section class="wrap-wide page-heading">
         <p class="section-kicker">Source readiness</p>
-        <h1>Start with the legal sources you actually have.</h1>
-        <p class="lead">LawVM defines an evidence-preserving path from source inventory to structured legal units, amendment relationships, bounded transition checks, and point-in-time state. Every stage has an honest output and an explicit claim ceiling.</p>
+        <h1>Start with the legal sources you have.</h1>
+        <p class="lead">LawVM defines an evidence-preserving path from source inventory to structured legal units, amendment relationships, bounded transition checks, and point-in-time state. For scans, document reconstruction preserves uncertainty alongside the proposed text.</p>
         <div class="page-actions"><a class="button button-primary" href="/assessment">Run the browser assessment</a><a class="button" href="/pilots#source-readiness">Assess a source regime</a><a class="button" href="/jurisdictions">Compare real frontends</a></div>
         <div class="maturity-flow" aria-label="Scan-first source sequence">
-            <span>exact images</span><b>&rarr;</b><span>OCR witness</span><b>&rarr;</b><span>structure benchmark</span><b>&rarr;</b><span>source and authority closure</span><b>&rarr;</b><span>bounded checks or legitimate stop</span>
+            <span>source + page account</span><b>&rarr;</b><span>separate evidence lanes</span><b>&rarr;</b><span>reviewed document claims</span><b>&rarr;</b><span>structured derivative</span><b>&rarr;</b><span>LawVM admission or legitimate stop</span>
         </div>
-        <div class="claim-boundary"><strong>Scan-first rule:</strong> OCR is measured as an extraction witness, not treated as legal truth. If structure, identity, amendment coverage, or authority cannot support the next claim, a legitimate stop returns the gap and the next evidence requirement.</div>
+        <div class="claim-boundary"><strong>Scan-first rule:</strong> OCR supplies candidate text and locators. Characters, reading order, grouping, tables, citations, completeness, documentary authority, and amendment meaning each retain their own evidence and residuals.</div>
     </section>
     <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Beyond transcription</p><h2>A scan can become a reviewable evidence package.</h2>
+        <p class="section-intro">A high-assurance recovery workflow can preserve the source, account for every page and region, compare independent observations, retain alternatives and unread material, and emit a deterministic candidate derivative for review. Unsupported units remain unresolved instead of being silently guessed.</p>
+        <div class="axis-grid">
+            <div class="axis-card"><h3>Source and page account</h3><p>Freeze the supplied bytes and package positions; inventory page images, embedded objects, locators, and missing or unreadable material without inventing page artifacts.</p></div>
+            <div class="axis-card"><h3>Separate evidence lanes</h3><p>Keep embedded text, OCR, pixels, geometry, layout, source-native structure, and external transcriptions distinct. Agreement is evidence; disagreement is a review route, not an automatic winner.</p></div>
+            <div class="axis-card"><h3>Claim-specific reconstruction</h3><p>Characters, reading order, grouping, headings, tables, footnotes, and coverage are different propositions. A strong text result cannot hide unresolved order or structure.</p></div>
+            <div class="axis-card"><h3>Derivative and review boundary</h3><p>Bind every candidate unit back to source loci, independently reread the output, preserve alternatives and residuals, and promote only the units allowed by the declared review profile.</p></div>
+        </div>
+        <div class="claim-boundary"><strong>Public capability:</strong> a bounded source-readiness pilot can produce this documentary evidence package. Legal-source admission and institutional review govern identity, authority, interpretation, temporal effect, and publication.</div>
+    </div></section>
+    <section class="section-block"><div class="wrap-wide">
         <p class="section-kicker">Maturity ladder</p><h2>What can be produced now?</h2>
-        <div class="table-scroll"><table class="status-table">
-            <thead><tr><th>Starting point</th><th>First honest output</th><th>Not yet established</th></tr></thead>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Source-readiness maturity ladder"><table class="status-table">
+            <caption class="visually-hidden">Source-readiness maturity ladder</caption><thead><tr><th scope="col">Starting point</th><th scope="col">First supportable output</th><th scope="col">Additional evidence required</th></tr></thead>
             <tbody>
-                <tr><td>Scanned gazettes</td><td>Source census, exact images, hashes, page locators, OCR witnesses, extraction diagnostics</td><td>Correct structured law or historical consolidation</td></tr>
-                <tr><td>Searchable PDFs</td><td>Preserved manifestations, page/layout extraction, segmentation, citation anchors</td><td>Complete amendment semantics</td></tr>
-                <tr><td>HTML or partially structured XML</td><td>Source trees, identity inventory, structure diagnostics, unknown-element reports</td><td>Historical replay without amendment sources</td></tr>
-                <tr><td>Original and amending acts</td><td>Dependency inventory, clause/payload surfaces, typed operation candidates</td><td>Authorized replay without independent dry-run evidence</td></tr>
-                <tr><td>Before/after versions</td><td>Transition bundles, mutation-boundary dry-runs, typed agreement/residual rows</td><td>Comparison-surface correctness or broad corpus coverage</td></tr>
-                <tr><td>Stable API, XML, AKN, or ELI</td><td>Reproducible acquisition, version/effect graphs, bounded replay and conformance work</td><td>Legal interpretation above the text-state layer</td></tr>
+                <tr><td>Scanned gazettes</td><td>Exact source/package and page-image account; coordinate-bound visual and OCR observations; explicit unread, ambiguous, and unclaimed regions</td><td>Human validation of characters, order, grouping, tables, and legal structure before historical consolidation</td></tr>
+                <tr><td>Searchable PDFs</td><td>Preserved manifestations; raw text and geometry observations; page/region accounting; candidate lines, structure, citations, alternatives, and residuals</td><td>Review of logical order, documentary structure, and amendment semantics</td></tr>
+                <tr><td>HTML or partially structured XML</td><td>Source trees, identity inventory, structure diagnostics, unknown-element reports</td><td>Amendment sources for historical replay</td></tr>
+                <tr><td>Original and amending acts</td><td>Dependency inventory, clause/payload surfaces, typed operation candidates</td><td>Independent dry-run evidence before replay promotion</td></tr>
+                <tr><td>Before/after versions</td><td>Transition bundles, mutation-boundary dry-runs, typed agreement/residual rows</td><td>Source review and corpus accounting for correctness and coverage</td></tr>
+                <tr><td>Stable API, XML, AKN, or ELI</td><td>Reproducible acquisition, version/effect graphs, bounded replay and conformance work</td><td>Legal review for interpretation above the text-state layer</td></tr>
             </tbody>
         </table></div>
     </div></section>
     <section class="section-block"><div class="wrap-wide">
         <p class="section-kicker">For legal-information institutes, archives, and publishers</p><h2>Source evidence can be produced before replay exists.</h2>
         <div class="card-grid">
-            <div class="content-card"><h3>Japan</h3><p>e-Gov history, revision XML, bulk XML, attachments, enacted texts, and a loss-preserving source AST create a useful source/PIT census without claiming executable amendments.</p></div>
+            <div class="content-card"><h3>Japan</h3><p>e-Gov history, revision XML, bulk XML, attachments, enacted texts, and a loss-preserving source AST create a source/PIT census without claiming executable amendments.</p></div>
             <div class="content-card"><h3>Poland</h3><p>ELI/Sejm discovery, official PDFs, HTML, structure, references, and source accounts establish what material exists before Polish clause semantics are implemented.</p></div>
             <div class="content-card"><h3>South Korea</h3><p>Typed source-lane and acquisition accounting records missing configuration, endpoint gaps, skips, and transport failures without treating them as an empty corpus.</p></div>
             <div class="content-card"><h3>Switzerland</h3><p>Fedlex impacts and multilingual manifestations can be inventoried precisely while operation lowering and replay remain explicitly unauthorized.</p></div>
         </div>
-        <div class="claim-boundary"><strong>Current boundary:</strong> LawVM is not offered as a generic OCR service. Scanned-source work is presently a feasibility and evidence-quality lane; mature digitisation or publishing platforms can feed structured sources into declared LawVM checks. No scan-first result automatically publishes or corrects legal text.</div>
+        <div class="claim-boundary"><strong>Admission boundary:</strong> a source-recovery pilot can hand reviewed structured material to declared LawVM checks. Legal-source admission, replay authority, and any publication correction remain separate decisions.</div>
     </div></section>
     <section class="section-block"><div class="wrap-wide">
-        <p class="section-kicker">First bounded assessment</p><h2>Return a blocked-source map, not false precision.</h2>
+        <p class="section-kicker">First bounded assessment</p><h2>Return a readiness map with next requirements.</h2>
         <div class="pilot-grid">
             <div class="pilot-card"><h3>Inputs</h3><p>A representative source sample, publication registers, identifier and citation conventions, known authority rules, and local source expertise.</p></div>
-            <div class="pilot-card"><h3>Measurements</h3><p>Availability, preservation, extraction, structure, identity, version linkage, amendment-source closure, effective dates, and language manifestations.</p></div>
-            <div class="pilot-card"><h3>Outputs</h3><p>Source census, achievable citation granularity, extraction benchmark, transition feasibility, blocked-source map, and recommended next integration boundary.</p></div>
+            <div class="pilot-card"><h3>Measurements</h3><p>Package/page/image coverage; text, geometry, layout, and structure observations; alternatives and residual regions; independent readback; identity, version linkage, amendment closure, dates, and expressions.</p></div>
+            <div class="pilot-card"><h3>Outputs</h3><p>Source account, claim-by-claim evidence map, achievable citation granularity, reviewed candidate derivative where supported, blocked-source map, transition feasibility, and next integration boundary.</p></div>
             <div class="pilot-card"><h3>Decision</h3><p>What can run immediately, what becomes possible with named additional sources, and what remains unavailable.</p></div>
         </div>
         <div class="page-actions"><a class="button button-primary" href="/pilots#source-readiness">Prepare a source-readiness pilot</a></div>

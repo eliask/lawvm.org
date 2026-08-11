@@ -18,15 +18,20 @@
     <section class="wrap-wide page-heading brief-cover">
         <p class="section-kicker">Institutional assurance brief · 11 August 2026</p>
         <h1>Independent evidence for legislative change</h1>
-        <p class="lead">LawVM reconstructs legal text through time from amendment sources and exposes the derivation for review. Institutions can begin with a bounded, no-write pilot without replacing their drafting, consolidation, or publication systems.</p>
+        <p class="lead">LawVM reconstructs legal text through time from amendment sources and exposes the derivation for review. Institutions can begin with a bounded, read-only pilot beside their drafting, consolidation, or publication systems.</p>
         <div class="page-actions no-print"><a class="button button-primary" href="/pilots">Choose a pilot</a><a class="button" href="/assets/briefs/lawvm-institutional-assurance.pdf">Download PDF</a><button class="button" type="button" onclick="window.print()">Print this page</button><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20institutional%20assurance">Discuss an evaluation</a></div>
-        <div class="claim-boundary"><strong>Reliance boundary:</strong> research software, not an official consolidation, legal advice, legal authority, a certified jurisdiction, or an automatic production-writing system.</div>
+        <div class="claim-boundary"><strong>Reliance boundary:</strong> beta-stage, pre-1.0 engineering software for bounded evaluation. Official text, legal advice, jurisdiction certification, and production authority remain with the responsible institution and applicable sources.</div>
     </section>
 
     <section class="section-block"><div class="wrap-wide">
         <p class="section-kicker">The institutional problem</p><h2>A current text hides the transition history that produced it.</h2>
         <p>Legislation changes through source acts, effective dates, corrigenda, editorial consolidation, multilingual expressions, renumbering, transitional rules, and source-system migrations. A published text may be authoritative, editorial, evidentiary, or merely convenient depending on the jurisdiction. Comparing two final documents rarely explains why they differ.</p>
         <p>LawVM treats legal text-state as a derivation. It preserves the source instruction, typed operation, target, temporal coordinate, resulting state, residuals, and comparison disposition so a reviewer can inspect the path instead of trusting a final string.</p>
+    </div></section>
+
+    <section class="section-block"><div class="wrap-wide">
+        <p class="section-kicker">Project maturity</p><h2>Beta-stage engineering with bounded assurance.</h2>
+        <p>LawVM is open-source under the MIT license, with substantial working compiler, CLI, API, frontend, test, and evidence surfaces suitable for bounded evaluation. It remains pre-1.0: public interfaces and evidence formats can change, frontend maturity is uneven, and an exact result still depends on its declared software, sources, profile, corpus, and reviewer boundary.</p>
     </div></section>
 
     <section class="section-block"><div class="wrap-wide">
@@ -43,20 +48,20 @@
     </div></section>
 
     <section class="section-block"><div class="wrap-wide">
-        <p class="section-kicker">Where institutions can start</p><h2>Four no-write evaluation formats</h2>
-        <div class="table-scroll" tabindex="0" role="region" aria-label="Four no-write evaluation formats"><table class="status-table">
-            <caption class="visually-hidden">Four no-write evaluation formats</caption><thead><tr><th scope="col">Question</th><th scope="col">Declared input</th><th scope="col">Return</th></tr></thead>
+        <p class="section-kicker">Where institutions can start</p><h2>Four read-only evaluation formats</h2>
+        <div class="table-scroll" tabindex="0" role="region" aria-label="Four read-only evaluation formats"><table class="status-table">
+            <caption class="visually-hidden">Four read-only evaluation formats</caption><thead><tr><th scope="col">Question</th><th scope="col">Declared input</th><th scope="col">Return</th></tr></thead>
             <tbody>
                 <tr><td>Does a consolidation follow from amendments?</td><td>One source-complete transition set and comparison surface</td><td>Source census, replay account, classified differences, evidence packets</td></tr>
                 <tr><td>Do official-language expressions stay structurally aligned?</td><td>All declared expressions, versions, and a bilingual legal reviewer</td><td>Availability, pairing, invariant-fact, and residual account</td></tr>
-                <tr><td>What can be built from our archives?</td><td>Representative APIs, XML, HTML, PDFs, scans, registers, and access constraints</td><td>Preservation, extraction, blocked-source, and transition-feasibility map</td></tr>
+                <tr><td>What can be built from our archives?</td><td>Representative APIs, XML, HTML, PDFs, scans, registers, and access constraints</td><td>Source/page account, claim-specific reconstruction evidence, residual map, and transition feasibility</td></tr>
                 <tr><td>Can we check a transition before publication?</td><td>One versioned structured export and declared rules</td><td>Read-only target, reference, temporal, language, and mutation checks</td></tr>
             </tbody>
         </table></div>
     </div></section>
 
     <section class="section-block"><div class="wrap-wide">
-        <p class="section-kicker">What a pilot returns</p><h2>Evidence products, not an unsupported verdict</h2>
+        <p class="section-kicker">What a pilot returns</p><h2>Evidence products for human review</h2>
         <div class="axis-grid">
             <div class="axis-card"><h3>Source and scope manifest</h3><p>Authorities, manifestations, acquisition dates, hashes, missing sources, work/time boundary, and comparison roles.</p></div>
             <div class="axis-card"><h3>Transition account</h3><p>Typed operations, blocked candidates, recoveries, source pathologies, unexplained residuals, and unchecked units.</p></div>
@@ -82,10 +87,11 @@
     </div></section>
 
     <section class="section-block"><div class="wrap-wide">
-        <p class="section-kicker">Evidence already visible</p><h2>One confirmed case, several differentiated frontend lanes</h2>
-        <p>Riigi Teataja reviewed a LawVM-reported omission in Estonia's Auditors Activities Act and corrected the Estonian consolidation. The public project case record reports a corresponding correction in the English translation; that translation detail is not presented here as a separately adjudicated public finding. This is one externally adjudicated case, not a system-wide accuracy claim.</p>
-        <p>Finland provides a dated replay-construction experiment over the frozen alpha corpus. Estonia exercises publisher consistency. The United Kingdom, New Zealand, Norway, Sweden, European Union, and United States exercise other source and effect models. Japan, South Korea, Poland, and Switzerland are staging lanes with explicit source-level claim ceilings and next gates.</p>
-        <div class="page-actions no-print"><a class="button" href="/cases/estonia-audiitors-95-2">Inspect the confirmed case</a><a class="button" href="/jurisdictions">Compare frontend maturity</a></div>
+        <p class="section-kicker">Evidence already visible</p><h2>One confirmed case, two public candidate packets</h2>
+        <p>Riigi Teataja reviewed a LawVM-reported omission in Estonia's Auditors Activities Act and corrected the Estonian consolidation. The corresponding English-translation detail remains a project report pending separate adjudication. This one externally adjudicated case supports the case-specific QA claim.</p>
+        <p>Five additional source/current-text candidates reported from New Zealand and UK work are public with official source links. They remain candidates: publisher notification, acknowledgement, or a later public-text change is not confirmation.</p>
+        <p>Finland provides a dated replay-construction experiment over a declared corpus. Estonia exercises publisher consistency. The United Kingdom, New Zealand, Norway, Sweden, European Union, and United States exercise other source and effect models. Japan, South Korea, Poland, and Switzerland are staging lanes with explicit source-level claim ceilings and next gates.</p>
+        <div class="page-actions no-print"><a class="button" href="/cases/estonia-audiitors-95-2">Inspect the confirmed case</a><a class="button" href="/cases/reported-qa-candidates">Inspect candidate packets</a></div>
     </div></section>
 
     <section class="section-block"><div class="wrap-wide">

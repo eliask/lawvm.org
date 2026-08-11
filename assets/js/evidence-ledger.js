@@ -57,7 +57,12 @@
     });
     article.appendChild(details);
     if (item.case_url) {
-      var link = addText(article, 'a', item.record_type === 'individual_public_case' ? 'Inspect this public case →' : 'Inspect the aggregate context →');
+      var linkLabel = item.record_type === 'individual_public_case'
+        ? 'Inspect this public case →'
+        : item.record_type === 'public_candidate_packet'
+          ? 'Inspect the candidate packet →'
+          : 'Inspect the aggregate context →';
+      var link = addText(article, 'a', linkLabel);
       link.href = item.case_url;
     }
     return article;
@@ -95,8 +100,8 @@
       status.textContent = 'The public ledger could not be loaded: ' + reason.message;
       records.setAttribute('aria-busy', 'false');
       records.replaceChildren();
-      var fallback = addText(records, 'p', 'Use the machine-readable JSON ledger or open the confirmed Estonia case directly.');
-      var jsonLink = addText(fallback, 'a', ' Open ledger JSON →');
-      jsonLink.href = '/assets/data/evidence.json';
+      var fallback = addText(records, 'p', 'Open the confirmed Estonia case or the reported candidate packet directly.');
+      var caseLink = addText(fallback, 'a', ' Open confirmed case →');
+      caseLink.href = '/cases/estonia-audiitors-95-2';
     });
 }());

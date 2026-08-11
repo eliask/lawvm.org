@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://lawvm.org/</loc></url>
   <url><loc>https://lawvm.org/assurance/</loc></url>
-  <url><loc>https://lawvm.org/assurance/status</loc></url>
   <url><loc>https://lawvm.org/assurance/limits</loc></url>
   <url><loc>https://lawvm.org/assurance/dossier</loc></url>
   <url><loc>https://lawvm.org/assurance/verification</loc></url>
@@ -28,6 +27,7 @@
   <url><loc>https://lawvm.org/architecture</loc></url>
   <url><loc>https://lawvm.org/artifacts</loc></url>
   <url><loc>https://lawvm.org/papers</loc></url>
+  <url><loc>https://lawvm.org/essays</loc></url>
   <url><loc>https://lawvm.org/about</loc></url>
   <url><loc>https://lawvm.org/about/project-status</loc></url>
   <url><loc>https://lawvm.org/docs/</loc></url>
@@ -40,4 +40,5 @@
   <url><loc>https://lawvm.org/articles/replay-bugs-vs-editorial-artifacts</loc></url>
   <url><loc>https://lawvm.org/articles/truth-surfaces</loc></url>
   <url><loc>https://lawvm.org/cases/estonia-audiitors-95-2</loc></url>
+  <url><loc>https://lawvm.org/cases/reported-qa-candidates</loc></url>
 </urlset>

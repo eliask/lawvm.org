@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jurisdiction Readiness Assessment &mdash; LawVM</title>
-    <meta name="description" content="Assess what LawVM can honestly do with a jurisdiction's available legal sources, versions, dates, identifiers, and official-language expressions.">
+    <meta name="description" content="Assess what LawVM can establish from a jurisdiction's available legal sources, versions, dates, identifiers, and official-language expressions.">
     <link rel="canonical" href="https://lawvm.org/assessment">
     <meta property="og:title" content="Jurisdiction readiness assessment — LawVM">
     <meta property="og:description" content="Turn a source regime into immediate capabilities, missing evidence, blockers, and a bounded pilot brief.">
@@ -29,7 +29,7 @@
     <section class="wrap-wide page-heading">
         <p class="section-kicker">Self-service source assessment</p>
         <h1>What can LawVM establish from your sources?</h1>
-        <p class="lead">Describe the source regime and legal-information job. The browser will produce an honest first-pass capability map, blocked-source list, and bounded pilot brief. Nothing is uploaded or stored.</p>
+        <p class="lead">Describe the source regime and legal-information job. The browser produces a bounded first-pass capability map, blocked-source list, and pilot brief. Processing stays in this browser.</p>
         <div class="claim-boundary"><strong>Choose by starting artifact:</strong> paper, scans, or incomplete archives begin with source bootstrap; a structured export begins with pre-publication QA; a published text plus amendment sources begins with consolidation assurance. The assessment routes evidence from declared sources and a model to declared checks, a strict or observe-only disposition, and a named human decision.</div>
         <p class="claim-boundary" id="frontend-context" hidden></p>
     </section>
@@ -84,7 +84,7 @@
                         <label><input type="radio" name="format" value="scan"> Scanned gazettes or page images</label>
                         <label><input type="radio" name="format" value="mixed"> Mixed or uncertain</label>
                     </div>
-                    <p class="form-note">For scans, OCR is measured as an extraction witness. It does not establish legal structure or amendment meaning by itself.</p>
+                    <p class="form-note">For scans, OCR is one observation lane. Character, reading-order, grouping, table, completeness, legal-structure, and amendment claims each require their own evidence.</p>
                 </fieldset>
                 <fieldset>
                     <legend>5. Which source evidence is available?</legend>
@@ -112,12 +112,12 @@
                     <button class="button button-primary" type="submit">Generate first-pass assessment</button>
                     <button class="button" type="reset">Reset</button>
                 </div>
-                <p class="form-note">This is a deterministic browser-side routing aid, not a legal or technical feasibility guarantee. The site does not upload or store your answers, and the assessment never edits or publishes legal text; choosing the email action opens your email client and sends the generated brief.</p>
+                <p class="form-note">This deterministic browser-side routing aid proposes a first-pass pilot shape. Your answers remain in the browser; choosing the email action opens your client with the generated brief. Legal and technical feasibility require separate review.</p>
             </form>
 
             <noscript>
                 <div class="claim-boundary">
-                    <strong>JavaScript is disabled:</strong> the assessment needs JavaScript to calculate its result in the browser. The site does not upload or store answers. To request a manual first pass, open your email client and send your jurisdiction, institution and requesting role, source or IT contact role, decision owner role, objective, source formats, available evidence, data boundary, language context, reviewer availability, and any confidentiality constraints to <a href="mailto:hello@lawvm.org?subject=LawVM%20manual%20assessment">hello@lawvm.org</a>. Do not attach confidential or restricted source files until a processing boundary is agreed.
+                    <strong>JavaScript is disabled:</strong> the assessment uses JavaScript to calculate its result locally. To request a manual first pass, open your email client and send your jurisdiction, institution and requesting role, source or IT contact role, decision owner role, objective, source formats, available evidence, data boundary, language context, reviewer availability, and any confidentiality constraints to <a href="mailto:hello@lawvm.org?subject=LawVM%20manual%20assessment">hello@lawvm.org</a>. Agree a processing boundary before arranging confidential or restricted source transfer.
                 </div>
             </noscript>
 
@@ -140,7 +140,6 @@
                 <div class="page-actions">
                     <a class="button button-primary" id="result-next-action" href="/pilots">Scope the recommended pilot</a>
                     <button class="button" id="copy-assessment" type="button">Copy pilot brief</button>
-                    <button class="button" id="download-assessment" type="button">Download JSON</button>
                     <a class="button" id="email-assessment" href="mailto:hello@lawvm.org">Open email to LawVM</a>
                 </div>
                 <p class="copy-status" id="copy-status" role="status"></p>

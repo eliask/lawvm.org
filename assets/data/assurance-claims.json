@@ -6,7 +6,7 @@
   "public_code_status": "moving_development_surface_without_frozen_release_binding",
   "release_bound": false,
   "summary": "A conservative public crosswalk from LawVM assurance statements to specifications, implementations, tests, deployment boundaries, and non-claims reviewed on the snapshot date.",
-  "reliance_boundary": "This registry describes a dated review of development mechanisms. Repository-relative evidence paths are useful locators but are not bound here to a frozen public release. The registry is not an owner-ratified public schema, legal certificate, external audit, or claim that every frontend has uniform enforcement.",
+  "reliance_boundary": "This registry describes a dated review of development mechanisms. Repository-relative evidence paths locate implementation material but are not bound here to a frozen public release. The registry is not an owner-ratified public schema, legal certificate, external audit, or claim that every frontend has uniform enforcement.",
   "registry_gaps": {
     "stable_checker_commands": "No stable public checker command is registered. The repository checker remains experimental.",
     "guard_liveness_index": "Relevant failure-path tests are listed among test paths, but no separately owned guard-liveness registry is frozen.",
@@ -53,13 +53,13 @@
       "allowed_wording": "LawVM can identify and rehash the exact canonical artifacts declared by a supported dossier or pack profile.",
       "forbidden_wording": "LawVM proves that the source keeper published the complete and legally correct source universe.",
       "known_limits": [
-        "Integrity does not prove legal correctness, completeness, or source preference.",
+        "Legal correctness, completeness, and source preference require separate authority and content evidence.",
         "The public certificate/schema ecosystem is not frozen or owner-ratified."
       ]
     },
     {
       "claim_id": "LAWVM.ACCOUNT.REPLAY_CONSERVATION.v1",
-      "title": "Replay conservation and no silent loss",
+      "title": "Replay conservation and complete accounting",
       "statement": "Within a checked effect universe, each declared source effect must receive an emitted-operation, typed-rejection, or typed-observation disposition, and emitted operations must retain a source warrant.",
       "scope": "Core conservation primitive and frontend families that wire it to a declared population.",
       "mechanisms": ["specified", "typed", "property_tested"],
