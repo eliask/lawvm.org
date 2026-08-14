@@ -1,11 +1,10 @@
 {
   "schema": "lawvm.frontend-status.v1",
   "assurance_profile_schema": "lawvm.frontend-assurance-profile.v1",
-  "snapshot_date": "2026-08-11",
-  "measured_at": "2026-08-11",
+  "snapshot_date": "2026-08-14",
+  "measured_at": "2026-08-14",
   "notes": [
-    "Integration describes repository state, not legal authority.",
-    "Staging frontend packages were reviewed separately and were not yet integrated into the mainline release at inspection time.",
+    "Integration describes presence in the inspected development line, not release binding, legal authority, or uniform maturity.",
     "Every frontend claim is bounded by its claim_ceiling and nonclaims.",
     "assurance_profile is a conservative projection of typed interfaces and checker evidence; it is not an authority grant, maturity score, or replay permission.",
     "typed means a typed carrier or bounded implementation evidence exists; it does not mean the source or legal interpretation is correct.",
@@ -13,17 +12,479 @@
     "not_claimed means this public snapshot makes no frontend-level claim for that axis; unknown means the inspected evidence did not resolve it."
   ],
   "frontends": [
-    {"id":"fi","name":"Finland","integration":"integrated","authority_model":"editorial_consolidation_comparison","languages":["fi","sv"],"source_state":"source_complete_subset","parse_state":"operation_lowering","historical_state":"broad_pit","dry_run_state":"corpus","replay_state":"broad_promoted_with_residuals","verification_state":"corpus_witness","claim_ceiling":"Replay-construction evidence for a bounded declared Finnish corpus against a declared, fallible Finlex comparison surface.","pilot_ready_use":"Bounded consolidation QA and FI/SV expression-inventory work; recurring institutional operation is not yet proven.","local_need":"Bilingual legal review, Finlex workflow knowledge, and an institutional pilot sponsor.","next_gate":"Close current deterministic and source/timeline identity frontiers.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"typed","typed_closure":"typed","admission":"observe_only","mutation_observation":"observe_only","temporal_state":"pit","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=fi","pilot":"/pilots?frontend=fi#consolidation","contact":"mailto:hello@lawvm.org?subject=LawVM%20Finland%20frontend"}},
-    {"id":"ee","name":"Estonia","integration":"integrated","authority_model":"authoritative_consolidation_comparison","languages":["et","en"],"source_state":"source_complete_subset","parse_state":"operation_lowering","historical_state":"bounded_pit","dry_run_state":"corpus","replay_state":"shadow_only","verification_state":"externally_confirmed","claim_ceiling":"Consistency audit with one externally confirmed and corrected omission.","pilot_ready_use":"A bounded publisher-consistency audit with source-linked candidate review.","local_need":"Riigi Teataja source and drafting expertise plus an agreed recurring-disposition workflow.","next_gate":"Stabilize source and replay semantics for recurring evidence production.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"typed","typed_closure":"typed","admission":"observe_only","mutation_observation":"observe_only","temporal_state":"pit","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"externally_adjudicated"},"cta":{"assessment":"/assessment?frontend=ee","pilot":"/pilots?frontend=ee#consolidation","contact":"mailto:hello@lawvm.org?subject=LawVM%20Estonia%20frontend"}},
-    {"id":"uk","name":"United Kingdom","integration":"integrated","authority_model":"effect_feed","languages":["en"],"source_state":"source_complete_subset","parse_state":"operation_lowering","historical_state":"bounded_pit","dry_run_state":"corpus","replay_state":"shadow_only","verification_state":"corpus_witness","claim_ceiling":"Phase-owned effect/version and bounded replay evidence with explicit source and manual frontiers.","pilot_ready_use":"Effects, version, source-chain, and outstanding-change diagnostics for a bounded corpus.","local_need":"Publication-workflow expertise and a source-complete benchmark tranche.","next_gate":"Close source-chain and manual-compilation frontiers without turning effect metadata into silent authority.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"candidate","typed_closure":"candidate","admission":"observe_only","mutation_observation":"observe_only","temporal_state":"residual","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=uk","pilot":"/pilots?frontend=uk#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20United%20Kingdom%20frontend"}},
-    {"id":"nz","name":"New Zealand","integration":"integrated","authority_model":"official_version_witness","languages":["en"],"source_state":"acquisition","parse_state":"typed_candidates","historical_state":"checkpoints","dry_run_state":"sample","replay_state":"not_authorized","verification_state":"witness_sample","claim_ceiling":"Bounded dry-run agreement for emitted candidates; no actual canonical replay claim.","pilot_ready_use":"API/source conformance and witnessed dry-run expansion for selected operation families.","local_need":"A pinned, denominator-complete transition corpus and local drafting review.","next_gate":"Increase pinned witness-denominator coverage before promotion.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"candidate","typed_closure":"candidate","admission":"not_authorized","mutation_observation":"dry_run","temporal_state":"residual","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=nz","pilot":"/pilots?frontend=nz#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20New%20Zealand%20frontend"}},
-    {"id":"no","name":"Norway","integration":"integrated","authority_model":"amendment_source","languages":["nb","nn"],"source_state":"acquisition","parse_state":"typed_candidates","historical_state":"checkpoints","dry_run_state":"sample","replay_state":"shadow_only","verification_state":"tests","claim_ceiling":"Structured-source and replay experiments over available modern public sources.","pilot_ready_use":"Modern-source and commencement-readiness assessment for a bounded domain.","local_need":"Historical source access and authoritative interpretation of contingent commencement.","next_gate":"Acquire historical sources and explicit commencement evidence.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"typed","typed_closure":"typed","admission":"observe_only","mutation_observation":"observe_only","temporal_state":"pit","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=no","pilot":"/pilots?frontend=no#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20Norway%20frontend"}},
-    {"id":"se","name":"Sweden","integration":"integrated","authority_model":"amendment_source","languages":["sv"],"source_state":"acquisition","parse_state":"typed_candidates","historical_state":"checkpoints","dry_run_state":"synthetic","replay_state":"shadow_only","verification_state":"tests","claim_ceiling":"Official-source preservation, parsing, and first-pass operation artifacts; broad replay fidelity unmeasured.","pilot_ready_use":"Official-artifact preservation, structure inventory, and transition-source feasibility.","local_need":"A source-complete transition sample and Swedish drafting-language adjudication.","next_gate":"Build source-complete transition subsets and dry-run witnesses.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"typed","typed_closure":"typed","admission":"observe_only","mutation_observation":"observe_only","temporal_state":"pit","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=se","pilot":"/pilots?frontend=se#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20Sweden%20frontend"}},
-    {"id":"eu","name":"European Union","integration":"integrated","authority_model":"source_only","languages":["multilingual"],"source_state":"acquisition","parse_state":"source_ast","historical_state":"checkpoints","dry_run_state":"none","replay_state":"not_authorized","verification_state":"tests","claim_ceiling":"Exploratory CELEX/ELI acquisition and legal-resource modeling.","pilot_ready_use":"CELEX/ELI identity, manifestation, expression, and relationship conformance for a bounded corpus.","local_need":"A scoped legal domain, authoritative expression rules, and effect-evidence review.","next_gate":"Define bounded effect and expression evidence subsets.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"candidate","typed_closure":"candidate","admission":"not_authorized","mutation_observation":"dry_run","temporal_state":"residual","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=eu","pilot":"/pilots?frontend=eu#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20European%20Union%20frontend"}},
-    {"id":"us","name":"United States federal","integration":"integrated","authority_model":"source_only","languages":["en"],"source_state":"acquisition","parse_state":"source_ast","historical_state":"checkpoints","dry_run_state":"none","replay_state":"not_authorized","verification_state":"tests","claim_ceiling":"Source/bootstrap/import tooling; no broad historical federal replay claim.","pilot_ready_use":"Source, codification, and classification readiness for one bounded title or subject.","local_need":"Authoritative source-law/codification mapping and a deliberately narrow evaluation corpus.","next_gate":"Resolve amendment-source and codification relationships for a bounded title.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"typed","effect_accounting":"residual","typed_closure":"residual","admission":"not_authorized","mutation_observation":"not_claimed","temporal_state":"not_claimed","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=us","pilot":"/pilots?frontend=us#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20US%20federal%20frontend"}},
-    {"id":"jp","name":"Japan","integration":"staging","authority_model":"source_only","languages":["ja"],"source_state":"acquisition","parse_state":"source_ast","historical_state":"checkpoints","dry_run_state":"none","replay_state":"not_authorized","verification_state":"tests","claim_ceiling":"Source/PIT acquisition, preservation, source AST, and typed census only.","pilot_ready_use":"e-Gov source, version, XML-structure, attachment, and manifestation conformance.","local_need":"Japanese amendment-clause expertise and witnessed before/after transition samples.","next_gate":"Resolve amending sources and promote witnessed operation families.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"unknown","effect_accounting":"residual","typed_closure":"not_claimed","admission":"not_authorized","mutation_observation":"not_claimed","temporal_state":"not_claimed","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=jp","pilot":"/pilots?frontend=jp#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20Japan%20frontend"}},
-    {"id":"kr","name":"South Korea","integration":"staging","authority_model":"source_only","languages":["ko"],"source_state":"inventory","parse_state":"none","historical_state":"none","dry_run_state":"none","replay_state":"not_authorized","verification_state":"tests","claim_ceiling":"Official-source lane definition and resumable acquisition accounting only.","pilot_ready_use":"Credentialed acquisition and official-source account for one declared lane.","local_need":"Authorized API credentials, a measured real corpus, and Korean source expertise.","next_gate":"Complete and measure a real acquisition corpus.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"residual","effect_accounting":"residual","typed_closure":"not_claimed","admission":"not_authorized","mutation_observation":"not_claimed","temporal_state":"not_claimed","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=kr","pilot":"/pilots?frontend=kr#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20South%20Korea%20frontend"}},
-    {"id":"pl","name":"Poland","integration":"staging","authority_model":"source_only","languages":["pl"],"source_state":"acquisition","parse_state":"source_ast","historical_state":"checkpoints","dry_run_state":"none","replay_state":"not_authorized","verification_state":"tests","claim_ceiling":"ELI/Sejm source acquisition, manifestation preservation, and source-account evidence only.","pilot_ready_use":"ELI identity, manifestation, reference, version, and structure conformance.","local_need":"Polish amendment-clause expertise and pinned before/after witnesses.","next_gate":"Implement Polish clause parsing and witnessed effect candidates.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"unknown","effect_accounting":"residual","typed_closure":"not_claimed","admission":"not_authorized","mutation_observation":"not_claimed","temporal_state":"not_claimed","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=pl","pilot":"/pilots?frontend=pl#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20Poland%20frontend"}},
-    {"id":"ch","name":"Switzerland","scope":"federal","integration":"staging","authority_model":"source_only","languages":["de","fr","it"],"source_state":"source_complete_subset","parse_state":"typed_candidates","historical_state":"checkpoints","dry_run_state":"none","replay_state":"not_authorized","verification_state":"tests","claim_ceiling":"Bounded post-2022 Fedlex source, impact, and multilingual manifestation evidence; no replay authority.","pilot_ready_use":"Fedlex Work–Expression–Manifestation, impact, applicability-date, and language-completeness conformance.","local_need":"Swiss federal drafting expertise and German/French/Italian legal review for a bounded tranche.","next_gate":"Establish bounded effect-family evidence with explicit source, date, before/after, and expression completeness.","measured_at":"2026-08-11","assurance_profile":{"source_identity":"unknown","effect_accounting":"residual","typed_closure":"candidate","admission":"not_authorized","mutation_observation":"not_claimed","temporal_state":"residual","independent_trace_check":"not_claimed","source_to_operation_entailment":"not_claimed","external_adjudication":"not_claimed"},"cta":{"assessment":"/assessment?frontend=ch","pilot":"/pilots?frontend=ch#frontend","contact":"mailto:hello@lawvm.org?subject=LawVM%20Switzerland%20frontend"}}
+    {
+      "id": "fi",
+      "name": "Finland",
+      "integration": "integrated",
+      "authority_model": "editorial_consolidation_comparison",
+      "languages": [
+        "fi",
+        "sv"
+      ],
+      "source_state": "source_complete_subset",
+      "parse_state": "operation_lowering",
+      "historical_state": "broad_pit",
+      "dry_run_state": "corpus",
+      "replay_state": "broad_promoted_with_residuals",
+      "verification_state": "corpus_witness",
+      "claim_ceiling": "Replay-construction evidence for a bounded declared Finnish corpus against a declared, fallible Finlex comparison surface.",
+      "pilot_ready_use": "Bounded consolidation QA and FI/SV expression-inventory work; recurring institutional operation is not yet proven.",
+      "local_need": "Bilingual legal review, Finlex workflow knowledge, and an institutional pilot sponsor.",
+      "next_gate": "Close current deterministic and source/timeline identity frontiers.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "typed",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "pit",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=fi",
+        "pilot": "/pilots?frontend=fi#consolidation",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Finland%20frontend"
+      }
+    },
+    {
+      "id": "ee",
+      "name": "Estonia",
+      "integration": "integrated",
+      "authority_model": "authoritative_consolidation_comparison",
+      "languages": [
+        "et",
+        "en"
+      ],
+      "source_state": "source_complete_subset",
+      "parse_state": "operation_lowering",
+      "historical_state": "bounded_pit",
+      "dry_run_state": "corpus",
+      "replay_state": "shadow_only",
+      "verification_state": "externally_confirmed",
+      "claim_ceiling": "Consistency audit with one externally confirmed and corrected omission.",
+      "pilot_ready_use": "A bounded publisher-consistency audit with source-linked candidate review.",
+      "local_need": "Riigi Teataja source and drafting expertise plus an agreed recurring-disposition workflow.",
+      "next_gate": "Stabilize source and replay semantics for recurring evidence production.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "typed",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "pit",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "externally_adjudicated"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=ee",
+        "pilot": "/pilots?frontend=ee#consolidation",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Estonia%20frontend"
+      }
+    },
+    {
+      "id": "uk",
+      "name": "United Kingdom",
+      "integration": "integrated",
+      "authority_model": "effect_feed",
+      "languages": [
+        "en"
+      ],
+      "source_state": "source_complete_subset",
+      "parse_state": "operation_lowering",
+      "historical_state": "bounded_pit",
+      "dry_run_state": "corpus",
+      "replay_state": "shadow_only",
+      "verification_state": "corpus_witness",
+      "claim_ceiling": "Phase-owned effect/version and bounded replay evidence with explicit source and manual frontiers.",
+      "pilot_ready_use": "Effects, version, source-chain, and outstanding-change diagnostics for a bounded corpus.",
+      "local_need": "Publication-workflow expertise and a source-complete benchmark tranche.",
+      "next_gate": "Close source-chain and manual-compilation frontiers without turning effect metadata into silent authority.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "candidate",
+        "typed_closure": "candidate",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "residual",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=uk",
+        "pilot": "/pilots?frontend=uk#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20United%20Kingdom%20frontend"
+      }
+    },
+    {
+      "id": "nz",
+      "name": "New Zealand",
+      "integration": "integrated",
+      "authority_model": "official_version_witness",
+      "languages": [
+        "en"
+      ],
+      "source_state": "acquisition",
+      "parse_state": "typed_candidates",
+      "historical_state": "checkpoints",
+      "dry_run_state": "sample",
+      "replay_state": "not_authorized",
+      "verification_state": "witness_sample",
+      "claim_ceiling": "Bounded dry-run agreement for emitted candidates; no actual canonical replay claim.",
+      "pilot_ready_use": "API/source conformance and witnessed dry-run expansion for selected operation families.",
+      "local_need": "A pinned, denominator-complete transition corpus and local drafting review.",
+      "next_gate": "Increase pinned witness-denominator coverage before promotion.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "candidate",
+        "typed_closure": "candidate",
+        "admission": "not_authorized",
+        "mutation_observation": "dry_run",
+        "temporal_state": "residual",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=nz",
+        "pilot": "/pilots?frontend=nz#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20New%20Zealand%20frontend"
+      }
+    },
+    {
+      "id": "no",
+      "name": "Norway",
+      "integration": "integrated",
+      "authority_model": "amendment_source",
+      "languages": [
+        "nb",
+        "nn"
+      ],
+      "source_state": "acquisition",
+      "parse_state": "typed_candidates",
+      "historical_state": "checkpoints",
+      "dry_run_state": "sample",
+      "replay_state": "shadow_only",
+      "verification_state": "tests",
+      "claim_ceiling": "Structured-source and replay experiments over available modern public sources.",
+      "pilot_ready_use": "Modern-source and commencement-readiness assessment for a bounded domain.",
+      "local_need": "Historical source access and authoritative interpretation of contingent commencement.",
+      "next_gate": "Acquire historical sources and explicit commencement evidence.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "typed",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "pit",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=no",
+        "pilot": "/pilots?frontend=no#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Norway%20frontend"
+      }
+    },
+    {
+      "id": "se",
+      "name": "Sweden",
+      "integration": "integrated",
+      "authority_model": "amendment_source",
+      "languages": [
+        "sv"
+      ],
+      "source_state": "acquisition",
+      "parse_state": "typed_candidates",
+      "historical_state": "checkpoints",
+      "dry_run_state": "synthetic",
+      "replay_state": "shadow_only",
+      "verification_state": "tests",
+      "claim_ceiling": "Official-source preservation, parsing, and first-pass operation artifacts; broad replay fidelity unmeasured.",
+      "pilot_ready_use": "Official-artifact preservation, structure inventory, and transition-source feasibility.",
+      "local_need": "A source-complete transition sample and Swedish drafting-language adjudication.",
+      "next_gate": "Build source-complete transition subsets and dry-run witnesses.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "typed",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "pit",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=se",
+        "pilot": "/pilots?frontend=se#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Sweden%20frontend"
+      }
+    },
+    {
+      "id": "eu",
+      "name": "European Union",
+      "integration": "integrated",
+      "authority_model": "source_only",
+      "languages": [
+        "multilingual"
+      ],
+      "source_state": "acquisition",
+      "parse_state": "source_ast",
+      "historical_state": "checkpoints",
+      "dry_run_state": "none",
+      "replay_state": "not_authorized",
+      "verification_state": "tests",
+      "claim_ceiling": "Exploratory CELEX/ELI acquisition and legal-resource modeling.",
+      "pilot_ready_use": "CELEX/ELI identity, manifestation, expression, and relationship conformance for a bounded corpus.",
+      "local_need": "A scoped legal domain, authoritative expression rules, and effect-evidence review.",
+      "next_gate": "Define bounded effect and expression evidence subsets.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "candidate",
+        "typed_closure": "candidate",
+        "admission": "not_authorized",
+        "mutation_observation": "dry_run",
+        "temporal_state": "residual",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=eu",
+        "pilot": "/pilots?frontend=eu#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20European%20Union%20frontend"
+      }
+    },
+    {
+      "id": "us",
+      "name": "United States federal",
+      "integration": "integrated",
+      "authority_model": "source_only",
+      "languages": [
+        "en"
+      ],
+      "source_state": "acquisition",
+      "parse_state": "source_ast",
+      "historical_state": "checkpoints",
+      "dry_run_state": "none",
+      "replay_state": "not_authorized",
+      "verification_state": "tests",
+      "claim_ceiling": "Source/bootstrap/import tooling; no broad historical federal replay claim.",
+      "pilot_ready_use": "Source, codification, and classification readiness for one bounded title or subject.",
+      "local_need": "Authoritative source-law/codification mapping and a deliberately narrow evaluation corpus.",
+      "next_gate": "Resolve amendment-source and codification relationships for a bounded title.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "residual",
+        "typed_closure": "residual",
+        "admission": "not_authorized",
+        "mutation_observation": "not_claimed",
+        "temporal_state": "not_claimed",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=us",
+        "pilot": "/pilots?frontend=us#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20US%20federal%20frontend"
+      }
+    },
+    {
+      "id": "jp",
+      "name": "Japan",
+      "integration": "integrated",
+      "authority_model": "amendment_source",
+      "languages": [
+        "ja"
+      ],
+      "source_state": "acquisition",
+      "parse_state": "operation_lowering",
+      "historical_state": "bounded_pit",
+      "dry_run_state": "sample",
+      "replay_state": "shadow_only",
+      "verification_state": "tests",
+      "claim_ceiling": "Observed source histories, typed lowering, and bounded replay dossiers for supported families; broad corpus replay is not claimed.",
+      "pilot_ready_use": "e-Gov source, version, XML-structure, attachment, temporal, and bounded-family replay assessment.",
+      "local_need": "Japanese amendment-clause expertise and a larger set of independently witnessed transitions.",
+      "next_gate": "Expand the witnessed corpus and promote only source-complete operation families.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "candidate",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "residual",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=jp",
+        "pilot": "/pilots?frontend=jp#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Japan%20frontend"
+      }
+    },
+    {
+      "id": "kr",
+      "name": "South Korea",
+      "integration": "integrated",
+      "authority_model": "amendment_source",
+      "languages": [
+        "ko"
+      ],
+      "source_state": "acquisition",
+      "parse_state": "operation_lowering",
+      "historical_state": "checkpoints",
+      "dry_run_state": "sample",
+      "replay_state": "shadow_only",
+      "verification_state": "tests",
+      "claim_ceiling": "Observed source histories and bounded typed amendment-replay families over witnessed snapshots; broad corpus completeness is not claimed.",
+      "pilot_ready_use": "Credentialed acquisition, observed-state history, and bounded-family replay assessment for one declared lane.",
+      "local_need": "Authorized API credentials, a measured source-complete corpus, and Korean legal-source expertise.",
+      "next_gate": "Complete the official-source corpus and widen only independently witnessed families.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "candidate",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "residual",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=kr",
+        "pilot": "/pilots?frontend=kr#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20South%20Korea%20frontend"
+      }
+    },
+    {
+      "id": "pl",
+      "name": "Poland",
+      "integration": "integrated",
+      "authority_model": "amendment_source",
+      "languages": [
+        "pl"
+      ],
+      "source_state": "source_complete_subset",
+      "parse_state": "operation_lowering",
+      "historical_state": "bounded_pit",
+      "dry_run_state": "corpus",
+      "replay_state": "shadow_only",
+      "verification_state": "tests",
+      "claim_ceiling": "Source-first Polish evidence with typed amendment lowering and conservative replay for supported, source-complete families.",
+      "pilot_ready_use": "ELI identity, manifestation, clause-family, commencement, and bounded replay assessment.",
+      "local_need": "Polish amendment-language review and independently pinned before/after witnesses.",
+      "next_gate": "Expand corpus-wide family coverage while preserving every unsupported construction as a typed residual.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "typed",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "pit",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=pl",
+        "pilot": "/pilots?frontend=pl#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Poland%20frontend"
+      }
+    },
+    {
+      "id": "ch",
+      "name": "Switzerland",
+      "scope": "federal",
+      "integration": "integrated",
+      "authority_model": "amendment_source",
+      "languages": [
+        "de",
+        "fr",
+        "it"
+      ],
+      "source_state": "source_complete_subset",
+      "parse_state": "operation_lowering",
+      "historical_state": "bounded_pit",
+      "dry_run_state": "sample",
+      "replay_state": "shadow_only",
+      "verification_state": "tests",
+      "claim_ceiling": "Swiss federal source, impact, cross-language admission, and exact read-only replay evidence for a bounded fixture cohort; no broad replay profile.",
+      "pilot_ready_use": "Fedlex identity, impact, applicability date, expression completeness, structural alignment, and bounded transition assessment.",
+      "local_need": "Swiss federal drafting expertise and German/French/Italian legal review for a bounded tranche.",
+      "next_gate": "Expand source-complete transition cohorts without promoting comparison text or partial language groups.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "typed",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "pit",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/assessment?frontend=ch",
+        "pilot": "/pilots?frontend=ch#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Switzerland%20frontend"
+      }
+    },
+    {
+      "id": "open-law",
+      "name": "Open Law Library",
+      "integration": "integrated",
+      "authority_model": "structured_operation_source",
+      "languages": [
+        "en"
+      ],
+      "source_state": "source_complete_subset",
+      "parse_state": "operation_lowering",
+      "historical_state": "checkpoints",
+      "dry_run_state": "corpus",
+      "replay_state": "shadow_only",
+      "verification_state": "corpus_witness",
+      "claim_ceiling": "Audit whether supported declared codify operations produced an observed publication snapshot without unexplained mutation.",
+      "pilot_ready_use": "Archive-free structural evidence pack and publication-operation conformance over a pinned repository snapshot.",
+      "local_need": "Publisher documentation and jurisdiction-specific review for annotation, applicability, and lifecycle semantics.",
+      "next_gate": "Freeze a reproducible public corpus snapshot and close the remaining structured-operation semantics.",
+      "measured_at": "2026-08-14",
+      "assurance_profile": {
+        "source_identity": "typed",
+        "effect_accounting": "typed",
+        "typed_closure": "typed",
+        "admission": "observe_only",
+        "mutation_observation": "observe_only",
+        "temporal_state": "residual",
+        "independent_trace_check": "not_claimed",
+        "source_to_operation_entailment": "not_claimed",
+        "external_adjudication": "not_claimed"
+      },
+      "cta": {
+        "assessment": "/docs/getting-started",
+        "pilot": "/pilots?frontend=open-law#frontend",
+        "contact": "mailto:hello@lawvm.org?subject=LawVM%20Open%20Law%20Library%20frontend"
+      }
+    }
   ]
 }

@@ -26,7 +26,8 @@ Current work is bounded source assessment, frontend-specific replay, and adapter
 - Explore legal timelines: https://lawvm.org/explore
 - Evidence ledger: https://lawvm.org/evidence
 - Jurisdiction status: https://lawvm.org/jurisdictions
-  - Integrated and staging lanes expose source, effect, replay, verification, and claim-ceiling maturity separately. The UK lane is a bounded effects/version workbench with observe-only diagnostics, not a broad automatic-consolidation service. Staging lanes are usable for bounded source and conformance assessments, not production replay integrations.
+  - The integrated development line contains jurisdiction frontends for Finland, Estonia, the United Kingdom, New Zealand, Poland, Norway, Sweden, the European Union, US federal law, Switzerland, Japan, and South Korea, plus an Open Law Library structured-operation frontend.
+  - Integration records repository presence, not release binding, legal authority, or equal maturity. Each lane exposes source, effect, replay, verification, and claim-ceiling maturity separately.
 - Jurisdiction assessment: https://lawvm.org/assessment
 - Pilots: https://lawvm.org/pilots
 - Documentation: https://lawvm.org/docs/

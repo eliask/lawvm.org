@@ -7,7 +7,7 @@
     <meta name="description" content="LawVM frontend maturity by source acquisition, structure, effects, dry-run, replay, verification, language, integration, and public claim.">
     <link rel="canonical" href="https://lawvm.org/jurisdictions">
     <meta property="og:title" content="Jurisdiction status — LawVM">
-    <meta property="og:description" content="Inspect what each LawVM jurisdiction frontend can establish, what remains blocked, and whether it is integrated or staging.">
+    <meta property="og:description" content="Inspect what each LawVM frontend can establish, what remains blocked, and how maturity differs across source regimes.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lawvm.org/jurisdictions">
     <meta property="og:site_name" content="LawVM">
@@ -28,8 +28,8 @@
     <section class="wrap-wide page-heading">
         <p class="section-kicker">Jurisdiction status</p>
         <h1>Compare frontend maturity by source regime.</h1>
-        <p class="lead">Compare what each jurisdiction lane can establish today, which source and review work remains, and the next bounded use it can support.</p>
-        <div class="meta-strip"><span>Reviewed: 11 August 2026</span><span>Mainline + staging packages</span></div>
+        <p class="lead">Compare what each jurisdiction or structured-source lane can establish today, which source and review work remains, and the next bounded use it can support.</p>
+        <div class="meta-strip"><span>Reviewed: 14 August 2026</span><span>Integrated development line</span><span>12 jurisdictions + 1 structured-source frontend</span></div>
         <p class="form-note">Contact links open your email client. Do not send confidential or restricted source files before agreeing a processing boundary.</p>
     </section>
 
@@ -37,7 +37,7 @@
         <div class="wrap-wide">
             <p class="section-kicker">Mainline</p>
             <h2>Integrated frontends</h2>
-            <p class="section-intro">These lanes are present in the main LawVM checkout. &ldquo;Integrated&rdquo; describes repository integration, not legal authority or uniform replay maturity.</p>
+            <p class="section-intro">These lanes are present in the integrated LawVM development line. &ldquo;Integrated&rdquo; describes repository presence; release stability, legal authority, and replay maturity each require separate evidence.</p>
             <div class="card-grid">
                 <article class="content-card" id="finland">
                     <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag tag-accent">reference replay frontend</span><span class="tag">fi / sv</span></div>
@@ -133,39 +133,54 @@
 
     <section class="section-block">
         <div class="wrap-wide">
-            <p class="section-kicker">Incoming portfolio</p>
-            <h2>Staging frontends</h2>
-            <p class="section-intro">These frontends exist as separate staging packages and support bounded source, corpus, and conformance assessments. Before a pilot, re-inspect and pin the selected staging artifacts.</p>
+            <p class="section-kicker">Recently integrated</p>
+            <h2>New source regimes in the shared line</h2>
+            <p class="section-intro">These four frontends were integrated on 14 August 2026. Their source, parsing, replay, and local-review ceilings remain independent; the merge itself grants no legal or execution authority.</p>
             <div class="card-grid">
                 <article class="content-card" id="japan">
-                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">source + PIT acquisition</span><span class="tag">ja</span></div>
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">typed lowering + bounded replay</span><span class="tag">ja</span></div>
                     <h3>Japan</h3>
-                    <p>Archives e-Gov catalogs, revision histories and XML, bulk XML, attachments, and House enacted text. Includes a loss-preserving Japanese Law XML source AST and transition census.</p>
-                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>e-Gov and enacted-text sources support an acquisition-stage, source-only lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Source/PIT acquisition, preservation, source structure, and typed census only.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>e-Gov source, version, XML-structure, attachment, and manifestation conformance.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Japanese amendment-clause expertise and witnessed before/after transition samples.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Resolve amending sources and promote witnessed operation families.</dd></dl></div>
+                    <p>Archives e-Gov catalogs, revision histories and XML, bulk XML, attachments, and House enacted text. The lane carries loss-preserving source structure into typed amendment lowering, temporal selection, replay, and review dossiers for bounded families.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>e-Gov and enacted-text sources support a source-owned history and transition lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Observed source histories, typed lowering, and bounded replay dossiers for supported families; broad corpus replay is not claimed.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>e-Gov source, version, XML-structure, attachment, temporal, and bounded-family replay assessment.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Japanese amendment-clause expertise and a larger set of independently witnessed transitions.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Expand the witnessed corpus and promote only source-complete operation families.</dd></dl></div>
                     <div class="page-actions"><a class="button" href="/assessment?frontend=jp">Assess Japan</a><a class="button" href="/pilots?frontend=jp#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Japan%20frontend">Contact</a></div>
                 </article>
                 <article class="content-card" id="south-korea">
-                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">acquisition only</span><span class="tag">ko</span></div>
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">observed state + bounded replay</span><span class="tag">ko</span></div>
                     <h3>South Korea</h3>
-                    <p>Defines typed, resumable acquisition lanes for the Law Information Center, Gazette, National Assembly, government drafts, and local-law sources, with explicit accounting for configuration and transport failures.</p>
-                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Declared official-source lanes remain at inventory stage pending credentials and a measured corpus.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Official-source lane definition and acquisition accounting only; corpus completeness is not claimed.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Credentialed acquisition and official-source account for one declared lane.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Authorized API credentials, a measured real corpus, and Korean source expertise.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Complete and measure a real acquisition corpus.</dd></dl></div>
+                    <p>Combines typed, resumable official-source acquisition with observed-state histories and bounded Korean amendment parsing, lowering, and replay families. Configuration, transport, unsupported syntax, and comparison residuals stay explicit.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Declared official-source lanes and preserved observed snapshots remain distinct from comparison and replay claims.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Observed source histories and bounded typed amendment-replay families over witnessed snapshots; broad corpus completeness is not claimed.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Credentialed acquisition, observed-state history, and bounded-family replay assessment for one declared lane.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Authorized API credentials, a measured source-complete corpus, and Korean legal-source expertise.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Complete the official-source corpus and widen only independently witnessed families.</dd></dl></div>
                     <div class="page-actions"><a class="button" href="/assessment?frontend=kr">Assess South Korea</a><a class="button" href="/pilots?frontend=kr#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20South%20Korea%20frontend">Contact</a></div>
                 </article>
                 <article class="content-card" id="poland">
-                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">ELI source account</span><span class="tag">pl</span></div>
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">typed lowering + conservative replay</span><span class="tag">pl</span></div>
                     <h3>Poland</h3>
-                    <p>Archives official ELI/Sejm discovery, act metadata, references, structure JSON, HTML/PDF manifestations, official journal pages, and source-account evidence.</p>
-                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Official ELI/Sejm sources support an acquisition-stage, source-only lane.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Source acquisition, manifestation preservation, and source-account evidence only.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>ELI identity, manifestation, reference, version, and structure conformance.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Polish amendment-clause expertise and pinned before/after witnesses.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Implement Polish clause parsing and witnessed effect candidates.</dd></dl></div>
+                    <p>Archives official ELI/Sejm identities and manifestations, lowers supported Polish amendment clauses to typed operations, drives the shared replay seam, and keeps commencement, correction, checkpoint, and comparison evidence separate.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Official ELI/Sejm sources own source identity and amendment evidence; checkpoint and comparison surfaces never repair replay.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Source-first Polish evidence with typed amendment lowering and conservative replay for supported, source-complete families.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>ELI identity, manifestation, clause-family, commencement, and bounded replay assessment.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Polish amendment-language review and independently pinned before/after witnesses.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Expand corpus-wide family coverage while preserving every unsupported construction as a typed residual.</dd></dl></div>
                     <div class="page-actions"><a class="button" href="/assessment?frontend=pl">Assess Poland</a><a class="button" href="/pilots?frontend=pl#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Poland%20frontend">Contact</a></div>
                 </article>
                 <article class="content-card" id="switzerland">
-                    <div class="tag-list"><span class="tag tag-amber">staging / unintegrated</span><span class="tag">Fedlex evidence</span><span class="tag">de / fr / it</span></div>
+                    <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">multilingual typed admission</span><span class="tag">de / fr / it</span></div>
                     <h3>Switzerland</h3>
-                    <p>A bounded federal Fedlex evidence frontend for post-30 May 2022 material: Work&ndash;Expression&ndash;Manifestation records (legal work, language expression, and concrete manifestation), structured impact inventory, applicability-dated transition bundles, and multilingual source-completeness accounting.</p>
-                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Fedlex sources support a bounded source-complete post-2022 subset; the lane remains source-only.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Swiss federal source and impact evidence for a bounded tranche; no amendment lowering or replay authority.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Fedlex Work–Expression–Manifestation, impact, applicability-date, and language-completeness conformance.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Swiss federal drafting expertise and German/French/Italian legal review for a bounded tranche.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Establish bounded effect-family evidence with explicit source, date, before/after, and expression completeness.</dd></dl></div>
+                    <p>A bounded federal Fedlex frontend for post-30 May 2022 material: Work&ndash;Expression&ndash;Manifestation identity, impact inventory, applicability-dated transition bundles, German/French/Italian alignment, typed admission, and a read-only replay audit.</p>
+                    <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>Fedlex sources support a bounded source-complete post-2022 subset; acquisition records and comparison expressions do not grant replay authority.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Swiss federal source, impact, cross-language admission, and exact read-only replay evidence for a bounded fixture cohort; no broad replay profile.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Fedlex identity, impact, applicability date, expression completeness, structural alignment, and bounded transition assessment.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Swiss federal drafting expertise and German/French/Italian legal review for a bounded tranche.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Expand source-complete transition cohorts without promoting comparison text or partial language groups.</dd></dl></div>
                     <div class="page-actions"><a class="button" href="/assessment?frontend=ch">Assess Switzerland</a><a class="button" href="/pilots?frontend=ch#frontend">Discuss a pilot</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Switzerland%20frontend">Contact</a></div>
                 </article>
             </div>
+        </div>
+    </section>
+
+    <section class="section-block">
+        <div class="wrap-wide">
+            <p class="section-kicker">Structured-operation regime</p>
+            <h2>Open Law Library</h2>
+            <p class="section-intro">This frontend tests LawVM against a cooperative XML source language whose publisher declares explicit <code>codify:*</code> operations. It is a frontend for a publication regime, not a claim about every jurisdiction using the platform.</p>
+            <article class="content-card" id="open-law-library">
+                <div class="tag-list"><span class="tag tag-green">integrated</span><span class="tag">structured operation audit</span><span class="tag">XML</span></div>
+                <h3>Open Law Library</h3>
+                <p>LawVM parses supported codification instructions, replays them against the prior XML tree, checks that writes stay inside declared targets, and compares the result with a publication snapshot. Unsupported lifecycle or action families remain owned findings.</p>
+                <div class="status-list"><dl class="status-row"><dt>Authority / source</dt><dd>For the public Maryland demo, local clones of <code>law-xml</code> provide the structured source and <code>law-xml-codified</code> provides a declared publication comparison surface.</dd></dl><dl class="status-row"><dt>Claim ceiling</dt><dd>Audit whether a supported declared <code>codify:*</code> operation produced the observed publication snapshot without unexplained mutation.</dd></dl><dl class="status-row"><dt>Boundary</dt><dd>The bounded claim covers structural conformance of declared operations. Maryland legal correctness, prose-derived Register amendments, and publisher authority require separate sources and competent review.</dd></dl><dl class="status-row"><dt>Pilot-ready use</dt><dd>Archive-free structural evidence pack and publication-operation conformance over a pinned repository snapshot.</dd></dl><dl class="status-row"><dt>Local need</dt><dd>Publisher documentation and jurisdiction-specific review for annotation, applicability, and lifecycle semantics.</dd></dl><dl class="status-row"><dt>Next gate</dt><dd>Freeze a reproducible public corpus snapshot and close the remaining structured-operation semantics.</dd></dl></div>
+                <div class="page-actions"><a class="button" href="/docs/getting-started">Run the archive-free demo</a><a class="button" href="https://github.com/eliask/lawvm/blob/master/docs/open-law-demo.md">Read the frontend boundary</a><a class="button" href="mailto:hello@lawvm.org?subject=LawVM%20Open%20Law%20Library%20frontend">Contact</a></div>
+            </article>
         </div>
     </section>
 

@@ -23,13 +23,14 @@
 <article>
     <header class="essay-header"><p class="section-kicker">Project status</p><h1>Beta-stage engineering, bounded assurance</h1><p class="subtitle">What is operational, what remains pre-1.0, and what practical reliance requires.</p></header>
     <div class="essay-body">
-        <div class="callout"><strong>Status:</strong> open-source, beta-stage, pre-1.0 engineering system. LawVM has an installable package, extensive CLI and service surfaces, a large automated test estate, multiple working frontend lanes, corpus-scale evidence, and one externally confirmed publisher correction. It is not yet a stable release or a production-authority system.</div>
+        <div class="callout"><strong>Status:</strong> open-source, beta-stage, pre-1.0 engineering system. LawVM has an installable package, extensive CLI and service surfaces, a large automated test estate, thirteen integrated frontend lanes, corpus-scale evidence, and one externally confirmed publisher correction. It is not yet a stable release or a production-authority system.</div>
         <div class="status-list">
             <dl class="status-row"><dt>Engineering maturity</dt><dd>Beta-stage: substantial end-to-end capability exists and is suitable for bounded institutional evaluation and integration work.</dd></dl>
             <dl class="status-row"><dt>Release compatibility</dt><dd>Pre-1.0: Python imports, CLI/JSON schemas, evidence and certificate formats, and some frontend contracts may still break.</dd></dl>
             <dl class="status-row"><dt>Assurance maturity</dt><dd>Profile-specific: each source, operation family, frontend, corpus, and check keeps its own claim ceiling. Legal authority and broader correctness require separate institutional and evidential support.</dd></dl>
         </div>
         <p>An August 2026 Finnish replay run reported 0.23% mean normalized text edit distance against its declared Finlex comparison surface. Source review and residual classification carry the correctness questions.</p>
+        <p>LawVM has accumulated nearly 12,000 commits across the present repository and its original private experimental lineage. That history helps explain the maturity of its invariant system; it is development context, not evidence that a particular legal result is correct.</p>
         <h2>What is established</h2>
         <ul>
             <li>For declared Finnish source/profile scopes, covered recurring amendment forms can be compiled into typed, inspectable text-state transitions.</li>
@@ -44,9 +45,12 @@
             <li>Stable compatibility requires a pre-1.0 release decision for the Python API, CLI JSON families, certificate bundle, and long-term service interface.</li>
             <li>Exact reproduction requires named software, sources, corpus, configuration, and output package rather than a moving development checkout.</li>
         </ul>
+        <h2>Why frontend work can move quickly</h2>
+        <p>Mature mutation invariants, typed phase boundaries, explicit residuals, production-path tests, and affected-path gates make much of frontend development agent-operable. Coding agents can inspect a source family, propose typed syntax and operations, implement a bounded lane through the shared core, and iterate against concrete witnesses.</p>
+        <p>That autonomy stops at the proof boundary. An agent proposal, passing test, or confidence score does not authorize legal-state mutation or establish a public reliance claim. Typed validation, replay admission, source evidence, and accountable review retain those decisions.</p>
         <h2>Portfolio</h2>
-        <p>Finland remains the reference replay frontend. Estonia, the UK, New Zealand, Norway, Sweden, EU, and US federal lanes exercise other authority and source models in mainline. Japan, South Korea, Poland, and Switzerland are active staging frontends not yet integrated into mainline.</p>
-        <p><a href="/jurisdictions">Compare jurisdiction status and claim ceilings.</a></p>
+        <p>Finland remains the deepest reference replay frontend. Estonia, the UK, New Zealand, Poland, Norway, Sweden, EU, US federal, Switzerland, Japan, and South Korea exercise other jurisdiction-specific source and authority models. The Open Law Library frontend audits an explicit structured <code>codify:*</code> operation language against publication snapshots.</p>
+        <p>All thirteen are present in the integrated development line inspected on 14 August 2026. Each lane&rsquo;s maturity, replay authority, release stability, and institutional standing require their own evidence. <a href="/jurisdictions">Compare frontend status and claim ceilings.</a></p>
         <h2>How to evaluate it</h2>
         <p>Institutions can begin with a <a href="/pilots">bounded no-write pilot</a>. Technical evaluators can use the <a href="/docs/getting-started">current command paths</a>. Contributors and maintainers can use the <a href="/handoff">work-package map</a>.</p>
         <h2>Public evidence discipline</h2>

@@ -322,8 +322,14 @@ def validate_json(errors: list[str]) -> None:
     ids = [item.get("id") for item in frontends.get("frontends", [])]
     if len(ids) != len(set(ids)):
         errors.append("frontends.json: duplicate frontend id")
-    if frontends.get("measured_at") != snapshot.get("snapshot_date"):
-        errors.append("frontends.json: measurement date differs from public snapshot")
+    expected_frontend_ids = {
+        "fi", "ee", "uk", "nz", "pl", "no", "se", "eu", "us", "ch",
+        "jp", "kr", "open-law",
+    }
+    if set(ids) != expected_frontend_ids:
+        errors.append("frontends.json: current frontend inventory is incomplete")
+    if frontends.get("measured_at") != frontends.get("snapshot_date"):
+        errors.append("frontends.json: measurement and registry snapshot dates differ")
     if "measured_core_revision" in frontends:
         errors.append("frontends.json: stale public core revision field")
     profile_values = {

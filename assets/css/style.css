@@ -358,6 +358,8 @@ main { padding: 2rem 0; }
   position: relative;
 }
 .job-card:hover { border-color: var(--accent); text-decoration: none; }
+.content-card[href] { color: var(--text); display: block; }
+.content-card[href]:hover { border-color: var(--accent); text-decoration: none; }
 .job-card .job-number {
   color: var(--accent);
   font: 700 0.72rem var(--font-mono);
@@ -386,6 +388,24 @@ main { padding: 2rem 0; }
   font-weight: 650;
   left: 1.35rem;
   position: absolute;
+}
+.content-card .card-link {
+  color: var(--accent);
+  display: inline-block;
+  font-size: 0.85rem;
+  font-weight: 650;
+  margin-top: 1rem;
+}
+.frontend-directory { margin-top: 2rem; }
+.frontend-directory h3 + .tag-list { margin-bottom: 1.35rem; }
+.closing-synthesis {
+  border-top: 1px solid var(--border);
+  color: var(--bright);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  margin-top: 2.5rem;
+  max-width: 860px;
+  padding-top: 1.5rem;
 }
 .proof-feature {
   align-items: start;

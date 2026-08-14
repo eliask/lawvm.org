@@ -153,10 +153,19 @@ def main() -> None:
         page.goto(f"{BASE_URL}/pilots/?frontend=ch#frontend", wait_until="networkidle")
         assert "Switzerland" in page.locator("#frontend-context").inner_text()
         assert "Switzerland" in page.locator("#pilot-email").get_attribute("href")
+        page.goto(f"{BASE_URL}/pilots/?frontend=open-law#frontend", wait_until="networkidle")
+        assert "Open Law Library" in page.locator("#frontend-context").inner_text()
+        assert "Open%20Law%20Library" in page.locator("#pilot-email").get_attribute("href")
 
         page.goto(f"{BASE_URL}/about/project-status/", wait_until="networkidle")
         status_text = page.locator("main").inner_text().lower()
-        for phrase in ("beta-stage", "pre-1.0", "profile-specific"):
+        for phrase in (
+            "beta-stage",
+            "pre-1.0",
+            "profile-specific",
+            "nearly 12,000 commits",
+            "agent-operable",
+        ):
             assert phrase in status_text, f"project status: missing {phrase}"
         assert "legal authority and broader correctness require separate institutional and evidential support" in status_text
 
@@ -183,6 +192,9 @@ def main() -> None:
         page.goto(f"{BASE_URL}/", wait_until="networkidle")
         primary_nav = page.get_by_role("navigation", name="Primary navigation")
         assert primary_nav.get_by_role("link", name="About", exact=True).is_visible()
+        frontend_links = page.locator(".frontend-directory .tag")
+        assert frontend_links.count() == 13, "homepage: current frontend inventory is incomplete"
+        assert "Open Law Library" in frontend_links.all_inner_texts()
         public_text = page.locator("body").inner_text()
         for discarded_label in ("Machine-readable registry", "Assurance profile", "Open the frontend starter"):
             assert discarded_label not in public_text
@@ -198,6 +210,9 @@ def main() -> None:
         page.goto(f"{BASE_URL}/jurisdictions/", wait_until="networkidle")
         page.screenshot(path=SCREENSHOT_DIR / "jurisdictions-mobile.png", full_page=True)
         assert "Assurance profile" not in page.locator("body").inner_text()
+        jurisdiction_text = page.locator("main").inner_text()
+        assert "staging / unintegrated" not in jurisdiction_text
+        assert "Open Law Library" in jurisdiction_text
         page.goto(f"{BASE_URL}/assurance/", wait_until="networkidle")
         page.screenshot(path=SCREENSHOT_DIR / "assurance-mobile.png", full_page=True)
         browser.close()
